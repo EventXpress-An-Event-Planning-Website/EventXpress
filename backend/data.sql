@@ -1,6 +1,6 @@
-CREATE DATABASE eventexpress;
+CREATE DATABASE eventxpress;
 
-\c eventexpress
+\c eventxpress;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
