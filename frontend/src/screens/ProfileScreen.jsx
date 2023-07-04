@@ -41,7 +41,7 @@ const ProfileScreen = () => {
         dispatch(setCredentials({...res}))
         toast.success('Profile updated')
       } catch (err) {
-        toast.err(err?.data?.message || err.error)
+        toast.error(err?.data?.message || err.error)
       }
     }
   }

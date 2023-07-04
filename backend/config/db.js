@@ -8,12 +8,10 @@ const pool = new Pool({
   host: process.env.DB_HOST,
   database: process.env.DATABASE,
   password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
-  ssl: {
-    rejectUnauthorized: false // Add this line to disable SSL certificate verification
-  }
+  port: process.env.DB_PORT
 })
 
+// method for start the connection
 const connectDB = async () => {
   try {
     const client = await pool.connect()
@@ -24,6 +22,7 @@ const connectDB = async () => {
   }
 }
 
+// method for execute query
 const query = async (text, params) => {
   try {
     const result = await pool.query(text, params)
