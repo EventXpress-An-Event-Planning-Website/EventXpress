@@ -1,13 +1,12 @@
 import asyncHandler from 'express-async-handler'
 import generateToken from '../utils/generateToken.js'
-import { query } from '../config/db.js'
 import {
   userExists,
-  regUser,
+  regCustomer,
+  regServiceProvider,
   loginUser,
   updateUser,
 } from '../models/userModel.js'
-import bcrypt from 'bcryptjs'
 
 // @desc    Auth user/set token
 // route    POST /api/users/login
@@ -34,16 +33,57 @@ const authUser = asyncHandler(async (req, res) => {
 // route    POST /api/users/register
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body
+  const {
+    name,
+    email,
+    nic,
+    nicImage,
+    profileImage,
+    location,
+    contactNo,
+    password,
+    facebookLink,
+    instagramLink,
+    twitterLink,
+    role,
+  } = req.body
 
-  const userExist = await userExists(email)
+  const userExist = await userExists(email, role)
 
   if (userExist) {
     res.status(400)
     throw new Error('User already exists')
   }
 
-  const user = await regUser(name, email, password)
+  let user = ''
+
+  if (role === 'customer') {
+    user = await regCustomer(
+      name,
+      email,
+      nic,
+      nicImage,
+      profileImage,
+      location,
+      contactNo,
+      password,
+      role
+    )
+  } else if (role === 'serviceProvider') {
+    user = await regServiceProvider(
+      name,
+      email,
+      nic,
+      nicImage,
+      profileImage,
+      location,
+      contactNo,
+      password,
+      facebookLink,
+      instagramLink,
+      twitterLink
+    )
+  }
 
   if (user) {
     generateToken(res, user.id)

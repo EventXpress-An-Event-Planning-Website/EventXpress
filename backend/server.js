@@ -6,6 +6,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import { connectDB } from './config/db.js'
 const port = process.env.PORT || 5000
 import userRoute from './routes/userRoutes.js'
+import uploadRoutes from './routes/uploadRoutes.js'
 
 // start database connection
 connectDB()
@@ -22,6 +23,9 @@ app.use(cookieParser())
 
 // user routes
 app.use('/api/users', userRoute)
+
+// Upload routes
+app.use('/api/upload', uploadRoutes)
 
 // Handle errors
 app.use(notFound)
