@@ -16,6 +16,8 @@ import HomeScreen from './screens/HomeScreen.jsx'
 import LoginScreen from './screens/LoginScreen.jsx'
 import RegisterScreen from './screens/RegisterScreen.jsx'
 import ProfileScreen from './screens/ProfileScreen.jsx'
+import Home from './screens/ServiceProvider/Home.jsx'
+import PackageForm from './screens/ServiceProvider/PackageForm.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +29,8 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
       </Route>
+      <Route path="/ServiceProvider/home" element={<Home />} />
+      <Route path="/ServiceProvider/packageForm" element={<PackageForm />} />
     </Route>
   )
 )
