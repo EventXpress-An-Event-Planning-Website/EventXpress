@@ -3,9 +3,9 @@ import bcrypt from 'bcryptjs'
 import asyncHandler from 'express-async-handler'
 
 // check if a user with the given email exists
-const userExists = async (email) => {
+const userExists = async (email, role) => {
   try {
-    const userExistsQuery = 'SELECT * FROM users WHERE email = $1'
+    const userExistsQuery = `SELECT * FROM ${role} WHERE email = $1`
     const userExists = await query(userExistsQuery, [email])
 
     return userExists.rowCount > 0 ? true : false
@@ -17,7 +17,12 @@ const userExists = async (email) => {
 
 // login user with the given email and password
 const loginUser = asyncHandler(async (email, password) => {
-  const userDetailsQuery = 'SELECT * FROM users WHERE email = $1'
+  const userDetailsQuery = `
+    SELECT 'admin' AS role, id, name, email, password FROM admin WHERE email = $1 
+    UNION 
+    SELECT 'customer' AS role, id, name, email, password FROM customer WHERE email = $1 
+    UNION 
+    SELECT 'serviceProvider' AS role, id, name, email, password FROM serviceProvider WHERE email = $1`
   const userDetails = await query(userDetailsQuery, [email])
   if (userDetails.rowCount > 0) {
     const user = userDetails.rows[0]
@@ -29,20 +34,85 @@ const loginUser = asyncHandler(async (email, password) => {
   }
 })
 
-// register a new user
-const regUser = asyncHandler(async (name, email, password) => {
-  const salt = await bcrypt.genSalt(10)
-  const hashedPassword = await bcrypt.hash(password, salt)
+// register a new customer
+const regCustomer = asyncHandler(
+  async (
+    name,
+    email,
+    nic,
+    nicImage,
+    profileImage,
+    location,
+    contactNo,
+    password
+  ) => {
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(password, salt)
 
-  const createUserQuery =
-    'INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING id, name, email'
-  const createUser = await query(createUserQuery, [name, email, hashedPassword])
-  if (createUser.rowCount > 0) {
-    return createUser.rows[0]
-  } else {
-    throw new Error('Internal Error')
+    const createUserQuery = `
+      INSERT INTO 
+        customer(name, email, nic, nicImage, profileImage, location, contactNo, password) 
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id, name, email`
+    const createUser = await query(createUserQuery, [
+      name,
+      email,
+      nic,
+      nicImage,
+      profileImage,
+      location,
+      contactNo,
+      hashedPassword,
+    ])
+    if (createUser.rowCount > 0) {
+      return createUser.rows[0]
+    } else {
+      throw new Error('Internal Error')
+    }
   }
-})
+)
+
+// register a new service provider
+const regServiceProvider = asyncHandler(
+  async (
+    name,
+    email,
+    nic,
+    nicImage,
+    profileImage,
+    location,
+    contactNo,
+    password,
+    facebookLink,
+    instagramLink,
+    twitterLink,
+  ) => {
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(password, salt)
+
+    const createUserQuery = `
+      INSERT INTO 
+        serviceProvider(name, email, nic, nicImage, profileImage, location, contactNo, password, facebookLink, instagramLink, twitterLink) 
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9 , $10, $11) RETURNING id, name, email`
+    const createUser = await query(createUserQuery, [
+      name,
+      email,
+      nic,
+      nicImage,
+      profileImage,
+      location,
+      contactNo,
+      hashedPassword,
+      facebookLink,
+      instagramLink,
+      twitterLink
+    ])
+    if (createUser.rowCount > 0) {
+      return createUser.rows[0]
+    } else {
+      throw new Error('Internal Error')
+    }
+  }
+)
 
 // update user details
 const updateUser = asyncHandler(async (userId, name, email, password) => {
@@ -81,4 +151,4 @@ const getUserFromToken = asyncHandler(async (userId) => {
   }
 })
 
-export { userExists, regUser, loginUser, updateUser, getUserFromToken }
+export { userExists, regCustomer, regServiceProvider,loginUser, updateUser, getUserFromToken }
