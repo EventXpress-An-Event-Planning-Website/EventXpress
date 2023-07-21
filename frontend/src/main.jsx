@@ -18,6 +18,8 @@ import RegisterScreen from './screens/RegisterScreen.jsx'
 import RegisterCustomerScreen from './screens/RegisterCustomerScreen.jsx'
 import RegisterServiceProviderScreen from './screens/RegisterServiceProviderScreen.jsx'
 import ProfileScreen from './screens/ProfileScreen.jsx'
+import Cus_Home from './screens/Customer/Cus_Home.jsx'
+import CreateEvent from './screens/Customer/createEvent.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +32,8 @@ const router = createBrowserRouter(
       {/* Private Route */}
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
+        <Route path="/customerHome" element={<Cus_Home />} />
+        <Route path="/createEvent" element={<CreateEvent />} />
       </Route>
     </Route>
   )

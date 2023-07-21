@@ -62,7 +62,7 @@ const RegisterCustomerScreen = () => {
         // Handle the upload response as needed
         console.log(uploadResponse)
 
-        navigate('/')
+        navigate('/customerHome')
       } catch (err) {
         toast.error(err?.data?.message || err.error)
       }
