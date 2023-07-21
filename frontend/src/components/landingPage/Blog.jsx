@@ -38,8 +38,8 @@ const Blog = () => {
     ]
 
     return (
-        <section id='blog' className='blog-block'>
-            <Container fluid>
+        <section id='blog' className='blog-block w-100'>
+            <Container fluid >
                 <div className='title-holder'>
                     <h2>Latest From Blog</h2>
                     <div className='subtitle'>get our latest news from blog</div>
@@ -57,7 +57,7 @@ const Blog = () => {
                                                 <time>{blog.time}</time>
                                                 <Card.Title>{blog.title}</Card.Title>
                                                 <Card.Text>{blog.description}</Card.Text>
-                                                <a href={blog.link} className='btn btn-primary'>Read More<i className="fa-solid fa-angle-right"></i></a>
+                                                <a href={blog.link} className='button button-primary'>Read More<i className="fa-solid fa-angle-right"></i></a>
                                             </Card.Body>
                                         </Card>
 

@@ -8,14 +8,14 @@ const Content = () => {
   const contentData = [
     {
       id: 1,
-      image: gardenImage,
+      image: celebrationImage,
       title: 'The perfect design for your website',
       description: 'Use an integrated toolchain for the best user and developer experience. This page describes a few popular React toolchains which help with tasks like Scaling to many files and components. Using third-party libraries from npm.',
       link: 'https://www.google.com'
     },
     {
       id: 2,
-      image: celebrationImage,
+      image: gardenImage,
       title: 'Start your future financial plan',
       description: 'Use an integrated toolchain for the best user and developer experience. This page describes a few popular React toolchains which help with tasks like Scaling to many files and components. Using third-party libraries from npm.',
       link: 'https://www.facebook.com'

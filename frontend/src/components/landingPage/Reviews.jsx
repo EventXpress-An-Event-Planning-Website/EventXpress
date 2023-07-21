@@ -15,22 +15,22 @@ const Reviews = () => {
       id: 1,
       name: 'John Wills',
       image: people1,
-      description: 'Use an integrated toolchain for the best user and developer experience. This page describes a few popular React toolchains which help with tasks like Scaling to many files and components. Using third-party libraries from npm.',
-      designation: 'Manager'
+      description: 'Thank you for the outstanding work of the EventXpress. We had a wonderful time and could not imagine pulling off our meeting without the guidance of your platform. Simply put, they exceeded all our expectations and could not have been more patient on the requests we made of them over the past few months.',
+      // designation: 'Manager'
     },
     {
       id: 2,
-      name: 'John Wills',
+      name: 'Mary Fernando',
       image: people2,
-      description: 'Use an integrated toolchain for the best user and developer experience. This page describes a few popular React toolchains which help with tasks like Scaling to many files and components. Using third-party libraries from npm.',
-      designation: 'Manager'
+      description: 'Supplier procurement, Ease of Use, Budget management, and Exhibition management are the topmost factors that positively impact user satisfaction for Event Management Platforms products. EventXpress is highly accomplished these needs for my anniversary celebration. Highly reccomend EventXpress platform',
+      // designation: 'Manager'
     },
     {
       id: 3,
       name: 'John Wills',
       image: people3,
       description: 'Use an integrated toolchain for the best user and developer experience. This page describes a few popular React toolchains which help with tasks like Scaling to many files and components. Using third-party libraries from npm.',
-      designation: 'Manager'
+      // designation: 'Manager'
     },
     // {
     //     id: 4,

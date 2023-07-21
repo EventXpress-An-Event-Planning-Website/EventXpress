@@ -8,8 +8,8 @@ import Reviews from '../components/landingPage/Reviews'
 import Contact from '../components/landingPage/Contact'
 import Footer from '../components/landingPage/Footer'
 
-import '../App.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import '../App.css'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
