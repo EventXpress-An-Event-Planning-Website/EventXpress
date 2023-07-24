@@ -1,0 +1,71 @@
+body{
+    background: #f6e4f6;
+}
+
+.pack_info, .option, .more_option{
+    border-radius: 5px;
+    padding: 35px;
+    margin-left: 25px;
+    margin-top: 10px;
+    background: #cf8ecfee;
+    margin-bottom: 30px;
+}
+
+h4{
+    color: #6f016f;
+    font-weight: bold;
+}
+
+label{
+    font-weight: bold;
+}
+
+.input{
+    margin-bottom: 20px;
+}
+
+.image_container{
+    display: flex;
+    justify-content: center;
+}
+
+.image_container .image{
+    border-radius: 30px;
+    background: white;
+    width: 150px;
+    height: 150px;
+    padding: 20px;
+    margin-right: 80px;
+}
+
+.more_option{
+    text-align: center;
+}
+
+.optionBtn{
+    text-align: center;
+    background: #6f016f;
+    border: none;
+    border-radius: 40px;
+    width: 50%;
+    height: 80px;
+}
+
+.optionBtn:hover{
+    background: #6f016f;
+}
+
+.btn_container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submitBtn{
+    margin-top: 30px;
+    width: 120px; 
+    height: 50px;
+    text-align: center;
+    background: #6f016f;
+    border: none;
+    border-radius: 40px;
+}

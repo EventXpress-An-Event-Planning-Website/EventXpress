@@ -1,1 +1,7 @@
-@import './RegisterCustomerScreen.css'
+@import './RegisterCustomerScreen.css';
+
+@import './ServiceProvider/FormDetails.css';
+@import './ServiceProvider/Title.css';
+@import './ServiceProvider/Home.css';
+@import './ServiceProvider/Packages.css';
+@import './ServiceProvider/PackageFullView.css';

@@ -1,0 +1,9 @@
+.main_content{
+    background: #e7afe7;
+    padding: 40px;
+}
+
+.main_content img{
+    width: 300px;
+    height: 300px;
+}

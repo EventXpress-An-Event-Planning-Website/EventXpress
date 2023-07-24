@@ -1,14 +1,16 @@
 // import React from 'react'
-import Search from "../../components/ServiceProvider/Search.jsx"
-import CategoryBtn from "../../components/ServiceProvider/CategoryBtn.jsx"
-import PackDetails from "../../components/ServiceProvider/PackDetails.jsx"
+import HomePicture from "../../components/ServiceProvider/HomePicture"
+import HomePackages from "../../components/ServiceProvider/HomePackages"
+import HomeIcons from "../../components/ServiceProvider/HomeIcons"
+import HomeFooter from "../../components/ServiceProvider/HomeFooter"
 
 const Home = () => {
   return (
       <>
-        <Search />
-        <CategoryBtn />
-        <PackDetails />
+        <HomePicture />
+        <HomePackages />
+        <HomeIcons />
+        <HomeFooter />
       </> 
   )
 }

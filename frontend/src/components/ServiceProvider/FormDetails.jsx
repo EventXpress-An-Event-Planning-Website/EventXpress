@@ -1,8 +1,8 @@
 // import React from 'react'
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Form, FormControl, FormGroup, Button } from 'react-bootstrap'
-import { DropdownButton, Dropdown } from "react-bootstrap"
 import FormContainer from "../FormContainer"
+import upload from '../../assets/images/upload.svg'
 
 const FormDetails = () => {
   const [data, setData] = useState({
@@ -11,8 +11,6 @@ const FormDetails = () => {
     location: "",
     description: ""
   })
-
-  const [category, setCategory] = useState("")
 
   const handleChange = (e) => {
     const name = e.target.name
@@ -24,71 +22,166 @@ const FormDetails = () => {
     e.preventDefault()
   }
 
-  const handleSelect = (value) => {
-    setCategory(value)
+  // upload image
+  const inputRef = useRef(null);
+  const [image, setImage] = useState("");
+
+  const handleImageClick = () => {
+    inputRef.current.click();
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    console.log(file);
+    setImage(event.target.files[0]);
   }
 
   return (
     <FormContainer>
-      <Form method="post" onSubmit={handleSubmit}>
-        <h1>Enter Your Package Details</h1>
-        <FormGroup>
-          <Form.Label htmlFor="title">Title</Form.Label>
-          <FormControl
-            type="text"
-            name="title"
-            onChange={handleChange}
-            value={data.title}
-          />
-        </FormGroup>
+      <h4>Package Information</h4>
+      <div className="pack_info">
+        <Form method="post" onSubmit={handleSubmit} className="form">
+          <FormGroup className="input">
+            <Form.Label htmlFor="title">Business Name</Form.Label>
+            <FormControl
+              type="text"
+              name="title"
+              onChange={handleChange}
+              value={data.title}
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <Form.Label htmlFor="location">Location</Form.Label>
-          <FormControl
-            type="text"
-            name="location"
-            onChange={handleChange}
-            value={data.location}
-          />
-        </FormGroup>
+          <FormGroup className="input">
+            <Form.Label htmlFor="location">Area you cover</Form.Label>
+            <FormControl
+              type="text"
+              name="location"
+              onChange={handleChange}
+              value={data.location}
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <Form.Label htmlFor="price">Price</Form.Label>
-          <FormControl
-            type="text"
-            name="price"
-            onChange={handleChange}
-            value={data.price}
-          />
-        </FormGroup>
+          <FormGroup className="input">
+            <Form.Label htmlFor="address">Business address</Form.Label>
+            <FormControl
+              type="text"
+              name="address"
+              onChange={handleChange}
+              value={data.address}
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <Form.Label htmlFor="description">Description</Form.Label>
-          <FormControl
-            type="text"
-            name="description"
-            onChange={handleChange}
-            value={data.description}
-          />
-        </FormGroup>
+          <FormGroup className="input">
+            <Form.Label htmlFor="description">Add description about your package</Form.Label>
+            <FormControl
+              type="text"
+              name="description"
+              onChange={handleChange}
+              value={data.description}
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <Form.Label htmlFor="category">Category</Form.Label>
-          <DropdownButton title={category || "Selec the category"} onSelect={handleSelect}>
-            <Dropdown.Item eventKey="Venue">Venue</Dropdown.Item>
-            <Dropdown.Item eventKey="Photography">Photography</Dropdown.Item>
-            <Dropdown.Item eventKey="Cake">Cake</Dropdown.Item>
-            <Dropdown.Item eventKey="Sound">Sound</Dropdown.Item>
-            <Dropdown.Item eventKey="Decoration">Decoration</Dropdown.Item>
-            <Dropdown.Item eventKey="Catering">Catering</Dropdown.Item>
-          </DropdownButton>
-        </FormGroup>
+          <Form.Label htmlFor="image">Add Image</Form.Label>
+          <div className="image_container">
+            <div onClick={handleImageClick} className="image">
+              {image ? <img src={URL.createObjectURL(image)} /> : <img src={upload} />}
+              <input 
+                type="file" 
+                ref={inputRef} 
+                onChange={handleImageChange} 
+                style={{display: "none"}}
+              />
+            </div>
+          </div>
 
-      </Form>
+        </Form>
+      </div>
+      
 
-      <Button type="submit" style={{ marginTop: '10px', width: '100px'}}>
-        Submit
-      </Button>
+      <h4>Options</h4>
+      <div className="option">
+        <Form method="post" onSubmit={handleSubmit} className="form">
+          <FormGroup className="input">
+            <Form.Label htmlFor="op_name">Package - Option name</Form.Label>
+            <FormControl
+              type="text"
+              name="op_name"
+              onChange={handleChange}
+              value={data.op_name}
+            />
+          </FormGroup>
+
+          <FormGroup className="input">
+            <Form.Label htmlFor="op_des">Description</Form.Label>
+            <FormControl
+              type="text"
+              name="op_des"
+              onChange={handleChange}
+              value={data.op_des}
+            />
+          </FormGroup>
+
+          <FormGroup className="input">
+            <Form.Label htmlFor="op_price">Option Price</Form.Label>
+            <FormControl
+              type="text"
+              name="op_price"
+              onChange={handleChange}
+              value={data.op_price}
+            />
+          </FormGroup>
+
+          <Form.Label htmlFor="op_price">Add Images</Form.Label>
+          <div className="image_container">
+            <div onClick={handleImageClick} className="image">
+              {image ? <img src={URL.createObjectURL(image)} /> : <img src={upload} />}
+              <input 
+                type="file" 
+                ref={inputRef} 
+                onChange={handleImageChange} 
+                style={{display: "none"}}
+              />
+            </div>
+
+            <div onClick={handleImageClick} className="image">
+              {image ? <img src={URL.createObjectURL(image)} /> : <img src={upload} />}
+              <input 
+                type="file" 
+                ref={inputRef} 
+                onChange={handleImageChange} 
+                style={{display: "none"}}
+              />
+            </div>
+
+            <div onClick={handleImageClick} className="image">
+              {image ? <img src={URL.createObjectURL(image)} /> : <img src={upload} />}
+              <input 
+                type="file" 
+                ref={inputRef} 
+                onChange={handleImageChange} 
+                style={{display: "none"}}
+              />
+            </div>
+          </div>
+          
+
+        </Form>
+      </div>
+      
+
+      <h4>More Options</h4>
+      <div className="more_option">
+        <Button type="submit" className="optionBtn">
+          Add another option
+        </Button>
+      </div>
+
+      <div className="btn_container">
+        <Button type="submit" className="submitBtn">
+          Submit
+        </Button>
+      </div>
+      
 
     </FormContainer>
   )
