@@ -19,6 +19,10 @@ import RegisterCustomerScreen from './screens/RegisterCustomerScreen.jsx'
 import RegisterServiceProviderScreen from './screens/RegisterServiceProviderScreen.jsx'
 import ProfileScreen from './screens/ProfileScreen.jsx'
 import CusHome from './components/Cus/CusHome.jsx'
+import AllTicketsPage from './screens/AllTicketsPage.jsx'
+import SellTicketsPage from './screens/SellTicketsPage.jsx'
+import AddTicketsPage from './screens/addTicketsPage.jsx'
+import TicketInfoPage from './screens/TicketInfoPage.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +36,10 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
         <Route path="/customerHome" element={<CusHome />} />
+        <Route path="/buy-tickets" element={<AllTicketsPage />} />
+        <Route path="/buy-tickets/info" element={<TicketInfoPage />} />
+        <Route path="/sell-tickets" element={<SellTicketsPage />} />
+        <Route path="/sell-tickets/add" element={<AddTicketsPage />} />
       </Route>
     </Route>
   )
