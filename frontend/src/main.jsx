@@ -34,8 +34,6 @@ const router = createBrowserRouter(
       {/* Private Route */}
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
-        {/* <Route path="/customerHome" element={<Cus_Home />} /> */}
-        {/* <Route path="/createEvent" element={<CreateEvent />} /> */}
         <Route path="/customerHome" element={<CusHome />} />
         <Route path="/customer/myEvents" element={<CreateEvent />} />
         <Route path="/customer/eventdetails" element={<CustomerEventDetails />} />
