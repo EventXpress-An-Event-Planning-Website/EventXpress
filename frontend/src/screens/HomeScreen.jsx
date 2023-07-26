@@ -6,7 +6,7 @@ import Works from '../components/landingPage/Works'
 import Blog from '../components/landingPage/Blog'
 import Reviews from '../components/landingPage/Reviews'
 import Contact from '../components/landingPage/Contact'
-import Footer from '../components/landingPage/Footer'
+import Footer from '../components/ServiceProvider/SPHome/HomeFooter'
 
 // import '../App.css'
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,8 +23,8 @@ const HomeScreen = () => {
       <Works />
       <Reviews />
       <Blog />
-      <Contact />
-      {/* <Footer /> */}
+      {/* <Contact /> */}
+      <Footer />
 
 
     </>

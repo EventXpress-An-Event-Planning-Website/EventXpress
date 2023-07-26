@@ -1,5 +1,5 @@
 .cus-block {
-  margin: -8px -111px;
+  margin: 0;
 }
 
 .cus-block .carousel-item:before {
@@ -100,9 +100,10 @@
   width: 280px;
   height: 280px;
 }
-.aaa{
+/* .aaa{
   padding-left: 180px;
-}
+} */
+
 /* .cusServices-wrapper{
 overflow: hidden;
 position: relative !important;
