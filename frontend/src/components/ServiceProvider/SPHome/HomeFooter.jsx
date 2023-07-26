@@ -1,6 +1,6 @@
 // import React from 'react'
 import { Col, Container, Row } from "react-bootstrap"
-import logo from "../../assets/images/logo.png"
+import logo from "../../../assets/images/logo.png"
 import { FaPhoneVolume } from 'react-icons/fa';
 import { FaEnvelopeOpenText } from 'react-icons/fa';
 import { FaMapMarkerAlt } from 'react-icons/fa';
@@ -10,7 +10,7 @@ import { FaLinkedinIn } from 'react-icons/fa';
 
 const HomeFooter = () => {
   return (
-    <Container className="footer">
+    <Container className="homefooter">
         <Row>
           <Col className="logo">
               <img className='picture' src={logo} />
@@ -18,14 +18,14 @@ const HomeFooter = () => {
           </Col>
 
           <Col className="contact">
-            <h4>Contact US</h4>
+            <h3>Contact Us</h3>
             <a href="" className='icon'><FaPhoneVolume /> +94 33 234 1249</a><br></br>
             <a href="" className='icon'><FaEnvelopeOpenText />  eventxpress@gmail.com</a><br></br>
             <a href="" className='icon'><FaMapMarkerAlt />  UCSC Complex, Reid Avenue, Colombo 07</a>
           </Col>
 
           <Col className="slogo">
-            <h4>Folllow us on social media</h4>
+            <h3>Folllow us on social media</h3>
             <a href="" className="SIcon"><FaFacebookF /></a>
             <a href="" className="SIcon"><FaInstagram /></a>
             <a href="" className="SIcon"><FaLinkedinIn /></a>

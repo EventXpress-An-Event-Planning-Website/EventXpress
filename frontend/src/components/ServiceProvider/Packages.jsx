@@ -2,6 +2,8 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import img1 from "../../assets/images/hotel.jpg"
+import img2 from "../../assets/images/img4.jpg"
+import img3 from "../../assets/images/img5.avif"
 
 const blogData = [
     {
@@ -13,15 +15,15 @@ const blogData = [
     },
     {
         id: 2,
-        image: img1,
-        title: 'Araliya Beach Resort',
+        image: img2,
+        title: 'Citrus Hikkaduwa',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae repudiandae nisi sunt, quis error cumque tempore, recusandae illo ducimus dolor commodi non iste itaque soluta iusto laboriosam sint in cum?',
         link: 'https://www.google.com'
     },
     {
         id: 2,
-        image: img1,
-        title: 'Araliya Beach Resort',
+        image: img3,
+        title: 'Green Almond Hotel',
         description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae repudiandae nisi sunt, quis error cumque tempore, recusandae illo ducimus dolor commodi non iste itaque soluta iusto laboriosam sint in cum?',
         link: 'https://www.google.com'
     }

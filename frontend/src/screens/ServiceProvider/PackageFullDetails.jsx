@@ -1,9 +1,13 @@
 // import React from 'react'
-import PackageFullView from "../../components/ServiceProvider/PackageFullView"
+import PackFull from '../../components/ServiceProvider/FullPackDetails/PackageFullView'
+import OptionDetails from '../../components/ServiceProvider/FullPackDetails/OptionView'
 
 const PackageFullDetails = () => {
   return (
-    <PackageFullView />
+    <>
+      <PackFull />
+      <OptionDetails />
+    </>
   )
 }
 

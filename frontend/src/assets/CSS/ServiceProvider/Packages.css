@@ -1,5 +1,6 @@
 .package_blogs{
     text-align: center;
+    margin: 2% 10%;
 }
 
 .pack_holder{
@@ -8,7 +9,7 @@
 }
 
 .view_btn{
-    background: #6f016f;
+    background: #6D004F;
     color: white;
     border: none;
     border-radius: 40px;
@@ -16,5 +17,5 @@
 }
 
 .view_btn:hover{
-    background: #6f016f;
+    background: #6D004F;
 }

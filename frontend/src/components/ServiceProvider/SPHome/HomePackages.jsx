@@ -1,10 +1,10 @@
 // import React from 'react'
 import { Button, Col, Container, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import wedding from "../../assets/images/wedding.jpg"
-import food from "../../assets/images/food.jpg"
-import cam from "../../assets/images/cam.jpg"
-import party from "../../assets/images/party.webp"
+import wedding from "../../../assets/images/weddingout.jpg"
+import food from "../../../assets/images/food.jpg"
+import cam from "../../../assets/images/cam.jpg"
+import party from "../../../assets/images/party.webp"
 
 const HomePackages = () => {
   return (
@@ -16,7 +16,7 @@ const HomePackages = () => {
           <Col><img className='picture' src={cam} /></Col>
           <Col><img className='picture' src={party} /></Col>
         </Row>
-        <Link to={`/ServiceProvider/packageForm`}><Button className="more_btn">Show More</Button></Link> 
+        <Link to={`/ServiceProvider/packagesView`}><Button className="more_btn">Show More</Button></Link> 
     </Container>
   )
 }

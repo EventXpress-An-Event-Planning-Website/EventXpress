@@ -1,7 +1,7 @@
 // import React from 'react'
 import { Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import pic from '../../assets/images/imge.jpg'
+import pic from '../../../assets/images/djfes.jpg'
 
 const HomePicture = () => {
   return (

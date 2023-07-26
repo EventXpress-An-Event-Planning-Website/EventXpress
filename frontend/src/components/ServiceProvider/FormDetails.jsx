@@ -38,7 +38,7 @@ const FormDetails = () => {
 
   return (
     <FormContainer>
-      <h4>Package Information</h4>
+      <h3 className="packformh3">Package Information</h3>
       <div className="pack_info">
         <Form method="post" onSubmit={handleSubmit} className="form">
           <FormGroup className="input">
@@ -98,7 +98,7 @@ const FormDetails = () => {
       </div>
       
 
-      <h4>Options</h4>
+      <h3 className="packformh3">Options</h3>
       <div className="option">
         <Form method="post" onSubmit={handleSubmit} className="form">
           <FormGroup className="input">
@@ -164,12 +164,11 @@ const FormDetails = () => {
             </div>
           </div>
           
-
         </Form>
       </div>
       
 
-      <h4>More Options</h4>
+      <h3 className="packformh3">More Options</h3>
       <div className="more_option">
         <Button type="submit" className="optionBtn">
           Add another option

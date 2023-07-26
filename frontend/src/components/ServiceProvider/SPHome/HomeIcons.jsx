@@ -11,7 +11,7 @@ const HomeIcons = () => {
     <Container className="home_icons">
       <Row>
         <Col>
-          <a href="" className='icon'><FaHotel /></a>
+          <a href="/ServiceProvider/myEventhome" className='icon'><FaHotel /></a>
           <h4>My Events</h4>
         </Col>
 
