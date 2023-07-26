@@ -108,8 +108,8 @@ body {
   }
   
   .container-fluid {
-    margin: 0 45px;
-    max-width: 1200px;
+    margin: 0 10%;
+    max-width: 80%;
   }
   
   .content-block ul {
@@ -899,7 +899,7 @@ body {
   }
   
   .content-p{
-    margin: -65px -111px 0 -111.5px;
+    margin: -65px 0 0 0;
   }
   
   .footer{

@@ -24,7 +24,7 @@ const HomeScreen = () => {
       <Reviews />
       <Blog />
       <Contact />
-      <Footer />
+      {/* <Footer /> */}
 
 
     </>
