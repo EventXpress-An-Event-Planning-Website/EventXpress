@@ -3,6 +3,9 @@ import gardenImage from '../../assets/images/festival.png';
 import celebrationImage from '../../assets/images/celebration.jpg';
 import cateringImage from '../../assets/images/catering3.jpg';
 import CusEvents from './CusEvents';
+import CusServices from './CusServices';
+import Footer from '../landingPage/Footer'
+import Blog from '../landingPage/Blog'
 
 const CusHome = () => {
 
@@ -30,10 +33,16 @@ const CusHome = () => {
               className="cus-img"
               src={content.image}
             />
+            {/* <button className='cus-block-btn'>Create My Event</button> */}
           </Carousel.Item>
         ))}
       </Carousel>
-      <CusEvents/>
+      <CusEvents />
+      <CusServices />
+      <div className='cus-blog'>
+        <Blog />
+      </div>
+      {/* <Footer/> */}
 
     </section>
 
