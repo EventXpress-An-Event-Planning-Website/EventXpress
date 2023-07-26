@@ -21,7 +21,7 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/')
+      navigate('/customerHome')
     }
   }, [navigate, userInfo])
 
@@ -30,7 +30,7 @@ const LoginScreen = () => {
     try {
       const res = await login({ email, password }).unwrap()
       dispatch(setCredentials({ ...res }))
-      navigate('/')
+      navigate('/customerHome')
     } catch (err) {
       toast.error(err?.data?.message || err.error)
     }
@@ -45,6 +45,8 @@ const LoginScreen = () => {
           <Form.Label>Email Address</Form.Label>
           <Form.Control
             type="email"
+            required
+            autoFocus
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -55,6 +57,7 @@ const LoginScreen = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
+            required
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

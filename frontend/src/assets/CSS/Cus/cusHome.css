@@ -1,0 +1,167 @@
+.cus-block {
+  margin: 0;
+}
+
+.cus-block .carousel-item:before {
+  content: '';
+  /* background: rgba(0, 0, 0, 0.7); */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.cus-block .carousel-item img {
+  width: 100%;
+}
+
+
+.cus-img{
+  max-width: 100%;
+  height: 400px;
+  vertical-align: top;
+}
+
+.cus-block-btn{
+  background-color: #500a54;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: -150px;
+  margin-left: 1200px;
+}
+/************************** cusEvents *************************************/
+
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+} */
+
+.cusEvent{
+  padding: 50px;
+}
+.event-img {
+  width: 100%;
+  height: 16em;
+  object-fit: cover;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 320px;
+  margin: auto 1rem;
+  text-align: center;
+  font-family: arial;
+}
+
+.block.cus-event h3 {
+  font-size: 24px;
+  color: #500a54;
+  padding: 0 20px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.block.cus-event p {
+  color: black;
+  padding: 0 20px;
+}
+
+.cus-event-dots{
+  padding-bottom: 25px;
+}
+
+
+/* ********************* cusServices *******************************/
+
+.cusServices-block{
+  background-color: rgb(96, 20, 83);
+  height: 35em;
+  /* padding-top: -100px; */
+  /* width: 100%; */
+}
+
+.cusServices-title{
+  color: white;
+  text-align: center;
+}
+
+.cusServices-ticket{
+  width: 100%;
+  height: 30em;
+}
+
+.cusServices-imgs{
+  width: 280px;
+  height: 280px;
+}
+/* .aaa{
+  padding-left: 180px;
+} */
+
+/* .cusServices-wrapper{
+overflow: hidden;
+position: relative !important;
+background: #666;
+cursor: pointer;
+height: auto;
+width: 100%;
+padding-left: 500px;
+} */
+/* .cusServices-imgs{
+  width: 1000px;
+  height: 1200px;
+} */
+
+.cusServices-parent{
+  position: relative;
+  width: 900px;
+  height: 600px;
+  margin-top: 5em;
+  margin: 50px 200px;
+}
+
+.cusServices-ticket-des{
+  background-color: rgb(96, 20, 83);
+  width: 700px;
+  height: 500px;
+  position: absolute;
+  bottom: -50px;
+  right: -200px;
+  top: 80px;
+  z-index: 9;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  padding-left: 250px;
+}
+
+.cusServices-ticket{
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.cusServices-ticket-btn{
+  color: #500a54;
+  background-color: white;
+  border-radius: 50px;
+  width: 200px;
+  height: 50px;
+  font-size: 25px;
+  padding: 0;
+}
+
+
+/******************************** cus-blog *******************************/
+.cus-blog{
+  margin-top: 850px;
+}

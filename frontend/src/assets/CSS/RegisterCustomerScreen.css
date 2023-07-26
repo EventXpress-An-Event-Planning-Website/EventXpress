@@ -1,0 +1,33 @@
+.register-screen {
+  display: flex;
+  height: 100vh;
+}
+
+.register-row {
+  flex-grow: 1;
+}
+
+.register-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.purple-bg {
+  background-color: purple;
+  color: aliceblue;
+}
+
+.white-bg {
+  background-color: white;
+}
+
+.register-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}

@@ -1,0 +1,60 @@
+.main_contentinfo{
+    background: #c4a9c4;
+    padding: 40px;
+    margin: 30px 100px;
+}
+
+.main_contentinfo img{
+    width: 400px;
+    height: 400px;
+}
+
+.main_contentinfo .rightcontentinfo{
+    margin-right: 60px;
+}
+
+
+/* option details */
+
+.option_contentinfo{
+    background: #c4a9c4;
+    margin-top: 50px;
+    height: 500px;
+    margin: 10px 100px;
+    padding-top: 50px;
+}
+
+.optionimg{
+    height: 100%;
+}
+
+.option_contentinfo .rightoptioninfo{
+    margin-left: 50px;
+}
+
+.rowoption{
+    background: white;
+    border: 0.5px solid;
+    height: 40px;
+    padding-top: 5px;
+}
+
+.coloption{
+    border-left: 1px solid;
+    height: 30px;
+}
+
+.hourprice{
+    margin-top: 30px;
+}
+
+.optiondelete, .optionedit{
+    background: #6D004F;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    width: 100px;
+    float: right;
+    margin-right: 20px;
+}
