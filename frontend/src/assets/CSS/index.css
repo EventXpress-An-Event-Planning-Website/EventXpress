@@ -1,3 +1,7 @@
 @import './RegisterCustomerScreen.css';
 @import './LandingPage/landingPage.css';
-@import './Cus/cusHome.css'
+@import './Cus/cusHome.css';
+@import './Cus/cusSidebar.css';
+@import './Cus/cusServices.css';
+@import './Cus/cusPackages';
+@import './Cus/cusPackageSidebar.css';

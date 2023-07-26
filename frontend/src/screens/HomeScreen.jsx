@@ -18,13 +18,14 @@ const HomeScreen = () => {
     <>
       {/* <Hero /> */}
       <Content />
-      <About/>
-      <Services/>
-      <Works/>
-      <Reviews/>
-      <Blog/>
-      <Contact/>
-      <Footer/>
+      <About />
+      <Services />
+      <Works />
+      <Reviews />
+      <Blog />
+      <Contact />
+      <Footer />
+
 
     </>
   )
