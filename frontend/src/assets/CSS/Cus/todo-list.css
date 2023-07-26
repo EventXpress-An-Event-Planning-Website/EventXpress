@@ -1,0 +1,153 @@
+
+  .todo-app {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 520px;
+    min-height: 600px;
+    background: #161a2b;
+    text-align: center;
+    margin: 128px auto;
+    border-radius: 10px;
+    padding-bottom: 32px;
+  }
+  
+  h1 {
+    margin: 32px 0;
+    color: #fff;
+    font-size: 24px;
+  }
+  
+  .complete {
+    text-decoration: line-through;
+    opacity: 0.4;
+  }
+  
+  .todo-form {
+    margin-bottom: 32px;
+  }
+  
+  .todo-input {
+    padding: 14px 32px 14px 16px;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid #c48bb5;
+    outline: none;
+    width: 320px;
+    background: transparent;
+    color: black;
+  }
+  
+  .todo-input::placeholder {
+    color: black;
+    width: 50%;
+   
+  }
+  
+  .todo-button {
+    padding: 16px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    outline: none;
+    background-color:#c48bb5; 
+    color: #fff;
+    text-transform: capitalize;
+  }
+  
+  .todo-input.edit {
+    border: 2px solid #c48bb5;
+  }
+  
+  .todo-button.edit {
+    background-color:#c48bb5; 
+    padding: 16px 22px;
+  }
+  
+  .todo-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+  }
+  
+  .todo-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px 0;
+    color: #fff;
+    background-color:#B4829F ;
+  
+    padding: 16px;
+    border-radius: 5px;
+    width: 90%;
+  }
+  
+  .todo-row:nth-child(4n + 1) {
+    background-color:#6D004F ;
+  }
+  
+  .todo-row:nth-child(4n + 2) {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 12, 241, 1) 0%,
+      rgba(250, 0, 135, 1) 100%
+    );
+  }
+  
+  .todo-row:nth-child(4n + 3) {
+    background: linear-gradient(
+      90deg,
+      rgba(20, 159, 255, 1) 0%,
+      rgba(17, 122, 255, 1) 100%
+    );
+  }
+  
+  .icons {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .delete-icon {
+    margin-right: 5px;
+    color: #fff;
+  }
+  
+  .edit-icon {
+    color: #fff;
+  }
+
+  .selected-service-package-details{
+    width: 90%;
+    min-height: 100px;
+    background-color: whitesmoke;
+    padding: 10px 30%;
+   
+  }
+
+
+  .selected-service-package-details-container{
+    width: 100%;
+    background-color: lightgray;
+    min-height: 50px;
+    border-radius: 1rem;
+    padding: 10px;
+    display: flex;
+  }
+
+  .selected-service-package-img{
+    background-color: red;
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+
+  .selected-service-package-img img{
+    /* background-color: red; */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  

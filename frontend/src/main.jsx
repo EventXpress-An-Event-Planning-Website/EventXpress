@@ -20,6 +20,8 @@ import RegisterServiceProviderScreen from './screens/RegisterServiceProviderScre
 import ProfileScreen from './screens/ProfileScreen.jsx'
 import Cus_Home from './screens/Customer/Cus_Home.jsx'
 import CreateEvent from './screens/Customer/createEvent.jsx'
+import CusHome from './components/Cus/CusHome.jsx'
+import CustomerEventDetails from './screens/Customer/CustomerEventDetails.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,8 +34,11 @@ const router = createBrowserRouter(
       {/* Private Route */}
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
-        <Route path="/customerHome" element={<Cus_Home />} />
-        <Route path="/createEvent" element={<CreateEvent />} />
+        {/* <Route path="/customerHome" element={<Cus_Home />} /> */}
+        {/* <Route path="/createEvent" element={<CreateEvent />} /> */}
+        <Route path="/customerHome" element={<CusHome />} />
+        <Route path="/customer/myEvents" element={<CreateEvent />} />
+        <Route path="/customer/eventdetails" element={<CustomerEventDetails />} />
       </Route>
     </Route>
   )
