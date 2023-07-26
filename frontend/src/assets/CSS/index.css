@@ -1,4 +1,11 @@
 @import './RegisterCustomerScreen.css';
+
+@import './ServiceProvider/FormDetails.css';
+@import './ServiceProvider/Home.css';
+@import './ServiceProvider/Packages.css';
+@import './ServiceProvider/PackageFullView.css';
+@import './ServiceProvider/EventHome.css';
+
 @import './LandingPage/landingPage.css';
 @import './Cus/cusHome.css';
 @import './Cus/cusSidebar.css';

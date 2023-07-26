@@ -18,6 +18,10 @@ import RegisterScreen from './screens/RegisterScreen.jsx'
 import RegisterCustomerScreen from './screens/RegisterCustomerScreen.jsx'
 import RegisterServiceProviderScreen from './screens/RegisterServiceProviderScreen.jsx'
 import ProfileScreen from './screens/ProfileScreen.jsx'
+import Home from './screens/ServiceProvider/Home.jsx'
+import PackageForm from './screens/ServiceProvider/PackageForm.jsx'
+import PackagesView from './screens/ServiceProvider/PackagesView.jsx'
+import PackageFullDetails from './screens/ServiceProvider/PackageFullDetails.jsx'
 import CusHome from './components/Cus/CusHome.jsx'
 import CusVenue from './components/Cus/CusVenue.jsx'
 import Venue from "../src/components/Cus/Pages/Venue.jsx";
@@ -31,6 +35,7 @@ import StageRentals from "../src/components/Cus/Pages/StageRentals.jsx";
 import Sidebar from './components/Cus/Sidebar.jsx'
 import VenueDes from './components/Cus/Pages/VenueDes.jsx'
 import Birthday from './components/Cus/PrePackages/Birthday.jsx'
+import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -61,6 +66,11 @@ const router = createBrowserRouter(
         <Route path="/Birthday" element={<Birthday/>}/>
 
       </Route>
+      <Route path="/ServiceProvider/home" element={<Home />} />
+      <Route path="/ServiceProvider/packageForm" element={<PackageForm />} />
+      <Route path="/ServiceProvider/packagesView" element={<PackagesView />} />
+      <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
+      <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} />
     </Route>
   )
 )
