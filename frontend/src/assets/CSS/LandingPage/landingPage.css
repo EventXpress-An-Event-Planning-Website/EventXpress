@@ -108,8 +108,8 @@ body {
   }
   
   .container-fluid {
-    margin: 0 45px;
-    max-width: 1200px;
+    margin: 0 10%;
+    max-width: 80%;
   }
   
   .content-block ul {
@@ -351,7 +351,7 @@ body {
     margin: 0 0 30px;
   }
   
-  .about-block .progress-block {
+  /* .about-block .progress-block {
     margin: 0 0 25px;
   }
   
@@ -365,7 +365,7 @@ body {
     background-color: #f64b4b;
     -webkit-transition: width 0.3s linear;
     transition: width 0.3s linear;
-  }
+  } */
   
   .about-img1{
     height: 30vh;
@@ -446,7 +446,7 @@ body {
   
   .works-block .portfoliolist>div h3 {
     margin: 0 0 5px;
-    color: #f64b4b;
+    color: #ffff;
     font-size: 16px;
   }
   
@@ -568,6 +568,7 @@ body {
   
   .blog-block {
     background: #f2f2f2;
+    margin: 0;
   }
   
   .blog-block.content-block .holder:hover {
@@ -898,7 +899,7 @@ body {
   }
   
   .content-p{
-    margin: -65px -111px 0 -111.5px;
+    margin: -65px 0 0 0;
   }
   
   .footer{
