@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { uploadApiSlice } from './uploadApiSlice'
 
+
 const baseQuery = fetchBaseQuery({ baseUrl: '' })
 
 export const apiSlice = createApi({
