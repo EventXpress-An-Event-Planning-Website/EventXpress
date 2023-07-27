@@ -26,15 +26,11 @@ import Home from './screens/ServiceProvider/Home.jsx'
 import PackageForm from './screens/ServiceProvider/PackageForm.jsx'
 import PackagesView from './screens/ServiceProvider/PackagesView.jsx'
 import PackageFullDetails from './screens/ServiceProvider/PackageFullDetails.jsx'
-<<<<<<< HEAD
 import CusHome from './components/Cus/CusHome.jsx'
 import AllTicketsPage from './screens/AllTicketsPage.jsx'
 import SellTicketsPage from './screens/SellTicketsPage.jsx'
 import AddTicketsPage from './screens/addTicketsPage.jsx'
 import TicketInfoPage from './screens/TicketInfoPage.jsx'
-=======
-// import CusHome from './components/Cus/CusHome.jsx'
->>>>>>> 6c5281768872b6cdcae063ea2709ca61ecb9763e
 import CusVenue from './components/Cus/CusVenue.jsx'
 import Venue from "../src/components/Cus/Pages/Venue.jsx";
 import Decoration from "../src/components/Cus/Pages/Decoration.jsx";
