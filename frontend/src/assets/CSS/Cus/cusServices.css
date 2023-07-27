@@ -8,8 +8,8 @@
     height: 200px;
 }
 .s-btn{
-    background-color: rgb(99, 35, 100);
-    border: rgb(99, 35, 100);
+    background-color:rgb(62, 165, 140);
+    border:rgb(62, 165, 140);
 }
 
 .s-btn:hover{
@@ -22,7 +22,8 @@
 }
 
 .s-pagination{
-padding: 10px 5px 0 1130px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* VenueDes */
@@ -35,3 +36,12 @@ padding: 10px 5px 0 1130px;
 .addToEvent-btn:hover{
     background-color: rgb(203, 135, 246);
 }
+
+/* Venue.css */
+
+  
+.custom-col {
+    padding: 0px;
+    margin: auto -0.5%;
+}
+  

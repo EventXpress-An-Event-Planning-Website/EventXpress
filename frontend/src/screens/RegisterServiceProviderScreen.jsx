@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 // import Loader from '../components/Loader'
 import { useRegisterMutation } from '../slices/userApiSlice'
 import { setCredentials } from '../slices/authSlice'
+import Header from '../components/header'
 
 const RegisterCustomerScreen = () => {
   const [name, setName] = useState('')
@@ -75,6 +76,8 @@ const RegisterCustomerScreen = () => {
   }
 
   return (
+    <>
+    
     <FormContainer>
       <h1>Register as service provider</h1>
       <Form onSubmit={submitHandler}>
@@ -217,6 +220,7 @@ const RegisterCustomerScreen = () => {
         </Col>
       </Row>
     </FormContainer>
+    </>
   )
 }
 

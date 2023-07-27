@@ -38,6 +38,7 @@
 
 .custom-col,
 .custom-row {
+  width: 100%;
   margin: 0;
 }
 

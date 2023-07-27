@@ -18,15 +18,23 @@ import RegisterScreen from './screens/RegisterScreen.jsx'
 import RegisterCustomerScreen from './screens/RegisterCustomerScreen.jsx'
 import RegisterServiceProviderScreen from './screens/RegisterServiceProviderScreen.jsx'
 import ProfileScreen from './screens/ProfileScreen.jsx'
+// import Cus_Home from './screens/Customer/Cus_Home.jsx'
+import CreateEvent from './screens/Customer/createEvent.jsx'
+import CusHome from './components/Cus/CusHome.jsx'
+import CustomerEventDetails from './screens/Customer/CustomerEventDetails.jsx'
 import Home from './screens/ServiceProvider/Home.jsx'
 import PackageForm from './screens/ServiceProvider/PackageForm.jsx'
 import PackagesView from './screens/ServiceProvider/PackagesView.jsx'
 import PackageFullDetails from './screens/ServiceProvider/PackageFullDetails.jsx'
+<<<<<<< HEAD
 import CusHome from './components/Cus/CusHome.jsx'
 import AllTicketsPage from './screens/AllTicketsPage.jsx'
 import SellTicketsPage from './screens/SellTicketsPage.jsx'
 import AddTicketsPage from './screens/addTicketsPage.jsx'
 import TicketInfoPage from './screens/TicketInfoPage.jsx'
+=======
+// import CusHome from './components/Cus/CusHome.jsx'
+>>>>>>> 6c5281768872b6cdcae063ea2709ca61ecb9763e
 import CusVenue from './components/Cus/CusVenue.jsx'
 import Venue from "../src/components/Cus/Pages/Venue.jsx";
 import Decoration from "../src/components/Cus/Pages/Decoration.jsx";
@@ -57,6 +65,9 @@ const router = createBrowserRouter(
         <Route path="/buy-tickets/info" element={<TicketInfoPage />} />
         <Route path="/sell-tickets" element={<SellTicketsPage />} />
         <Route path="/sell-tickets/add" element={<AddTicketsPage />} />
+        <Route path="/customer/myEvents" element={<CreateEvent />} />
+        <Route path="/customer/eventdetails" element={<CustomerEventDetails />} />
+
         <Route path="/CusVenue" element={<CusVenue />} />
         <Route path="/Sidebar" element={<Sidebar />} />
         <Route path="/Venue" element={<Venue />} />
@@ -70,11 +81,13 @@ const router = createBrowserRouter(
         <Route path="/VenueDes" element={<VenueDes />} />
         <Route path="/Birthday" element={<Birthday/>}/>
       </Route>
+   
       <Route path="/ServiceProvider/home" element={<Home />} />
       <Route path="/ServiceProvider/packageForm" element={<PackageForm />} />
       <Route path="/ServiceProvider/packagesView" element={<PackagesView />} />
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
       <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} />
+   
     </Route>
   )
 )

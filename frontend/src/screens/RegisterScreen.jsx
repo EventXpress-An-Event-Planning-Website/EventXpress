@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Button } from 'react-bootstrap'
+import Header from '../components/header'
 
 const RegisterScreen = () => {
   return (
+    <>
+    
     <div className="register-screen">
       <Row className="register-row">
         <Col className="purple-bg register-col" sm={6}>
@@ -30,6 +33,7 @@ const RegisterScreen = () => {
         </Col>
       </Row>
     </div>
+    </>
   )
 }
 
