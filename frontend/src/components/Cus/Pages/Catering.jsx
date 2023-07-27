@@ -68,10 +68,10 @@ const Catering = () => {
         <>
             <div style={{ "display": "flex" }}>
                 <Sidebar />
-                <div className="row">
+                <div className="row custom-row">
 
                     {cateringsData.map((catering) => (
-                        <div className="col-md-3" key={catering.id}>
+                        <div className="col-md-3 custom-col" key={catering.id}>
 
                             <Card className="s-card" style={{ width: '18rem' }} >
                                 <Card.Img className="s-img" variant="top" src={catering.image} />
