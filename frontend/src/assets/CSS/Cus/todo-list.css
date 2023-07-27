@@ -83,7 +83,8 @@
   }
   
   .todo-row:nth-child(4n + 1) {
-    background-color:#6D004F ;
+    background-color:rgb(173, 166, 166) ;
+    color: black;
   }
   
   .todo-row:nth-child(4n + 2) {

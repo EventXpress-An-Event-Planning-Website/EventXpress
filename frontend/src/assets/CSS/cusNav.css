@@ -1,5 +1,16 @@
 .cusnavcontainer{
-    background-color: #c48bb5;
-    color: black;
+    background-color: #6D004F;
+    color: white;
     
+    
+}
+
+.navlogo{
+    width: 110px;
+}
+
+.cusnavcontainer-otherclass{
+    position:absolute;
+    width: 100vw;
+    z-index: 10;
 }

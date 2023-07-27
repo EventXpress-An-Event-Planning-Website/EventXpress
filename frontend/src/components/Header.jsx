@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useLogoutMutation } from '../slices/userApiSlice'
 import { removeCredentials } from '../slices/authSlice' 
-import Logo from '../assets/images/EventXpressLogo.png'
+import Logo from '../assets/images/logo.png'
 
 const Header = () => {
 
@@ -27,13 +27,13 @@ const Header = () => {
       console.log(err)
     }
   }
-
+  const isLoggedIn = !!userInfo;
   return (
     <header>
-      <Navbar  variant="dark" expand="lg" collapseOnSelect className='cusnavcontainer'>
+      <Navbar  variant="dark" expand="lg" collapseOnSelect className={isLoggedIn ? 'cusnavcontainer' : 'cusnavcontainer-otherclass'}>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand><img src={Logo} alt='EventXPress' /></Navbar.Brand>
+            <Navbar.Brand><img className='navlogo' src={Logo} alt='EventXPress' /></Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -44,7 +44,7 @@ const Header = () => {
                         <LinkContainer to="/customerHome">
                           <Nav.Link>Home</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/packages">
+                        <LinkContainer to="/Venue">
                           <Nav.Link>Packages</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/customer/myEvents">
@@ -103,9 +103,9 @@ const Header = () => {
                       <LinkContainer to="/packages">
                         <Nav.Link>Packages</Nav.Link>
                       </LinkContainer>
-                      <LinkContainer to="/customer/myEvents">
+                      {/* <LinkContainer to="/customer/myEvents">
                         <Nav.Link>My Events</Nav.Link>
-                      </LinkContainer>
+                      </LinkContainer> */}
                       <LinkContainer to="/customer/buyTickets">
                         <Nav.Link>Buy Tickets</Nav.Link>
                       </LinkContainer>

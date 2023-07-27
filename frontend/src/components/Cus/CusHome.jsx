@@ -1,25 +1,50 @@
-import {Button} from 'react-bootstrap';
+import Carousel from 'react-bootstrap/Carousel';
+import gardenImage from '../../assets/images/festival.png';
+import celebrationImage from '../../assets/images/celebration.jpg';
+import cateringImage from '../../assets/images/catering3.jpg';
 import CusEvents from './CusEvents';
-import { Link } from 'react-router-dom'
-import { CustomerNavbar } from './CustomerNavbar';
-import { CusCrrousal } from './CusCrrousal';
-
+import CusServices from './CusServices';
+import Footer from '../landingPage/Footer'
+import Blog from '../landingPage/Blog'
 
 const CusHome = () => {
 
+  const contentData = [
+    {
+      id: 1,
+      image: gardenImage,
+    },
+    {
+      id: 2,
+      image: celebrationImage,
+    },
+    {
+      id: 3,
+      image: cateringImage,
+    }
+  ];
 
   return (
-    <>
-    
     <section id='content' className='cus-block'>
-      <CusCrrousal />
-      <Link to='/customer/myEvents'>
-            <Button >Create Event</Button>
-      </Link>
-      <CusEvents/>
+      <Carousel>
+        {contentData.map((content) => (
+          <Carousel.Item key={content.id}>
+            <img
+              className="cus-img"
+              src={content.image}
+            />
+            {/* <button className='cus-block-btn'>Create My Event</button> */}
+          </Carousel.Item>
+        ))}
+      </Carousel>
+      <CusEvents />
+      <CusServices />
+      <div className='cus-blog'>
+        <Blog />
+      </div>
+      {/* <Footer/> */}
 
     </section>
-    </>
 
   );
 };

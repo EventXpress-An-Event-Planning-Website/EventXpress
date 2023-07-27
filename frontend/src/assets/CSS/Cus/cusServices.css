@@ -1,0 +1,47 @@
+/******************** Venue *************************/
+
+.s-card{
+    margin: 10px 5%;
+}
+.s-img{
+    width: 100%;
+    height: 200px;
+}
+.s-btn{
+    background-color:rgb(62, 165, 140);
+    border:rgb(62, 165, 140);
+}
+
+.s-btn:hover{
+    background-color: rgb(163, 111, 183);
+    color: white;
+}
+
+.s-text{
+    font-size: 15px;
+}
+
+.s-pagination{
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* VenueDes */
+
+.addToEvent-btn{
+    background-color: purple;
+    border: purple;
+}
+
+.addToEvent-btn:hover{
+    background-color: rgb(203, 135, 246);
+}
+
+/* Venue.css */
+
+  
+.custom-col {
+    padding: 0px;
+    margin: auto -0.5%;
+}
+  

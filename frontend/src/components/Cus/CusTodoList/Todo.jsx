@@ -4,6 +4,7 @@ import { RiCloseCircleLine } from 'react-icons/ri';
 import { TiEdit } from 'react-icons/ti';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import celebrationImage from '../../../assets/images/celebration.jpg';
+import { Link } from 'react-router-dom';
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   const [edit, setEdit] = useState({
@@ -38,6 +39,9 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
           {todo.text}
         </div>
         <div className='icons'>
+          <Link to="/Venu">
+            <i class="fa-regular fa-eye" style={{color: "#6D004F"}}></i>
+          </Link>
           <RiCloseCircleLine
             onClick={() => removeTodo(todo.id)}
             className='delete-icon'
@@ -47,7 +51,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
             className='edit-icon'
           />
           <div className='view-details' onClick={() => toggleDetails(todo.id)}>
-            <FontAwesomeIcon icon="fa-thin fa-caret-down" />I
+            <i class="fa-solid fa-caret-down" style={{color:"#6D004F"}}></i>
           </div>
           
         </div>
