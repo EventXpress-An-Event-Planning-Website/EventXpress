@@ -83,7 +83,7 @@ const CusEvents = () => {
             <Carousel showDots={true} responsive={responsive} className='cus-event-dots'>
                 {eventsData.map((event) => (
 
-                    <Card style={{ width: '15rem' }}>
+                    <Card className='card-cardevent' style={{ width: '15rem' }}>
                         <Link to={`/Birthday`}>
                         <img src={event.image} className='event-img' fluid />
                         </Link>
