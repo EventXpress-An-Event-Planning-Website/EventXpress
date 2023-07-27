@@ -82,12 +82,12 @@ for (let number = 1; number <= 5; number++) {
         <>
             <div style={{ "display": "flex" }}>
                 <Sidebar />
-                <div className="row">
+                <div className="row service-card-container">
 
                     {venuesData.map((venue) => (
-                        <div className="col-md-3" key={venue.id}>
+                        <div className="col-md-3 card-container " key={venue.id}>
 
-                            <Card className="s-card" style={{ width: '18rem' }} >
+                            <Card className="s-card"  >
                                 <Card.Img className="s-img" variant="top" src={venue.image} />
                                 <Card.Body>
                                     <Card.Title>{venue.title}</Card.Title>

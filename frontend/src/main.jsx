@@ -36,6 +36,7 @@ import Sidebar from './components/Cus/Sidebar.jsx'
 import VenueDes from './components/Cus/Pages/VenueDes.jsx'
 import Birthday from './components/Cus/PrePackages/Birthday.jsx'
 import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
+import BirthdayDes from './components/Cus/PrePackages/BirthdayDes.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -64,6 +65,7 @@ const router = createBrowserRouter(
 
         <Route path="/VenueDes" element={<VenueDes />} />
         <Route path="/Birthday" element={<Birthday/>}/>
+        <Route path="/BirthdayDes" element={<BirthdayDes/>}/>
 
       </Route>
       <Route path="/ServiceProvider/home" element={<Home />} />

@@ -85,12 +85,12 @@ const Birthday = () => {
                     {birthdaysData.map((birthday) => (
                         <div className="col-md-3" key={birthday.id}>
 
-                            <Card className="s-card" style={{ width: '18rem' }} >
+                            <Card className="s-card" >
                                 <Card.Img className="s-img" variant="top" src={birthday.image} />
                                 <Card.Body>
                                     <Card.Title>{birthday.title}</Card.Title>
                                     <Card.Text className="s-text">{birthday.text}</Card.Text>
-                                    <Link to={`/VenueDes`}>
+                                    <Link to={`/BirthdayDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>
                                     </Link>
                                 </Card.Body>

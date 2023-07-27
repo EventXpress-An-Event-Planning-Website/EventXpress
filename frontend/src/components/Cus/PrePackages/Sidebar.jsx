@@ -42,7 +42,7 @@ const Birthday = ({ children }) => {
 
     return (
         <div className="cusSidebar-Container">
-            <div style={{ "margin-left": "-112px", "margin-top": "-8px" }} className="p-sidebar" >
+            <div style={{  "margin-top": "-8px" }} className="p-sidebar" >
                 <div className="cusSidebar-top-section">
                 </div>
                 {
