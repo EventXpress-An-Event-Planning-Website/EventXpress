@@ -13,7 +13,7 @@ const SellTicketsPage = () => {
   return (
     <>
       <div className='add-new-ticket-button-container'>
-        <Link to="/sell-tickets/add">
+        <Link to="/customer/sellTickets/add">
           <button className="add-new-ticket-button">Add Tickets</button>
         </Link>
       </div>

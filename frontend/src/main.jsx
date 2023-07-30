@@ -49,6 +49,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/login" element={<LoginScreen />} />
+      <Route path="/logout" element={<HomeScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
       <Route path="/register/customer" element={<RegisterCustomerScreen />} />
       <Route path="/register/serviceProvider" element={<RegisterServiceProviderScreen />} />
@@ -56,11 +57,11 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
         <Route path="/customerHome" element={<CusHome />} />
-        <Route path="/buy-tickets" element={<AllTicketsPage />} />
-        <Route path="/buy-tickets/info" element={<TicketInfoPage />} />
-        <Route path="/sell-tickets" element={<SellTicketsPage />} />
-        <Route path="/sell-tickets/add" element={<AddTicketsPage />} />
-        <Route path="/customer/myEvents" element={<CreateEvent />} />
+        <Route path="/customer/buyTickets" element={<AllTicketsPage />} />
+        <Route path="/customer/buyTickets/info" element={<TicketInfoPage />} />
+        <Route path="/customer/sellTickets" element={<SellTicketsPage />} />
+        <Route path="/customer/sellTickets/add" element={<AddTicketsPage />} />
+        <Route path="/customer/customer/myEvents" element={<CreateEvent />} />
         <Route path="/customer/eventdetails" element={<CustomerEventDetails />} />
 
         <Route path="/CusVenue" element={<CusVenue />} />
