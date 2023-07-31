@@ -17,67 +17,74 @@ import img3 from '../../assets/images/img3.jpg';
 import img4 from '../../assets/images/img4.jpg';
 import img5 from '../../assets/images/img5.avif';
 import img6 from '../../assets/images/img6.jpg';
-import service1 from '../../assets/images/service1.png';
-import service2 from '../../assets/images/service2.png';
-import service3 from '../../assets/images/service3.png';
-import service4 from '../../assets/images/service4.png';
-import service5 from '../../assets/images/service5.png';
-import service6 from '../../assets/images/service6.png';
-import service7 from '../../assets/images/service7.png';
-import service8 from '../../assets/images/service8.png';
+// import service1 from '../../assets/images/service1.png';
+// import service2 from '../../assets/images/service2.png';
+// import service3 from '../../assets/images/service3.png';
+// import service4 from '../../assets/images/service4.png';
+// import service5 from '../../assets/images/service5.png';
+// import service6 from '../../assets/images/service6.png';
+// import service7 from '../../assets/images/service7.png';
+// import service8 from '../../assets/images/service8.png';
 import ticket1 from '../../assets/images/ticket1.png';
+import venue7 from '../../assets/images/venue7.jpg';
+import catering4 from '../../assets/images/catering-4.webp';
+import deco1 from '../../assets/images/deco1.jpg';
+import photo8 from '../../assets/images/photo8.jpg';
+import cake7 from '../../assets/images/cake7.jpg';
+import sound6 from '../../assets/images/sound6.jpg';
+import stage1 from '../../assets/images/stage1.png';
+import stage7 from '../../assets/images/stage7.png';
 
 const CusServices = () => {
 
     const worksData = [
         {
             id: 1,
-            link: 'https://www.google.com',
-            image: service1,
-            title: 'The perfect design',
+            link: '/Venue',
+            image: venue7,
+            title: 'Venue',
         },
         {
             id: 2,
-            link: 'https://www.google.com',
-            image: service2,
-            title: 'The perfect design',
+            link: '/Catering',
+            image: catering4,
+            title: 'Catering',
         },
         {
             id: 3,
-            link: 'https://www.google.com',
-            image: service3,
-            title: 'The perfect design',
+            link: '/Decoration',
+            image: deco1,
+            title: 'Decoration',
         },
         {
             id: 4,
-            link: 'https://www.google.com',
-            image: service4,
-            title: 'The perfect design',
+            link: '/Photography',
+            image: photo8,
+            title: 'Photography',
         },
         {
             id: 5,
-            link: 'https://www.google.com',
-            image: service5,
-            title: 'The perfect design',
+            link: '/Cake',
+            image: cake7,
+            title: 'Cake',
         },
         {
             id: 6,
-            link: 'https://www.google.com',
-            image: service6,
-            title: 'The perfect design',
-        }
-        ,
+            link: '/StageRentals',
+            image: stage1,
+            title: 'Stage Rentals',
+        },
         {
             id: 7,
-            link: 'https://www.google.com',
-            image: service7,
-            title: 'The perfect design',
+            link: '/SoundAndLight',
+            image: sound6,
+            title: 'Sound and Light',
         },
         {
             id: 8,
-            link: 'https://www.google.com',
-            image: service8,
-            title: 'The perfect design',
+            link: '/StageRentals',
+            image: stage7,
+            title: 'Tents for Rent',
         }
     ]
 

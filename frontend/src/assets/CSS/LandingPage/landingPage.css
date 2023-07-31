@@ -368,12 +368,18 @@ body {
   } */
   
   .about-img1{
-    height: 30vh;
+    /* height: 80vh; */
     padding-top: 5vh;
   }
 
   .about-img2{
     height: 30vh;
+  }
+
+  .aboutUs-card1{
+    /* margin-top: 100px; */
+    height: 150px;
+
   }
 
   .services-block .icon {

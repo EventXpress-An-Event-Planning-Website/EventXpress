@@ -17,49 +17,49 @@ const Catering = () => {
         {
             id: 1,
             image: catering1,
-            title: 'Araliya Beach Resort',
+            title: 'Elite Catering',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 2,
             image: catering2,
-            title: 'Marino Beach Colombo',
+            title: 'Taste Ming',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
             image: catering3,
-            title: 'Green Palace Colombo',
+            title: 'Butlers Catering Service',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
             image: catering4,
-            title: 'Cinnamon Lakeside',
+            title: 'Classics catering',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
             image: catering5,
-            title: 'Grand View Hotel ',
+            title: 'Toast the Host',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
             image: catering6,
-            title: 'Queenswood Cottage',
+            title: 'Cool Caterers',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
             image: catering7,
-            title: 'Mango Tree Villa Bentota',
+            title: 'Better Cater',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
             image: catering8,
-            title: 'Galway Heights Hotel ',
+            title: 'YummyMist Foods',
             text: ' Some quick example text to build on the card title'
         }
     ];
