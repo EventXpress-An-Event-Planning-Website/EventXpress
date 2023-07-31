@@ -44,21 +44,21 @@ const LoginScreen = () => {
   return (
     <>
       <div className="authentication-container">
-      <img
-        src="../../src/assets/images/auth-img.png"
-        alt="Image"
-        className="authentication-image"
-      />
+        <img
+          src="../../src/assets/images/auth-img.png"
+          alt="Image"
+          className="authentication-image"
+        />
         <div className="authentication-left-side">
-        <div className="authentication-logo-container">
-          <Link to="/">
-            <img
-              src="../../src/assets/images/EventXpressLogo.png"
-              alt="Logo"
-              className="authentication-logo"
-            />
-          </Link>
-        </div>
+          <div className="authentication-logo-container">
+            <Link to="/">
+              <img
+                src="../../src/assets/images/EventXpressLogo.png"
+                alt="Logo"
+                className="authentication-logo"
+              />
+            </Link>
+          </div>
           <div className="authentication-form-wrapper">
             <div className="authentication-header-container">
               <h2>Welcome Back</h2>
@@ -96,7 +96,7 @@ const LoginScreen = () => {
 
             <Row className="py-3">
               <Col>
-                Don't have an account? {' '}
+                Don't have an account?{' '}
                 <Link to={`/register`} className="authentication-link">
                   Register
                 </Link>
@@ -104,8 +104,7 @@ const LoginScreen = () => {
             </Row>
           </div>
         </div>
-        <div className="authentication-right-side">
-        </div>
+        <div className="authentication-right-side"></div>
       </div>
     </>
   )
