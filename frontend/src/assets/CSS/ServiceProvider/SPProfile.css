@@ -1,0 +1,119 @@
+.profile_body{
+    margin: 20px;
+}
+
+/* profile heading */
+
+.profile_heading {
+    display: flex;
+    margin: 30px 10px;
+    max-width: 100%;
+    align-items: center;
+}
+
+.profimg_containe{
+    width: 30%;
+}
+
+.profile_img{
+    margin-left: 30%;
+    width: 55%;
+}
+
+.main_details{
+    margin-right: 35%;
+}
+
+.blockLink {
+    margin-bottom: 130px;
+    display: flex;
+    flex-direction: column;
+}
+  
+.blockLink .sppreference_btn {
+    margin-bottom: 10px;
+}
+
+.sppreference_btn, .spblock_btn{
+    width: 150px;
+    background: white;
+}
+
+.sppreference_btn:focus:active, .spblock_btn:focus:active{
+    background: none;
+}
+
+.sppreference_btn:hover{
+    background: none;
+    color: green;
+    border: 1px solid green;
+}
+
+.sppreference_btn{
+    color: green;
+    border: 1px solid green;
+}
+
+.spblock_btn:hover{
+    background: none;
+    color: red;
+    border: 1px solid red;
+}
+
+.spblock_btn{
+    color: red;
+    border: 1px solid red;
+}
+
+/* profile body */
+
+.profile_body{
+    margin-top: 60px;
+}
+
+/* left column */
+
+.left_column{
+    margin-left: 10px;
+}
+
+.personal, .business{
+    margin-left: 30px;
+}
+
+.profedit_btn{
+    margin-left: 60%;
+}
+
+.profedit_btn{
+    background: #6D004F;
+    color: white;
+    border: none;
+}
+
+/* vertical line */
+
+.vertical {
+    border-left: 2px solid black;
+    height: 80%;
+    position:absolute;
+    margin-left: -10%;
+    width: 10px;
+}
+
+/* right column */
+
+.right_column p{
+    margin-left: 30px;
+}
+
+.right_images .optionimg{
+    width: 80%;
+}
+
+.right_column .addmore_btn{
+    background: #6D004F;
+    color: white;
+    border: none;
+    margin: 30px 270px;
+}

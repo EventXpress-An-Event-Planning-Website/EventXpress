@@ -1,6 +1,6 @@
 // import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap';
-import { FaHotel } from 'react-icons/fa';
+// import { FaHotel } from 'react-icons/fa';
 import { FaCalendarAlt } from 'react-icons/fa';
 import { FaListAlt } from 'react-icons/fa';
 import { FaTicketAlt } from 'react-icons/fa';
@@ -10,10 +10,10 @@ const HomeIcons = () => {
   return (
     <Container className="home_icons">
       <Row>
-        <Col>
+        {/* <Col>
           <a href="/ServiceProvider/myEventhome" className='icon'><FaHotel /></a>
           <h4>My Events</h4>
-        </Col>
+        </Col> */}
 
         <Col>
           <a href="/ServiceProvider/packageForm" className='icon'><FaPlus /></a>
@@ -31,7 +31,7 @@ const HomeIcons = () => {
         </Col>
 
         <Col>
-          <a href="" className='icon'><FaCalendarAlt /></a>
+          <a href="/ServiceProvider/calendar" className='icon'><FaCalendarAlt /></a>
           <h4>Calendar</h4>
         </Col>
         
