@@ -100,6 +100,7 @@ for (let number = 1; number <= 5; number++) {
                         </div>
                     ))}
                 </div>
+                
             </div>
 
             <div className="s-pagination">
