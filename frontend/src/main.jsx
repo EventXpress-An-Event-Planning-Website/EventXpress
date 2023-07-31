@@ -41,6 +41,11 @@ import VenueDes from './components/Cus/Pages/VenueDes.jsx'
 import Birthday from './components/Cus/PrePackages/Birthday.jsx'
 import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
 import BirthdayDes from './components/Cus/PrePackages/BirthdayDes.jsx'
+import ChatSidebar from './components/Cus/Chat/ChatSidebar.jsx'
+import ChatDes from './components/Cus/Chat/ChatDes.jsx'
+import BrideToBe from './components/Cus/PrePackages/BrideToBe.jsx'
+import Anniversary from './components/Cus/PrePackages/Anniversary.jsx'
+import Social from './components/Cus/PrePackages/Social.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -72,6 +77,12 @@ const router = createBrowserRouter(
         <Route path="/VenueDes" element={<VenueDes />} />
         <Route path="/Birthday" element={<Birthday/>}/>
         <Route path="/BirthdayDes" element={<BirthdayDes/>}/>
+        <Route path="/BrideToBe" element={<BrideToBe/>}/>
+        <Route path="/Anniversary" element={<Anniversary/>}/>
+        <Route path="/Social" element={<Social/>}/>
+
+        <Route path="/ChatSidebar" element={<ChatSidebar/>}/>
+        <Route path="/ChatDes" element={<ChatDes/>}/>
 
       </Route>
    

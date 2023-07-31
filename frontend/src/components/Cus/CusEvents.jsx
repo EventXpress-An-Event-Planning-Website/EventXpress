@@ -13,7 +13,9 @@ import event2 from '../../assets/images/event2.png';
 import event3 from '../../assets/images/event3.png';
 import event4 from '../../assets/images/event4.png';
 import event5 from '../../assets/images/event5.png';
-
+import event6 from '../../assets/images/event6.png';
+import event7 from '../../assets/images/event7.png';
+import Social8 from '../../assets/images/Social8.jpg';
 
 const CusEvents = () => {
 
@@ -41,36 +43,43 @@ const CusEvents = () => {
             id: 1,
             image: event1,
             title: 'Anniversary',
+            path: '/Anniversary'
         },
         {
             id: 2,
-            image: event2,
-            title: 'Graduation',
+            image: event4,
+            title: 'Birthday Celebration',
+            path: '/Birthday'
         },
         {
             id: 3,
             image: event3,
             title: 'Bride to be',
+            path: '/BrideTobe'
         },
         {
             id: 4,
-            image: event4,
-            title: 'Birthday',
+            image: Social8,
+            title: 'Social Events',
+            path: '/Social'
         },
         {
             id: 5,
             image: event5,
             title: 'Concert',
+            path: '/Birthday'
         },
         {
             id: 6,
-            image: celebrationImage,
-            title: 'Concert',
+            image: event6,
+            title: 'Christmas Celebration',
+            path: '/Birthday'
         },
         {
             id: 7,
-            image: catering2Image,
-            title: 'Concert',
+            image: event2,
+            title: 'Graduation',
+            path: '/Birthday'
         }
     ];
 
@@ -84,7 +93,7 @@ const CusEvents = () => {
                 {eventsData.map((event) => (
 
                     <Card style={{ width: '15rem' }}>
-                        <Link to={`/Birthday`}>
+                        <Link to={event.path}>
                         <img src={event.image} className='event-img' fluid />
                         </Link>
                         {/* <Card.Body> */}

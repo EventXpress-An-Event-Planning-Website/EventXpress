@@ -6,64 +6,64 @@ import { Link } from "react-router-dom";
 import Stack from 'react-bootstrap/Stack';
 import Pagination from 'react-bootstrap/Pagination';
 
-import birthday1 from '../../../assets/images/birthday1.jpg';
-import birthday2 from '../../../assets/images/birthday2.jpg';
-import birthday3 from '../../../assets/images/birthday3.jpg';
-import birthday4 from '../../../assets/images/birthday4.jpg';
-import birthday5 from '../../../assets/images/birthday5.jpg';
-import birthday6 from '../../../assets/images/birthday6.jpg';
-import birthday7 from '../../../assets/images/birthday7.jpg';
-import birthday8 from '../../../assets/images/birthday8.jpg';
+import Anniversary1 from '../../../assets/images/Anniversary1.jpg';
+import Anniversary2 from '../../../assets/images/Anniversary2.jpg';
+import Anniversary3 from '../../../assets/images/Anniversary3.jpg';
+import Anniversary4 from '../../../assets/images/Anniversary4.jpg';
+import Anniversary5 from '../../../assets/images/Anniversary5.jpg';
+import Anniversary6 from '../../../assets/images/Anniversary6.jpg';
+import Anniversary7 from '../../../assets/images/Anniversary7.jpg';
+import Anniversary8 from '../../../assets/images/Anniversary8.jpg';
 
-const Birthday = () => {
+const Anniversary = () => {
 
-    const birthdaysData = [
+    const AnniversaryData = [
         {
             id: 1,
-            image: birthday5,
-            title: '21 Karat Gold Party',
+            image: Anniversary1,
+            title: 'The Grand Affair',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 2,
-            image: birthday6,
-            title: 'Fun to be One',
+            image: Anniversary2,
+            title: 'Blue Sapphire',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
-            image: birthday7,
-            title: 'Ringing in the 21st',
+            image: Anniversary8,
+            title: 'Love All Around',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
-            image: birthday8,
-            title: 'Fabulous Four Fairyland',
+            image: Anniversary7,
+            title: 'The Pink Pearl',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
-            image: birthday1,
-            title: 'Forever Young-ish',
+            image: Anniversary5,
+            title: 'Whispers of Love',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
-            image: birthday3,
-            title: 'Starry Night Soiree',
+            image: Anniversary3,
+            title: 'Warm Heart',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
-            image: birthday2,
-            title: 'Fifty & Fabulous',
+            image: Anniversary6,
+            title: 'Garden of Eden',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
-            image: birthday4,
-            title: 'Tacos for Two',
+            image: Anniversary4,
+            title: 'Blooming Florist',
             text: ' Some quick example text to build on the card title'
         }
     ];
@@ -75,22 +75,22 @@ const Birthday = () => {
                 <Stack gap={0}>
 
                 <div>
-                <h3 className="s-title">Birthday Packages</h3>
+                <h3 className="s-title">Anniversary Packages</h3>
                 </div>
 
                 <div>
 
                 <div className="row">
 
-                    {birthdaysData.map((birthday) => (
-                        <div className="col-md-3" key={birthday.id}>
+                    {AnniversaryData.map((Anniversary) => (
+                        <div className="col-md-3" key={Anniversary.id}>
 
                             <Card className="s-card" >
-                                <Card.Img className="s-img" variant="top" src={birthday.image} />
+                                <Card.Img className="s-img" variant="top" src={Anniversary.image} />
                                 <Card.Body>
-                                    <Card.Title>{birthday.title}</Card.Title>
-                                    <Card.Text className="s-text">{birthday.text}</Card.Text>
-                                    <Link to={`/BirthdayDes`}>
+                                    <Card.Title>{Anniversary.title}</Card.Title>
+                                    <Card.Text className="s-text">{Anniversary.text}</Card.Text>
+                                    <Link to={`/AnniversaryDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>
                                     </Link>
                                 </Card.Body>
@@ -107,4 +107,4 @@ const Birthday = () => {
     );
 };
 
-export default Birthday;
+export default Anniversary;
