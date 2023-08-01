@@ -40,7 +40,7 @@ const CreateEvent = () => {
               eventEndTime,
               eventType,
             }).unwrap()
-            navigate('/customer/myEvents')
+            navigate('/customerHome')
           } catch (err) {
             toast.error(err?.data?.message || err.error)
           }

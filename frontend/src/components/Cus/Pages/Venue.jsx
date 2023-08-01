@@ -99,16 +99,17 @@ for (let number = 1; number <= 5; number++) {
                             </Card>
                         </div>
                     ))}
+                    <div className="s-pagination">
+                        <div>
+                            <Pagination>{items}</Pagination>
+                        </div>
+            
+                    </div>
                 </div>
                 
             </div>
 
-            <div className="s-pagination">
-                <div>
-                    <Pagination>{items}</Pagination>
-                </div>
             
-            </div>
         </>
     );
 };

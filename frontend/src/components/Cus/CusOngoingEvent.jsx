@@ -5,20 +5,12 @@ import CustomerEventCard from './CustomerEventCard';
 const CusOngoingEvent = () => {
 
     const cuspendingEvent = [
-        {id:1,eventName:'Event1', eventDescription:"hi"},
-        {id:2,eventName:'Event', eventDescription:"hi"},
-        {id:3,eventName:'Event', eventDescription:"hi"},
-        {id:4,eventName:'Event', eventDescription:"hi"},
-        {id:5,eventName:'Event', eventDescription:"hi"},
-        {id:6,eventName:'Event', eventDescription:"hi"},
-        {id:7,eventName:'Event', eventDescription:"hi"},
-        {id:8,eventName:'Event', eventDescription:"hi"},
-        {id:9,eventName:'Event', eventDescription:"hi"},
-        {id:10,eventName:'Event', eventDescription:"hi"},
+        {id:1,eventName:'Birthday', eventDescription:"A birthday is a special and joyous annual celebration that marks the day a person was born. It is a time when friends and family come together to honor and express their love, appreciation, and well-wishes for the individual whose birthday it is. People often celebrate with gifts, parties, cakes, and other festivities, making it a memorable occasion filled with happiness and good wishes for the year ahead.", img:"birthday8.jpg"}
+        
   ];
 
   const eventCards =[];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < cuspendingEvent.length; i++) {
     const event= cuspendingEvent[i%cuspendingEvent.length]
     eventCards.push(<CustomerEventCard event={event} />)
     

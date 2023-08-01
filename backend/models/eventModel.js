@@ -31,9 +31,18 @@ const createEvent = asyncHandler(
       throw new Error('Internal Error')
     }
 
-})
+});
+
+const eventdetails = asyncHandler(
+  async()=>{
+    const eventQuery = `SELECT * FROM public.privateevent` 
+    const result= await query(eventQuery,[])
+    console.log(result);
+    return result
+  
+  })
 
 
-export {createEvent}
+export {createEvent,eventdetails}
 
 
