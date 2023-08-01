@@ -58,209 +58,229 @@ const SellTicketForm = () => {
     Nam malesuada eros a bibendum ultrices.`
 
   return (
-    <FormContainer>
-      <h1>Fill the form to sell your ticket</h1>
-      <h3>Enter event details</h3>
-      <Form.Group className="my-2" controlId="eventCategory">
-        <Form.Label>Event category</Form.Label>
-        <Form.Control
-          as="select"
-          value={selectedCategory}
-          autoFocus
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </Form.Control>
-      </Form.Group>
+    <>
+      <div className="sell-ticket-container">
+        <div className="sell-ticket-left-side"></div>
+        <div className="sell-ticket-right-side"> </div>
+          <div className="sell-ticket-form-wrapper">
+            <div className="sell-ticket-header-container">
+              <h2>Fill the form to sell your tickets</h2>
+            </div>
+            <h3>Enter event details</h3>
+            <Form.Group className="my-2" controlId="eventCategory">
+              <Form.Label>Event category</Form.Label>
+              <Form.Control
+                as="select"
+                value={selectedCategory}
+                autoFocus
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </Form.Control>
+            </Form.Group>
 
-      <Form onSubmit={submitHandler}>
-        <Form.Group className="my-2" controlId="eventTitle">
-          <Form.Label>Event title*</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter name of the event"
-            value={eventTitle}
-            onChange={(e) => setEventTitle(e.target.value)}
-            required
-          ></Form.Control>
-        </Form.Group>
+            <Form onSubmit={submitHandler}>
+              <Form.Group className="my-2" controlId="eventTitle">
+                <Form.Label>Event title*</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter name of the event"
+                  value={eventTitle}
+                  onChange={(e) => setEventTitle(e.target.value)}
+                  required
+                ></Form.Control>
+              </Form.Group>
 
-        <Form.Group className="my-2" controlId="eventDescription">
-          <Form.Label>Event description*</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            placeholder="Describe your event"
-            value={eventDescription}
-            onChange={(e) => setEventDescription(e.target.value)}
-            required
-          />
-        </Form.Group>
+              <Form.Group className="my-2" controlId="eventDescription">
+                <Form.Label>Event description*</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  placeholder="Describe your event"
+                  value={eventDescription}
+                  onChange={(e) => setEventDescription(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-        <Form.Group className="my-2" controlId="eventPoster">
-          <Form.Label>Event poster</Form.Label>
-          <Form.Control
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-        </Form.Group>
+              <Form.Group className="my-2" controlId="eventPoster">
+                <Form.Label>Event poster</Form.Label>
+                <Form.Control
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
+              </Form.Group>
 
-        <div className="ticket-items-container">
-          <div className="ticket-items-section">
-            <h3>Enter ticket details</h3>
-            {ticketItems.map((item, index) => (
-              <div key={index} className="d-flex align-items-center">
-                <Form.Group
-                  className="my-2 me-2"
-                  controlId={`ticketType${index}`}
+              <div className="ticket-items-container">
+                <div className="ticket-items-section">
+                  <h3>Enter ticket details</h3>
+                  {ticketItems.map((item, index) => (
+                    <div key={index} className="d-flex align-items-center">
+                      <Form.Group
+                        className="my-2 me-2"
+                        controlId={`ticketType${index}`}
+                      >
+                        <Form.Control
+                          type="text"
+                          placeholder="Ticket Type"
+                          value={item.type}
+                          onChange={(e) =>
+                            handleTicketItemChange(
+                              index,
+                              'type',
+                              e.target.value
+                            )
+                          }
+                        />
+                      </Form.Group>
+                      <Form.Group
+                        className="my-2 me-2"
+                        controlId={`ticketPrice${index}`}
+                      >
+                        <Form.Control
+                          type="number"
+                          placeholder="Price in Rs."
+                          value={item.price}
+                          onChange={(e) =>
+                            handleTicketItemChange(
+                              index,
+                              'price',
+                              e.target.value
+                            )
+                          }
+                        />
+                      </Form.Group>
+                      <Form.Group
+                        className="my-2 me-2"
+                        controlId={`ticketQuantity${index}`}
+                      >
+                        <Form.Control
+                          type="number"
+                          placeholder="Quantity"
+                          value={item.quantity}
+                          onChange={(e) =>
+                            handleTicketItemChange(
+                              index,
+                              'quantity',
+                              e.target.value
+                            )
+                          }
+                        />
+                      </Form.Group>
+                    </div>
+                  ))}
+                </div>
+
+                <Button
+                  type="button"
+                  variant="primary"
+                  className="add-new-ticket-details"
+                  onClick={handleAddTicketItem}
                 >
+                  +
+                </Button>
+              </div>
+
+              <div className="ticket-owner-bank-details">
+                <h3>Enter Bank details</h3>
+                <Form.Group className="my-2" controlId="accountHolderName">
+                  <Form.Label>Account Holder's Name*</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Ticket Type"
-                    value={item.type}
-                    onChange={(e) =>
-                      handleTicketItemChange(index, 'type', e.target.value)
-                    }
+                    placeholder="Enter account holder's name"
+                    value={accountHolderName}
+                    onChange={(e) => setAccountHolderName(e.target.value)}
+                    required
                   />
                 </Form.Group>
-                <Form.Group
-                  className="my-2 me-2"
-                  controlId={`ticketPrice${index}`}
-                >
+
+                <Form.Group className="my-2" controlId="bankName">
+                  <Form.Label>Bank Name*</Form.Label>
                   <Form.Control
-                    type="number"
-                    placeholder="Price in Rs."
-                    value={item.price}
-                    onChange={(e) =>
-                      handleTicketItemChange(index, 'price', e.target.value)
-                    }
+                    type="text"
+                    placeholder="Enter bank name"
+                    value={bankName}
+                    onChange={(e) => setBankName(e.target.value)}
+                    required
                   />
                 </Form.Group>
-                <Form.Group
-                  className="my-2 me-2"
-                  controlId={`ticketQuantity${index}`}
-                >
+
+                <Form.Group className="my-2" controlId="branchName">
+                  <Form.Label>Branch Name*</Form.Label>
                   <Form.Control
-                    type="number"
-                    placeholder="Quantity"
-                    value={item.quantity}
-                    onChange={(e) =>
-                      handleTicketItemChange(index, 'quantity', e.target.value)
-                    }
+                    type="text"
+                    placeholder="Enter branch name"
+                    value={branchName}
+                    onChange={(e) => setBranchName(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+
+                <Form.Group className="my-2" controlId="accountNumber">
+                  <Form.Label>Account Number*</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter account number"
+                    value={accountNumber}
+                    onChange={(e) => setAccountNumber(e.target.value)}
+                    required
                   />
                 </Form.Group>
               </div>
-            ))}
+
+              <Form.Group controlId="agreedToPolicy" className="my-2">
+                <Form.Check
+                  type="checkbox"
+                  label={
+                    <div className="form-label-container">
+                      <span>I agree to the EventXpree policy </span>
+                      <span className="read-policy-link" onClick={openModal}>
+                        Read the policy
+                      </span>
+                    </div>
+                  }
+                  checked={agreedToPolicy}
+                  onChange={handleAgreeCheckboxChange}
+                  required
+                />
+              </Form.Group>
+
+              <Modal show={showModal} onHide={closeModal}>
+                <Modal.Header closeButton>
+                  <Modal.Title>EventXpree Policy</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <p>{randomText}</p>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={closeModal}>
+                    Close
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+
+              <div className="d-flex justify-content-between">
+                <Button type="button" variant="secondary" className="mt-3">
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="mt-3"
+                  disabled={!agreedToPolicy}
+                >
+                  Submit
+                </Button>
+              </div>
+            </Form>
           </div>
-
-          <Button
-            type="button"
-            variant="primary"
-            className="add-new-ticket-details"
-            onClick={handleAddTicketItem}
-          >
-            +
-          </Button>
         </div>
-
-        <div className="ticket-owner-bank-details">
-          <h3>Enter Bank details</h3>
-          <Form.Group className="my-2" controlId="accountHolderName">
-            <Form.Label>Account Holder's Name*</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter account holder's name"
-              value={accountHolderName}
-              onChange={(e) => setAccountHolderName(e.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Form.Group className="my-2" controlId="bankName">
-            <Form.Label>Bank Name*</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter bank name"
-              value={bankName}
-              onChange={(e) => setBankName(e.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Form.Group className="my-2" controlId="branchName">
-            <Form.Label>Branch Name*</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter branch name"
-              value={branchName}
-              onChange={(e) => setBranchName(e.target.value)}
-              required
-            />
-          </Form.Group>
-
-          <Form.Group className="my-2" controlId="accountNumber">
-            <Form.Label>Account Number*</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter account number"
-              value={accountNumber}
-              onChange={(e) => setAccountNumber(e.target.value)}
-              required
-            />
-          </Form.Group>
-        </div>
-
-        <Form.Group controlId="agreedToPolicy" className="my-2">
-          <Form.Check
-            type="checkbox"
-            label={
-              <div className="form-label-container">
-                <span>I agree to the EventXpree policy </span>
-                <span className="read-policy-link" onClick={openModal}>
-                  Read the policy
-                </span>
-              </div>
-            }
-            checked={agreedToPolicy}
-            onChange={handleAgreeCheckboxChange}
-            required
-          />
-        </Form.Group>
-
-        <Modal show={showModal} onHide={closeModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>EventXpree Policy</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>{randomText}</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={closeModal}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-
-        <div className="d-flex justify-content-between">
-          <Button type="button" variant="secondary" className="mt-3">
-            Cancel
-          </Button>
-          <Button
-            type="submit"
-            variant="primary"
-            className="mt-3"
-            disabled={!agreedToPolicy}
-          >
-            Submit
-          </Button>
-        </div>
-      </Form>
-    </FormContainer>
+    </>
   )
 }
 

@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
   const location = useLocation()
   // Array of paths where the Header should not be rendered
-  const excludedPaths = ['/login', '/register/customer', '/register/serviceProvider']
+  const excludedPaths = ['/login', '/register/customer', '/register/serviceProvider', '/customer/sellTickets/add']
 
   // Function to check if the current path is in the excludedPaths
   const shouldRenderHeader = !excludedPaths.includes(location.pathname)

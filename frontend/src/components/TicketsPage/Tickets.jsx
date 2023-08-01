@@ -111,14 +111,14 @@ const Tickets = () => {
     return result
   }
 
-  const ticketChunks = chunkTickets(tickets, 2)
+  const ticketChunks = chunkTickets(tickets, 3)
 
   return (
     <div className="ticket-grid-container">
       {ticketChunks.map((ticketRow, index) => (
-        <Row key={index} className="custom-row">
+        <Row key={index} className="ticket-custom-row">
           {ticketRow.map((ticket, innerIndex) => (
-            <Col key={innerIndex} xs={12} md={6} className="mb-4 custom-col">
+            <Col key={innerIndex} xs={12} md={4} className="mb-4 ticket-custom-col">
               <TicketCard
                 id={ticket.id}
                 src={ticket.image}

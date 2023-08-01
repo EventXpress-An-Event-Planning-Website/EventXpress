@@ -64,7 +64,7 @@ const LoginScreen = () => {
               <h2>Welcome Back</h2>
             </div>
             <Form onSubmit={submitHandler}>
-              <Form.Group className="my-3" controlId="email">
+              <Form.Group className="my-4" controlId="email">
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
                   type="email"
@@ -76,7 +76,7 @@ const LoginScreen = () => {
                 ></Form.Control>
               </Form.Group>
 
-              <Form.Group className="my-3" controlId="password">
+              <Form.Group className="my-4" controlId="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"

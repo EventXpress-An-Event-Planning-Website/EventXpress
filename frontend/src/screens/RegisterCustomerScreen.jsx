@@ -49,19 +49,10 @@ const RegisterCustomerScreen = () => {
           location,
           contactNo,
           password,
-          role: 'customer',
+          role: 'customer'
         }).unwrap()
+        console.log(res);
         dispatch(setCredentials({ ...res }))
-
-        // Upload the images separately
-        const formData = new FormData()
-        // Append the nicImage file to the formData
-        formData.append('file', nicImage)
-
-        // Make a separate request to upload the image
-        const uploadResponse = await uploadSingle(formData)
-        // Handle the upload response as needed
-        console.log(uploadResponse)
 
         navigate('/customerHome')
       } catch (err) {
@@ -92,7 +83,7 @@ const RegisterCustomerScreen = () => {
             <Form onSubmit={submitHandler}>
               <Row>
                 <Col md={6}>
-                  <Form.Group className="my-3" controlId="name">
+                  <Form.Group className="my-4" controlId="name">
                     <Form.Label>Full Name*</Form.Label>
                     <Form.Control
                       type="name"
@@ -104,7 +95,7 @@ const RegisterCustomerScreen = () => {
                     ></Form.Control>
                   </Form.Group>
 
-                  <Form.Group className="my-3" controlId="profileImage">
+                  <Form.Group className="my-4" controlId="profileImage">
                     <Form.Label>Profile Picture</Form.Label>
                     <Form.Control
                       type="file"
@@ -115,7 +106,7 @@ const RegisterCustomerScreen = () => {
                 </Col>
 
                 <Col md={6}>
-                  <Form.Group className="my-3" controlId="email">
+                  <Form.Group className="my-4" controlId="email">
                     <Form.Label>Email*</Form.Label>
                     <Form.Control
                       type="email"
@@ -126,7 +117,7 @@ const RegisterCustomerScreen = () => {
                     ></Form.Control>
                   </Form.Group>
 
-                  <Form.Group className="my-3" controlId="nic">
+                  <Form.Group className="my-4" controlId="nic">
                     <Form.Label>NIC Number*</Form.Label>
                     <Form.Control
                       type="text"
@@ -139,7 +130,7 @@ const RegisterCustomerScreen = () => {
                 </Col>
 
                 <Col md={6}>
-                  <Form.Group className="my-3" controlId="nicImage">
+                  <Form.Group className="my-4" controlId="nicImage">
                     <Form.Label>NIC Image</Form.Label>
                     <Form.Control
                       type="file"
@@ -148,7 +139,7 @@ const RegisterCustomerScreen = () => {
                     />
                   </Form.Group>
 
-                  <Form.Group className="my-3" controlId="location">
+                  <Form.Group className="my-4" controlId="location">
                     <Form.Label>Location*</Form.Label>
                     <Form.Control
                       type="text"
@@ -161,7 +152,7 @@ const RegisterCustomerScreen = () => {
                 </Col>
 
                 <Col md={6}>
-                  <Form.Group className="my-3" controlId="contactNo">
+                  <Form.Group className="my-4" controlId="contactNo">
                     <Form.Label>Contact No.*</Form.Label>
                     <Form.Control
                       type="text"
@@ -172,7 +163,7 @@ const RegisterCustomerScreen = () => {
                     ></Form.Control>
                   </Form.Group>
 
-                  <Form.Group className="my-3" controlId="password">
+                  <Form.Group className="my-4" controlId="password">
                     <Form.Label>Password*</Form.Label>
                     <Form.Control
                       type="password"
@@ -185,7 +176,7 @@ const RegisterCustomerScreen = () => {
                 </Col>
 
                 <Col md={6}>
-                  <Form.Group className="my-3" controlId="confirmPassword">
+                  <Form.Group className="my-4" controlId="confirmPassword">
                     <Form.Label>Confirm Password*</Form.Label>
                     <Form.Control
                       type="password"

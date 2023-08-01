@@ -10,7 +10,7 @@ const AllTicketsPage = () => {
       <TicketCarousel />
       <Trending />
       <TicketFilter />
-      <Tickets />
+      <Tickets /> 
       {/* <Footer /> */}
     </>
   )
