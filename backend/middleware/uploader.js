@@ -5,7 +5,7 @@ import uniqid from 'uniqid';
 // Set storage engine
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'storage/uploads');
+    cb(null, 'frontend/src/assets/images/uploads');
   },
   filename: (req, file, cb) => {
     const uniqueId = uniqid();
