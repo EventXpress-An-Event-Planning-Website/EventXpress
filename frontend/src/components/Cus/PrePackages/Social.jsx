@@ -1,98 +1,96 @@
 import React from "react";
-import Sidebar from "../Sidebar";
+import Sidebar from "../PrePackages/Sidebar";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
+import Stack from 'react-bootstrap/Stack';
 import Pagination from 'react-bootstrap/Pagination';
 
-import venue1 from '../../../assets/images/venue1.jpg';
-import venue2 from '../../../assets/images/venue2.jpg';
-import venue3 from '../../../assets/images/venue3.jpg';
-import venue4 from '../../../assets/images/venue4.jpg';
-import venue5 from '../../../assets/images/venue5.jpg';
-import venue6 from '../../../assets/images/venue6.jpg';
-import venue7 from '../../../assets/images/venue7.jpg';
-import venue8 from '../../../assets/images/venue8.jpg';
+import Social1 from '../../../assets/images/Social1.jpg';
+import Social2 from '../../../assets/images/Social2.jpg';
+import Social3 from '../../../assets/images/Social3.jpg';
+import Social4 from '../../../assets/images/Social4.jpg';
+import Social5 from '../../../assets/images/Social5.jpg';
+import Social6 from '../../../assets/images/Social6.jpg';
+import Social7 from '../../../assets/images/Social7.jpg';
+import Social8 from '../../../assets/images/Social8.jpg';
 
-const Venue = () => {
+const Social = () => {
 
-    const venuesData = [
+    const SocialData = [
         {
             id: 1,
-            image: venue5,
+            image: Social1,
             title: 'Araliya Beach Resort',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 2,
-            image: venue6,
+            image: Social2,
             title: 'Marino Beach Colombo',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
-            image: venue7,
+            image: Social8,
             title: 'Green Palace Colombo',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
-            image: venue8,
+            image: Social6,
             title: 'Cinnamon Lakeside',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
-            image: venue1,
+            image: Social5,
             title: 'Grand View Hotel ',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
-            image: venue3,
+            image: Social3,
             title: 'Queenswood Cottage',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
-            image: venue2,
+            image: Social7,
             title: 'Mango Tree Villa Bentota',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
-            image: venue4,
+            image: Social4,
             title: 'Galway Heights Hotel ',
             text: ' Some quick example text to build on the card title'
         }
     ];
 
-    let active = 2;
-let items = [];
-for (let number = 1; number <= 5; number++) {
-  items.push(
-    <Pagination.Item key={number} active={number === active}>
-      {number}
-    </Pagination.Item>,
-  );
-}
-
-
     return (
         <>
             <div style={{ "display": "flex" }}>
                 <Sidebar />
-                <div className="row custom-row">
+                <Stack gap={0}>
 
-                    {venuesData.map((venue) => (
-                        <div className="col-md-3 custom-col" key={venue.id}>
+                <div>
+                <h3 className="s-title">Social Event Packages</h3>
+                </div>
 
-                            <Card className="s-card"  >
-                                <Card.Img className="s-img" variant="top" src={venue.image} />
+                <div>
+
+                <div className="row">
+
+                    {SocialData.map((Social) => (
+                        <div className="col-md-3" key={Social.id}>
+
+                            <Card className="s-card" >
+                                <Card.Img className="s-img" variant="top" src={Social.image} />
                                 <Card.Body>
-                                    <Card.Title>{venue.title}</Card.Title>
-                                    <Card.Text className="s-text">{venue.text}</Card.Text>
-                                    <Link to={`/VenueDes`}>
+                                    <Card.Title>{Social.title}</Card.Title>
+                                    <Card.Text className="s-text">{Social.text}</Card.Text>
+                                    <Link to={`/SocialDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>
                                     </Link>
                                 </Card.Body>
@@ -100,19 +98,13 @@ for (let number = 1; number <= 5; number++) {
                         </div>
                     ))}
                 </div>
-                
-            </div>
 
-            <div className="s-pagination">
-                <div>
-                    <Pagination>{items}</Pagination>
-                </div>
-            
+            </div>
+            </Stack>
+
             </div>
         </>
     );
 };
 
-
-
-export default Venue;
+export default Social;

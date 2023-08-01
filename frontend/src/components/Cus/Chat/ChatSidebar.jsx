@@ -8,23 +8,21 @@ import event2 from '../../../assets/images/event2.png';
 import event3 from '../../../assets/images/event3.png';
 import event4 from '../../../assets/images/event4.png';
 import event5 from '../../../assets/images/event5.png';
-// import Sidebar from "../Sidebar";
 
-const Birthday = ({ children }) => {
-
+const ChatSidebar = ({ children }) => {
     const birthdayData = [
         {
-            path: "/Anniversary",
+            path: "/Decoration",
             name: "Anniversary",
             image: event1
         },
         {
-            path: "/Social",
-            name: "SocialEvents",
+            path: "/Decoration",
+            name: "Graduation",
             image: event2
         },
         {
-            path: "/BrideToBe",
+            path: "/Decoration",
             name: "Bride to be",
             image: event3
         },
@@ -34,7 +32,7 @@ const Birthday = ({ children }) => {
             image: event4
         },
         {
-            path: "/Birthday",
+            path: "/Decoration",
             name: "Concert",
             image: event5
         }
@@ -70,4 +68,4 @@ const Birthday = ({ children }) => {
     );
 };
 
-export default Birthday;
+export default ChatSidebar;
