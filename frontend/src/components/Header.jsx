@@ -60,7 +60,7 @@ const Header = () => {
                           <Navbar.Brand></Navbar.Brand>
                         </LinkContainer>
                         <NavDropdown title={userInfo.name} id="username">
-                          <LinkContainer to="/profile">
+                          <LinkContainer to="/customer/profile">
                             <NavDropdown.Item>Profile</NavDropdown.Item>
                           </LinkContainer>
                           <LinkContainer to="/logout">

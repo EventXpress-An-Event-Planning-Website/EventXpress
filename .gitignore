@@ -2,6 +2,9 @@ node_modules
 .env
 storage
 
-*.png
+
 *.jpg
+*.png
 *.webp
+*.avif
+

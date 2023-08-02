@@ -17,49 +17,49 @@ const Cake = () => {
         {
             id: 1,
             image: cake1,
-            title: 'Araliya Beach Resort',
+            title: 'Black Forest cake',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 2,
             image: cake2,
-            title: 'Marino Beach Colombo',
+            title: 'Eggless Chocolate Cake',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
             image: cake3,
-            title: 'Green Palace Colombo',
+            title: 'Violet Visions Ribbon Cake',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
             image: cake4,
-            title: 'Cinnamon Lakeside',
+            title: 'Gluten-free Fruit Bliss cake',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
             image: cake5,
-            title: 'Grand View Hotel ',
+            title: 'Forever Together Cake',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
             image: cake6,
-            title: 'Queenswood Cottage',
+            title: 'Strawberry Heaven Cake',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
             image: cake7,
-            title: 'Mango Tree Villa Bentota',
+            title: 'Coffee Vanila Sponge Cake',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
             image: cake8,
-            title: 'Galway Heights Hotel ',
+            title: 'Purple Patch Ribbon Cake',
             text: ' Some quick example text to build on the card title'
         }
     ];
@@ -68,12 +68,12 @@ const Cake = () => {
         <>
             <div style={{ "display": "flex" }}>
                 <Sidebar />
-                <div className="row">
+                <div className="row custom-row">
 
                     {cakesData.map((cake) => (
-                        <div className="col-md-3" key={cake.id}>
+                        <div className="col-md-3 custom-col" key={cake.id}>
 
-                            <Card className="s-card" style={{ width: '18rem' }} >
+                            <Card className="s-card" style={{ width: '18rem' }}>
                                 <Card.Img className="s-img" variant="top" src={cake.image} />
                                 <Card.Body>
                                     <Card.Title>{cake.title}</Card.Title>

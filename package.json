@@ -13,6 +13,7 @@
   "author": "Supun",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.6",

@@ -26,8 +26,9 @@ const HomeScreen = () => {
       <Services />
       <Works />
       <Reviews />
-      <Blog />
-      {/* <Contact /> */}
+      <div className='cus-blog-landing'>
+        <Blog />
+      </div>
       <Footer />
 
 

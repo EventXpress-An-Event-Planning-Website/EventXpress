@@ -164,4 +164,15 @@ padding-left: 500px;
 /******************************** cus-blog *******************************/
 .cus-blog{
   margin-top: 850px;
+  margin-bottom: 80px;
+}
+
+.blog-des{
+  text-align: justify;
+  padding: 10px;
+}
+
+.cus-blog-landing{
+  margin-top: 50px;
+  margin-bottom: 80px;
 }

@@ -5,5 +5,7 @@ import {protect}  from '../middleware/authMiddleware.js'
 
 router.post('/createEvent', createevent)
 
+router.get('/profile', createevent)
+
 
 export default router

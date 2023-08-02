@@ -3,8 +3,11 @@ import TodoForm from './TodoForm';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { TiEdit } from 'react-icons/ti';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-regular-svg-icons';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import celebrationImage from '../../../assets/images/celebration.jpg';
 import { Link } from 'react-router-dom';
+
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   const [edit, setEdit] = useState({
@@ -40,7 +43,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
         </div>
         <div className='icons'>
           <Link to={`/${todo.location}`}>
-            <i class="fa-regular fa-eye" style={{color: "#6D004F"}}></i>
+            <FontAwesomeIcon icon={faEye} style={{ color: '#6D004F' }} />
           </Link>
           <RiCloseCircleLine
             onClick={() => removeTodo(todo.id)}
@@ -53,7 +56,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
             style={{color: "#6D004F"}}
           />
           <div className='view-details' onClick={() => toggleDetails(todo.id)}>
-            <i class="fa-solid fa-caret-down" style={{color:"#6D004F"}}></i>
+            <FontAwesomeIcon icon={faCaretDown} style={{ color: '#6D004F' }} />
           </div>
           
         </div>

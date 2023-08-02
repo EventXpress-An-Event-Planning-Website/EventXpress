@@ -6,64 +6,64 @@ import { Link } from "react-router-dom";
 import Stack from 'react-bootstrap/Stack';
 import Pagination from 'react-bootstrap/Pagination';
 
-import birthday1 from '../../../assets/images/birthday1.jpg';
-import birthday2 from '../../../assets/images/birthday2.jpg';
-import birthday3 from '../../../assets/images/birthday3.jpg';
-import birthday4 from '../../../assets/images/birthday4.jpg';
-import birthday5 from '../../../assets/images/birthday5.jpg';
-import birthday6 from '../../../assets/images/birthday6.jpg';
-import birthday7 from '../../../assets/images/birthday7.jpg';
-import birthday8 from '../../../assets/images/birthday8.jpg';
+import Social1 from '../../../assets/images/Social1.jpg';
+import Social2 from '../../../assets/images/Social2.jpg';
+import Social3 from '../../../assets/images/Social3.jpg';
+import Social4 from '../../../assets/images/Social4.jpg';
+import Social5 from '../../../assets/images/Social5.jpg';
+import Social6 from '../../../assets/images/Social6.jpg';
+import Social7 from '../../../assets/images/Social7.jpg';
+import Social8 from '../../../assets/images/Social8.jpg';
 
-const Birthday = () => {
+const Social = () => {
 
-    const birthdaysData = [
+    const SocialData = [
         {
             id: 1,
-            image: birthday5,
-            title: '21 Karat Gold Party',
+            image: Social1,
+            title: 'Araliya Beach Resort',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 2,
-            image: birthday6,
-            title: 'Fun to be One',
+            image: Social2,
+            title: 'Marino Beach Colombo',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
-            image: birthday7,
-            title: 'Ringing in the 21st',
+            image: Social8,
+            title: 'Green Palace Colombo',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
-            image: birthday8,
-            title: 'Fabulous Four Fairyland',
+            image: Social6,
+            title: 'Cinnamon Lakeside',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
-            image: birthday1,
-            title: 'Forever Young-ish',
+            image: Social5,
+            title: 'Grand View Hotel ',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
-            image: birthday3,
-            title: 'Starry Night Soiree',
+            image: Social3,
+            title: 'Queenswood Cottage',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
-            image: birthday2,
-            title: 'Fifty & Fabulous',
+            image: Social7,
+            title: 'Mango Tree Villa Bentota',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
-            image: birthday4,
-            title: 'Tacos for Two',
+            image: Social4,
+            title: 'Galway Heights Hotel ',
             text: ' Some quick example text to build on the card title'
         }
     ];
@@ -75,22 +75,22 @@ const Birthday = () => {
                 <Stack gap={0}>
 
                 <div>
-                <h3 className="s-title">Birthday Packages</h3>
+                <h3 className="s-title">Social Event Packages</h3>
                 </div>
 
                 <div>
 
                 <div className="row">
 
-                    {birthdaysData.map((birthday) => (
-                        <div className="col-md-3" key={birthday.id}>
+                    {SocialData.map((Social) => (
+                        <div className="col-md-3" key={Social.id}>
 
                             <Card className="s-card" >
-                                <Card.Img className="s-img" variant="top" src={birthday.image} />
+                                <Card.Img className="s-img" variant="top" src={Social.image} />
                                 <Card.Body>
-                                    <Card.Title>{birthday.title}</Card.Title>
-                                    <Card.Text className="s-text">{birthday.text}</Card.Text>
-                                    <Link to={`/BirthdayDes`}>
+                                    <Card.Title>{Social.title}</Card.Title>
+                                    <Card.Text className="s-text">{Social.text}</Card.Text>
+                                    <Link to={`/SocialDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>
                                     </Link>
                                 </Card.Body>
@@ -107,4 +107,4 @@ const Birthday = () => {
     );
 };
 
-export default Birthday;
+export default Social;
