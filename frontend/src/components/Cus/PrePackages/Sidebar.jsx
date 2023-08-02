@@ -14,14 +14,9 @@ const Birthday = ({ children }) => {
 
     const birthdayData = [
         {
-            path: "/Anniversary",
-            name: "Anniversary",
-            image: event1
-        },
-        {
-            path: "/Social",
-            name: "SocialEvents",
-            image: event2
+            path: "/Birthday",
+            name: "Birthday",
+            image: event4
         },
         {
             path: "/BrideToBe",
@@ -29,9 +24,14 @@ const Birthday = ({ children }) => {
             image: event3
         },
         {
-            path: "/Birthday",
-            name: "Birthday",
-            image: event4
+            path: "/Anniversary",
+            name: "Anniversary",
+            image: event1 
+        },
+        {
+            path: "/Social",
+            name: "SocialEvents",
+            image: event2
         },
         {
             path: "/Birthday",
@@ -58,7 +58,7 @@ const Birthday = ({ children }) => {
 
                                 <div>
                                     {/* </div> */}
-                                    <div className="cusSidebar-link-text">{event.name}</div>
+                                    <div className="cusSidebar-link-text cusSidebar-event">{event.name}</div>
                                 </div>
                             </Stack>
                         </NavLink>

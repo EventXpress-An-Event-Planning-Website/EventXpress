@@ -176,3 +176,17 @@ padding-left: 500px;
   margin-top: 50px;
   margin-bottom: 80px;
 }
+
+.blog-title{
+  text-align: center;
+}
+
+.blog-read-more{
+  margin-left: 30%;
+  border-radius: 10px;
+}
+
+.blog-date{
+  text-align: center;
+
+}

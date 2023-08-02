@@ -53,4 +53,13 @@
 }
 .cusSidebar-icon, .cusSidebar-link-text{
     font-size: 18px;
+    font-weight: bold;
+}
+
+.cusSidebar-link-text:hover{
+    color:#c086b0;
+}
+
+.cusSidebar-event{
+    color: #000;
 }

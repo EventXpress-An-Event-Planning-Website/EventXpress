@@ -32,9 +32,12 @@ const Catering = () => {
                                 <Image src={venue6} thumbnail />
                             </Col>
                             <br />
+                            <Link to={`/customer/eventdetails`}>
                             <Button className="addToEvent-btn" variant="primary" size="lg">Add to Event</Button>{' '}
+                            </Link>
+
                             <Link to={`/ChatDes`}>
-                            <Button variant="secondary" size="lg"><FaWhatsapp />Chat</Button>{' '}
+                            <Button variant="success" size="lg"><FaWhatsapp />Chat</Button>{' '}
                             </Link>
                         </Col>
 

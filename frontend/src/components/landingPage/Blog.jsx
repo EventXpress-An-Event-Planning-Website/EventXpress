@@ -22,7 +22,7 @@ const Blog = () => {
             image: celebrationImage,
             time: '10 Apr 2020',
             title: 'How to choose a perfect Decorations',
-            description: 'Decorative accessories can be used to add contrast in rooms filled with neutrals, for instance – pops of color throughout the spaces offer visual interest. You should also consider textured room accessories...',
+            description: 'Decorative accessories can be used to add contrast in rooms filled with neutrals, for instance – pops of color throughout the spaces offer visual interest. You should also...',
             link: 'https://www.google.com'
         },
         {
@@ -30,7 +30,7 @@ const Blog = () => {
             image: venue8,
             time: '05 Des 2019',
             title: 'How to choose a perfect Venue',
-            description: 'When organizing an event, you are confronted with many decisions, but choosing the right venue and location is the one decision that will have the largest impact on your event. Everything from the date of the event...',
+            description: 'When organizing an event, you are confronted with many decisions, but choosing the right venue and location is the one decision that will have the largest impact on your event. Everything...',
             link: 'https://www.google.com'
         }
     ]
@@ -52,10 +52,10 @@ const Blog = () => {
                                         <Card>
                                             <Card.Img variant="top" src={blog.image} />
                                             <Card.Body>
-                                                <time>{blog.time}</time>
-                                                <Card.Title>{blog.title}</Card.Title>
+                                                <time className='blog-date'>{blog.time}</time>
+                                                <Card.Title className='blog-title'>{blog.title}</Card.Title>
                                                 <Card.Text className='blog-des'>{blog.description}</Card.Text>
-                                                <a href={blog.link} className='button button-primary'>Read More<i className="fa-solid fa-angle-right"></i></a>
+                                                <a href={blog.link} className='button button-primary blog-read-more'>Read More<i className="fa-solid fa-angle-right"></i></a>
                                             </Card.Body>
                                         </Card>
 

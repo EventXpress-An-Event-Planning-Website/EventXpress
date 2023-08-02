@@ -90,7 +90,7 @@ const SoundAndLight = () => {
                             <Card className="s-card" style={{ width: '18rem' }} >
                                 <Card.Img className="s-img" variant="top" src={sound.image} />
                                 <Card.Body>
-                                    <Card.Title>{sound.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{sound.title}</Card.Title>
                                     <Card.Text className="s-text">{sound.text}</Card.Text>
                                     <Link to={`/soundDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>

@@ -90,7 +90,7 @@ for (let number = 1; number <= 5; number++) {
                             <Card className="s-card" style={{ width: '18rem' }} >
                                 <Card.Img className="s-img" variant="top" src={venue.image} />
                                 <Card.Body>
-                                    <Card.Title>{venue.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{venue.title}</Card.Title>
                                     <Card.Text className="s-text">{venue.text}</Card.Text>
                                     <Link to={`/VenueDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>
