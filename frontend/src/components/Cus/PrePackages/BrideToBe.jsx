@@ -20,8 +20,8 @@ const BrideToBe = () => {
     const BridesData = [
         {
             id: 1,
-            image: Bride5,
-            title: 'Romantic Oasis',
+            image: Bride1,
+            title: 'Party Wings',
             text: ' Some quick example text to build on the card title'
         },
         {
@@ -44,8 +44,8 @@ const BrideToBe = () => {
         },
         {
             id: 5,
-            image: Bride1,
-            title: 'Party Wings',
+            image: Bride5,
+            title: 'Romantic Oasis',
             text: ' Some quick example text to build on the card title'
         },
         {
@@ -88,7 +88,7 @@ const BrideToBe = () => {
                             <Card className="s-card" >
                                 <Card.Img className="s-img" variant="top" src={Bride.image} />
                                 <Card.Body>
-                                    <Card.Title>{Bride.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{Bride.title}</Card.Title>
                                     <Card.Text className="s-text">{Bride.text}</Card.Text>
                                     <Link to={`/BrideDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>

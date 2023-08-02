@@ -369,7 +369,8 @@ body {
   
   .about-img1{
     /* height: 80vh; */
-    padding-top: 5vh;
+    height: 40vh;
+    width: 80vh;
   }
 
   .about-img2{
@@ -423,6 +424,15 @@ body {
     box-shadow: inset 0 0 0 30px #f04bf6;
     color: #fff;
     font-size: 18px;
+  }
+  
+  .services-title{
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .services-des{
+    text-align: justify;
   }
   
   .works-block .portfoliolist>div {
@@ -497,11 +507,11 @@ body {
   }
 
   .testimonials-block {
-    padding: 90px 0 70px;
+    padding: 20px 0 20px;
     background-position: 50% 0;
     background-size: cover;
     background-attachment: fixed;
-    background-color: purple;
+    background-color: rgb(226, 171, 226);
     position: relative;
     color: #fff;
   }
@@ -635,13 +645,14 @@ body {
   .blog-block .card-title {
     margin: 0 0 10px;
     color: #764a69;
-    font-size: 22px;
+    font-size: 18px;
+    font-weight: bold;
     /* text-align: center; */
   }
   
-  .blog-block .card-title a:hover {
+  /* .blog-block .card-title a:hover {
     color: #d10a0a;
-  }
+  } */
   
   .blog-block .meta {
     overflow: hidden;
@@ -666,7 +677,7 @@ body {
     color: #f64b4b;
   }
   
-  .contact-block {
+  /* .contact-block {
     position: relative;
   }
   
@@ -711,7 +722,7 @@ body {
     font-size: 40px;
     margin: 0 0 15px;
     color: #f64b4b;
-  }
+  } */
   
   @media only screen and (min-width: 1025px) {
   
