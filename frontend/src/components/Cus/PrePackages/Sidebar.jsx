@@ -14,17 +14,17 @@ const Birthday = ({ children }) => {
 
     const birthdayData = [
         {
-            path: "/Decoration",
+            path: "/Anniversary",
             name: "Anniversary",
             image: event1
         },
         {
-            path: "/Decoration",
-            name: "Graduation",
+            path: "/Social",
+            name: "SocialEvents",
             image: event2
         },
         {
-            path: "/Decoration",
+            path: "/BrideToBe",
             name: "Bride to be",
             image: event3
         },
@@ -34,7 +34,7 @@ const Birthday = ({ children }) => {
             image: event4
         },
         {
-            path: "/Decoration",
+            path: "/Birthday",
             name: "Concert",
             image: event5
         }

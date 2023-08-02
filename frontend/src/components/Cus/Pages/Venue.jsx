@@ -87,7 +87,7 @@ for (let number = 1; number <= 5; number++) {
                     {venuesData.map((venue) => (
                         <div className="col-md-3 custom-col" key={venue.id}>
 
-                            <Card className="s-card" style={{ width: '18rem' }} >
+                            <Card className="s-card"  >
                                 <Card.Img className="s-img" variant="top" src={venue.image} />
                                 <Card.Body>
                                     <Card.Title>{venue.title}</Card.Title>

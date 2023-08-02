@@ -19,30 +19,32 @@ const About = () => {
       </div>
       <Row>       
         <Col sm={6}>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Reprehenderit dicta veritatis sint quidem asperiores magni eaque praesentium temporibus, magnam, eveniet consequatur possimus nihil? Nemo deserunt repudiandae soluta neque doloribus, quo!
+          <p>EventXpress was created with the intention of turning any dream event into a reality that goes above and beyond expectations.
           </p>
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Vitae alias ex error distinctio laudantium recusandae, iure. Vel nisi soluta, minus consectetur reiciendis laborum, laudantium perspiciatis quos molestias quam eum.
+          <p>No event is too small or large for us and we make sure that every last detail is taken care of because our focus has always been on ensuring the highest levels of quality, safety, and dependability. These events range from small get-togethers to Anniversary celebrations.
           </p>
+
+          <p>Speak with our knowledgeable, devoted, and motivated team about your upcoming event right away!
+          </p>
+
         </Col>
 
         <Col sm={6}>
           {/* <Image src={img1}></Image> */}
           <CardGroup>
-      <Card>
-        <Card.Img src={img1} className='about-img1'/>
+      <Card className='aboutUs-card1'>
+        <Card.Img src={img1} className=''/>
       </Card>
       <Card>
         <Card.Img src={img1} className='about-img2'/>
       </Card>
-      <Card>
+      {/* <Card>
         <Card.Img src={img1} className='about-img1'/>
       </Card>
       <Card>
         <Card.Img src={img1} className='about-img2'/>
-      </Card>
+      </Card> */}
     </CardGroup>
         </Col>
 

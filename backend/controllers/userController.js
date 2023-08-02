@@ -17,13 +17,12 @@ const authUser = asyncHandler(async (req, res) => {
   const user = await loginUser(email, password)
 
   if (user) {
-    
     generateToken(res, user.id)
     res.status(201).json({
       id: user.id,
       name: user.name,
       email: user.email,
-      role:user.role
+      role: user.role,
     })
   } else {
     res.status(401)
@@ -60,6 +59,7 @@ const registerUser = asyncHandler(async (req, res) => {
   let user = ''
 
   if (role === 'customer') {
+    console.log();
     user = await regCustomer(
       name,
       email,
@@ -83,7 +83,8 @@ const registerUser = asyncHandler(async (req, res) => {
       password,
       facebookLink,
       instagramLink,
-      twitterLink
+      twitterLink,
+      role
     )
   }
 
@@ -93,6 +94,7 @@ const registerUser = asyncHandler(async (req, res) => {
       id: user.id,
       name: user.name,
       email: user.email,
+      role: role,
     })
   } else {
     res.status(400)

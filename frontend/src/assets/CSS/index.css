@@ -1,4 +1,4 @@
-@import './RegisterCustomerScreen.css';
+@import './Authentication.css';
 @import './Cus/createEvent.css';
 @import './LandingPage/landingPage.css';
 @import './Cus/cusHome.css';
@@ -8,7 +8,6 @@
 @import './Cus/cusEventDetails.css';
 @import './Cus/todo-list.css';
 @import './Cus/cusEventSidebar.css';
-
 @import './ServiceProvider/FormDetails.css';
 @import './ServiceProvider/Home.css';
 @import './ServiceProvider/Packages.css';
@@ -19,6 +18,7 @@
 
 @import './LandingPage/landingPage.css';
 @import './Cus/cusHome.css';
+@import './Tickets.css';
 @import './Cus/cusSidebar.css';
 @import './Cus/cusServices.css';
 @import './Cus/cusPackages';

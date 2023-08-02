@@ -6,33 +6,30 @@ import Header from '../components/header'
 const RegisterScreen = () => {
   return (
     <>
-    
-    <div className="register-screen">
-      <Row className="register-row">
-        <Col className="purple-bg register-col" sm={6}>
-          <div className="register-content">
-            <h1>Want to get our service?</h1>
-            <h3>Register as a Customer</h3>
+      <div className="register-screen">
+        <div className="register-container customer-side">
+          <div className="register-content register-content-customer">
+            <h1>Want to get our <br></br>service?</h1>
+            <h2>Register as a Customer</h2>
             <Link to="customer">
-              <Button variant="primary" className="me-3">
+              <Button variant="primary" className="me-4">
                 Sign Up
               </Button>
             </Link>
           </div>
-        </Col>
-        <Col className="white-bg register-col" sm={6}>
-          <div className="register-content">
-            <h1>Want to become a Service Provider?</h1>
-            <h3>Register as a Service Provider</h3>
+        </div>
+        <div className="register-container sp-side">
+          <div className="register-content register-content-service-provide">
+            <h1>Want to become a  <br></br>Service Provider?</h1>
+            <h2>Register as a Service Provider</h2>
             <Link to="serviceProvider">
               <Button variant="primary" className="me-3">
                 Sign Up
               </Button>
             </Link>
           </div>
-        </Col>
-      </Row>
-    </div>
+        </div>
+      </div>
     </>
   )
 }
