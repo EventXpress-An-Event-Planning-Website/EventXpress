@@ -1,31 +1,83 @@
+/* peference and block list */
+
+.preference_block_list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.left_block, .right_preference{
+    margin: 3%;
+    padding: 2%;
+    width: 45%;
+}
+
+.left_block{
+    background: rgb(240, 234, 234);
+}
+
+.right_preference{
+    background: rgb(222, 240, 222);
+}
+
+/* all service provider list */
+
 .tableContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 50px;
+    margin: 5% 10%;
     padding-top: 30px;
     width: 80%;
     box-shadow: 0px 10px 10px #ccc;
-    background: #B4829F;
+    background: #f7e2ee;
 }
 
-.busSearch{
-    margin-bottom: 30px;
-    justify-content: right;
-    
+/* .busSearch{
+    justify-content: right; 
+} */
+
+.search-header {
+    display: flex;
+    margin-left: 50%;
+}
+
+.search-text {
+    margin-right: 10%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-box {
+    height: 25px;
+    width: 120%;
+}
+
+#search-box[placeholder] {
+    line-height: 25px;
+    font-size: 25px;
 }
 
 .listTable{
     display: block;
-    /* overflow: hidden;
+    overflow: hidden;
     table-layout: auto;
-    border-collapse: collapse; */
+    border-collapse: collapse; 
     white-space: nowrap;
-    width: 100%;
-    max-width: 80%;
-    margin: auto;
+    max-width: 100%;
+    height: fit-content;
+    max-height: 40vh;
+    margin: 50px 0;
     overflow-x: auto;
+    overflow-y: scroll;
+}
+
+.listTable::-webkit-scrollbar{
+    display: none;
 }
 
 .listTable th, .listTable td{
@@ -33,7 +85,7 @@
 }
 
 .listTable td{
-    border-top: 0.5px solid #ddd;
+    border-bottom: 0.5px solid #bfb4b4;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -42,7 +94,30 @@
     background: #f6f5f5;
 }
 
-.blockListSPname{
-    width: 100%;
+.prefeBtn{
+    width: 160px;
+    margin-left: 100px;
+    color: green;
+    border: 1px solid green;
+    background: none;
 }
 
+.prefeBtn:hover, .prefeBtn:focus:active{
+    background: green;
+    border: 1px solid green;
+    color: white;
+}
+
+.blockBtn{
+    width: 160px;
+    margin-left: 50px;
+    color: red;
+    border: 1px solid red;
+    background: none;
+}
+
+.blockBtn:hover, .blockBtn:focus:active{
+    background: red;
+    border: 1px solid red;
+    color: white;
+}

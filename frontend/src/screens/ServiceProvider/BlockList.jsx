@@ -1,6 +1,8 @@
 // import React from 'react'
 import { useState } from "react"
-import SPBlockList from "../../components/ServiceProvider/BlockList"
+import AllList from "../../components/ServiceProvider/BlockPrefList/AllSPList"
+import PrefBlock from "../../components/ServiceProvider/BlockPrefList/PrefBlock";
+import SPSidebar from "../../components/ServiceProvider/SPSidebar"
 
 const BlockList = () => {
 
@@ -9,15 +11,18 @@ const BlockList = () => {
     {busName: "Dua sound and lights", busAddress: "Dehiwala Colombo"},
     {busName: "Mashi cakes", busAddress: "Dehiwala Colombo"},
     {busName: "Mashi cakes", busAddress: "Dehiwala Colombo"},
-    {busName: "Mashi cakes", busAddress: "Dehiwala Colombo"},
-    {busName: "Mashi cakes", busAddress: "Dehiwala Colombo"},
-    {busName: "Mashi cakes", busAddress: "Dehiwala Colombo"},
-    {busName: "Mashi cakes", busAddress: "Dehiwala Colombo"},
     {busName: "Mashi cakes", busAddress: "Dehiwala Colombo"}
   ]); 
 
   return (
-      <SPBlockList rows={rows}/>
+    <div style={{ "display": "flex" }}>
+      <div><SPSidebar /></div>
+      <div style={{ "width": "80%" }}>
+        <PrefBlock rows={rows}/>
+        <AllList rows={rows}/>
+      </div>
+      
+    </div>
   )
 }
 

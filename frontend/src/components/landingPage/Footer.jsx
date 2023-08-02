@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Link } from 'react-router-dom';
-
+// import { Link } from 'react-router-dom';
+// import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Footer = () => {
 
@@ -30,7 +30,7 @@ const Footer = () => {
         <footer className="footer">
             <Container className="container">
                 <Row class="row">
-                    <Col md={4} className="footer-col">
+                    <Col lg={4} className="footer-col">
                         <h4>About</h4>
                         <ul>
                             <li><a href="/ezvote/Pages/aboutUs">about us</a></li>
@@ -38,31 +38,31 @@ const Footer = () => {
                             <li><a href="#">privacy policy</a></li>
                         </ul>
                     </Col>
-                    <Col md={4} className="footer-col">
+                    <Col lg={4} className="footer-col">
                         <h4>My Account</h4>
                         <ul>
                             <li><a href="#">Login</a></li>
                             <li><a href="#">Support</a></li>
                         </ul>
-                        </Col>
-                    <Col md={4} className="footer-col">
+                    </Col>
+                    {/* <Col md={4} className="footer-col">
                         <h4>Products & Features</h4>
                         <ul>
                             <li><a href="#">Meetings</a></li>
                             <li><a href="#">Support</a></li>
                         </ul>
-                        </Col>
+                        </Col> */}
 
-                    <Col md={4} className="footer-col">
+                    <Col lg={4} className="footer-col">
                         <h4>follow us</h4>
-                        <div class="social-links">
+                        <div className="social-links">
                             <a href="#"><i className="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </Col>
-                      
+                            <a href="#"><i className="fab fa-twitter"></i></a>
+                            <a href="#"><i className="fab fa-instagram"></i></a>
+                            <a href="#"><i className="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </Col>
+
                 </Row>
             </Container>
 
