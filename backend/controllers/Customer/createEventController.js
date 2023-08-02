@@ -1,6 +1,9 @@
+
 import asyncHandler from 'express-async-handler'
 import path from 'path'
-import { createEvent } from '../../models/eventModel.js'
+import { createEvent,eventdetails } from '../../models/eventModel.js'
+
+
 
 
 
@@ -37,6 +40,14 @@ const createevent = asyncHandler(async(req,res)=>{
 
     
 })
+
+
+
+  
+      
+
+
+
 
 export {
     createevent

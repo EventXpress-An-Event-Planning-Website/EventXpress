@@ -49,4 +49,9 @@
     padding: 0px;
     margin: auto -0.5%;
 }
+
+.custom-row{
+    overflow-x: hidden;
+    margin-right: 0;
+}
   

@@ -8,7 +8,7 @@ const CustomerEventDetails = () => {
 
 
 
-    const event = {id:1,name:"Little Angel", date:'2023-07-23',description:"An event description is a text or copy that tells audiences all the essential details about your event. These details should come together so that it compels potential attendees to register. But more than driving up attendance, a good event description can pique the interest of non-members and even the press."};
+    const event = {id:1,name:'Birthday', date:'2023-07-23', description:"A birthday is a special and joyous annual celebration that marks the day a person was born. It is a time when friends and family come together to honor and express their love, appreciation, and well-wishes for the individual whose birthday it is. People often celebrate with gifts, parties, cakes, and other festivities, making it a memorable occasion filled with happiness and good wishes for the year ahead.", img:"birthday8.jpg"};
   return (
     <>
         
@@ -18,7 +18,7 @@ const CustomerEventDetails = () => {
             <div className='eventProfile-container'>
 
                 <div className='event-image-container'>
-                    <img src={celebrationImage} alt=''/>
+                    <img src={`../../src/assets/images/${event.img}`} alt=''/>
                 </div>
 
                 <div className='event-namedate-container'>
