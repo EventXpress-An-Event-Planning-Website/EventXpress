@@ -12,7 +12,7 @@ const uploadSingle = asyncHandler(async (req, res) => {
   }
   res.status(200).json({
     filename: file.filename,
-    path: path.join('storage/uploads', file.filename),
+    path: path.join('frontend/src/assets/images/uploads', file.filename),
   });
 });
 
@@ -27,7 +27,7 @@ const uploadMultiple = asyncHandler(async (req, res) => {
   }
   const uploadedFiles = files.map((file) => ({
     filename: file.filename,
-    path: path.join('storage/uploads', file.filename),
+    path: path.join('frontend/src/assets/images/uploads', file.filename),
   }));
   res.status(200).json(uploadedFiles);
 });
