@@ -67,7 +67,7 @@ const router = createBrowserRouter(
         <Route path="/customer/buyTickets/info" element={<TicketInfoPage />} />
         <Route path="/customer/sellTickets" element={<SellTicketsPage />} />
         <Route path="/customer/sellTickets/add" element={<AddTicketsPage />} />
-        <Route path="/customer/customer/myEvents" element={<CreateEvent />} />
+        <Route path="/customer/myEvents" element={<CreateEvent />} />
         <Route path="/customer/eventdetails" element={<CustomerEventDetails />} />
 
         <Route path="/CusVenue" element={<CusVenue />} />
