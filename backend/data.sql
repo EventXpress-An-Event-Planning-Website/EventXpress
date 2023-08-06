@@ -48,7 +48,8 @@ ALTER SEQUENCE serviceProvider_id_seq RESTART WITH 10000;
 ALTER TABLE serviceProvider
     ALTER COLUMN id SET DEFAULT nextval('serviceProvider_id_seq');
 
-
+ALTER TABLE serviceProvider
+ADD COLUMN businessRegImage VARCHAR(255);
 
 CREATE TABLE privateEvent (
     event_id SERIAL PRIMARY KEY,

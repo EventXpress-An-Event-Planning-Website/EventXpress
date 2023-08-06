@@ -261,7 +261,7 @@ const RegisterCustomerScreen = () => {
         role: 'serviceProvider',
         profileImage: profileImageFilename,
         nicImage: nicImageFilename,
-        profileImage: businessImageFilename
+        businessRegImage: businessImageFilename
       }).unwrap()
       dispatch(setCredentials({ ...res }))
       navigate('/customerHome')

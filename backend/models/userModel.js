@@ -80,6 +80,7 @@ const regServiceProvider = asyncHandler(
     nicImage,
     profileImage,
     location,
+    businessRegImage,
     contactNo,
     password,
     facebookLink,
@@ -91,8 +92,8 @@ const regServiceProvider = asyncHandler(
 
     const createUserQuery = `
       INSERT INTO 
-        serviceProvider(name, email, nic, nicImage, profileImage, location, contactNo, password, facebookLink, instagramLink, twitterLink) 
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9 , $10, $11) RETURNING id, name, email`
+        serviceProvider(name, email, nic, nicImage, profileImage, location, businessRegImage, contactNo, password, facebookLink, instagramLink, twitterLink) 
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9 , $10, $11, $12) RETURNING id, name, email`
     const createUser = await query(createUserQuery, [
       name,
       email,
@@ -100,6 +101,7 @@ const regServiceProvider = asyncHandler(
       nicImage,
       profileImage,
       location,
+      businessRegImage,
       contactNo,
       hashedPassword,
       facebookLink,
