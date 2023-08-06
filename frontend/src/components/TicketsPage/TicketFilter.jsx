@@ -23,8 +23,8 @@ const TicketFilter = () => {
   }
 
   return (
-    <div className="filter-container">
-      <div className="filter">
+    <div className="ticket-filter-container">
+      <div className="ticket-filter">
         <Form.Group controlId="categoryFilter">
           <Form.Control
             as="select"
@@ -39,7 +39,7 @@ const TicketFilter = () => {
           </Form.Control>
         </Form.Group>
       </div>
-      <div className="search">
+      <div className="ticket-search">
         <Form.Group controlId="searchBar">
           <Form.Control
             type="text"
@@ -47,6 +47,18 @@ const TicketFilter = () => {
             value={searchQuery}
             onChange={handleSearchChange}
           />
+        </Form.Group>
+      </div>
+      <div className="ticket-sort-by-date">
+          <Form.Label className='ticket-sort-label'>Sort by Date</Form.Label>
+          <Form.Group controlId="sortByDate">
+          {/* <Form.Label>Sort by Date</Form.Label> */}
+          <Form.Control as="select">
+            <option value="All">All</option>
+            <option value="today">Today</option>
+            <option value="this-week">This Week</option>
+            <option value="next-two-weeks">Next Two Weeks</option>
+          </Form.Control>
         </Form.Group>
       </div>
     </div>
