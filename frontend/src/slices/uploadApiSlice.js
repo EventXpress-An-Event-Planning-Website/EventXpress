@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const baseQuery = fetchBaseQuery({ baseUrl: '/api/upload' });
+const baseQuery = fetchBaseQuery({ baseUrl: '/api/upload' })
 
 export const uploadApiSlice = createApi({
   baseQuery,
@@ -10,9 +10,6 @@ export const uploadApiSlice = createApi({
         url: 'single',
         method: 'POST',
         body: file,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
       }),
     }),
     uploadMultiple: builder.mutation({
@@ -20,12 +17,10 @@ export const uploadApiSlice = createApi({
         url: 'multiple',
         method: 'POST',
         body: files,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
       }),
     }),
   }),
-});
+})
 
-export const { useUploadSingleMutation, useUploadMultipleMutation } = uploadApiSlice;
+export const { useUploadSingleMutation, useUploadMultipleMutation } =
+  uploadApiSlice

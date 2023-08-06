@@ -59,7 +59,6 @@ const registerUser = asyncHandler(async (req, res) => {
   let user = ''
 
   if (role === 'customer') {
-    console.log();
     user = await regCustomer(
       name,
       email,

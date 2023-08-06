@@ -24,6 +24,93 @@ const RegisterCustomerScreen = () => {
   const [twitterLink, setTwitterLink] = useState('')
   const [contactNo, setContactNo] = useState('+94')
 
+  // validation
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [nicError, setNicError] = useState('');
+  const [contactNoError, setContactNoError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [facebookLinkError, setFacebookLinkError] = useState('');
+  const [instagramLinkError, setInstagramLinkError] = useState('');
+  const [twitterLinkError, setTwitterLinkError] = useState('');
+
+
+  const handleNameBlur = () => {
+    if (!/^[a-zA-Z\s]*$/.test(name)) {
+      setNameError('Invalid name format. Only alphabetic characters are allowed.');
+    } else {
+      setNameError('');
+    }
+  };
+
+  const handleEmailBlur = () => {
+    if (email.length > 0 && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+      setEmailError('Invalid email format.');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handleNicBlur = () => {
+    if (nic.length > 0 && !/^\d{12}$|^\d{9}[vV]$/.test(nic)) {
+      setNicError('NIC must be 12 digits or 9 digits followed by "V".');
+    } else {
+      setNicError('');
+    }
+  };
+
+  const handleContactNoBlur = () => {
+    if (contactNo.length > 3 && !/^\+94[0-9]{9}$/.test(contactNo)) {
+      setContactNoError('Invalid contact number format.');
+    } else {
+      setContactNoError('');
+    }
+  };
+
+  const handlePasswordBlur = () => {
+    if (password.length > 0 && !/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(password)) {
+      setPasswordError('Password must contain at least 8 characters with 1 uppercase letter and 1 number.');
+    } else {
+      setPasswordError('');
+    }
+  };
+
+  const handleFacebookLinkBlur = () => {
+    const facebookLinkRegex = /^(https?:\/\/)?(www\.)?facebook\.com\/[^/]+$/i;
+    if (facebookLink.length > 0 && !facebookLinkRegex.test(facebookLink)) {
+      setFacebookLinkError('Invalid Facebook link format.');
+    } else {
+      setFacebookLinkError('');
+    }
+  }
+
+  const handleInstagramLinkBlur = () => {
+    const instagramLinkRegex = /^(https?:\/\/)?(www\.)?instagram\.com\/[^/]+$/i;
+    if (instagramLink.length > 0 && !instagramLinkRegex.test(instagramLink)) {
+      setInstagramLinkError('Invalid Instagram link format.');
+    } else {
+      setInstagramLinkError('');
+    }
+  };
+
+  const handleTwitterLinkBlur = () => {
+    const twitterLinkRegex = /^(https?:\/\/)?(www\.)?twitter\.com\/[^/]+$/i;
+    if (twitterLink.length > 0 && !twitterLinkRegex.test(twitterLink)) {
+      setTwitterLinkError('Invalid Twitter link format.');
+    } else {
+      setTwitterLinkError('');
+    }
+  };
+
+  const handleConfirmPasswordBlur = () => {
+    if (password !== confirmPassword) {
+      setConfirmPasswordError('Passwords do not match.');
+    } else {
+      setConfirmPasswordError('');
+    }
+  };
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -49,39 +136,47 @@ const RegisterCustomerScreen = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault()
-    if (password !== confirmPassword) {
-      toast.error('Passwords do not match')
-    } else {
-      try {
-        const res = await register({
-          name,
-          email,
-          nic,
-          location,
-          contactNo,
-          facebookLink,
-          instagramLink,
-          twitterLink,
-          password,
-          role: 'serviceProvider',
-        }).unwrap()
-        dispatch(setCredentials({ ...res }))
-
-        // Upload the images separately
-        const formData = new FormData()
-        // Append the nicImage file to the formData
-        formData.append('file', nicImage)
-
-        // Make a separate request to upload the image
-        const uploadResponse = await uploadSingle(formData)
-        // Handle the upload response as needed
-        console.log(uploadResponse)
-
-        navigate('/customerHome')
-      } catch (err) {
-        toast.error(err?.data?.message || err.error)
+    try {
+      if (
+        nameError ||
+        emailError ||
+        nicError ||
+        contactNoError ||
+        passwordError ||
+        confirmPasswordError
+      ) {
+        toast.error('Please fix the errors in the form before submitting.');
+        return;
       }
+      const res = await register({
+        name,
+        email,
+        nic,
+        location,
+        contactNo,
+        facebookLink,
+        instagramLink,
+        twitterLink,
+        password,
+        role: 'serviceProvider',
+      }).unwrap()
+      dispatch(setCredentials({ ...res }))
+
+      // Upload the images separately
+      const formData = new FormData()
+      // Append the nicImage file to the formData
+      formData.append('file', nicImage)
+
+      // Make a separate request to upload the image
+      const uploadResponse = await uploadSingle(formData)
+      // Handle the upload response as needed
+      console.log(uploadResponse)
+
+      navigate('/customerHome')
+    } catch (err) {
+      toast.error(err?.data?.message || err.error)
     }
+
   }
 
   return (
@@ -108,9 +203,11 @@ const RegisterCustomerScreen = () => {
                       placeholder="Enter full name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
+                      onBlur={handleNameBlur}
                       required
                       autoFocus
-                    ></Form.Control>
+                    />
+                    {nameError && <div className="text-danger">{nameError}</div>}
                   </Form.Group>
 
                   <Form.Group className="my-2" controlId="profileImage">
@@ -131,8 +228,10 @@ const RegisterCustomerScreen = () => {
                       placeholder="Enter email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      onBlur={handleEmailBlur}
                       required
-                    ></Form.Control>
+                    />
+                    {emailError && <div className="text-danger">{emailError}</div>}
                   </Form.Group>
 
                   <Form.Group className="my-2" controlId="nic">
@@ -142,18 +241,21 @@ const RegisterCustomerScreen = () => {
                       placeholder="Enter NIC number"
                       value={nic}
                       onChange={(e) => setNic(e.target.value)}
+                      onBlur={handleNicBlur}
                       required
-                    ></Form.Control>
+                    />
+                    {nicError && <div className="text-danger">{nicError}</div>}
                   </Form.Group>
                 </Col>
 
                 <Col md={6}>
                   <Form.Group className="my-2" controlId="nicImage">
-                    <Form.Label>NIC Image</Form.Label>
+                    <Form.Label>NIC Image*</Form.Label>
                     <Form.Control
                       type="file"
                       accept=".jpg, .jpeg, .png"
                       onChange={handleNicImageUpload}
+                      required
                     />
                   </Form.Group>
 
@@ -186,8 +288,10 @@ const RegisterCustomerScreen = () => {
                       placeholder="Enter contact number"
                       value={contactNo}
                       onChange={(e) => setContactNo(e.target.value)}
+                      onBlur={handleContactNoBlur}
                       required
-                    ></Form.Control>
+                    />
+                    {contactNoError && <div className="text-danger">{contactNoError}</div>}
                   </Form.Group>
                 </Col>
 
@@ -199,7 +303,9 @@ const RegisterCustomerScreen = () => {
                       placeholder="Enter facebook link"
                       value={facebookLink}
                       onChange={(e) => setFacebookLink(e.target.value)}
-                    ></Form.Control>
+                      onBlur={handleFacebookLinkBlur}
+                    />
+                    {facebookLinkError && <div className="text-danger">{facebookLinkError}</div>}
                   </Form.Group>
 
                   <Form.Group className="my-2" controlId="instagramLink">
@@ -209,7 +315,9 @@ const RegisterCustomerScreen = () => {
                       placeholder="Enter instagram link"
                       value={instagramLink}
                       onChange={(e) => setInstagramLink(e.target.value)}
-                    ></Form.Control>
+                      onBlur={handleInstagramLinkBlur}
+                    />
+                    {instagramLinkError && <div className="text-danger">{instagramLinkError}</div>}
                   </Form.Group>
                 </Col>
 
@@ -221,7 +329,9 @@ const RegisterCustomerScreen = () => {
                       placeholder="Enter twitter link"
                       value={twitterLink}
                       onChange={(e) => setTwitterLink(e.target.value)}
-                    ></Form.Control>
+                      onBlur={handleTwitterLinkBlur}
+                    />
+                    {twitterLinkError && <div className="text-danger">{twitterLinkError}</div>}
                   </Form.Group>
 
                   <Form.Group className="my-2" controlId="password">
@@ -231,8 +341,10 @@ const RegisterCustomerScreen = () => {
                       placeholder="Enter password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      onBlur={handlePasswordBlur}
                       required
-                    ></Form.Control>
+                    />
+                    {passwordError && <div className="text-danger">{passwordError}</div>}
                   </Form.Group>
                 </Col>
 
@@ -244,8 +356,10 @@ const RegisterCustomerScreen = () => {
                       placeholder="Confirm password"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
+                      onBlur={handleConfirmPasswordBlur}
                       required
-                    ></Form.Control>
+                    />
+                    {confirmPasswordError && <div className="text-danger">{confirmPasswordError}</div>}
                   </Form.Group>
                 </Col>
               </Row>
@@ -272,7 +386,7 @@ const RegisterCustomerScreen = () => {
             </Form>
           </div>
         </div>
-      </div>
+      </div >
     </>
   )
 }
