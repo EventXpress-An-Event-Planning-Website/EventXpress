@@ -106,10 +106,8 @@ const RegisterCustomerScreen = () => {
         const imageFormData = new FormData();
         imageFormData.append('file', img);
         const response = await uploadSingle(imageFormData)
-        console.log('response is: ', response);
-        // Check if the response has the expected structure and contains the filename
-        if (response && response.filename) {
-          const imageFilename = response.filename;
+        if (response && response.data.filename) {
+          const imageFilename = response.data.filename;
           return imageFilename;
         } else {
           throw new Error('Error uploading image: Invalid response format');
@@ -137,8 +135,8 @@ const RegisterCustomerScreen = () => {
         return;
       }
 
-      // const profileImageFilename = await uploadImage(profileImage);
-      // const nicImageFilename = await uploadImage(nicImage);
+      const profileImageFilename = await uploadImage(profileImage);
+      const nicImageFilename = await uploadImage(nicImage);
       const res = await register({
         name,
         email,
@@ -147,8 +145,8 @@ const RegisterCustomerScreen = () => {
         contactNo,
         password,
         role: 'customer',
-        // profileImage: profileImageFilename,
-        // nicImage: nicImageFilename,
+        profileImage: profileImageFilename,
+        nicImage: nicImageFilename,
       }).unwrap()
       dispatch(setCredentials({ ...res }))
       navigate('/customerHome')

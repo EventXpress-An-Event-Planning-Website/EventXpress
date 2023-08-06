@@ -6,6 +6,7 @@ import FormContainer from '../components/FormContainer'
 import { toast } from 'react-toastify'
 // import Loader from '../components/Loader'
 import { useRegisterMutation } from '../slices/userApiSlice'
+import { useUploadSingleMutation } from '../slices/uploadApiSlice'
 import { setCredentials } from '../slices/authSlice'
 import Header from '../components/header'
 
@@ -16,7 +17,7 @@ const RegisterCustomerScreen = () => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [nicImage, setNicImage] = useState(null)
-  const [profileImage, setProfileImage] = useState('')
+  const [profileImage, setProfileImage] = useState(null)
   const [location, setLocation] = useState('')
   const [businessRegImage, setBusinessRegImage] = useState(null)
   const [facebookLink, setFacebookLink] = useState('')
@@ -34,7 +35,6 @@ const RegisterCustomerScreen = () => {
   const [facebookLinkError, setFacebookLinkError] = useState('');
   const [instagramLinkError, setInstagramLinkError] = useState('');
   const [twitterLinkError, setTwitterLinkError] = useState('');
-
 
   const handleNameBlur = () => {
     if (!/^[a-zA-Z\s]*$/.test(name)) {
@@ -117,7 +117,8 @@ const RegisterCustomerScreen = () => {
   const { userInfo } = useSelector((state) => state.auth)
 
   const [register, { isLoading }] = useRegisterMutation()
-
+  const [uploadSingle] = useUploadSingleMutation();
+  
   useEffect(() => {
     if (userInfo) {
       navigate('/')
@@ -134,6 +135,31 @@ const RegisterCustomerScreen = () => {
     setProfileImage(file)
   }
 
+  const handleBusinessRegImageUpload = (e) => {
+    const file = e.target.files[0]
+    setBusinessRegImage(file)
+  }
+
+  const uploadImage = async (img) => {
+    try {
+      if (img) {
+        const imageFormData = new FormData();
+        imageFormData.append('file', img);
+        const response = await uploadSingle(imageFormData)
+        if (response && response.data.filename) {
+          const imageFilename = response.data.filename;
+          return imageFilename;
+        } else {
+          throw new Error('Error uploading image: Invalid response format');
+        }
+      }
+      return ''; // If no image is provided, return an empty string
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      return ''; // Return an empty string if there is an error during upload
+    }
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault()
     try {
@@ -148,6 +174,11 @@ const RegisterCustomerScreen = () => {
         toast.error('Please fix the errors in the form before submitting.');
         return;
       }
+
+      const profileImageFilename = await uploadImage(profileImage);
+      const nicImageFilename = await uploadImage(nicImage);
+      const businessImageFilename = await uploadImage(businessRegImage);
+
       const res = await register({
         name,
         email,
@@ -159,6 +190,9 @@ const RegisterCustomerScreen = () => {
         twitterLink,
         password,
         role: 'serviceProvider',
+        profileImage: profileImageFilename,
+        nicImage: nicImageFilename,
+        profileImage: businessImageFilename
       }).unwrap()
       dispatch(setCredentials({ ...res }))
 
@@ -264,7 +298,7 @@ const RegisterCustomerScreen = () => {
                     <Form.Control
                       type="file"
                       accept=".jpg, .jpeg, .png"
-                      onChange={handleNicImageUpload}
+                      onChange={handleBusinessRegImageUpload}
                     />
                   </Form.Group>
                 </Col>
