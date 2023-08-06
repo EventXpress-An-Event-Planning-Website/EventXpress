@@ -36,6 +36,75 @@ const RegisterCustomerScreen = () => {
   const [instagramLinkError, setInstagramLinkError] = useState('');
   const [twitterLinkError, setTwitterLinkError] = useState('');
 
+  const cities = ['Akkaraipattu',
+    'Ambalangoda',
+    'Ampara',
+    'Anuradhapura',
+    'Badulla',
+    'Balangoda',
+    'Bandarawela',
+    'Batticaloa',
+    'Beruwala',
+    'Boralesgamuwa',
+    'Chavakachcheri',
+    'Chilaw',
+    'Colombo',
+    'Dambulla',
+    'Dehiwala - Mount Lavinia',
+    'Embilipitiya',
+    'Eravur',
+    'Galle',
+    'Gampaha',
+    'Gampola',
+    'Hambantota',
+    'Haputale',
+    'Hatton - Dickoya',
+    'Hikkaduwa',
+    'Horana',
+    'Ja - Ela',
+    'Jaffna',
+    'Kadugannawa',
+    'Kaduwela',
+    'Kalmunai',
+    'Kalutara',
+    'Kandy',
+    'Kattankudy(Kathankudi)',
+    'Katunayake(-Seeduwa)',
+    'Kegalle',
+    'Kesbewa',
+    'Kilinochchi',
+    'Kinniya',
+    'Kolonnawa',
+    'Kuliyapitiya',
+    'Kurunegala',
+    'Maharagama',
+    'Mannar',
+    'Matale',
+    'Matara',
+    'Minuwangoda',
+    'Moneragala',
+    'Moratuwa',
+    'Mullaitivu',
+    'Nawalapitiya',
+    'Negombo',
+    'Nuwara Eliya',
+    'Panadura',
+    'Peliyagoda',
+    'Point Pedro',
+    'Polonnaruwa',
+    'Puttalam',
+    'Ratnapura',
+    'Seethawakapura(Avissawella)',
+    'Sri Jayawardenepura(Kotte)',
+    'Tangalle',
+    'Thalawakele - Lindula',
+    'Trincomalee',
+    'Valvettithurai',
+    'Vavuniya',
+    'Wattala - Mabole',
+    'Wattegama',
+    'Weligama']
+
   const handleNameBlur = () => {
     if (!/^[a-zA-Z\s]*$/.test(name)) {
       setNameError('Invalid name format. Only alphabetic characters are allowed.');
@@ -118,7 +187,7 @@ const RegisterCustomerScreen = () => {
 
   const [register, { isLoading }] = useRegisterMutation()
   const [uploadSingle] = useUploadSingleMutation();
-  
+
   useEffect(() => {
     if (userInfo) {
       navigate('/')
@@ -195,17 +264,6 @@ const RegisterCustomerScreen = () => {
         profileImage: businessImageFilename
       }).unwrap()
       dispatch(setCredentials({ ...res }))
-
-      // Upload the images separately
-      const formData = new FormData()
-      // Append the nicImage file to the formData
-      formData.append('file', nicImage)
-
-      // Make a separate request to upload the image
-      const uploadResponse = await uploadSingle(formData)
-      // Handle the upload response as needed
-      console.log(uploadResponse)
-
       navigate('/customerHome')
     } catch (err) {
       toast.error(err?.data?.message || err.error)
@@ -305,14 +363,20 @@ const RegisterCustomerScreen = () => {
 
                 <Col md={6}>
                   <Form.Group className="my-2" controlId="location">
-                    <Form.Label>Location*</Form.Label>
+                    <Form.Label>Nearest City*</Form.Label>
                     <Form.Control
-                      type="text"
-                      placeholder="Enter Location"
+                      as="select"
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
                       required
-                    ></Form.Control>
+                    >
+                      <option value="">Select your nearest city</option>
+                      {cities.map((city, index) => (
+                        <option key={index} value={city}>
+                          {city}
+                        </option>
+                      ))}
+                    </Form.Control>
                   </Form.Group>
 
                   <Form.Group className="my-2" controlId="contactNo">
