@@ -20,7 +20,6 @@ const LoginScreen = () => {
   const { userInfo } = useSelector((state) => state.auth)
 
   useEffect(() => {
-    console.log(userInfo)
     if (userInfo && userInfo.role === 'customer') {
       navigate('/customerHome')
     } else if (userInfo && userInfo.role === 'serviceProvider') {

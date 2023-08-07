@@ -3,9 +3,12 @@ import bcrypt from 'bcryptjs'
 import asyncHandler from 'express-async-handler'
 
 // check if a user with the given email exists
-const userExists = async (email, role) => {
+const userExists = async (email) => {
   try {
-    const userExistsQuery = `SELECT * FROM ${role} WHERE email = $1`
+    const userExistsQuery = `
+    SELECT 'customer' AS user_type FROM customer WHERE email = $1
+    UNION ALL
+    SELECT 'serviceProvider' AS user_type FROM serviceProvider WHERE email = $1`
     const userExists = await query(userExistsQuery, [email])
 
     return userExists.rowCount > 0 ? true : false
@@ -14,6 +17,39 @@ const userExists = async (email, role) => {
     throw new Error(`Internal Error`)
   }
 }
+
+// check if a user with the given nic exists
+const nicExists = async (nic) => {
+  try {
+    const nicExistsQuery = `
+      SELECT 'customer' AS user_type FROM customer WHERE nic = $1
+      UNION ALL
+      SELECT 'serviceProvider' AS user_type FROM serviceProvider WHERE nic = $1`
+    const nicExistsResult = await query(nicExistsQuery, [nic])
+
+    return nicExistsResult.rowCount > 0 ? true : false
+  } catch (error) {
+    console.error(`Error checking NIC existence: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+// check if a user with the given contact no exists
+const contactNoExists = async (contactNo) => {
+  try {
+    const contactNoExistsQuery = `
+      SELECT 'customer' AS user_type FROM customer WHERE contactNo = $1
+      UNION ALL
+      SELECT 'serviceProvider' AS user_type FROM serviceProvider WHERE contactNo = $1`
+    const contactNoExistsResult = await query(contactNoExistsQuery, [contactNo])
+
+    return contactNoExistsResult.rowCount > 0 ? true : false
+  } catch (error) {
+    console.error(`Error checking contact number existence: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
 
 // login user with the given email and password
 const loginUser = asyncHandler(async (email, password) => {
@@ -85,7 +121,7 @@ const regServiceProvider = asyncHandler(
     password,
     facebookLink,
     instagramLink,
-    twitterLink,
+    twitterLink
   ) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
@@ -106,7 +142,7 @@ const regServiceProvider = asyncHandler(
       hashedPassword,
       facebookLink,
       instagramLink,
-      twitterLink
+      twitterLink,
     ])
     if (createUser.rowCount > 0) {
       return createUser.rows[0]
@@ -153,4 +189,13 @@ const getUserFromToken = asyncHandler(async (userId) => {
   }
 })
 
-export { userExists, regCustomer, regServiceProvider,loginUser, updateUser, getUserFromToken }
+export {
+  userExists,
+  nicExists,
+  contactNoExists,
+  regCustomer,
+  regServiceProvider,
+  loginUser,
+  updateUser,
+  getUserFromToken,
+}

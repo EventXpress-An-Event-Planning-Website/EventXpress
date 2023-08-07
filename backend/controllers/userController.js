@@ -2,6 +2,8 @@ import asyncHandler from 'express-async-handler'
 import generateToken from '../utils/generateToken.js'
 import {
   userExists,
+  nicExists,
+  contactNoExists,
   regCustomer,
   regServiceProvider,
   loginUser,
@@ -50,11 +52,22 @@ const registerUser = asyncHandler(async (req, res) => {
     role,
   } = req.body
 
-  const userExist = await userExists(email, role)
-
+  const userExist = await userExists(email)
   if (userExist) {
     res.status(400)
     throw new Error('User already exists')
+  }
+
+  const nicExist = await nicExists(nic)
+  if (nicExist) {
+    res.status(400)
+    throw new Error('NIC No. already exists')
+  }
+
+  const contactNoExist = await contactNoExists(contactNo)
+  if (contactNoExist) {
+    res.status(400)
+    throw new Error('Contact No. already exists')
   }
 
   let user = ''
