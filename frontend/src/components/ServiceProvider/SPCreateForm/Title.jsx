@@ -3,9 +3,8 @@
 const Title = () => {
   return (
     <div className="title_container">
-        <h1>CREATE YOUR PACKAGE!</h1>
+        <h1>CREATE YOUR PACKAGE</h1>
         <p>Enter your Business details to add your package</p>
-        <span>Photographer</span>
     </div>
   )
 }

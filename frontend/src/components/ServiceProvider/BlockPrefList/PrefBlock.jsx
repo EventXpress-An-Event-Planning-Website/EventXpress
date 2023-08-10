@@ -4,8 +4,8 @@ import { FaMinusCircle } from 'react-icons/fa';
 const PrefBlock = ({rows}) => {
   return (
     <div className="preference_block_list">
-        <div className="left_block">
-            <h3>Block List</h3>
+        <div className="left_preference">
+            <h3>Preference List</h3>
             <table className='listTable'>
                 <tbody className='allSPList'>{
                     rows.map((row, idx) => {
@@ -22,8 +22,8 @@ const PrefBlock = ({rows}) => {
             </table>
         </div>
 
-        <div className="right_preference">
-            <h3>Preference List</h3>
+        <div className="right_block">
+            <h3>Block List</h3>
             <table className='listTable'>
                 <tbody className='allSPList'>{
                     rows.map((row, idx) => {

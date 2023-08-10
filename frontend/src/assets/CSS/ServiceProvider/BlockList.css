@@ -1,5 +1,9 @@
 /* peference and block list */
 
+.right_block .allSPList .minus_icon{
+    padding-left: 80px;
+}
+
 .preference_block_list{
     display: flex;
     justify-content: center;
@@ -7,18 +11,18 @@
     justify-content: center;
 }
 
-.left_block, .right_preference{
+.left_preference, .right_block{
     margin: 3%;
     padding: 2%;
     width: 45%;
 }
 
-.left_block{
-    background: rgb(240, 234, 234);
+.left_preference{
+    background: rgb(222, 240, 222);
 }
 
-.right_preference{
-    background: rgb(222, 240, 222);
+.right_block{
+    background: rgb(240, 234, 234);
 }
 
 /* all service provider list */
@@ -39,7 +43,7 @@
     justify-content: right; 
 } */
 
-.search-header {
+/* .search-header {
     display: flex;
     margin-left: 50%;
 }
@@ -50,16 +54,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
-#search-box {
-    height: 25px;
-    width: 120%;
-}
+/* #search-box {
+    height: 30px;
+    width: 20%;
+    border-radius: 5px;
+} */
 
-#search-box[placeholder] {
+/* #search-box[placeholder] {
     line-height: 25px;
     font-size: 25px;
+} */
+
+.search-header{
+    width: 30%;
+    
 }
 
 .listTable{
@@ -94,30 +104,13 @@
     background: #f6f5f5;
 }
 
-.prefeBtn{
+.prefeBtn, .blockBtn{
     width: 160px;
-    margin-left: 100px;
-    color: green;
-    border: 1px solid green;
-    background: none;
+    margin: 0 30px;
+    border: none;
 }
 
-.prefeBtn:hover, .prefeBtn:focus:active{
-    background: green;
-    border: 1px solid green;
-    color: white;
-}
-
-.blockBtn{
-    width: 160px;
-    margin-left: 50px;
-    color: red;
-    border: 1px solid red;
-    background: none;
-}
-
-.blockBtn:hover, .blockBtn:focus:active{
-    background: red;
-    border: 1px solid red;
-    color: white;
+.prefeBtn:focus:active, .blockBtn:focus:active {
+    color: #6D004F;
+    background: white;
 }

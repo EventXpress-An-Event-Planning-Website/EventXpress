@@ -7,25 +7,27 @@ import hot2 from '../../assets/images/hot2.webp'
 import hot3 from '../../assets/images/hot3.jpg'
 import hot4 from '../../assets/images/hot4.jpg'
 import SPSidebar from "../ServiceProvider/SPSidebar";
+import { useSelector } from 'react-redux'
 
 const SPprofile = () => {
+  const { userInfo } = useSelector((state) => state.auth)
+
   return (
     <div style={{ "display": "flex" }}>
-        <SPSidebar />
-        <section className="profile_container">
+        <div><SPSidebar /></div>
+        <div className="profile_container">
           <tr className='profile_heading'>
             <td className='profimg_containe'>
               <img className='profile_img' src={profile}/>
             </td>
 
             <td className='main_details'>
-              <h2>Hello Chamya</h2>
-              <p>chamyashamindi2304@gmail.com</p>
+              <h2>Hello {userInfo.name}</h2>
+              <p>{userInfo.email}</p>
             </td>
 
             <td className='blockLink'>
-              <Link to={`/ServiceProvider/blockList`}><Button className='sppreference_btn'>Preference List</Button></Link>
-              <Link to={`/ServiceProvider/blockList`}><Button className='spblock_btn'>Block List</Button></Link>
+              <Link to={`/ServiceProvider/blockList`}><Button className='spblockpreference_btn'>Preference List / Block List</Button></Link>
             </td>
             
           </tr>
@@ -34,10 +36,10 @@ const SPprofile = () => {
             <Col className='left_column'>
               <h3>Personal Details</h3>
               <div className='personal'>
-                <p>Full Name: <span>Chamya Shamindi</span></p>
-                <p>Email: <span></span></p>
-                <p>NIC: <span></span></p>
-                <p>Contact No: <span></span></p>
+                <p>Full Name: <span>{userInfo.name}</span></p>
+                <p>Email: <span>{userInfo.email}</span></p>
+                <p>NIC: <span>{userInfo.nic}</span></p>
+                <p>Contact No: <span>{userInfo.contctNo}</span></p>
               </div>
 
               <h3>Business Details</h3>
@@ -75,7 +77,7 @@ const SPprofile = () => {
 
           </Row>
 
-        </section>
+        </div>
     </div>
     
   )

@@ -43,9 +43,7 @@ import StageRentals from "../src/components/Cus/Pages/StageRentals.jsx";
 import Sidebar from './components/Cus/Sidebar.jsx'
 import VenueDes from './components/Cus/Pages/VenueDes.jsx'
 import Birthday from './components/Cus/PrePackages/Birthday.jsx'
-import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
 import BlockList from './screens/ServiceProvider/BlockList.jsx'
-
 import BirthdayDes from './components/Cus/PrePackages/BirthdayDes.jsx'
 import ChatSidebar from './components/Cus/Chat/ChatSidebar.jsx'
 import ChatDes from './components/Cus/Chat/ChatDes.jsx'
@@ -98,7 +96,6 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/packageForm" element={<PackageForm />} />
       <Route path="/ServiceProvider/packagesView" element={<PackagesView />} />
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
-      <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} />
       <Route path="/ServiceProvider/profile" element={<ProfileScreen />} />
       <Route path="/ServiceProvider/blockList" element={<BlockList />} />
       

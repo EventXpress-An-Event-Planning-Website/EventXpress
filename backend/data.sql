@@ -55,5 +55,50 @@ CREATE TABLE privateEvent (
     created_at TIMESTAMP
 );
 
+CREATE TABLE venuepackage (
+    userid INTEGER, 
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255)
+)
 
+CREATE TABLE decorationpackage (
+    userid INTEGER, 
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255)
+)
 
+CREATE TABLE cakepackage (
+    userid INTEGER, 
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255)
+)
+
+CREATE TABLE cateringpackage (
+    userid INTEGER, 
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255)
+)
+
+CREATE TABLE photographypackage (
+    userid INTEGER, 
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255)
+)
+
+CREATE TABLE lightsoundpackage (
+    userid INTEGER, 
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255)
+)

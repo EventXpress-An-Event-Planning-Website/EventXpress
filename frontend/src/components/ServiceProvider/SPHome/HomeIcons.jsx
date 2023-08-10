@@ -23,7 +23,7 @@ const HomeIcons = () => {
         </Col>
 
         <Col>
-          <a href="/ServiceProvider/myEventhome" className='icon'><FaTicketAlt /></a>
+          <a href="/customer/buyTickets" className='icon'><FaTicketAlt /></a>
           <h4>Buy Tickets</h4>
         </Col>
 

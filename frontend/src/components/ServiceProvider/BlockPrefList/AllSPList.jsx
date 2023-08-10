@@ -1,8 +1,11 @@
 // import React from 'react'
-import { Button } from 'react-bootstrap'
-import { FaSearch } from 'react-icons/fa';
+import { useState } from 'react'
+import { Button, InputGroup, Form } from 'react-bootstrap'
+// import { FaSearch } from 'react-icons/fa';
 
 const AllSPList = ( {rows}) => {
+    const [search, setSearch] = useState('');
+
   return (
     <div className='tableContainer'>
         {/* <div className='busSearch'>
@@ -10,13 +13,25 @@ const AllSPList = ( {rows}) => {
             <FaSearch />
             </label>
         </div> */}
-        <div className="search-header">
+        {/* <div className="search-header">
             <div className="search-text">Search:</div>
             <input id="search-box" />
-        </div>
+        </div> */}
+        <InputGroup className="search-header">
+            <Form.Control 
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search here" className="search-text">
+            </Form.Control>
+        </InputGroup>
         <table className='listTable'>
-            <tbody className='allSPList'>{
-                rows.map((row, idx) => {
+            <tbody className='allSPList'>
+                {rows
+                    .filter((row) => {
+                        return search.toLowerCase() === '' ? row : 
+                        row.busName.toLowerCase().includes(search) ||
+                        row.busAddress.toLowerCase().includes(search)
+                    })
+                    .map((row, idx) => {
                     // capitalize the status first letter
                     // const statusText = row.status.charAt(0).toUppserCase() + row.status.slice(1);
                     return <tr key={idx}>
