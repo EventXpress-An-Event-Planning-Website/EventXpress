@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
 
-const TodoList=()=> {
+const TodoList=({eventid})=> {
 
   const services=[
     {id:1,text:'Venue',location:'Venue',selected:'Araliya Garden',img:"venue5.jpg"},

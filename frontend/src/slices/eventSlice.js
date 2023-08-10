@@ -1,5 +1,8 @@
+import { createApi,fetchBaseQuery  } from "@reduxjs/toolkit/dist/query";
 import { apiSlice } from "./apiSlice";
 const USER_URL = '/api/customer'
+
+// const baseQuery = fetchBaseQuery({ baseUrl: '/api/customer' });
 
 
 export const eventSlice = apiSlice.injectEndpoints({
@@ -10,12 +13,18 @@ export const eventSlice = apiSlice.injectEndpoints({
           method: 'POST',
           body: data
         })
+      }),
+      getEvent: builder.query({
+        query: () => ({
+          url: `${USER_URL}/myEvents`,
+        })
       })
     })
 });
   
 
 export const {
-    useCreateMutation
+    useCreateMutation,
+    useGetEventQuery
     
   } = eventSlice
