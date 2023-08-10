@@ -1,19 +1,17 @@
 import React from 'react'
 import { Card,Button } from 'react-bootstrap'
-import celebrationImage from '../../assets/images/celebration.jpg';
 import { useNavigate } from 'react-router-dom';
 
 const CustomerEventCard = ({event}) => {
-  console.log({event});
+  // console.log({event});
 
 
     const navigate = useNavigate()
-  const handleButtonClick = ()=>{
-    console.log('Kalana');
-    navigate('/customer/eventdetails');
+  const handleButtonClick = (event_id)=>{
+    navigate(`/customer/eventdetails?id=${event_id}`);
   }
 
-  const MAX_WORDS = 20;
+  const MAX_WORDS = 15;
   const truncateText = (text, maxWords) => {
     const words = text.split(' ');
     if (words.length <= maxWords) {
@@ -30,14 +28,18 @@ const CustomerEventCard = ({event}) => {
     <>
         
         <Card style={{ width: '18rem'}} className='customerEventCardcon'>
-        <Card.Img variant="top" src={celebrationImage} />
+        <Card.Img variant="top" src={`../../src/assets/images/${event.img}`} className='event-card-image'/>
         <Card.Body>
-            <Card.Title>{event.eventName}</Card.Title>
+            <Card.Title>
+              {event.eventName} <br />
+              {event.date} 
+            </Card.Title>
             
             <Card.Text>
+             
              {truncatedDescription}
             </Card.Text>
-            <Button variant="primary" onClick={handleButtonClick}>More Datails</Button>
+            <Button variant="primary" onClick={()=>handleButtonClick(event.id)}>More Datails</Button>
         </Card.Body>
         </Card>
  

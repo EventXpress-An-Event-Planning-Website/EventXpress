@@ -45,29 +45,30 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               {userInfo ? (
-                userInfo.role === 'customer' ? (
-                  <>
-                    <LinkContainer to="/customerHome">
-                      <Nav.Link>Home</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/Venue">
-                      <Nav.Link>Packages</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/customer/myEvents">
-                      <Nav.Link>My Events</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/customer/buyTickets">
-                      <Nav.Link>Buy Tickets</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/customer/sellTickets">
-                      <Nav.Link>Sell Tickets</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/customer/notification">
-                      <Navbar.Brand></Navbar.Brand>
-                    </LinkContainer>
-                    <NavDropdown title={userInfo.name} id="username">
-                      <LinkContainer to="/profile">
-                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                   userInfo.role ==='customer'?(
+                      <>
+                        <LinkContainer to="/customerHome">
+                          <Nav.Link>Home</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/Venue">
+                          <Nav.Link>Packages</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/customer/myEvents">
+                          <Nav.Link>My Events</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/customer/buyTickets">
+                          <Nav.Link>Buy Tickets</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/customer/sellTickets">
+                          <Nav.Link>Sell Tickets</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/customer/notification">
+                          <Navbar.Brand></Navbar.Brand>
+                        </LinkContainer>
+                        <NavDropdown title={userInfo.name} id="username">
+                          <LinkContainer to="/customer/profile">
+                            <NavDropdown.Item>Profile</NavDropdown.Item>
+                          
                       </LinkContainer>
                       <LinkContainer to="/logout">
                         <NavDropdown.Item onClick={logoutHandler}>

@@ -21,8 +21,8 @@ const Birthday = () => {
         {
             id: 1,
             image: birthday5,
-            title: '21 Karat Gold Party',
-            text: ' Some quick example text to build on the card title'
+            title: 'Forever Young-ish',
+            text: 'Budget range of Rs. 95,000/- to 110,000/-'
         },
         {
             id: 2,
@@ -45,7 +45,7 @@ const Birthday = () => {
         {
             id: 5,
             image: birthday1,
-            title: 'Forever Young-ish',
+            title: '21 Karat Gold Party',
             text: ' Some quick example text to build on the card title'
         },
         {
@@ -88,7 +88,7 @@ const Birthday = () => {
                             <Card className="s-card" >
                                 <Card.Img className="s-img" variant="top" src={birthday.image} />
                                 <Card.Body>
-                                    <Card.Title>{birthday.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{birthday.title}</Card.Title>
                                     <Card.Text className="s-text">{birthday.text}</Card.Text>
                                     <Link to={`/BirthdayDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>

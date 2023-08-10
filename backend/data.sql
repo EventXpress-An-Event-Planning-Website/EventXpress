@@ -51,13 +51,15 @@ ALTER TABLE serviceProvider
 ALTER TABLE serviceProvider
 ADD COLUMN businessRegImage VARCHAR(255);
 
-CREATE TABLE privateEvent (
+CREATE TABLE event (
     event_id SERIAL PRIMARY KEY,
     userId INTEGER,
     event_name VARCHAR(100) NOT NULL,
+    event_maintype VARCHAR(20) NOT NULL,
     event_date DATE,
     start_time TIME,
     end_time TIME,
+    event_description VARCHAR(250),
     event_type VARCHAR(255),
     created_at TIMESTAMP
 );

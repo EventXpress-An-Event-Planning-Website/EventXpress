@@ -89,10 +89,10 @@ const Photography = () => {
                     {photosData.map((photo) => (
                         <div className="col-md-3 custom-col" key={photo.id}>
 
-                            <Card className="s-card"  >
+                            <Card className="s-card" style={{ width: '18rem' }} >
                                 <Card.Img className="s-img" variant="top" src={photo.image} />
                                 <Card.Body>
-                                    <Card.Title>{photo.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{photo.title}</Card.Title>
                                     <Card.Text className="s-text">{photo.text}</Card.Text>
                                     <Link to={`/photoDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>
