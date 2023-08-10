@@ -36,7 +36,8 @@ import Sidebar from './components/Cus/Sidebar.jsx'
 import VenueDes from './components/Cus/Pages/VenueDes.jsx'
 import Birthday from './components/Cus/PrePackages/Birthday.jsx'
 import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
-
+import AdminScreen from './screens/AdminScreen.jsx'
+import Users from './components/Admin/Users.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -71,6 +72,9 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/packagesView" element={<PackagesView />} />
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
       <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} />
+      {/* admin rout  */}
+      <Route path="/adminDashboard" element={<AdminScreen />} />
+      <Route path="/Users" element={<Users />} />
     </Route>
   )
 )
