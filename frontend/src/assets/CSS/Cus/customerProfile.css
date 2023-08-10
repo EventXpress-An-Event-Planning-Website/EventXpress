@@ -1,0 +1,62 @@
+.customer-image-container{
+    width: 100%;
+    margin-top: 50px;
+    border-radius: 2rem;
+    height: 150px;
+}
+
+.customer-image-container img{
+    border-radius: 0.5rem;
+    height: 150px;
+}
+
+.customer-description-container{
+    width: 230px;
+    max-height: 50vh;
+    overflow-y: auto; 
+    padding: 15px;
+    border-radius: 0.5rem;
+    min-height: 100px; 
+    background-color: white;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+.customer-description-container-scrollable{
+    flex-grow: 1;
+    overflow-y: hidden;
+}
+
+.customer-namedate-container{
+    width: 230px;
+    height: auto;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 0.5rem; 
+    background-color: #FFEADD;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.customer-Todo-list-container{
+    padding-top: 20px;
+    width: 100%;
+    max-height: 91.5vh; /* Set the maximum height for the todo list container */
+    overflow-y: auto; 
+   
+  
+    
+}
+.customer-Todo-list-scrollable{
+   
+    width: 83.505%;
+    flex-grow: 1;
+    overflow-y: hidden;
+}
+
+.customerProfile-container {
+    width: 250px;
+    background-color: #fff4ff;
+    min-height: 91.5vh;
+    padding: 10px;
+}

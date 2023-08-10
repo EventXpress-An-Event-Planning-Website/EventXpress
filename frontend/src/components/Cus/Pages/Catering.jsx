@@ -2,6 +2,8 @@ import React from "react";
 import Sidebar from "../Sidebar";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
+import Pagination from 'react-bootstrap/Pagination';
 import catering1 from '../../../assets/images/catering-1.webp';
 import catering2 from '../../../assets/images/catering-2.webp';
 import catering3 from '../../../assets/images/catering-3.webp';
@@ -17,68 +19,80 @@ const Catering = () => {
         {
             id: 1,
             image: catering1,
-            title: 'Araliya Beach Resort',
+            title: 'Elite Catering',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 2,
             image: catering2,
-            title: 'Marino Beach Colombo',
+            title: 'Taste Ming',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
             image: catering3,
-            title: 'Green Palace Colombo',
+            title: 'Butlers Catering Service',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
             image: catering4,
-            title: 'Cinnamon Lakeside',
+            title: 'Classics catering',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
             image: catering5,
-            title: 'Grand View Hotel ',
+            title: 'Toast the Host',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
             image: catering6,
-            title: 'Queenswood Cottage',
+            title: 'Cool Caterers',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
             image: catering7,
-            title: 'Mango Tree Villa Bentota',
+            title: 'Better Cater',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
             image: catering8,
-            title: 'Galway Heights Hotel ',
+            title: 'YummyMist Foods',
             text: ' Some quick example text to build on the card title'
         }
     ];
+
+    let active = 2;
+    let items = [];
+    for (let number = 1; number <= 5; number++) {
+        items.push(
+            <Pagination.Item key={number} active={number === active}>
+                {number}
+            </Pagination.Item>,
+        );
+    }
 
     return (
         <>
             <div style={{ "display": "flex" }}>
                 <Sidebar />
-                <div className="row">
+                <div className="row custom-row">
 
                     {cateringsData.map((catering) => (
-                        <div className="col-md-3" key={catering.id}>
+                        <div className="col-md-3 custom-col" key={catering.id}>
 
                             <Card className="s-card" style={{ width: '18rem' }} >
                                 <Card.Img className="s-img" variant="top" src={catering.image} />
                                 <Card.Body>
-                                    <Card.Title>{catering.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{catering.title}</Card.Title>
                                     <Card.Text className="s-text">{catering.text}</Card.Text>
+                                    <Link to={`/cateringDes`}>
                                     <Button className="s-btn" variant="primary">Select</Button>
+                                    </Link>
                                 </Card.Body>
                             </Card>
                         </div>

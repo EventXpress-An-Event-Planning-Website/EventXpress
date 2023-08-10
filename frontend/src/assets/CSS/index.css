@@ -1,16 +1,26 @@
-@import './RegisterCustomerScreen.css';
-
+@import './Authentication.css';
+@import './Cus/createEvent.css';
+@import './LandingPage/landingPage.css';
+@import './Cus/cusHome.css';
+@import './cusNav.css';
+@import './main.css';
+@import './Cus/cusEventCard.css';
+@import './Cus/cusEventDetails.css';
+@import './Cus/todo-list.css';
+@import './Cus/cusEventSidebar.css';
 @import './ServiceProvider/FormDetails.css';
 @import './ServiceProvider/Home.css';
 @import './ServiceProvider/Packages.css';
 @import './ServiceProvider/PackageFullView.css';
 @import './ServiceProvider/EventHome.css';
-
 @import './LandingPage/landingPage.css';
 @import './Cus/cusHome.css';
+@import './Tickets.css';
 @import './Cus/cusSidebar.css';
 @import './Cus/cusServices.css';
 @import './Cus/cusPackages';
 @import './Cus/cusPackageSidebar.css';
 
 @import './Admin/AdminSidebar.css';
+@import './Cus/customerProfile.css';
+@import './Cus/compareTable.css'

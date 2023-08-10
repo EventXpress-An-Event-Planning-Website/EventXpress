@@ -13,8 +13,10 @@ import {
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
-
+  
   const user = await loginUser(email, password)
+  console.log(user);
+
 
   if (user) {
     generateToken(res, user.id)
@@ -22,6 +24,7 @@ const authUser = asyncHandler(async (req, res) => {
       id: user.id,
       name: user.name,
       email: user.email,
+      role: user.role,
     })
   } else {
     res.status(401)
@@ -58,6 +61,7 @@ const registerUser = asyncHandler(async (req, res) => {
   let user = ''
 
   if (role === 'customer') {
+    console.log();
     user = await regCustomer(
       name,
       email,
@@ -81,7 +85,8 @@ const registerUser = asyncHandler(async (req, res) => {
       password,
       facebookLink,
       instagramLink,
-      twitterLink
+      twitterLink,
+      role
     )
   }
 
@@ -91,6 +96,7 @@ const registerUser = asyncHandler(async (req, res) => {
       id: user.id,
       name: user.name,
       email: user.email,
+      role: role,
     })
   } else {
     res.status(400)

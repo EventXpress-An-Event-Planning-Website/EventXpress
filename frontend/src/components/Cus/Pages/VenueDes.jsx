@@ -8,6 +8,7 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { FaWhatsapp } from "react-icons/fa";
 import Sidebar from "../Sidebar";
+import { Link } from "react-router-dom";
 
 import venue5 from '../../../assets/images/venue5.jpg';
 import venue6 from '../../../assets/images/venue6.jpg';
@@ -31,8 +32,13 @@ const Catering = () => {
                                 <Image src={venue6} thumbnail />
                             </Col>
                             <br />
+                            <Link to={`/customer/eventdetails`}>
                             <Button className="addToEvent-btn" variant="primary" size="lg">Add to Event</Button>{' '}
-                            <Button variant="secondary" size="lg"><FaWhatsapp />Chat</Button>{' '}
+                            </Link>
+
+                            <Link to={`/ChatDes`}>
+                            <Button variant="success" size="lg"><FaWhatsapp />Chat</Button>{' '}
+                            </Link>
                         </Col>
 
                         <Col>

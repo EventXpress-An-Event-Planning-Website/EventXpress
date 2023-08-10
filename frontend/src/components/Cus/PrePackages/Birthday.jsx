@@ -21,49 +21,49 @@ const Birthday = () => {
         {
             id: 1,
             image: birthday5,
-            title: 'Araliya Beach Resort',
-            text: ' Some quick example text to build on the card title'
+            title: 'Forever Young-ish',
+            text: 'Budget range of Rs. 95,000/- to 110,000/-'
         },
         {
             id: 2,
             image: birthday6,
-            title: 'Marino Beach Colombo',
+            title: 'Fun to be One',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
             image: birthday7,
-            title: 'Green Palace Colombo',
+            title: 'Ringing in the 21st',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
             image: birthday8,
-            title: 'Cinnamon Lakeside',
+            title: 'Fabulous Four Fairyland',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
             image: birthday1,
-            title: 'Grand View Hotel ',
+            title: '21 Karat Gold Party',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
             image: birthday3,
-            title: 'Queenswood Cottage',
+            title: 'Starry Night Soiree',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
             image: birthday2,
-            title: 'Mango Tree Villa Bentota',
+            title: 'Fifty & Fabulous',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
             image: birthday4,
-            title: 'Galway Heights Hotel ',
+            title: 'Tacos for Two',
             text: ' Some quick example text to build on the card title'
         }
     ];
@@ -85,12 +85,12 @@ const Birthday = () => {
                     {birthdaysData.map((birthday) => (
                         <div className="col-md-3" key={birthday.id}>
 
-                            <Card className="s-card" style={{ width: '18rem' }} >
+                            <Card className="s-card" >
                                 <Card.Img className="s-img" variant="top" src={birthday.image} />
                                 <Card.Body>
-                                    <Card.Title>{birthday.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{birthday.title}</Card.Title>
                                     <Card.Text className="s-text">{birthday.text}</Card.Text>
-                                    <Link to={`/VenueDes`}>
+                                    <Link to={`/BirthdayDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>
                                     </Link>
                                 </Card.Body>

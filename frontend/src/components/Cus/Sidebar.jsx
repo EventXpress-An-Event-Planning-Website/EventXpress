@@ -50,8 +50,8 @@ const Sidebar = ({ children }) => {
     ]
 
     return (
-        <div className="cusSidebar-Container">
-            <div style={{width: isOpen ? "250px" : "50px"}} className="cusSidebar-sidebar">
+        <div className="cusSidebar-Container" style={{marginRight: isOpen ? "50px" : "100px"}}>
+            <div style={{marginTop: isOpen? "-31.4px":"0",width: isOpen ? "250px" : "50px" }} className="cusSidebar-sidebar">
                 <div className="cusSidebar-top-section">
                     <h1 style={{display: isOpen ? "block" : "none" }} className="cusSidebar-logo">Logo</h1>
                     <div style={{marginLeft: isOpen ? "175px" : "13px", marginTop: isOpen ? "-70px" : "0px" }} className="cusSidebar-bars">

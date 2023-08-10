@@ -6,6 +6,8 @@ import Works from '../components/landingPage/Works'
 import Blog from '../components/landingPage/Blog'
 import Reviews from '../components/landingPage/Reviews'
 import Contact from '../components/landingPage/Contact'
+// import Footer from '../components/landingPage/Footer'
+import Header from '../components/header'
 import Footer from '../components/ServiceProvider/SPHome/HomeFooter'
 
 // import '../App.css'
@@ -13,17 +15,20 @@ import Footer from '../components/ServiceProvider/SPHome/HomeFooter'
 
 
 
+
 const HomeScreen = () => {
   return (
     <>
+      
       {/* <Hero /> */}
       <Content />
       <About />
       <Services />
       <Works />
       <Reviews />
-      <Blog />
-      {/* <Contact /> */}
+      <div className='cus-blog-landing'>
+        <Blog />
+      </div>
       <Footer />
 
 

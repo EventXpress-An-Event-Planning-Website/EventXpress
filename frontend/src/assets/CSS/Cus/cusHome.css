@@ -51,13 +51,13 @@
   object-fit: cover;
 }
 
-.card {
+.card-cardevent {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 320px;
   margin: auto 1rem;
   text-align: center;
   font-family: arial;
-}
+} */
 
 .block.cus-event h3 {
   font-size: 24px;
@@ -164,4 +164,29 @@ padding-left: 500px;
 /******************************** cus-blog *******************************/
 .cus-blog{
   margin-top: 850px;
+  margin-bottom: 80px;
+}
+
+.blog-des{
+  text-align: justify;
+  padding: 10px;
+}
+
+.cus-blog-landing{
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+.blog-title{
+  text-align: center;
+}
+
+.blog-read-more{
+  margin-left: 30%;
+  border-radius: 10px;
+}
+
+.blog-date{
+  text-align: center;
+
 }

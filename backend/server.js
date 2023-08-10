@@ -7,6 +7,8 @@ import { connectDB } from './config/db.js'
 const port = process.env.PORT || 5000
 import userRoute from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
+import customerRoutes from './routes/customerRoutes.js'
+
 
 // start database connection
 connectDB()
@@ -27,6 +29,9 @@ app.use('/api/users', userRoute)
 // Upload routes
 app.use('/api/upload', uploadRoutes)
 
+//customer routes
+app.use('/api/customer',customerRoutes)
+
 // Handle errors
 app.use(notFound)
 app.use(errorHandler)
@@ -38,3 +43,5 @@ app
   .on('error', (err) => {
     console.error(`Server error: ${err}`)
   })
+
+ 

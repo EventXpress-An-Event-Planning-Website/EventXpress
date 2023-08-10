@@ -15,6 +15,9 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "@material-tailwind/react": "^2.1.0",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.1",
     "bootstrap-icons": "^1.10.5",
