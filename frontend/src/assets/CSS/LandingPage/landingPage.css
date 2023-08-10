@@ -366,6 +366,11 @@ h1 {
     -webkit-transition: width 0.3s linear;
     transition: width 0.3s linear;
   } */
+  
+.about-img1{
+    /* height: 80vh; */
+    padding-top: 5vh;
+  }
 
 .about-img1 {
   height: 30vh;
@@ -716,9 +721,24 @@ h1 {
 }
 
 @media only screen and (max-width: 1023px) {
-  body {
-    font-size: 15px;
-    line-height: 24px;
+  .aboutUs-card1{
+    /* margin-top: 100px; */
+    height: 150px;
+
+  }
+
+  .services-block .icon {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+    color: #8d2d95;
+    margin: 0 0 20px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+    text-align: center;
+    transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
   }
 
   h1 {

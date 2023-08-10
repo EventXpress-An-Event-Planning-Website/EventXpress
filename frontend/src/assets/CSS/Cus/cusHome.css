@@ -51,7 +51,7 @@
   object-fit: cover;
 }
 
-/* .card {
+.card-cardevent {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 320px;
   margin: auto 1rem;
@@ -164,4 +164,15 @@ padding-left: 500px;
 /******************************** cus-blog *******************************/
 .cus-blog{
   margin-top: 850px;
+  margin-bottom: 80px;
+}
+
+.blog-des{
+  text-align: justify;
+  padding: 10px;
+}
+
+.cus-blog-landing{
+  margin-top: 50px;
+  margin-bottom: 80px;
 }

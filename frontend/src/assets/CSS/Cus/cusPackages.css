@@ -1,5 +1,11 @@
-.s-title{
-color: #723d7f;
-font-weight: bold;
-padding-left: 20px;
+.s-title {
+    color: #723d7f;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.s-para {
+    color: black;
+    font-weight: bold;
+    padding-left: 25px;
 }
