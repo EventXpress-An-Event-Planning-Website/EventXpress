@@ -218,7 +218,7 @@ const RegisterCustomerScreen = () => {
         nicImage: nicImageFilename,
       }).unwrap()
       dispatch(setCredentials({ ...res }))
-      navigate('/customerHome')
+      navigate('/login')
     } catch (err) {
       toast.error(err?.data?.message || err.error)
     }

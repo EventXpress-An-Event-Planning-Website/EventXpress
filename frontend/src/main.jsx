@@ -43,6 +43,7 @@ import Sidebar from './components/Cus/Sidebar.jsx'
 import VenueDes from './components/Cus/Pages/VenueDes.jsx'
 import Birthday from './components/Cus/PrePackages/Birthday.jsx'
 import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
+import EmailVerification from './components/EmailVerification.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -51,6 +52,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/logout" element={<HomeScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
+      <Route path="/users/verify" element={<EmailVerification />} />
       <Route path="/register/customer" element={<RegisterCustomerScreen />} />
       <Route path="/register/serviceProvider" element={<RegisterServiceProviderScreen />} />
       {/* Private Route */}

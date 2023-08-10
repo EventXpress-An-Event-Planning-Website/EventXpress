@@ -80,15 +80,16 @@ const regCustomer = asyncHandler(
     profileImage,
     location,
     contactNo,
-    password
+    password,
+    verificationToken
   ) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
     const createUserQuery = `
       INSERT INTO 
-        customer(name, email, nic, nicImage, profileImage, location, contactNo, password) 
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id, name, email`
+        customer(name, email, nic, nicImage, profileImage, location, contactNo, password, verificationToken) 
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id, name, email`
     const createUser = await query(createUserQuery, [
       name,
       email,
@@ -98,6 +99,7 @@ const regCustomer = asyncHandler(
       location,
       contactNo,
       hashedPassword,
+      verificationToken
     ])
     if (createUser.rowCount > 0) {
       return createUser.rows[0]
@@ -121,15 +123,16 @@ const regServiceProvider = asyncHandler(
     password,
     facebookLink,
     instagramLink,
-    twitterLink
+    twitterLink,
+    verificationToken
   ) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
     const createUserQuery = `
       INSERT INTO 
-        serviceProvider(name, email, nic, nicImage, profileImage, location, businessRegImage, contactNo, password, facebookLink, instagramLink, twitterLink) 
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9 , $10, $11, $12) RETURNING id, name, email`
+        serviceProvider(name, email, nic, nicImage, profileImage, location, businessRegImage, contactNo, password, facebookLink, instagramLink, twitterLink, verificationToken) 
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9 , $10, $11, $12, $13) RETURNING id, name, email`
     const createUser = await query(createUserQuery, [
       name,
       email,
@@ -143,6 +146,7 @@ const regServiceProvider = asyncHandler(
       facebookLink,
       instagramLink,
       twitterLink,
+      verificationToken
     ])
     if (createUser.rowCount > 0) {
       return createUser.rows[0]
@@ -151,6 +155,28 @@ const regServiceProvider = asyncHandler(
     }
   }
 )
+
+// Verify email using email and verification token
+const updateEmailVerification = asyncHandler(async (email, verificationToken) => {
+  try {
+    const verifyQuery = `
+      UPDATE customer
+      SET isVerified = true
+      WHERE email = $1 AND verificationToken = $2
+      RETURNING id, name, email, isVerified`;
+
+    const verifyResult = await query(verifyQuery, [email, verificationToken]);
+
+    if (verifyResult.rowCount > 0) {
+      return verifyResult.rows[0];
+    } else {
+      throw new Error('Invalid email or verification token');
+    }
+  } catch (error) {
+    console.error(`Error verifying email: ${error.message}`);
+    throw new Error('Internal Error');
+  }
+});
 
 // update user details
 const updateUser = asyncHandler(async (userId, name, email, password) => {
@@ -196,6 +222,7 @@ export {
   regCustomer,
   regServiceProvider,
   loginUser,
+  updateEmailVerification,
   updateUser,
   getUserFromToken,
 }

@@ -7,8 +7,11 @@ import {
   regCustomer,
   regServiceProvider,
   loginUser,
+  updateEmailVerification,
   updateUser,
 } from '../models/userModel.js'
+import sendVerificationEmail from '../utils/emailUtils.js'
+import generateVerificationToken from '../utils/tokenUtils.js'
 
 // @desc    Auth user/set token
 // route    POST /api/users/login
@@ -29,6 +32,27 @@ const authUser = asyncHandler(async (req, res) => {
   } else {
     res.status(401)
     throw new Error('Invalid password')
+  }
+})
+
+// @desc    Verify user email
+// route    GET /api/users/verify/:token
+// @access  Public
+const verifyEmail = asyncHandler(async (req, res) => {
+  const email = req.params.email
+  const verificationToken = req.params.verificationToken
+  console.log('in the userController',email);
+  
+  const response = await updateEmailVerification(email,verificationToken)
+
+  if (response) {
+    res.status(200).json({
+      message: 'Email verification successful',
+    })
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
   }
 })
 
@@ -72,6 +96,9 @@ const registerUser = asyncHandler(async (req, res) => {
 
   let user = ''
 
+  const verificationToken = generateVerificationToken()
+  console.log(verificationToken)
+
   if (role === 'customer') {
     user = await regCustomer(
       name,
@@ -82,7 +109,8 @@ const registerUser = asyncHandler(async (req, res) => {
       location,
       contactNo,
       password,
-      role
+      verificationToken,
+      role,
     )
   } else if (role === 'serviceProvider') {
     user = await regServiceProvider(
@@ -98,11 +126,14 @@ const registerUser = asyncHandler(async (req, res) => {
       facebookLink,
       instagramLink,
       twitterLink,
-      role
+      verificationToken,
+      role,
     )
   }
 
   if (user) {
+    // Send the verification email
+    sendVerificationEmail(email, verificationToken)
     generateToken(res, user.id)
     res.status(201).json({
       id: user.id,
@@ -159,4 +190,11 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }
 })
 
-export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile }
+export {
+  authUser,
+  registerUser,
+  logoutUser,
+  getUserProfile,
+  updateUserProfile,
+  verifyEmail,
+}
