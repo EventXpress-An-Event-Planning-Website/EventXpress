@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
 
-const TodoList=({eventid})=> {
-
+const TodoList=({event})=> {
+  console.log(event);
   const services=[
     {id:1,text:'Venue',location:'Venue',selected:'Araliya Garden',img:"venue5.jpg"},
     {id:2,text:'Catering',location:'Catering',selected:'Marino Beach Colombo',img:"catering-2.webp"},
@@ -13,7 +13,7 @@ const TodoList=({eventid})=> {
     {id:6,text:'Sound and Light',location:'SoundAndLight',selected:'Araliya Garden',img:""}]
  
   const [todos, setTodos] = useState([...services]);
-
+  const event_id = event.event_id
   
   const addTodo = todo => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -55,6 +55,7 @@ const TodoList=({eventid})=> {
      
       <TodoForm onSubmit={addTodo} />
       <Todo
+        event_id={event_id}
         todos={todos}
         completeTodo={completeTodo}
         removeTodo={removeTodo}

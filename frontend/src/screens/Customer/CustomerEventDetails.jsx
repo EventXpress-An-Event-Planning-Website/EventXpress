@@ -36,7 +36,7 @@ const CustomerEventDetails = () => {
     if (event.length === 0) {
         return <div>Loading...</div>;
     }
-    console.log(event);
+    console.log(event[0]);
    
   return (
     <>
@@ -63,7 +63,7 @@ const CustomerEventDetails = () => {
             </div>
             <div className='eventTodo-list-container'>
                 <TodoList
-                    eventid={event[0].event_id}
+                    event={event[0]}
                 />
             </div>
         </div>

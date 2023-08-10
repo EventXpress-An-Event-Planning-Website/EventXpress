@@ -106,15 +106,16 @@ const CusOngoingEvent = ({eventData}) => {
       <>
         <div className='pendingevent'>
           <div className='event-heading-container'>
-            <h2 style={{ marginTop: '10px',marginLeft:'10px' }}>Ongoing Events</h2>
             <div className='private-and-public-btn-container'>
-              <Button className={showPrivateEventCarousel ? 'privateEvent-btn active' : 'privateEvent-btn'} onClick={handleShowPrivateEventCarousel}>
+              <Button style={{marginLeft:'10px' }} className={showPrivateEventCarousel ? 'privateEvent-btn active' : 'privateEvent-btn'} onClick={handleShowPrivateEventCarousel}>
                 Private Event
               </Button>
               <Button className={!showPrivateEventCarousel ? 'publicEvent-btn active' : 'publicEvent-btn'} onClick={handleShowPublicEventCarousel}>
                 Public Event
               </Button>
             </div>
+            <h2 style={{ marginTop: '10px',marginLeft:'30%' }}>Ongoing Events</h2>
+            
           </div>
           <hr></hr>
           {showPrivateEventCarousel && cusOngoingEvent.length > 0 ? (

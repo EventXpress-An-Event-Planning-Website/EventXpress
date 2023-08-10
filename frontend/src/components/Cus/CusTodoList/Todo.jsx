@@ -9,7 +9,7 @@ import celebrationImage from '../../../assets/images/celebration.jpg';
 import { Link } from 'react-router-dom';
 
 
-const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
+const Todo = ({event_id, todos, completeTodo, removeTodo, updateTodo }) => {
   const [edit, setEdit] = useState({
     id: null,
     value: ''
