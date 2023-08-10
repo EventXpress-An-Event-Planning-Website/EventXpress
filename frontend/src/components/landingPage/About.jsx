@@ -1,10 +1,12 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image'
-import img1 from '../../assets/images/img1.jpg'
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import img1 from '../../assets/images/img1.jpg'
+import img2 from '../../assets/images/aboutUs2.jpg'
+import img3 from '../../assets/images/aboutUs3.jpg'
+
 
 const About = () => {
   const html = 80;
@@ -33,12 +35,12 @@ const About = () => {
         <Col sm={6}>
           {/* <Image src={img1}></Image> */}
           <CardGroup>
-      <Card className='aboutUs-card1'>
-        <Card.Img src={img1} className=''/>
+      <Card className=''>
+        <Card.Img src={img3} className='about-img1'/>
       </Card>
-      <Card>
-        <Card.Img src={img1} className='about-img2'/>
-      </Card>
+      {/* <Card>
+        <Card.Img src={img3}/>
+      </Card> */}
       {/* <Card>
         <Card.Img src={img1} className='about-img1'/>
       </Card>

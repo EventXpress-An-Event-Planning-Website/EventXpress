@@ -88,7 +88,7 @@ const Anniversary = () => {
                             <Card className="s-card" >
                                 <Card.Img className="s-img" variant="top" src={Anniversary.image} />
                                 <Card.Body>
-                                    <Card.Title>{Anniversary.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{Anniversary.title}</Card.Title>
                                     <Card.Text className="s-text">{Anniversary.text}</Card.Text>
                                     <Link to={`/AnniversaryDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>

@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { TiEdit } from 'react-icons/ti';
+<<<<<<< HEAD
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+=======
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-regular-svg-icons';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+>>>>>>> 75146224ca9cec4ec1f81425b6956868d89c19ac
 import celebrationImage from '../../../assets/images/celebration.jpg';
 import { Link } from 'react-router-dom';
+
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   const [edit, setEdit] = useState({
@@ -39,19 +46,21 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
           {todo.text}
         </div>
         <div className='icons'>
-          <Link to="/Venu">
-            <i class="fa-regular fa-eye" style={{color: "#6D004F"}}></i>
+          <Link to={`/customer/event/${todo.location}Compare`}>
+            <FontAwesomeIcon icon={faEye} style={{ color: '#6D004F' }} />
           </Link>
           <RiCloseCircleLine
             onClick={() => removeTodo(todo.id)}
             className='delete-icon'
+            style={{color: "#6D004F"}}
           />
           <TiEdit
             onClick={() => setEdit({ id: todo.id, value: todo.text })}
             className='edit-icon'
+            style={{color: "#6D004F"}}
           />
           <div className='view-details' onClick={() => toggleDetails(todo.id)}>
-            <i class="fa-solid fa-caret-down" style={{color:"#6D004F"}}></i>
+            <FontAwesomeIcon icon={faCaretDown} style={{ color: '#6D004F' }} />
           </div>
           
         </div>
@@ -61,7 +70,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
       <div className='selected-service-package-details '>
           <div className='selected-service-package-details-container'>
             <div className='selected-service-package-img'>
-              <img src={celebrationImage} />
+              <img src={`../../src/assets/images/${todo.img}`} />
             </div>
             {todo.selected}
           </div>

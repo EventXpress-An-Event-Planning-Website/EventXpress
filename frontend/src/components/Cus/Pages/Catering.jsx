@@ -2,6 +2,8 @@ import React from "react";
 import Sidebar from "../Sidebar";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
+import Pagination from 'react-bootstrap/Pagination';
 import catering1 from '../../../assets/images/catering-1.webp';
 import catering2 from '../../../assets/images/catering-2.webp';
 import catering3 from '../../../assets/images/catering-3.webp';
@@ -64,6 +66,16 @@ const Catering = () => {
         }
     ];
 
+    let active = 2;
+    let items = [];
+    for (let number = 1; number <= 5; number++) {
+        items.push(
+            <Pagination.Item key={number} active={number === active}>
+                {number}
+            </Pagination.Item>,
+        );
+    }
+
     return (
         <>
             <div style={{ "display": "flex" }}>
@@ -76,9 +88,11 @@ const Catering = () => {
                             <Card className="s-card" style={{ width: '18rem' }} >
                                 <Card.Img className="s-img" variant="top" src={catering.image} />
                                 <Card.Body>
-                                    <Card.Title>{catering.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{catering.title}</Card.Title>
                                     <Card.Text className="s-text">{catering.text}</Card.Text>
+                                    <Link to={`/cateringDes`}>
                                     <Button className="s-btn" variant="primary">Select</Button>
+                                    </Link>
                                 </Card.Body>
                             </Card>
                         </div>

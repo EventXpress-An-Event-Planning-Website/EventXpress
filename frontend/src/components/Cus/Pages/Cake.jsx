@@ -73,10 +73,10 @@ const Cake = () => {
                     {cakesData.map((cake) => (
                         <div className="col-md-3 custom-col" key={cake.id}>
 
-                            <Card className="s-card" style={{ width: '18rem' }} >
+                            <Card className="s-card" style={{ width: '18rem' }}>
                                 <Card.Img className="s-img" variant="top" src={cake.image} />
                                 <Card.Body>
-                                    <Card.Title>{cake.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{cake.title}</Card.Title>
                                     <Card.Text className="s-text">{cake.text}</Card.Text>
                                     <Button className="s-btn" variant="primary">Select</Button>
                                 </Card.Body>

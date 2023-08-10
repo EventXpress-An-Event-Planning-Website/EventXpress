@@ -87,10 +87,10 @@ const StageRentals = () => {
                     {stagesData.map((stage) => (
                         <div className="col-md-3 custom-col" key={stage.id}>
 
-                            <Card className="s-card"  >
+                            <Card className="s-card" style={{ width: '18rem' }} >
                                 <Card.Img className="s-img" variant="top" src={stage.image} />
                                 <Card.Body>
-                                    <Card.Title>{stage.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{stage.title}</Card.Title>
                                     <Card.Text className="s-text">{stage.text}</Card.Text>
                                     <Link to={`/stageDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>

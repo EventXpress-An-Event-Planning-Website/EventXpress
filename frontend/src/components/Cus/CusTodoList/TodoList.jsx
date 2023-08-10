@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
 
-const TodoList=()=> {
+const TodoList=({eventid})=> {
 
   const services=[
-    {id:1,text:'Venue',selected:'Araliya Garden'},
-    {id:2,text:'Catering',selected:'Avenra Garden'},
-    {id:3,text:'Cakes',selected:'Araliya Garden'},
-    {id:4,text:'Cakes',selected:'Araliya Garden'},
-    {id:5,text:'Cakes',selected:'Araliya Garden'},
-    {id:6,text:'Cakes',selected:'Araliya Garden'}]
+    {id:1,text:'Venue',location:'Venue',selected:'Araliya Garden',img:"venue5.jpg"},
+    {id:2,text:'Catering',location:'Catering',selected:'Marino Beach Colombo',img:"catering-2.webp"},
+    {id:3,text:'Cakes',location:'Cake',selected:'Green Palace Colombo',img:"cake3.jpg"},
+    {id:4,text:'Decoration',location:'Decoration',selected:'Araliya Garden',img:""},
+    {id:5,text:'Photography',location:'Photography',selected:'Araliya Garden',img:""},
+    {id:6,text:'Sound and Light',location:'SoundAndLight',selected:'Araliya Garden',img:""}]
  
   const [todos, setTodos] = useState([...services]);
 

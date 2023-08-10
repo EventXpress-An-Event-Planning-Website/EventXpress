@@ -21,49 +21,49 @@ const Social = () => {
         {
             id: 1,
             image: Social1,
-            title: 'Araliya Beach Resort',
+            title: 'Aloha Novato',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 2,
             image: Social2,
-            title: 'Marino Beach Colombo',
+            title: 'Unita',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
             image: Social8,
-            title: 'Green Palace Colombo',
+            title: 'Estrella',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
             image: Social6,
-            title: 'Cinnamon Lakeside',
+            title: 'Florescentie',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
             image: Social5,
-            title: 'Grand View Hotel ',
+            title: 'Xtream Youth',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
             image: Social3,
-            title: 'Queenswood Cottage',
+            title: 'perabeats',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
             image: Social7,
-            title: 'Mango Tree Villa Bentota',
+            title: 'Flexus ',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
             image: Social4,
-            title: 'Galway Heights Hotel ',
+            title: 'Tejasvi ',
             text: ' Some quick example text to build on the card title'
         }
     ];
@@ -88,7 +88,7 @@ const Social = () => {
                             <Card className="s-card" >
                                 <Card.Img className="s-img" variant="top" src={Social.image} />
                                 <Card.Body>
-                                    <Card.Title>{Social.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{Social.title}</Card.Title>
                                     <Card.Text className="s-text">{Social.text}</Card.Text>
                                     <Link to={`/SocialDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>

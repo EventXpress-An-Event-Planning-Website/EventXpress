@@ -1,28 +1,70 @@
-import React from 'react'
+import React, { useState }  from 'react'
 import Carousel from 'react-multi-carousel';
 import CustomerEventCard from './CustomerEventCard';
+import { Button } from 'react-bootstrap';
+import { useEffect } from 'react';
 
-const CusOngoingEvent = () => {
+const CusOngoingEvent = ({eventData}) => {
 
-    const cuspendingEvent = [
-        {id:1,eventName:'Event1', eventDescription:"hi"},
-        {id:2,eventName:'Event', eventDescription:"hi"},
-        {id:3,eventName:'Event', eventDescription:"hi"},
-        {id:4,eventName:'Event', eventDescription:"hi"},
-        {id:5,eventName:'Event', eventDescription:"hi"},
-        {id:6,eventName:'Event', eventDescription:"hi"},
-        {id:7,eventName:'Event', eventDescription:"hi"},
-        {id:8,eventName:'Event', eventDescription:"hi"},
-        {id:9,eventName:'Event', eventDescription:"hi"},
-        {id:10,eventName:'Event', eventDescription:"hi"},
-  ];
+  const [cusOngoingEvent, setCusOngoingEvent] = useState([]);
+  const [cusOngoingPublicEvent, setCusOngoingPublicEvent] = useState([]);
 
+  // Get the current date
+  const currentDate = new Date();
+  const currentDateString = currentDate.toISOString().split('T')[0];
+      
+      
+  // Filter the eventData array to get events with event_maintype === 'Private'
+  // and event_date is in the future
+  useEffect(() => {
+    if (eventData) {
+      // console.log(eventData);
+      const filteredPrivateEvents = eventData.filter(
+        (event) => event.event_maintype === 'Private' && new Date(event.event_date).toISOString().split('T')[0] === currentDateString
+      );
+      const filteredPublicEvents = eventData.filter(
+        (event) => event.event_maintype === 'Public' && new Date(event.event_date).toISOString().split('T')[0] === currentDateString
+      );
+     
+
+      const privateEvents = filteredPrivateEvents.map((event) => ({
+        id: event.event_id,
+        eventName: event.event_name,
+        eventDescription: event.event_description,
+        img: event.event_img,
+        date: new Date(event.event_date).toISOString().split('T')[0]
+      }));
+
+      const publicEvents = filteredPublicEvents.map((event) => ({
+        id: event.event_id,
+        eventName: event.event_name,
+        eventDescription: event.event_description,
+        img: event.event_img,
+        date:new Date(event.event_date).toISOString().split('T')[0]
+      }));
+      // console.log(privateEvents);
+      // console.log(publicEvents);
+
+      setCusOngoingEvent(privateEvents);
+      setCusOngoingPublicEvent(publicEvents);
+    }
+  }, [eventData]);
+  // console.log(cusOngoingEvent);
+  // console.log(cusOngoingPublicEvent);
+   
   const eventCards =[];
-  for (let i = 0; i < 10; i++) {
-    const event= cuspendingEvent[i%cuspendingEvent.length]
+  for (let i = 0; i < cusOngoingEvent.length; i++) {
+    const event= cusOngoingEvent[i%cusOngoingEvent.length]
     eventCards.push(<CustomerEventCard event={event} />)
     
   }
+  const publicEventCards =[];
+  for (let i = 0; i < cusOngoingPublicEvent.length; i++) {
+    const event1= cusOngoingPublicEvent[i%cusOngoingPublicEvent.length]
+    publicEventCards.push(<CustomerEventCard event={event1} />)
+    
+  }
+
 
     const responsive = {
         superLargeDesktop: {
@@ -43,15 +85,55 @@ const CusOngoingEvent = () => {
           items: 1
         }
       };
+
+  // Add state to manage which carousel to display
+  const [showPrivateEventCarousel, setShowPrivateEventCarousel] = useState(true);
+
+  // Add useEffect to set the default carousel on component mount
+  useEffect(() => {
+    setShowPrivateEventCarousel(true);
+  }, []);
+
+  const handleShowPrivateEventCarousel = () => {
+    setShowPrivateEventCarousel(true);
+  };
+
+  const handleShowPublicEventCarousel = () => {
+    setShowPrivateEventCarousel(false);
+  };
   return (
     <div>
       <>
         <div className='pendingevent'>
-            <h2>Ongoing Events</h2>
-            <hr></hr>
-            <Carousel showDots="true" responsive={responsive}>
+          <div className='event-heading-container'>
+            <h2 style={{ marginTop: '10px',marginLeft:'10px' }}>Ongoing Events</h2>
+            <div className='private-and-public-btn-container'>
+              <Button className={showPrivateEventCarousel ? 'privateEvent-btn active' : 'privateEvent-btn'} onClick={handleShowPrivateEventCarousel}>
+                Private Event
+              </Button>
+              <Button className={!showPrivateEventCarousel ? 'publicEvent-btn active' : 'publicEvent-btn'} onClick={handleShowPublicEventCarousel}>
+                Public Event
+              </Button>
+            </div>
+          </div>
+          <hr></hr>
+          {showPrivateEventCarousel && cusOngoingEvent.length > 0 ? (
+              <Carousel showDots responsive={responsive} className='privateEvent'>
                 {eventCards}
-            </Carousel>
+              </Carousel>
+            ) : (
+            showPrivateEventCarousel && cusOngoingEvent.length === 0 && (
+              <div className='no-events-message'>No private events available.</div>
+            )
+            )}
+            {!showPrivateEventCarousel && cusOngoingPublicEvent.length > 0 ? (
+              <Carousel showDots responsive={responsive} className='publicEvent'>
+                {publicEventCards}
+              </Carousel>
+            ) : (!showPrivateEventCarousel &&cusOngoingPublicEvent.length === 0 && (
+            <div className='no-events-message'>No public events available.</div>
+              )
+            )}
 
         </div>
     
