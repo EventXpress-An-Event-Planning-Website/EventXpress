@@ -321,9 +321,9 @@ h1 {
     border-bottom: 1px solid #e6e6e6;
   }
   
-  .hero-block {
+  /* .hero-block {
     margin: 65px 0 0;
-  }
+  } */
   
   .hero-block .carousel-item:before {
     content: '';
@@ -375,7 +375,7 @@ h1 {
 
 .about-img1 {
   height: 30vh;
-  padding-top: 5vh;
+  /* padding-top: 5vh; */
 }
 
 .about-img2 {

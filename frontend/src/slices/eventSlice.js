@@ -1,5 +1,8 @@
+import { createApi,fetchBaseQuery  } from "@reduxjs/toolkit/dist/query";
 import { apiSlice } from "./apiSlice";
 const USER_URL = '/api/customer'
+
+// const baseQuery = fetchBaseQuery({ baseUrl: '/api/customer' });
 
 
 export const eventSlice = apiSlice.injectEndpoints({
@@ -24,6 +27,11 @@ export const eventSlice = apiSlice.injectEndpoints({
         query: () => ({
           url: `${USER_URL}/viewToDo`,
         })
+      }),
+      getEvent: builder.query({
+        query: () => ({
+          url: `${USER_URL}/myEvents`,
+        })
       })
     })
 });
@@ -32,6 +40,7 @@ export const eventSlice = apiSlice.injectEndpoints({
 export const {
     useCreateMutation,
     useAddToDoMutation,
-    useViewToDoQuery
+    useViewToDoQuery,
+    useGetEventQuery
     
   } = eventSlice

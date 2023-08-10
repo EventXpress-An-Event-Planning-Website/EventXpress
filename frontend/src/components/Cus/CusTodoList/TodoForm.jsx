@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 
 
 const TodoForm=(props) =>{
-  console.log(props.event.id);
+  console.log(props.event.event_id);
   const [input, setInput] = useState(props.edit ? props.edit.value : '');
 
-  const event_id=props.event.id;
+  const event_id=props.event.event_id;
   // console.log(event);
 
   const inputRef = useRef(null);

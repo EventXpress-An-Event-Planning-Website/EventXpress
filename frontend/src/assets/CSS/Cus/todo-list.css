@@ -108,6 +108,7 @@
     align-items: center;
     font-size: 24px;
     cursor: pointer;
+    gap: 10px;
   }
   
   .delete-icon {

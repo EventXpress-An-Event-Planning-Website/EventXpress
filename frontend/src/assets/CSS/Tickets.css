@@ -1,5 +1,6 @@
 .btn-primary {
   background-color: #6d004f;
+  border: #6d004f;
 }
 
 .btn-primary:hover {
@@ -9,6 +10,10 @@
 
 .btn-primary:active {
   background-color: #6d004f;
+}
+
+.btn.active{
+  background-color: #9c0872;
 }
 
 /* Trending.css */

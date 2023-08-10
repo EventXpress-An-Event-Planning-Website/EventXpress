@@ -3,15 +3,16 @@ import TodoForm from './TodoForm';
 import Todo from './Todo';
 import { useAddToDoMutation, useViewToDoQuery } from '../../../slices/eventSlice';
 import { useEffect } from 'react';
+import axios from 'axios';
 
 const TodoList=({event})=> {
-
+  console.log(event.event_id);
   // const {data:viewToDo,error,isLoading}=useViewToDoQuery()
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(() => {
-    axios.get(`/api/customer/eventDetails?id=${event_id}`)
+    axios.get(`/api/customer/eventDetails?id=${event.event_id}`)
       .then(response => {
         setData(response.data);
         setEvent(data)
@@ -23,25 +24,24 @@ const TodoList=({event})=> {
         setError(error);
         setLoading(false);
       });
-  }, [loading,event_id]);
+  }, [loading,event.event_id]);
  
     if (event.length === 0) {
         return <div>Loading...</div>;
     }
   const services=[
-    {id:1,text:'Venue',selected:'Araliya Garden'},
-    {id:2,text:'Catering',selected:'Avenra Garden'},
-    {id:3,text:'Cakes',selected:'Araliya Garden'},
-    {id:4,text:'Cakes',selected:'Araliya Garden'},
-    {id:5,text:'Cakes',selected:'Araliya Garden'},
-    {id:6,text:'Cakes',selected:'Araliya Garden'}]
-
+    {id:1,text:'Venue',location:'Venue',selected:'Araliya Garden',img:"venue5.jpg"},
+    {id:2,text:'Catering',location:'Catering',selected:'Marino Beach Colombo',img:"catering-2.webp"},
+    {id:3,text:'Cakes',location:'Cake',selected:'Green Palace Colombo',img:"cake3.jpg"},
+    {id:4,text:'Decoration',location:'Decoration',selected:'Araliya Garden',img:""},
+    {id:5,text:'Photography',location:'Photography',selected:'Araliya Garden',img:""},
+    {id:6,text:'Sound and Light',location:'SoundAndLight',selected:'Araliya Garden',img:""}]
  
   const [todos, setTodos] = useState([...services]);
   const [addToDo,{ isLoading: createLoading }]=useAddToDoMutation()
   
   const addTodo = async(todo) => {
-    console.log(todo.event_id);
+    // console.log(todo.event_id);
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
