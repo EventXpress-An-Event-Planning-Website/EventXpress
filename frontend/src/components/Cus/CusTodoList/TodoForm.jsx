@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+
 const TodoForm=(props) =>{
+  console.log(props.event.id);
   const [input, setInput] = useState(props.edit ? props.edit.value : '');
+
+  const event_id=props.event.id;
+  // console.log(event);
 
   const inputRef = useRef(null);
 
@@ -13,12 +18,16 @@ const TodoForm=(props) =>{
     setInput(e.target.value);
   };
 
-  const handleSubmit = e => {
+ 
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    
+    
 
     props.onSubmit({
       id: Math.floor(Math.random() * 10000),
-      text: input
+      text: input,
+      event_id:event_id
     });
     setInput('');
   };
@@ -41,6 +50,9 @@ const TodoForm=(props) =>{
         </>
       ) : (
         <>
+          <input 
+          value={event_id}
+          style={{display:"none"}}/>
           <input
             placeholder='Add a todo'
             value={input}

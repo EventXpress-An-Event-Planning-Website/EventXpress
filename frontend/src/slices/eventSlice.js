@@ -10,12 +10,28 @@ export const eventSlice = apiSlice.injectEndpoints({
           method: 'POST',
           body: data
         })
+      }),
+
+      addToDo: builder.mutation({
+        query: (data) => ({
+          url: `${USER_URL}/addToDo`,
+          method: 'POST',
+          body: data
+        })
+      }),
+
+      viewToDo: builder.query({
+        query: () => ({
+          url: `${USER_URL}/viewToDo`,
+        })
       })
     })
 });
   
 
 export const {
-    useCreateMutation
+    useCreateMutation,
+    useAddToDoMutation,
+    useViewToDoQuery
     
   } = eventSlice

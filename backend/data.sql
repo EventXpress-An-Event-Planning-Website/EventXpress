@@ -55,5 +55,11 @@ CREATE TABLE privateEvent (
     created_at TIMESTAMP
 );
 
-
+CREATE TABLE public.todolist
+(
+    todo_id integer,
+    event_id integer,
+    todo_service text,
+    PRIMARY KEY (todo_id)
+);
 

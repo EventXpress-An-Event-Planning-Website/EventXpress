@@ -34,7 +34,7 @@ const CustomerEventDetails = () => {
                 </div>
             </div>
             <div className='eventTodo-list-container'>
-                <TodoList />
+                <TodoList event={event} />
             </div>
         </div>
         

@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import path from 'path'
-import { createEvent } from '../../models/eventModel.js'
+import { createEvent, addToDo, viewToDo} from '../../models/eventModel.js'
 
 
 
@@ -38,6 +38,38 @@ const createevent = asyncHandler(async(req,res)=>{
     
 })
 
+const addEventToDo=  asyncHandler(async(req,res)=>{
+  
+  let todo=''
+  const {
+      event_id,
+      todoText
+
+  }=req.body
+
+  
+  todo= await addToDo(
+    event_id,
+    todoText
+  )
+  if (todo) {
+      res.status(201).json({
+        id: todo.id
+      })
+    } else {
+      res.status(400)
+      throw new Error('Invalid user data')
+    }
+})
+
+const viewEventToDo=  asyncHandler(async(req,res)=>{
+  console.log('Kavindya');
+  let todo=''
+  todo= await viewToDo()
+  console.log(todo);
+  res.json(todo.rows)
+})
+
 export {
-    createevent
+    createevent,addEventToDo, viewEventToDo
 }
