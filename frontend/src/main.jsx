@@ -50,6 +50,8 @@ import BrideToBe from './components/Cus/PrePackages/BrideToBe.jsx'
 import Anniversary from './components/Cus/PrePackages/Anniversary.jsx'
 import Social from './components/Cus/PrePackages/Social.jsx'
 import CustomerProfile from './screens/Customer/CustomerProfile.jsx'
+import CompareVenuePackages from './screens/Customer/CompareVenuePackages.jsx'
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -89,6 +91,7 @@ const router = createBrowserRouter(
         <Route path="/Social" element={<Social/>}/>
         <Route path="/ChatSidebar" element={<ChatSidebar/>}/>
         <Route path="/ChatDes" element={<ChatDes/>}/>
+        <Route path="/customer/event/VenueCompare" element={<CompareVenuePackages/>}/>
 
       </Route>
    
@@ -97,6 +100,7 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/packagesView" element={<PackagesView />} />
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
       <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} />
+      
    
     </Route>
   )

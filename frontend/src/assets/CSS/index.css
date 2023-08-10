@@ -20,4 +20,5 @@
 @import './Cus/cusServices.css';
 @import './Cus/cusPackages';
 @import './Cus/cusPackageSidebar.css';
-@import './Cus/customerProfile.css'
+@import './Cus/customerProfile.css';
+@import './Cus/compareTable.css'

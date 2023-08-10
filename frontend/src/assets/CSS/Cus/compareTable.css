@@ -1,0 +1,22 @@
+.compare-table {
+    border-collapse: collapse;
+    width: 90%;
+    margin: 10% 5%;
+}
+
+.compare-table-header, .compare-table-data{
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.compare-table-data{
+    color: white;
+    font-weight: 300;
+    background-color: #AE6DAB;
+}
+
+.compare-table-header {
+    background-color: #f2f2f2;
+}
