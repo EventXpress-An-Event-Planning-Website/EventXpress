@@ -35,13 +35,13 @@ const CustomerEventDetails = () => {
  
     if (event.length === 0) {
         return <div>Loading...</div>;
-    }
-    console.log(event);
+    }else{
+    
    
   return (
     <>
         
-    
+
         <div className='eventdeatils-container'>
             <div className='eventProfile-container'>
 
@@ -62,15 +62,14 @@ const CustomerEventDetails = () => {
                 </div>
             </div>
             <div className='eventTodo-list-container'>
-                <TodoList
-                    eventid={event[0].event_id}
-                />
+                <TodoList event={event[0]} />
             </div>
         </div>
        
         
     </>
   )
+    }
 }
 
 export default CustomerEventDetails
