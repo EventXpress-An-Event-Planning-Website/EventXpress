@@ -11,7 +11,7 @@ const CustomerEventCard = ({event}) => {
     navigate(`/customer/eventdetails?id=${event_id}`);
   }
 
-  const MAX_WORDS = 15;
+  const MAX_WORDS = 10;
   const truncateText = (text, maxWords) => {
     const words = text.split(' ');
     if (words.length <= maxWords) {
