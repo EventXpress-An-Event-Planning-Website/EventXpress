@@ -35,13 +35,13 @@ const CustomerEventDetails = () => {
  
     if (event.length === 0) {
         return <div>Loading...</div>;
-    }
-    console.log(event);
+    }else{
+    
    
   return (
     <>
         
-    
+
         <div className='eventdeatils-container'>
             <div className='eventProfile-container'>
 
@@ -69,6 +69,7 @@ const CustomerEventDetails = () => {
         
     </>
   )
+    }
 }
 
 export default CustomerEventDetails

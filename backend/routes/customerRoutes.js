@@ -8,7 +8,7 @@ import { viewPackage } from '../controllers/Customer/packageController.js'
 router.post('/createEvent', createevent)
 router.get('/viewPackage', viewPackage)
 router.post('/addToDo',addEventToDo)
-router.post('/viewToDo',viewEventToDo)
+router.get('/viewToDo',viewEventToDo)
 router.get('/myEvents', getEvent)
 
 router.get('/profile', createevent)

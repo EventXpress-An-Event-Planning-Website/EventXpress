@@ -35,8 +35,8 @@ const createevent = asyncHandler(async(req,res)=>{
         res.status(400)
         throw new Error('Invalid user data')
       }
-    console.log(eventtype);
-    console.log(eventType);
+    // console.log(eventtype);
+    // console.log(eventType);
 
     
 })
@@ -66,10 +66,11 @@ const addEventToDo=  asyncHandler(async(req,res)=>{
 })
 
 const viewEventToDo=  asyncHandler(async(req,res)=>{
-  console.log('Kavindya');
+  const event_id= req.query.id;
+  console.log(event_id);
   let todo=''
-  todo= await viewToDo()
-  console.log(todo);
+  todo= await viewToDo(event_id)
+  
   res.json(todo.rows)
 })
 
@@ -90,7 +91,7 @@ const getEvent = asyncHandler(async(req,res)=>{
 const getEventDetails = asyncHandler(async(req,res)=>{
 
   const event_id= req.query.id;
-  console.log(event_id);
+  // console.log(event_id);
   const event_data = await getEventdetails(event_id);
   
   res.json(event_data)
