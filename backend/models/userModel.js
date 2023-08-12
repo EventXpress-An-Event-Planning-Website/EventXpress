@@ -50,21 +50,29 @@ const contactNoExists = async (contactNo) => {
   }
 }
 
-
 // login user with the given email and password
 const loginUser = asyncHandler(async (email, password) => {
   const userDetailsQuery = `
-    SELECT 'admin' AS role, id, name, email, password FROM admin WHERE email = $1 
+    SELECT 'admin' AS role, id, name, email, password, 'true' AS isVerified FROM admin WHERE email = $1
     UNION 
-    SELECT 'customer' AS role, id, name, email, password FROM customer WHERE email = $1 
+    SELECT 'customer' AS role, id, name, email, password, isVerified FROM customer WHERE email = $1 
     UNION 
-    SELECT 'serviceProvider' AS role, id, name, email, password FROM serviceProvider WHERE email = $1`
+    SELECT 'serviceProvider' AS role, id, name, email, password, isVerified FROM serviceProvider WHERE email = $1`
+
   const userDetails = await query(userDetailsQuery, [email])
+
   if (userDetails.rowCount > 0) {
     const user = userDetails.rows[0]
     const matchPassword = await bcrypt.compare(password, user.password)
-
-    return matchPassword ? user : false
+    if (matchPassword) {
+      if (user.isverified === true) {
+        return user
+      } else {
+        throw new Error('Please verify your email')
+      }
+    } else {
+      return false // Password doesn't match
+    }
   } else {
     throw new Error('Invalid email')
   }
@@ -99,7 +107,7 @@ const regCustomer = asyncHandler(
       location,
       contactNo,
       hashedPassword,
-      verificationToken
+      verificationToken,
     ])
     if (createUser.rowCount > 0) {
       return createUser.rows[0]
@@ -146,7 +154,7 @@ const regServiceProvider = asyncHandler(
       facebookLink,
       instagramLink,
       twitterLink,
-      verificationToken
+      verificationToken,
     ])
     if (createUser.rowCount > 0) {
       return createUser.rows[0]
@@ -157,26 +165,38 @@ const regServiceProvider = asyncHandler(
 )
 
 // Verify email using email and verification token
-const updateEmailVerification = asyncHandler(async (email, verificationToken) => {
-  try {
-    const verifyQuery = `
-      UPDATE customer
+const updateEmailVerification = asyncHandler(
+  async (email, verificationToken, role) => {
+    try {
+      let tableName
+
+      if (role === 'customer') {
+        tableName = 'customer'
+      } else if (role === 'serviceProvider') {
+        tableName = 'serviceprovider'
+      } else {
+        throw new Error('Invalid role')
+      }
+
+      const verifyQuery = `
+      UPDATE ${tableName}
       SET isVerified = true
       WHERE email = $1 AND verificationToken = $2
-      RETURNING id, name, email, isVerified`;
+      RETURNING id, name, email, isVerified`
 
-    const verifyResult = await query(verifyQuery, [email, verificationToken]);
+      const verifyResult = await query(verifyQuery, [email, verificationToken])
 
-    if (verifyResult.rowCount > 0) {
-      return verifyResult.rows[0];
-    } else {
-      throw new Error('Invalid email or verification token');
+      if (verifyResult.rowCount > 0) {
+        return verifyResult.rows[0]
+      } else {
+        throw new Error('Invalid email or verification token')
+      }
+    } catch (error) {
+      console.error(`Error verifying email: ${error.message}`)
+      throw new Error('Internal Error')
     }
-  } catch (error) {
-    console.error(`Error verifying email: ${error.message}`);
-    throw new Error('Internal Error');
   }
-});
+)
 
 // update user details
 const updateUser = asyncHandler(async (userId, name, email, password) => {

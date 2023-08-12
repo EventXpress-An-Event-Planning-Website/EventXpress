@@ -123,7 +123,7 @@
   font-size: 1rem;
 }
 
-.ticket-sort-label{
+.ticket-sort-label {
   margin: 0 0.5rem 0 3rem;
   background-color: aliceblue;
   padding: 0.5rem;
@@ -518,4 +518,24 @@
   .confirmed-ticket-pay-button {
     width: 80px;
   }
+}
+
+/* TicketSortByDate.css */
+
+.date-input-container label {
+  background-color: #6d004f;
+  color: white;
+  padding: 8px 12px;
+  margin-left: 2rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-input-container .date-input {
+  background-color: #e6f1fb;
+  padding: 8px 12px;
 }

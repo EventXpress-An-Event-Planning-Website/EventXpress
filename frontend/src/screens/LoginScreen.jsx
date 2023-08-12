@@ -12,6 +12,15 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const queryParams = new URLSearchParams(location.search); 
+
+  useEffect(() => {
+    const emailFromQueryParam = queryParams.get('email');
+    if (emailFromQueryParam) {
+      setEmail(emailFromQueryParam);
+    }
+  }, [queryParams]);
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 

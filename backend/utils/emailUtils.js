@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer'
 
 // Function to send the verification email
-const sendVerificationEmail = async (recipientEmail, verificationToken) => {
+const sendVerificationEmail = async (recipientEmail, verificationToken, role) => {
   try {
     // Create a Nodemailer transporter
     const transporter = nodemailer.createTransport({
@@ -18,7 +18,7 @@ const sendVerificationEmail = async (recipientEmail, verificationToken) => {
       to: recipientEmail,
       subject: 'Email Verification',
       text: `Please click on the following link to verify your email: 
-        http://localhost:3000/user/verify?email=${recipientEmail}&verificationToken=${verificationToken}`,
+        http://localhost:3000/users/verify?email=${recipientEmail}&verificationToken=${verificationToken}&role=${role}`,
     }
 
     // Send the email

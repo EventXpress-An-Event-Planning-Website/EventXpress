@@ -188,11 +188,11 @@ const RegisterCustomerScreen = () => {
   const [register, { isLoading }] = useRegisterMutation()
   const [uploadSingle] = useUploadSingleMutation();
 
-  useEffect(() => {
-    if (userInfo) {
-      navigate('/')
-    }
-  }, [navigate, userInfo])
+  // useEffect(() => {
+  //   if (userInfo) {
+  //     navigate('/')
+  //   }
+  // }, [navigate, userInfo])
 
   const handleNicImageUpload = (e) => {
     const file = e.target.files[0]
@@ -263,8 +263,9 @@ const RegisterCustomerScreen = () => {
         nicImage: nicImageFilename,
         businessRegImage: businessImageFilename
       }).unwrap()
-      dispatch(setCredentials({ ...res }))
-      navigate('/customerHome')
+      // dispatch(setCredentials({ ...res }))
+      toast.success('Please verify your email to continue');
+      navigate(`/checkYourEmail`)
     } catch (err) {
       toast.error(err?.data?.message || err.error)
     }

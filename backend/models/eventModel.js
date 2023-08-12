@@ -20,7 +20,7 @@ const createEvent = asyncHandler(
       eventStartTime,
       eventEndTime,
       eventType,
-     
+    
     ])
     
     if(createUser.rowCount>0){

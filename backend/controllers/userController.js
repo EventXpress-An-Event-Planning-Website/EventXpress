@@ -39,11 +39,11 @@ const authUser = asyncHandler(async (req, res) => {
 // route    GET /api/users/verify/:token
 // @access  Public
 const verifyEmail = asyncHandler(async (req, res) => {
-  const email = req.params.email
-  const verificationToken = req.params.verificationToken
-  console.log('in the userController',email);
+  const email = req.query.email
+  const verificationToken = req.query.verificationToken
+  const role = req.query.role
   
-  const response = await updateEmailVerification(email,verificationToken)
+  const response = await updateEmailVerification(email,verificationToken,role)
 
   if (response) {
     res.status(200).json({
@@ -133,7 +133,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (user) {
     // Send the verification email
-    sendVerificationEmail(email, verificationToken)
+    sendVerificationEmail(email, verificationToken, role)
     generateToken(res, user.id)
     res.status(201).json({
       id: user.id,
