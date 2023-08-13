@@ -1,9 +1,10 @@
  .sidebar {
    position: absolute;
    height: 1325px;
-   width: 228px;
+   width: 300px;
    background-color: #9D3E83;
    margin-top: 0px;
+   display: fixed;
    /* padding: 20px; */
  }
 
@@ -25,31 +26,31 @@
  .sidebar a.active {
    background-color: #ffffff;
    color: #9D3E83;
-   width: 228px;
+   width: 300px;
    margin-left: 0px;
  }
 
  .Link a {
-  display: block;
-  color: #ffffff;
-  padding: 20px;
-  width: 300px;
-  text-decoration: none;
-}
+   display: block;
+   color: #ffffff;
+   padding: 20px;
+   width: 300px;
+   text-decoration: none;
+ }
 
-.Link a:hover {
-  background-color: #ffffff;
-  color: #9D3E83;
-  width: 300px;
-  margin-left: 0px;
-}
+ .Link a:hover {
+   background-color: #ffffff;
+   color: #9D3E83;
+   width: 300px;
+   margin-left: 0px;
+ }
 
-.Link a.active {
-  background-color: #ffffff;
-  color: #9D3E83;
-  width: 228px;
-  margin-left: 0px;
-}
+ .Link a.active {
+   background-color: #ffffff;
+   color: #9D3E83;
+   width: 228px;
+   margin-left: 0px;
+ }
 
  .iconSize {
    margin-right: 20px;
@@ -62,7 +63,7 @@
  /* Main part starts */
 
  .main {
-   margin-left: 228px;
+   margin-left: 300px;
    padding: 0px 10px;
    background-color: #ffffff;
  }
@@ -169,19 +170,23 @@
    color: #FFF;
    width: 90px;
    height: 40px;
-   flex-shrink: 0;
-   border-radius: 50px;
+   /* flex-shrink: 0; */
+   /* border-radius: 50px; */
    background: rgba(109, 0, 79, 0.85);
    margin-right: 20px;
    float: right;
  }
+
+ .tabTitle {
+  color: rgba(109, 0, 79, 0.85); /* Change this to your desired text color */
+}
 
  .tableRow {
    border-bottom: 1px solid black;
  }
 
  .table {
-   margin: auto;
+   /* margin: auto; */
    width: 1200px;
    padding: 20px;
  }
@@ -211,11 +216,11 @@
 
  .bottomNumbers {
    font-size: 50px;
-
  }
 
  .userMiddle {
    height: 150px;
+   margin-left: 100px;
 
  }
 
@@ -232,13 +237,15 @@
 
  .userRequestsBox {
    width: 1385px;
-   height: 650px;
+   height: 750px;
    flex-shrink: 0;
    background: #F4F1EF;
    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
    margin-left: 150px;
    margin-top: 50px;
    text-align: center;
+   display: flex;
+   flex-wrap: wrap;
 
  }
 
@@ -269,6 +276,105 @@
    background: #6D004F;
    color: #FFF;
  }
+
+ .DetailsBox {
+   width: 1450px;
+   height: 815px;
+   flex-shrink: 0;
+   color: black;
+   background: #F4F1EF;
+   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+   margin-right: 35px;
+   margin-left: 120px;
+ }
+
+ .DetailsInfo{
+    margin-left: 50px;
+    margin-top: 50px;
+    display: flex;
+ }
+
+.DetailsLeft{
+  width: 725px;
+}
+
+.DetailsRight{
+  width: 725px;
+  align-items: center;
+  justify-content: center;
+  padding: 80px;
+}
+
+
+.DetailsLeftIcon{
+  padding: 50px;
+}
+
+/* App.css */
+.chat-ui {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  margin-left: 200px;
+}
+
+.message {
+  margin-left: 200px;
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #F4F1EF;;
+}
+
+.sender {
+  font-weight: bold;
+}
+
+.content {
+  margin-top: 5px;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #888;
+}
+
+.message-input {
+  margin-left: 150px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 950px;
+  border-top: 1px solid #ccc;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.message-input button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+.message-input button:hover {
+  background-color: #0056b3;
+}
+
 
  @media screen and (max-height: 450px) {
    .sidebar {

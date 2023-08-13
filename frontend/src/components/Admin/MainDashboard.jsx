@@ -1,15 +1,19 @@
 import React from "react";
 import dp from "../../assets/images/Dp.jpeg";
+import chart from "../../assets/images/chart.png";
 import { GoPersonAdd } from "react-icons/go";
 import { FaRegUser } from "react-icons/fa";
 import { HiOutlineUserGroup } from "react-icons/hi";
+import Button from 'react-bootstrap/Button';
 
 const MainDashboard = () => {
   return (
     <div className="main">
       <h1 className="title">Hello Pabodi !</h1>
       <div className="top">
-        <div className="topRightChart"></div>
+        <div className="topRightChart">
+        <img  src={chart}  />
+        </div>
         <div className="topLeftTickets">
           <div className="ticketsTopic">
             <h3 style={{ fontWeight: "bold" }}>Support Tickets</h3>
@@ -43,7 +47,7 @@ const MainDashboard = () => {
             </div>
           </div>
 
-          <button className="ticketButton">View More</button>
+          <Button varient='primary' className="ticketButton" >View More</Button>
         </div>
       </div>
 

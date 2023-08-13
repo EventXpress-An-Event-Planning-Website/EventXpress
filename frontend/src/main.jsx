@@ -53,6 +53,10 @@ import Anniversary from './components/Cus/PrePackages/Anniversary.jsx'
 import Social from './components/Cus/PrePackages/Social.jsx'
 import CustomerProfile from './screens/Customer/CustomerProfile.jsx'
 import CompareVenuePackages from './screens/Customer/CompareVenuePackages.jsx'
+import UsersDetails from './components/Admin/UsersDetails.jsx'
+import TicketSupports from './components/Admin/TicketSupports.jsx'
+import AdminSupportView from './components/Admin/AdminSupportView.jsx'
+
 
 
 const router = createBrowserRouter(
@@ -105,6 +109,10 @@ const router = createBrowserRouter(
       {/* admin rout  */}
       <Route path="/adminDashboard" element={<AdminScreen />} />
       <Route path="/Users" element={<Users />} />
+      <Route path="/UsersDetails" element={<UsersDetails />} />
+      <Route path="/TicketSupports" element={<TicketSupports />} />
+      <Route path="/AdminSupportView" element={<AdminSupportView />} />
+
     </Route>
   )
 )

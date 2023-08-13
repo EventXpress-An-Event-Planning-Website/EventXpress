@@ -34,13 +34,13 @@ function SideBar(props) {
                 <BiMessageAlt size={25} />
               </span>
               Notifications
-            </a>
-            <a href="#contact">
+              </a>
+              <Link to="/TicketSupports">
               <span className="iconSize">
                 <GoStack size={25} />
               </span>
-              Support Tickets
-            </a>
+              Complains & Supports
+            </Link>
             <a href="#contact">
               <span className="iconSize">
                 <BiDollar size={25} />
@@ -87,12 +87,12 @@ function SideBar(props) {
               </span>
               Notifications
             </a>
-            <a href="#contact">
+            <Link to="/TicketSupports">
               <span className="iconSize">
                 <GoStack size={25} />
               </span>
-              Support Tickets
-            </a>
+              Complains & Supports
+            </Link>
             <a href="#contact">
               <span className="iconSize">
                 <BiDollar size={25} />
@@ -141,12 +141,12 @@ function SideBar(props) {
               </span>
               Notifications
             </a>
-            <a href="#contact">
+            <Link to="/TicketSupports">
               <span className="iconSize">
                 <GoStack size={25} />
               </span>
-              Support Tickets
-            </a>
+              Complains & Supports
+            </Link>
             <a href="#contact">
               <span className="iconSize">
                 <BiDollar size={25} />
@@ -195,12 +195,12 @@ function SideBar(props) {
               </span>
               Notifications
             </a>
-            <a href="#contact" className="active">
+            <Link to="/TicketSupports" className="active">
               <span className="iconSize">
                 <GoStack size={25} />
               </span>
-              Support Tickets
-            </a>
+              Complains & Supports
+            </Link>
             <a href="#contact">
               <span className="iconSize">
                 <BiDollar size={25} />
@@ -249,12 +249,12 @@ function SideBar(props) {
               </span>
               Notifications
             </a>
-            <a href="#contact">
+            <Link to="/TicketSupports">
               <span className="iconSize">
                 <GoStack size={25} />
               </span>
-              Support Tickets
-            </a>
+              Complains & Supports
+            </Link>
             <a href="#contact" className="active">
               <span className="iconSize">
                 <BiDollar size={25} />
@@ -301,12 +301,12 @@ function SideBar(props) {
               </span>
               Notifications
             </a>
-            <a href="#contact">
+            <Link to="/TicketSupports">
               <span className="iconSize">
                 <GoStack size={25} />
               </span>
-              Support Tickets
-            </a>
+              Complains & Supports
+            </Link>
             <a href="#contact">
               <span className="iconSize">
                 <BiDollar size={25} />
@@ -353,12 +353,12 @@ function SideBar(props) {
               </span>
               Notifications
             </a>
-            <a href="#contact">
+            <Link to="/TicketSupports">
               <span className="iconSize">
                 <GoStack size={25} />
               </span>
-              Support Tickets
-            </a>
+              Complains & Supports
+            </Link>
             <a href="#contact">
               <span className="iconSize">
                 <BiDollar size={25} />
