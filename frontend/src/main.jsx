@@ -45,6 +45,15 @@ import Birthday from './components/Cus/PrePackages/Birthday.jsx'
 import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
 import EmailVerification from './components/EmailVerification.jsx'
 import CheckYourEmail from './screens/CheckYourEmail.jsx'
+import BirthdayDes from './components/Cus/PrePackages/BirthdayDes.jsx'
+import ChatSidebar from './components/Cus/Chat/ChatSidebar.jsx'
+import ChatDes from './components/Cus/Chat/ChatDes.jsx'
+import BrideToBe from './components/Cus/PrePackages/BrideToBe.jsx'
+import Anniversary from './components/Cus/PrePackages/Anniversary.jsx'
+import Social from './components/Cus/PrePackages/Social.jsx'
+import CustomerProfile from './screens/Customer/CustomerProfile.jsx'
+import CompareVenuePackages from './screens/Customer/CompareVenuePackages.jsx'
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -66,9 +75,9 @@ const router = createBrowserRouter(
         <Route path="/customer/buyTickets/info" element={<TicketInfoPage />} />
         <Route path="/customer/sellTickets" element={<SellTicketsPage />} />
         <Route path="/customer/sellTickets/add" element={<AddTicketsPage />} />
-        <Route path="/customer/customer/myEvents" element={<CreateEvent />} />
+        <Route path="/customer/myEvents" element={<CreateEvent />} />
         <Route path="/customer/eventdetails" element={<CustomerEventDetails />} />
-
+        <Route path="/customer/profile" element={<CustomerProfile />} />
         <Route path="/CusVenue" element={<CusVenue />} />
         <Route path="/Sidebar" element={<Sidebar />} />
         <Route path="/Venue" element={<Venue />} />
@@ -80,15 +89,24 @@ const router = createBrowserRouter(
         {/* <Route path="/Entertainment" element={<Entertainment />} /> */}
         <Route path="/StageRentals" element={<StageRentals />} />
         <Route path="/VenueDes" element={<VenueDes />} />
-        <Route path="/Birthday" element={<Birthday/>}/>
+        <Route path="/Birthday" element={<Birthday />} />
+        <Route path="/BirthdayDes" element={<BirthdayDes />} />
+        <Route path="/BrideToBe" element={<BrideToBe />} />
+        <Route path="/Anniversary" element={<Anniversary />} />
+        <Route path="/Social" element={<Social />} />
+        <Route path="/ChatSidebar" element={<ChatSidebar />} />
+        <Route path="/ChatDes" element={<ChatDes />} />
+        <Route path="/customer/event/VenueCompare" element={<CompareVenuePackages />} />
+
       </Route>
-   
+
       <Route path="/ServiceProvider/home" element={<Home />} />
       <Route path="/ServiceProvider/packageForm" element={<PackageForm />} />
       <Route path="/ServiceProvider/packagesView" element={<PackagesView />} />
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
       <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} />
-   
+
+
     </Route>
   )
 )

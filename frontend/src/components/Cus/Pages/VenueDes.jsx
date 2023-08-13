@@ -8,6 +8,8 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { FaWhatsapp } from "react-icons/fa";
 import Sidebar from "../Sidebar";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import venue5 from '../../../assets/images/venue5.jpg';
 import venue6 from '../../../assets/images/venue6.jpg';
@@ -15,6 +17,12 @@ import venue7 from '../../../assets/images/venue7.jpg';
 import venue8 from '../../../assets/images/venue8.jpg';
 
 const Catering = () => {
+
+    const [dropDown,setdropDown] = useState('Dropdown Button')
+
+    const setHallName =(name)=>{
+        setdropDown(name)
+    }
 
     return (
         <>
@@ -31,8 +39,13 @@ const Catering = () => {
                                 <Image src={venue6} thumbnail />
                             </Col>
                             <br />
+                            <Link to={`/customer/eventdetails`}>
                             <Button className="addToEvent-btn" variant="primary" size="lg">Add to Event</Button>{' '}
-                            <Button variant="secondary" size="lg"><FaWhatsapp />Chat</Button>{' '}
+                            </Link>
+
+                            <Link to={`/ChatDes`}>
+                            <Button variant="success" size="lg"><FaWhatsapp />Chat</Button>{' '}
+                            </Link>
                         </Col>
 
                         <Col>
@@ -52,13 +65,13 @@ const Catering = () => {
 
                             <Dropdown>
                                 <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                    Dropdown Button
+                                    {dropDown}
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Hall Phoenix</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Rose Veranda</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Hall Draffodils</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setHallName("Hall Phoenix")}>Hall Phoenix</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setHallName("Rose Veranda")} >Rose Veranda</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setHallName("Hall Draffodils")}>Hall Draffodils</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                             <br />

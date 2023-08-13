@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
-import Header from './components/header'
+import Header from './components/Header'
 import { ToastContainer } from 'react-toastify'
 import { CustomerNavbar } from './components/Cus/CustomerNavbar'
 import 'react-toastify/dist/ReactToastify.css'

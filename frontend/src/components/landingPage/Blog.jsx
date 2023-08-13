@@ -2,37 +2,35 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import gardenImage from '../../assets/images/garden.jpg';
 import celebrationImage from '../../assets/images/img3.jpg';
-import cateringImage from '../../assets/images/catering3.jpg';
-
-
+import photo7 from '../../assets/images/photo7.jpg';
+import venue8 from '../../assets/images/venue8.jpg';
 
 const Blog = () => {
 
     const blogData = [
         {
             id: 1,
-            image: celebrationImage,
-            time: '15 Nov 2016',
-            title: 'The perfect design',
-            description: 'Use an integrated toolchain for the best user and developer experience. This page describes a few popular React toolchains which help with tasks like Scaling to many files and components. Using third-party libraries from npm.',
+            image: photo7,
+            time: '15 Nov 2022',
+            title: 'How to choose a perfect photographer',
+            description: 'Every photographer has a different style. Are you looking for more candid, photo-journalistic images? Or do you want posed portraits? Maybe you have your heart set on natural light photos...',
             link: 'https://www.google.com'
         },
         {
             id: 2,
             image: celebrationImage,
-            time: '15 Nov 2016',
-            title: 'The perfect design',
-            description: 'Use an integrated toolchain for the best user and developer experience. This page describes a few popular React toolchains which help with tasks like Scaling to many files and components. Using third-party libraries from npm.',
+            time: '10 Apr 2020',
+            title: 'How to choose a perfect Decorations',
+            description: 'Decorative accessories can be used to add contrast in rooms filled with neutrals, for instance – pops of color throughout the spaces offer visual interest. You should also...',
             link: 'https://www.google.com'
         },
         {
             id: 3,
-            image: celebrationImage,
-            time: '15 Nov 2016',
-            title: 'The perfect design',
-            description: 'Use an integrated toolchain for the best user and developer experience. This page describes a few popular React toolchains which help with tasks like Scaling to many files and components. Using third-party libraries from npm.',
+            image: venue8,
+            time: '05 Des 2019',
+            title: 'How to choose a perfect Venue',
+            description: 'When organizing an event, you are confronted with many decisions, but choosing the right venue and location is the one decision that will have the largest impact on your event. Everything...',
             link: 'https://www.google.com'
         }
     ]
@@ -54,10 +52,10 @@ const Blog = () => {
                                         <Card>
                                             <Card.Img variant="top" src={blog.image} />
                                             <Card.Body>
-                                                <time>{blog.time}</time>
-                                                <Card.Title>{blog.title}</Card.Title>
-                                                <Card.Text>{blog.description}</Card.Text>
-                                                <a href={blog.link} className='button button-primary'>Read More<i className="fa-solid fa-angle-right"></i></a>
+                                                <time className='blog-date'>{blog.time}</time>
+                                                <Card.Title className='blog-title'>{blog.title}</Card.Title>
+                                                <Card.Text className='blog-des'>{blog.description}</Card.Text>
+                                                <a href={blog.link} className='button button-primary blog-read-more'>Read More<i className="fa-solid fa-angle-right"></i></a>
                                             </Card.Body>
                                         </Card>
 

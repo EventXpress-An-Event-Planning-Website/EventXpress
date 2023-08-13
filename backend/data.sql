@@ -60,16 +60,24 @@ ALTER TABLE serviceProvider
 ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
 ADD COLUMN verificationToken VARCHAR(255);
 
-CREATE TABLE privateEvent (
+CREATE TABLE event (
     event_id SERIAL PRIMARY KEY,
     userId INTEGER,
     event_name VARCHAR(100) NOT NULL,
+    event_maintype VARCHAR(20) NOT NULL,
     event_date DATE,
     start_time TIME,
     end_time TIME,
+    event_description VARCHAR(250),
     event_type VARCHAR(255),
     created_at TIMESTAMP
 );
 
-
+CREATE TABLE public.todolist
+(
+    todo_id integer,
+    event_id integer,
+    todo_service text,
+    PRIMARY KEY (todo_id)
+);
 

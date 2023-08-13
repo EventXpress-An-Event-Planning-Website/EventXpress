@@ -4,6 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import Pagination from 'react-bootstrap/Pagination';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useViewPackageQuery } from "../../../slices/viewPackageSlice";
 
 import venue1 from '../../../assets/images/venue1.jpg';
 import venue2 from '../../../assets/images/venue2.jpg';
@@ -16,6 +19,22 @@ import venue8 from '../../../assets/images/venue8.jpg';
 
 const Venue = () => {
 
+    const { data: packageData, error, isLoading } = useViewPackageQuery();
+
+    console.log(isLoading)
+    useEffect(() => {
+        if (error) {
+          console.error('Error fetching packages:', error);
+        }
+
+    }, [error]);
+
+
+    useEffect(()=>{
+        if(!isLoading) {
+            console.log(packageData);
+        }
+    }, [isLoading])
     const venuesData = [
         {
             id: 1,
@@ -90,7 +109,7 @@ for (let number = 1; number <= 5; number++) {
                             <Card className="s-card" style={{ width: '18rem' }} >
                                 <Card.Img className="s-img" variant="top" src={venue.image} />
                                 <Card.Body>
-                                    <Card.Title>{venue.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{venue.title}</Card.Title>
                                     <Card.Text className="s-text">{venue.text}</Card.Text>
                                     <Link to={`/VenueDes`}>
                                         <Button className="s-btn" variant="primary">Select</Button>
@@ -99,15 +118,17 @@ for (let number = 1; number <= 5; number++) {
                             </Card>
                         </div>
                     ))}
+                    <div className="s-pagination">
+                        <div>
+                            <Pagination>{items}</Pagination>
+                        </div>
+            
+                    </div>
                 </div>
+                
             </div>
 
-            <div className="s-pagination">
-                <div>
-                    <Pagination>{items}</Pagination>
-                </div>
             
-            </div>
         </>
     );
 };

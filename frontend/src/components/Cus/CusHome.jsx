@@ -4,7 +4,7 @@ import celebrationImage from '../../assets/images/celebration.jpg';
 import cateringImage from '../../assets/images/catering3.jpg';
 import CusEvents from './CusEvents';
 import CusServices from './CusServices';
-import Footer from '../landingPage/Footer'
+import Footer from '../../components/ServiceProvider/SPHome/HomeFooter'
 import Blog from '../landingPage/Blog'
 
 const CusHome = () => {
@@ -42,7 +42,7 @@ const CusHome = () => {
       <div className='cus-blog'>
         <Blog />
       </div>
-      {/* <Footer/> */}
+      <Footer/>
 
     </section>
 
