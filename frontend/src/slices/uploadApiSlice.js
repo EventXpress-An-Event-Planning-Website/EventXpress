@@ -1,28 +1,21 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { apiSlice } from './apiSlice';
 
-const baseQuery = fetchBaseQuery({ baseUrl: '/api/upload' });
+const UPLOAD_URL = '/api/upload';
 
-export const uploadApiSlice = createApi({
-  baseQuery,
+export const uploadApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     uploadSingle: builder.mutation({
       query: (file) => ({
-        url: 'single',
+        url: `${UPLOAD_URL}/single`,
         method: 'POST',
         body: file,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
       }),
     }),
     uploadMultiple: builder.mutation({
       query: (files) => ({
-        url: 'multiple',
+        url: `${UPLOAD_URL}/multiple`,
         method: 'POST',
         body: files,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
       }),
     }),
   }),
