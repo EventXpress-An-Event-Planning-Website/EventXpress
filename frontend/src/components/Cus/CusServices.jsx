@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
 import 'react-multi-carousel/lib/styles.css';
+import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import gardenImage from '../../assets/images/garden.jpg';
 import celebrationImage from '../../assets/images/celebration.jpg';
@@ -133,7 +134,9 @@ const CusServices = () => {
                     youR<br />
                     favOrIte<br />
                     showS<br />
+                    <Link to={`/customer/buyTickets`}>
                     <button className='cusServices-ticket-btn'>Buy Tickets</button>
+                    </Link>
                 </div>
                 <div className='cusServices-ticket'>
                     <Image src={ticket1}></Image>

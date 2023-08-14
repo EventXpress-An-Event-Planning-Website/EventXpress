@@ -7,6 +7,7 @@ import Pagination from 'react-bootstrap/Pagination';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useViewPackageQuery } from "../../../slices/viewPackageSlice";
+import { useLocation } from "react-router-dom";
 
 import venue1 from '../../../assets/images/venue1.jpg';
 import venue2 from '../../../assets/images/venue2.jpg';
@@ -18,6 +19,13 @@ import venue7 from '../../../assets/images/venue7.jpg';
 import venue8 from '../../../assets/images/venue8.jpg';
 
 const Venue = () => {
+
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search);
+    const package_Count= queryParams.get('packageCount')
+
+    const [selectedCount,setselectedCount]= useState(package_Count)
+    console.log(selectedCount);
 
     const { data: packageData, error, isLoading } = useViewPackageQuery();
 
@@ -102,7 +110,7 @@ for (let number = 1; number <= 5; number++) {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
-
+                <h1 className="pckg-name">Venue Packages</h1>
                     {venuesData.map((venue) => (
                         <div className="col-md-3 custom-col" key={venue.id}>
 
@@ -111,8 +119,8 @@ for (let number = 1; number <= 5; number++) {
                                 <Card.Body>
                                     <Card.Title className="s-main-title">{venue.title}</Card.Title>
                                     <Card.Text className="s-text">{venue.text}</Card.Text>
-                                    <Link to={`/VenueDes`}>
-                                        <Button className="s-btn" variant="primary">Select</Button>
+                                    <Link to={`/VenueDes?packageCount=${selectedCount}`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>

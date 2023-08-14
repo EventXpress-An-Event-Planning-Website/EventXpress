@@ -190,3 +190,15 @@ padding-left: 500px;
   text-align: center;
 
 }
+
+.home-title{
+  padding-left: 20px;
+  color: #500a54;
+  font-weight: bold;
+}
+
+.pre-package-title{
+  text-align: center;
+  font-weight: bold;
+
+}

@@ -10,13 +10,15 @@ import cake5 from '../../../assets/images/cake5.jpg';
 import cake6 from '../../../assets/images/cake6.jpg';
 import cake7 from '../../../assets/images/cake7.jpg';
 import cake8 from '../../../assets/images/cake8.jpg';
+import cake9 from '../../../assets/images/cake9.png';
+import { Link } from "react-router-dom";
 
 const Cake = () => {
 
     const cakesData = [
         {
             id: 1,
-            image: cake1,
+            image: cake9,
             title: 'Black Forest cake',
             text: ' Some quick example text to build on the card title'
         },
@@ -69,6 +71,7 @@ const Cake = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
+                <h1 className="pckg-name">Cake Packages</h1>
 
                     {cakesData.map((cake) => (
                         <div className="col-md-3 custom-col" key={cake.id}>
@@ -78,7 +81,9 @@ const Cake = () => {
                                 <Card.Body>
                                     <Card.Title className="s-main-title">{cake.title}</Card.Title>
                                     <Card.Text className="s-text">{cake.text}</Card.Text>
-                                    <Button className="s-btn" variant="primary">Select</Button>
+                                    <Link to={`/CakeDes`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
+                                    </Link>
                                 </Card.Body>
                             </Card>
                         </div>

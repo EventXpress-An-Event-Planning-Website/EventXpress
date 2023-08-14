@@ -7,8 +7,29 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 import { FaFacebookF } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 import { FaLinkedinIn } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 
 const HomeFooter = () => {
+
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  useEffect(() => {
+      window.addEventListener('scroll', () => {
+          if (window.scrollY > 400) {
+              setShowTopBtn(true);
+          } else {
+              setShowTopBtn(false);
+          }
+      })
+  })
+
+  function goTop() {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      })
+  }
+
   return (
     <Container className="homefooter">
         <Row>
@@ -32,6 +53,12 @@ const HomeFooter = () => {
           </Col>
 
         </Row>
+         <Container fluid>
+                <div className='copyright'>© 2022 EventXpress. All Right Reserved.</div>
+                {
+                    showTopBtn && (<div className='go-top' onClick={goTop}></div>)
+                }
+            </Container>
     </Container>
   )
 }

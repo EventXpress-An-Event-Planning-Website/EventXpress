@@ -85,7 +85,7 @@ const Photography = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
-
+                <h1 className="pckg-name">Photography Packages</h1>
                     {photosData.map((photo) => (
                         <div className="col-md-3 custom-col" key={photo.id}>
 
@@ -94,8 +94,8 @@ const Photography = () => {
                                 <Card.Body>
                                     <Card.Title className="s-main-title">{photo.title}</Card.Title>
                                     <Card.Text className="s-text">{photo.text}</Card.Text>
-                                    <Link to={`/photoDes`}>
-                                        <Button className="s-btn" variant="primary">Select</Button>
+                                    <Link to={`/PhotographyDes`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>
