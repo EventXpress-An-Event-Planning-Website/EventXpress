@@ -80,7 +80,7 @@ const Header = () => {
                   </>
                 ) : userInfo.role === 'serviceProvider' ? (
                   <>
-                    <LinkContainer to="/serviceProviderHome">
+                    <LinkContainer to="/ServiceProvider/home">
                       <Nav.Link>Home</Nav.Link>
                     </LinkContainer>
                     <LinkContainer to="/packages">
@@ -88,6 +88,9 @@ const Header = () => {
                     </LinkContainer>
                     <LinkContainer to="/customer/buyTickets">
                       <Nav.Link>Buy Tickets</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to="/ServiceProvider/Requests">
+                      <Nav.Link>Requests</Nav.Link>
                     </LinkContainer>
                     <LinkContainer to="/customer/notification">
                       <Navbar.Brand></Navbar.Brand>

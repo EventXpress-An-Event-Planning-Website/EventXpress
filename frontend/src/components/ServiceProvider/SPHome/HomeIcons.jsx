@@ -17,7 +17,7 @@ const HomeIcons = () => {
 
         <Col>
           <a href="/ServiceProvider/packageForm" className='icon'><FaPlus /></a>
-          <h4>Create Event</h4>
+          <h4>Create Package</h4>
         </Col>
 
         <Col>
@@ -31,7 +31,7 @@ const HomeIcons = () => {
         </Col>
 
         <Col>
-          <a href="" className='icon'><FaCalendarAlt /></a>
+          <a href="/serviceProvider/availability" className='icon'><FaCalendarAlt /></a>
           <h4>Calendar</h4>
         </Col>
         

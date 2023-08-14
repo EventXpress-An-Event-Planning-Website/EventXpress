@@ -1,5 +1,5 @@
 .title_container{
-    margin: 0 100px 0;
+    margin: 0 200px 0;
     border: 1px solid;
     border-radius: 40px;
     padding: 30px;
@@ -9,7 +9,7 @@
 }
 
 .title_container p{
-    margin-top: 25px;
+    margin-top: 5px;
 }
 
 .pack_info, .option, .more_option{

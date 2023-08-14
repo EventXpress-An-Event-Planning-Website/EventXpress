@@ -50,6 +50,8 @@ import BrideToBe from './components/Cus/PrePackages/BrideToBe.jsx'
 import Anniversary from './components/Cus/PrePackages/Anniversary.jsx'
 import Social from './components/Cus/PrePackages/Social.jsx'
 import CustomerProfile from './screens/Customer/CustomerProfile.jsx'
+import ServiceProviderRequests from './screens/ServiceProvider/ServiceProviderRequests.jsx'
+import ServiceProviderAvailability from './screens/ServiceProvider/ServiceProviderAvailability.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -97,7 +99,10 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/packagesView" element={<PackagesView />} />
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
       <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} />
-   
+      <Route path="/ServiceProvider/Requests" element={<ServiceProviderRequests />} />
+      <Route path="/serviceProvider/availability" element={<ServiceProviderAvailability />} />
+      
+      
     </Route>
   )
 )
