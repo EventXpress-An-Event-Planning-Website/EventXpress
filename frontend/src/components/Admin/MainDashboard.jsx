@@ -66,7 +66,7 @@ const MainDashboard = () => {
 
   return (
     <div className="main">
-      <h1 className="title">Hello Pabodi !</h1>
+      <h2 className="title">Hello Pabodi !</h2>
       <div className="top">
         <div className="topRightChart">
           <div className="chartTopic">
@@ -132,7 +132,7 @@ const MainDashboard = () => {
       </div>
 
       <div className="middle">
-        <table className="table">
+        <table className="admin-table">
           <tr>
             <th className="tableTopic">Event Name</th>
             <th className="tableTopic">No. Of Tickets(sold)</th>

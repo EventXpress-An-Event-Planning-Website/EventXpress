@@ -40,7 +40,7 @@ function UsersMain() {
         <Tabs activeKey={key} onSelect={handleTabChange}>
           <Tab eventKey="tab1" title="New Requests">
             <div className="userRequestsBox">
-              <table className="table">
+              <table className="admin-table">
                 <tr className="tableRow">
                   <td className="userTableContent">
                     <GoPersonAdd
@@ -207,7 +207,7 @@ function UsersMain() {
           </Tab>
           <Tab eventKey="tab2" title="Service Providers">
             <div className="userRequestsBox">
-              <table className="table">
+              <table className="admin-table">
                 <tr className="tableRow">
                   <td className="userTableContent"></td>
                   <td className="userTableContent"></td>
@@ -303,7 +303,7 @@ function UsersMain() {
           </Tab>
           <Tab eventKey="tab3" title="Customers">
           <div className="userRequestsBox">
-            <table className="table">
+            <table className="admin-table">
               <tr className="tableRow">
                 <td className="userTableContent"></td>
                 <td className="userTableContent"></td>

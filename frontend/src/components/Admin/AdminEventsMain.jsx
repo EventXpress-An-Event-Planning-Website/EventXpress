@@ -9,7 +9,7 @@ function AdminEventsMain() {
       <h2 className="title">Ticket Selling Events</h2>
 
       <div>
-        <table className="table" style={{ width: "95%", marginLeft: "10px" }}>
+        <table className="admin-table" style={{ width: "95%", marginLeft: "10px" }}>
           <tr>
             <th className="eventTableTh">Event Name</th>
             <th className="eventTableTh">Event Date</th>
