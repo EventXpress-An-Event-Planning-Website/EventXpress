@@ -25,7 +25,6 @@ const Header = () => {
     }
   }
   const isLoggedIn = !!userInfo
-  console.log(userInfo)
   return (
     <header>
       <Navbar
