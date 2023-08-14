@@ -46,6 +46,9 @@ import StageRentals from "../src/components/Cus/Pages/StageRentals.jsx";
 import Sidebar from './components/Cus/Sidebar.jsx'
 import VenueDes from './components/Cus/Pages/VenueDes.jsx'
 import Birthday from './components/Cus/PrePackages/Birthday.jsx'
+import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
+import AdminScreen from './screens/AdminScreen.jsx'
+import Users from './components/Admin/Users.jsx'
 import BlockList from './screens/ServiceProvider/BlockList.jsx'
 import EmailVerification from './components/EmailVerification.jsx'
 import CheckYourEmail from './screens/CheckYourEmail.jsx'
@@ -57,6 +60,13 @@ import Anniversary from './components/Cus/PrePackages/Anniversary.jsx'
 import Social from './components/Cus/PrePackages/Social.jsx'
 import CustomerProfile from './screens/Customer/CustomerProfile.jsx'
 import CompareVenuePackages from './screens/Customer/CompareVenuePackages.jsx'
+import UsersDetails from './components/Admin/UsersDetails.jsx'
+import TicketSupports from './components/Admin/TicketSupports.jsx'
+import AdminSupportView from './components/Admin/AdminSupportView.jsx'
+import Revenue from './components/Admin/Revenue.jsx'
+import AdminEvents from './components/Admin/AdminEvents.jsx'
+import AdminEventDetails from './components/Admin/AdminEventDetails.jsx'
+
 import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
 
 
@@ -109,6 +119,16 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/packageForm" element={<PackageForm />} />
       <Route path="/ServiceProvider/packagesView" element={<PackagesView />} />
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
+      <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} />
+      {/* admin rout  */}
+      <Route path="/adminDashboard" element={<AdminScreen />} />
+      <Route path="/Users" element={<Users />} />
+      <Route path="/UsersDetails" element={<UsersDetails />} />
+      <Route path="/TicketSupports" element={<TicketSupports />} />
+      <Route path="/AdminSupportView" element={<AdminSupportView />} />
+      <Route path="/Revenue" element={<Revenue />} />
+      <Route path="/AdminEvents" element={<AdminEvents />} />
+      <Route path="/AdminEventDetails" element={<AdminEventDetails />} />
       <Route path="/ServiceProvider/profile" element={<ProfileScreen />} />
       <Route path="/ServiceProvider/blockList" element={<BlockList />} />
       <Route path="/ServiceProvider/preferences" element={<PredefinedPrefList />} />
