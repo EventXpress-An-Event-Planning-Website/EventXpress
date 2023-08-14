@@ -45,7 +45,18 @@ function AdminEventsDetailsMain() {
               </Accordion.Item>
             </Accordion>
           </div>
-          <div className="EvDetailsBoxRight">hello right</div>
+
+
+          <div className="EvDetailsBoxRight"> 
+          <div style={{backgroundColor:"rgba(180, 130, 159, 0.60)",width:'300px'}}>Total Number of Tickets: 450</div>
+          <div>
+            <table className="tkDetailTable">
+                <tr><th>Ticket Type</th><th>Price</th><th>No of Tickets</th><th>Sold</th><th>Income</th></tr>
+            </table>
+          </div>
+          </div>
+        
+        
         </div>
         <div className="EvDetailsBoxBottom">hello bottom</div>
       </div>
