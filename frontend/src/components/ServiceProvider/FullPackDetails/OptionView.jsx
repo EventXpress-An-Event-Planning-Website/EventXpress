@@ -1,5 +1,5 @@
 // import React from 'react'
-import { Container, Col, Row } from 'react-bootstrap'
+import { Container, Col, Row, Button } from 'react-bootstrap'
 import hot1 from '../../../assets/images/hot1.jpg'
 import hot2 from '../../../assets/images/hot2.webp'
 import hot3 from '../../../assets/images/hot3.jpg'
@@ -7,7 +7,7 @@ import hot4 from '../../../assets/images/hot4.jpg'
 
 const PackageFullView = () => {
   return (
-    <section id="option_contentinfo" className="option_contentinfo">
+    <div id="option_contentinfo" className="option_contentinfo">
         <Container fluid>
             <Row>
                 <Col>
@@ -39,17 +39,17 @@ const PackageFullView = () => {
 
                     <Row className='rowoption'>
                         <Col>Hall type</Col>
-                        <Col className='coloption'>Indoor - AC</Col>
+                        <Col className='coloption'>Outdoor</Col>
                     </Row>
 
                     <p className='hourprice'>Rs. 150,000 per one hour</p>
 
-                    <button className='optionedit'>Edit</button>
-                    <button className='optiondelete'>Delete</button>
+                    <Button className='optionedit'>Edit</Button>
+                    <Button className='optiondelete'>Delete</Button>
                 </Col>
             </Row>
         </Container>
-    </section>
+    </div>
   )
 }
 

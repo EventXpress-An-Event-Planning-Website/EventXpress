@@ -43,17 +43,110 @@ CREATE TABLE serviceProvider (
     subscribedDate DATE DEFAULT NULL
 );
 
+ALTER SEQUENCE serviceProvider_id_seq RESTART WITH 10000;
 
-CREATE TABLE privateEvent (
+ALTER TABLE serviceProvider
+    ALTER COLUMN id SET DEFAULT nextval('serviceProvider_id_seq');
+
+ALTER TABLE serviceProvider
+ADD COLUMN businessRegImage VARCHAR(255);
+
+ALTER TABLE customer
+ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
+ADD COLUMN verificationToken VARCHAR(255);
+
+-- For the "serviceprovider" table
+ALTER TABLE serviceProvider
+ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
+ADD COLUMN verificationToken VARCHAR(255);
+
+CREATE TABLE event (
     event_id SERIAL PRIMARY KEY,
     userId INTEGER,
     event_name VARCHAR(100) NOT NULL,
+    event_maintype VARCHAR(20) NOT NULL,
     event_date DATE,
     start_time TIME,
     end_time TIME,
+    event_description VARCHAR(250),
     event_type VARCHAR(255),
     created_at TIMESTAMP
 );
 
+CREATE TABLE venuepackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255),
+    package_op_title VARCHAR(255), 
+    package_op_des VARCHAR(255), 
+    package_op_count INTEGER, 
+    package_op_area FLOAT, 
+    package_op_type VARCHAR(255)
+)
 
+CREATE TABLE decorationpackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+)
+CREATE TABLE public.todolist
+(
+    todo_id integer,
+    event_id integer,
+    todo_service text,
+    PRIMARY KEY (todo_id)
+);
 
+CREATE TABLE cakepackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+)
+
+CREATE TABLE cateringpackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+)
+
+CREATE TABLE lightsandsoundspackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+)
+
+CREATE TABLE photographypackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+)

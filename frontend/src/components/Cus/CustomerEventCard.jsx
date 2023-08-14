@@ -3,15 +3,15 @@ import { Card,Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 
 const CustomerEventCard = ({event}) => {
-  console.log({event});
+  // console.log({event});
 
 
     const navigate = useNavigate()
-  const handleButtonClick = ()=>{
-    navigate('/customer/eventdetails');
+  const handleButtonClick = (event_id)=>{
+    navigate(`/customer/eventdetails?id=${event_id}`);
   }
 
-  const MAX_WORDS = 15;
+  const MAX_WORDS = 10;
   const truncateText = (text, maxWords) => {
     const words = text.split(' ');
     if (words.length <= maxWords) {
@@ -39,7 +39,7 @@ const CustomerEventCard = ({event}) => {
              
              {truncatedDescription}
             </Card.Text>
-            <Button variant="primary" onClick={handleButtonClick}>More Datails</Button>
+            <Button variant="primary" onClick={()=>handleButtonClick(event.id)}>More Datails</Button>
         </Card.Body>
         </Card>
  

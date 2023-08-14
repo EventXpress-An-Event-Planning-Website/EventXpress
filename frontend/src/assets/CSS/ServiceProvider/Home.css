@@ -20,18 +20,17 @@ body{
 }
 
 .create_btn, .more_btn{
-    background: #6D004F;
-    color: white;
     border: none;
     border-radius: 50px;
     padding: 10px;
 }
 
-.create_btn:hover, .more_btn:hover{
-    background: #6D004F;
-    color: white;
-    border: none;
+.create_btn:focus:active, .more_btn:focus:active{
+    color: #6D004F;
+    background: white;
 }
+
+
 
 /* package section css */
 

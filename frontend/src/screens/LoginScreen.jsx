@@ -12,6 +12,15 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const queryParams = new URLSearchParams(location.search); 
+
+  useEffect(() => {
+    const emailFromQueryParam = queryParams.get('email');
+    if (emailFromQueryParam) {
+      setEmail(emailFromQueryParam);
+    }
+  }, [queryParams]);
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -20,13 +29,12 @@ const LoginScreen = () => {
   const { userInfo } = useSelector((state) => state.auth)
 
   useEffect(() => {
-    console.log(userInfo)
     if (userInfo && userInfo.role === 'customer') {
       navigate('/customerHome')
     } else if (userInfo && userInfo.role === 'serviceProvider') {
       navigate('/ServiceProvider/home')
     } else if (userInfo && userInfo.role === 'admin') {
-      navigate('/customerHome')
+      navigate('/adminDashboard')
     }
   }, [navigate, userInfo])
 

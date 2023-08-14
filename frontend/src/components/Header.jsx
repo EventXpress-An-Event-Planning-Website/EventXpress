@@ -25,7 +25,6 @@ const Header = () => {
     }
   }
   const isLoggedIn = !!userInfo
-  console.log(userInfo)
   return (
     <header>
       <Navbar
@@ -83,8 +82,18 @@ const Header = () => {
                     <LinkContainer to="/ServiceProvider/home">
                       <Nav.Link>Home</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to="/packages">
-                      <Nav.Link>Packages</Nav.Link>
+                    <NavDropdown title="Create Packages">
+                      <LinkContainer to="/ServiceProvider/packageForm">
+                        <NavDropdown.Item>Normal Package</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/ServiceProvider/preferences">
+                        <NavDropdown.Item>
+                          Predefined Package
+                        </NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
+                    <LinkContainer to="/ServiceProvider/packagesView">
+                      <Nav.Link>My Packages</Nav.Link>
                     </LinkContainer>
                     <LinkContainer to="/customer/buyTickets">
                       <Nav.Link>Buy Tickets</Nav.Link>
@@ -96,7 +105,7 @@ const Header = () => {
                       <Navbar.Brand></Navbar.Brand>
                     </LinkContainer>
                     <NavDropdown title={userInfo.name} id="username">
-                      <LinkContainer to="/profile">
+                      <LinkContainer to="/ServiceProvider/profile">
                         <NavDropdown.Item>Profile</NavDropdown.Item>
                       </LinkContainer>
                       <LinkContainer to="/logout">

@@ -1,8 +1,8 @@
 .title_container{
-    margin: 0 200px 0;
+    margin: 5px 20px 0;
     border: 1px solid;
     border-radius: 40px;
-    padding: 30px;
+    padding: 0 30px 30px;
     line-height: 0.5;
     background: #6D004F;
     color: white;
@@ -10,6 +10,10 @@
 
 .title_container p{
     margin-top: 5px;
+}
+
+.SPPackageForm{
+    margin-left: 10%;
 }
 
 .pack_info, .option, .more_option{
@@ -34,6 +38,17 @@ label{
     margin-bottom: 20px;
 }
 
+.remove-icon{
+    margin-bottom: 30px;
+}
+
+.removeOptionBtn{
+    float: right;
+    width: 30px;
+    height: 30px;
+    color: #6D004F;
+}
+
 .image_container{
     display: flex;
     justify-content: center;
@@ -42,10 +57,14 @@ label{
 .image_container .image{
     border-radius: 30px;
     background: white;
-    width: 150px;
-    height: 150px;
-    padding: 20px;
-    margin-right: 80px;
+    width: 12%;
+    height: 12%;
+    padding: 5px;
+    margin-right: 6%;
+}
+
+.image_container img{
+    border-radius: 30px;
 }
 
 .more_option{
@@ -54,15 +73,10 @@ label{
 
 .optionBtn{
     text-align: center;
-    background: #6D004F;
     border: none;
     border-radius: 40px;
     width: 50%;
     height: 80px;
-}
-
-.optionBtn:hover{
-    background: #6D004F;
 }
 
 .btn_container{
@@ -75,7 +89,11 @@ label{
     width: 120px; 
     height: 50px;
     text-align: center;
-    background: #6D004F;
     border: none;
     border-radius: 40px;
+}
+
+.optionBtn:focus:active, .submitBtn:focus:active{
+    color: #6D004F;
+    background: white;
 }

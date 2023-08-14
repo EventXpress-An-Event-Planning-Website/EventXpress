@@ -1,0 +1,52 @@
+.profile_body{
+    margin: 20px;
+}
+
+/* profile heading */
+
+.profile_heading {
+    display: flex;
+    margin: 30px 20px;
+    align-items: center;
+}
+
+.profimg_containe{
+    width: 30%;
+}
+
+.profile_img{
+    margin-left: 30%;
+    width: 55%;
+}
+
+.blockLink {
+    margin-left: 10%;
+} 
+
+.spblockpreference_btn{
+    background: white;
+    border: none;
+}
+
+.spblockpreference_btn:focus:active{
+    background: none;
+}
+
+
+/* profile body */
+
+.profile_body{
+    margin-top: 60px;
+}
+
+/* left, right column */
+
+.personal, .business{
+    margin-left: 30px;
+}
+
+.profedit_btn{
+    margin-left: 60%;
+    width: 50px;
+    border: none;
+}

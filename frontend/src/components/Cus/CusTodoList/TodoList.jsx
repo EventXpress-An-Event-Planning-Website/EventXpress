@@ -1,28 +1,75 @@
 import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
+import { useAddToDoMutation, useViewToDoQuery } from '../../../slices/eventSlice';
+import { useEffect } from 'react';
+import axios from 'axios';
 
-const TodoList=()=> {
-
-  const services=[
-    {id:1,text:'Venue',location:'Venue',selected:'Araliya Garden',img:"venue5.jpg"},
-    {id:2,text:'Catering',location:'Catering',selected:'Marino Beach Colombo',img:"catering-2.webp"},
-    {id:3,text:'Cakes',location:'Cake',selected:'Green Palace Colombo',img:"cake3.jpg"},
-    {id:4,text:'Decoration',location:'Decoration',selected:'Araliya Garden',img:""},
-    {id:5,text:'Photography',location:'Photography',selected:'Araliya Garden',img:""},
-    {id:6,text:'Sound and Light',location:'SoundAndLight',selected:'Araliya Garden',img:""}]
- 
-  const [todos, setTodos] = useState([...services]);
-
+const TodoList=({event})=> {
+  // console.log(event.event_id);
+  // const {data:viewToDo,error,isLoading}=useViewToDoQuery()
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [todos, setTodos] = useState([]);
+  useEffect(() => {
+    axios.get(`/api/customer/viewToDo?id=${event.event_id}`)
+      .then(response => {
+        const fetchedData = response.data;
+        setData(fetchedData);
   
-  const addTodo = todo => {
+        const services = fetchedData.map(todo => ({
+          id: todo.todo_id,
+          text: todo.todo_service,
+          location: todo.todo_service,
+          selected: 'Araliya Garden',
+          img: 'venue5.jpg'
+        }));
+  
+        setTodos(services);
+  
+        setLoading(false);
+      })
+      .catch(error => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [event.event_id]);
+  
+
+  //   if (services.length === 0) {
+  //     return <div>Loading...</div>;
+  // }
+
+    // console.log(services);
+
+
+ 
+  
+  const [addToDo,{ isLoading: createLoading }]=useAddToDoMutation()
+  console.log(todos);
+  const addTodo = async(todo) => {
+    // console.log(todo.event_id);
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
 
+    const event_id= todo.event_id
+    const todoText = todo.text
+
     const newTodos = [ ...todos,todo];
 
     setTodos(newTodos);
+    try {
+      const res = await addToDo({
+        event_id,
+        todoText
+      
+      }).unwrap()
+      
+    } catch (err) {
+      toast.error(err?.data?.message || err.error)
+    }
     console.log(...todos);
   };
 
@@ -53,7 +100,7 @@ const TodoList=()=> {
   return (
     <>
      
-      <TodoForm onSubmit={addTodo} />
+      <TodoForm onSubmit={addTodo} event={event} />
       <Todo
         todos={todos}
         completeTodo={completeTodo}

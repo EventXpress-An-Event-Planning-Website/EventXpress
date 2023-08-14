@@ -1,21 +1,32 @@
 .package_blogs{
     text-align: center;
-    margin: 2% 10%;
+    margin: 2% 4%;
 }
 
 .pack_holder{
-    width: 80%;
+    width: 100%;
+    height: 10%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.cardDescription{
+    text-align: left;
+}
+
+.btn-btn-primary{
+    border: none;
+    background: none;
+    margin-bottom: 10px;
+}
+
 .view_btn{
-    background: #6D004F;
-    color: white;
     border: none;
     border-radius: 40px;
     width: 100px;
 }
 
-.view_btn:hover{
-    background: #6D004F;
+.view_btn:focus:active{
+    color: #6D004F;
+    background: white;
 }
+

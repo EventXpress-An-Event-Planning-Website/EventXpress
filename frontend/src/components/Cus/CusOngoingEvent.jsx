@@ -4,25 +4,63 @@ import CustomerEventCard from './CustomerEventCard';
 import { Button } from 'react-bootstrap';
 import { useEffect } from 'react';
 
-const CusOngoingEvent = () => {
+const CusOngoingEvent = ({eventData}) => {
 
-    const cuspendingEvent = [
-        {id:1,eventName:'Birthday',date:'2023-08-02', eventDescription:"A birthday is a special and joyous annual celebration that marks the day a person was born. It is a time when friends and family come together to honor and express their love, appreciation, and well-wishes for the individual whose birthday it is. People often celebrate with gifts, parties, cakes, and other festivities, making it a memorable occasion filled with happiness and good wishes for the year ahead.", img:"birthday8.jpg"}
-        
-  ];
-  const cuspendingPublicEvent = [
-    {id:1,eventName:'Raja Kapuru',date:'2023-08-02', eventDescription:"A birthday is a special and joyous annual celebration that marks the day a person was born. It is a time when friends and family come together to honor and express their love, appreciation, and well-wishes for the individual whose birthday it is. People often celebrate with gifts, parties, cakes, and other festivities, making it a memorable occasion filled with happiness and good wishes for the year ahead.", img:"show6.jpg"}
-    
-];
+  const [cusOngoingEvent, setCusOngoingEvent] = useState([]);
+  const [cusOngoingPublicEvent, setCusOngoingPublicEvent] = useState([]);
+
+  // Get the current date
+  const currentDate = new Date();
+  const currentDateString = currentDate.toISOString().split('T')[0];
+      
+      
+  // Filter the eventData array to get events with event_maintype === 'Private'
+  // and event_date is in the future
+  useEffect(() => {
+    if (eventData) {
+      // console.log(eventData);
+      const filteredPrivateEvents = eventData.filter(
+        (event) => event.event_maintype === 'Private' && new Date(event.event_date).toISOString().split('T')[0] === currentDateString
+      );
+      const filteredPublicEvents = eventData.filter(
+        (event) => event.event_maintype === 'Public' && new Date(event.event_date).toISOString().split('T')[0] === currentDateString
+      );
+     
+
+      const privateEvents = filteredPrivateEvents.map((event) => ({
+        id: event.event_id,
+        eventName: event.event_name,
+        eventDescription: event.event_description,
+        img: event.event_img,
+        date: new Date(event.event_date).toISOString().split('T')[0]
+      }));
+
+      const publicEvents = filteredPublicEvents.map((event) => ({
+        id: event.event_id,
+        eventName: event.event_name,
+        eventDescription: event.event_description,
+        img: event.event_img,
+        date:new Date(event.event_date).toISOString().split('T')[0]
+      }));
+      // console.log(privateEvents);
+      // console.log(publicEvents);
+
+      setCusOngoingEvent(privateEvents);
+      setCusOngoingPublicEvent(publicEvents);
+    }
+  }, [eventData]);
+  // console.log(cusOngoingEvent);
+  // console.log(cusOngoingPublicEvent);
+   
   const eventCards =[];
-  for (let i = 0; i < cuspendingEvent.length; i++) {
-    const event= cuspendingEvent[i%cuspendingEvent.length]
+  for (let i = 0; i < cusOngoingEvent.length; i++) {
+    const event= cusOngoingEvent[i%cusOngoingEvent.length]
     eventCards.push(<CustomerEventCard event={event} />)
     
   }
   const publicEventCards =[];
-  for (let i = 0; i < cuspendingPublicEvent.length; i++) {
-    const event1= cuspendingPublicEvent[i%cuspendingPublicEvent.length]
+  for (let i = 0; i < cusOngoingPublicEvent.length; i++) {
+    const event1= cusOngoingPublicEvent[i%cusOngoingPublicEvent.length]
     publicEventCards.push(<CustomerEventCard event={event1} />)
     
   }
@@ -79,20 +117,20 @@ const CusOngoingEvent = () => {
             </div>
           </div>
           <hr></hr>
-          {showPrivateEventCarousel && cuspendingEvent.length > 0 ? (
+          {showPrivateEventCarousel && cusOngoingEvent.length > 0 ? (
               <Carousel showDots responsive={responsive} className='privateEvent'>
                 {eventCards}
               </Carousel>
             ) : (
-            showPrivateEventCarousel && cuspendingEvent.length === 0 && (
+            showPrivateEventCarousel && cusOngoingEvent.length === 0 && (
               <div className='no-events-message'>No private events available.</div>
             )
             )}
-            {!showPrivateEventCarousel && cuspendingPublicEvent.length > 0 ? (
+            {!showPrivateEventCarousel && cusOngoingPublicEvent.length > 0 ? (
               <Carousel showDots responsive={responsive} className='publicEvent'>
                 {publicEventCards}
               </Carousel>
-            ) : (!showPrivateEventCarousel &&cuspendingPublicEvent.length === 0 && (
+            ) : (!showPrivateEventCarousel &&cusOngoingPublicEvent.length === 0 && (
             <div className='no-events-message'>No public events available.</div>
               )
             )}

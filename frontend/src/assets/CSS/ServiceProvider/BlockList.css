@@ -1,0 +1,87 @@
+/* peference and block list */
+
+.allSPList .minus_icon{
+    padding-left: 80px;
+}
+
+.preference_block_list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.left_preference, .right_block{
+    margin: 3%;
+    padding: 2%;
+    width: 45%;
+}
+
+.left_preference{
+    background: rgb(222, 240, 222);
+}
+
+.right_block{
+    background: rgb(240, 234, 234);
+}
+
+/* all service provider list */
+
+.tableContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5% 10%;
+    padding-top: 30px;
+    width: 80%;
+    box-shadow: 0px 10px 10px #ccc;
+    background: #f7e2ee;
+}
+
+.search-header{
+    width: 30%;
+}
+
+.listTable{
+    display: block;
+    overflow: hidden;
+    table-layout: auto;
+    border-collapse: collapse; 
+    white-space: nowrap;
+    max-width: 100%;
+    height: fit-content;
+    max-height: 40vh;
+    margin: 50px 0;
+    overflow-x: auto;
+    overflow-y: scroll;
+}
+
+.listTable::-webkit-scrollbar{
+    display: none;
+}
+
+.listTable th, .listTable td{
+    padding: 0.8rem;
+}
+
+.listTable td{
+    border-bottom: 0.5px solid #bfb4b4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listTable tbody tr:hover{
+    background: #f6f5f5;
+}
+
+.prefeBtn, .blockBtn{
+    width: 160px;
+    margin: 0 30px;
+    border: none;
+}
+
+.prefeBtn:focus:active, .blockBtn:focus:active {
+    color: #6D004F;
+    background: white;
+}
