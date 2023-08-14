@@ -17,7 +17,8 @@ import LoginScreen from './screens/LoginScreen.jsx'
 import RegisterScreen from './screens/RegisterScreen.jsx'
 import RegisterCustomerScreen from './screens/RegisterCustomerScreen.jsx'
 import RegisterServiceProviderScreen from './screens/RegisterServiceProviderScreen.jsx'
-import ProfileScreen from './screens/ProfileScreen.jsx'
+import ProfileScreen from './screens/ServiceProvider/SPprofile.jsx'
+// import ProfileScreen from './screens/ProfileScreen.jsx'
 // import Cus_Home from './screens/Customer/Cus_Home.jsx'
 import CreateEvent from './screens/Customer/createEvent.jsx'
 import CusHome from './components/Cus/CusHome.jsx'
@@ -26,6 +27,9 @@ import Home from './screens/ServiceProvider/Home.jsx'
 import PackageForm from './screens/ServiceProvider/PackageForm.jsx'
 import PackagesView from './screens/ServiceProvider/PackagesView.jsx'
 import PackageFullDetails from './screens/ServiceProvider/PackageFullDetails.jsx'
+import Calendar from './screens/ServiceProvider/Calendar.jsx'
+import PredefinedPrefList from './screens/ServiceProvider/PredefinedPack/PrePrefList.jsx'
+import PredefOneType from './screens/ServiceProvider/PredefinedPack/TypeOne.jsx'
 import AllTicketsPage from './screens/AllTicketsPage.jsx'
 import SellTicketsPage from './screens/SellTicketsPage.jsx'
 import AddTicketsPage from './screens/addTicketsPage.jsx'
@@ -37,7 +41,7 @@ import Catering from "../src/components/Cus/Pages/Catering.jsx";
 import Cake from "../src/components/Cus/Pages/cake.jsx";
 import SoundAndLight from "../src/components/Cus/Pages/SoundAndLight.jsx";
 import Photography from "../src/components/Cus/Pages/Photography.jsx";
-import Entertainment from "../src/components/Cus/Pages/Entertainment.jsx";
+// import Entertainment from "../src/components/Cus/Pages/Entertainment.jsx";
 import StageRentals from "../src/components/Cus/Pages/StageRentals.jsx";
 import Sidebar from './components/Cus/Sidebar.jsx'
 import VenueDes from './components/Cus/Pages/VenueDes.jsx'
@@ -45,6 +49,7 @@ import Birthday from './components/Cus/PrePackages/Birthday.jsx'
 import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
 import AdminScreen from './screens/AdminScreen.jsx'
 import Users from './components/Admin/Users.jsx'
+import BlockList from './screens/ServiceProvider/BlockList.jsx'
 import EmailVerification from './components/EmailVerification.jsx'
 import CheckYourEmail from './screens/CheckYourEmail.jsx'
 import BirthdayDes from './components/Cus/PrePackages/BirthdayDes.jsx'
@@ -62,6 +67,7 @@ import Revenue from './components/Admin/Revenue.jsx'
 import AdminEvents from './components/Admin/AdminEvents.jsx'
 import AdminEventDetails from './components/Admin/AdminEventDetails.jsx'
 
+import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
 
 
 const router = createBrowserRouter(
@@ -123,6 +129,12 @@ const router = createBrowserRouter(
       <Route path="/Revenue" element={<Revenue />} />
       <Route path="/AdminEvents" element={<AdminEvents />} />
       <Route path="/AdminEventDetails" element={<AdminEventDetails />} />
+      <Route path="/ServiceProvider/profile" element={<ProfileScreen />} />
+      <Route path="/ServiceProvider/blockList" element={<BlockList />} />
+      <Route path="/ServiceProvider/preferences" element={<PredefinedPrefList />} />
+      <Route path="/ServiceProvider/calendar" element={<Calendar />} />
+      <Route path="/ServiceProvider/typePack" element={<PredefOneType />} />
+      <Route path="/ServiceProvider/typePacklist" element={<AddtoPre />} />
 
     </Route>
   )

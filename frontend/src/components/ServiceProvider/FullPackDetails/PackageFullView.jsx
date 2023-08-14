@@ -4,10 +4,10 @@ import mainImage from '../../../assets/images/hotel.jpg'
 
 const PackageFullView = () => {
   return (
-    <section id="main_contentinfo" className="main_contentinfo">
+    <div id="main_contentinfo" className="main_contentinfo">
         <Container fluid>
             <Row>
-                <Col><img src={mainImage}/></Col>
+                <Col className='leftContentImg'><img src={mainImage}/></Col>
 
                 <Col sm={6} className='rightcontentinfo'>
                     <h3>Araliya Beach Resort</h3>
@@ -21,7 +21,7 @@ const PackageFullView = () => {
                 </Col>
             </Row>
         </Container>
-    </section>
+    </div>
   )
 }
 

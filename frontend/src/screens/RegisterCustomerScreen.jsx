@@ -160,6 +160,35 @@ const RegisterCustomerScreen = () => {
   //   }
   // }, [navigate, userInfo])
 
+  // const handleNicImageChange = (e) => {
+  //   const file = e.target.files[0]
+  //   setNicImage(file)
+  // }
+  // const handleProfileImageChange = (e) => {
+  //   const file = e.target.files[0]
+  //   setProfileImage(file)
+  // }
+
+  // const uploadImage = async (img) => {
+  //   try {
+  //     if (img) {
+  //       const imageFormData = new FormData();
+  //       imageFormData.append('file', img);
+  //       const response = await uploadSingle(imageFormData)
+  //       if (response && response.data.filename) {
+  //         const imageFilename = response.data.filename;
+  //         return imageFilename;
+  //       } else {
+  //         throw new Error('Error uploading image: Invalid response format');
+  //       }
+  //     }
+  //     return ''; // If no image is provided, return an empty string
+  //   } catch (error) {
+  //     console.error('Error uploading image:', error);
+  //     return ''; // Return an empty string if there is an error during upload
+  //   }
+  // };
+
   const handleNicImageChange = (e) => {
     const file = e.target.files[0]
     setNicImage(file)

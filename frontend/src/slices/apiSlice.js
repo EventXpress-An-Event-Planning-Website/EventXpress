@@ -8,4 +8,4 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({}),
 });
 
-export const { useBaseQuery } = apiSlice; 
+export const { useBaseQuery } = apiSlice;
