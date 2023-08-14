@@ -1,35 +1,27 @@
 .main_contentinfo{
     background: #c4a9c4;
-    padding: 40px;
-    margin: 30px 100px;
+    padding: 3% 0;
+    margin: 3% 10%;
 }
 
-.main_contentinfo img{
-    width: 400px;
-    height: 400px;
+.leftContentImg{
+    margin-top: 5%;
 }
 
-.main_contentinfo .rightcontentinfo{
-    margin-right: 60px;
-}
-
+/* .leftContentImg:hover{
+    transform: scale(0.8) rotate(3deg);
+} */
 
 /* option details */
 
 .option_contentinfo{
     background: #c4a9c4;
-    margin-top: 50px;
-    height: 500px;
-    margin: 10px 100px;
+    margin: 3% 10%;
     padding-top: 50px;
 }
 
 .optionimg{
     height: 100%;
-}
-
-.option_contentinfo .rightoptioninfo{
-    margin-left: 50px;
 }
 
 .rowoption{
@@ -49,12 +41,16 @@
 }
 
 .optiondelete, .optionedit{
-    background: #6D004F;
-    color: white;
     border: none;
     border-radius: 20px;
     padding: 10px;
     width: 100px;
     float: right;
     margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.optiondelete:focus:active, .optionedit:focus:active{
+    color: #6D004F;
+    background: white;
 }

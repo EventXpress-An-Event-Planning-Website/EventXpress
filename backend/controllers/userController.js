@@ -18,8 +18,10 @@ import generateVerificationToken from '../utils/tokenUtils.js'
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
-
+  
   const user = await loginUser(email, password)
+  console.log(user);
+
 
   if (user) {
     generateToken(res, user.id)

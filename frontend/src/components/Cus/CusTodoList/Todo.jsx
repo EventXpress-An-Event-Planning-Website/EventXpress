@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { TiEdit } from 'react-icons/ti';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-regular-svg-icons';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
@@ -42,7 +43,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
           {todo.text}
         </div>
         <div className='icons'>
-          <Link to={`/customer/event/${todo.location}Compare`}>
+          <Link to={`/${todo.location}?packageCount=0`}>
             <FontAwesomeIcon icon={faEye} style={{ color: '#6D004F' }} />
           </Link>
           <RiCloseCircleLine

@@ -10,7 +10,7 @@
 .s-btn{
     background-color:rgb(62, 165, 140);
     border:rgb(62, 165, 140);
-    margin-left: 38%;
+    margin-left: 30%;
 }
 
 .s-btn:hover{
@@ -34,17 +34,24 @@
 /* VenueDes */
 
 .addToEvent-btn{
-    background-color: purple;
-    border: purple;
+    background-color: #6D004F;
+    border: #6D004F;
 }
 
 .addToEvent-btn:hover{
     background-color: rgb(203, 135, 246);
 }
 
+.chat-btn{
+    background-color: #6D004F;
+    border: #6D004F;
+}
 /* Venue.css */
 
-  
+.venueDesImg{
+    width: 400px;
+    height: 250px;
+}
 .custom-col {
     padding: 0px;
     margin: auto -0.5%;
@@ -54,4 +61,16 @@
     overflow-x: hidden;
     margin-right: 0;
 }
+
+/* .imgs-size{
+    width: 1000px;
+    padding-left: -100px;
+}
+
+.details-size{
+    width: 1200px;
+} */
   
+.bullet-list {
+    list-style-type: disc;
+  }

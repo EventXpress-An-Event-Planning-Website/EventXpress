@@ -73,6 +73,32 @@ CREATE TABLE event (
     created_at TIMESTAMP
 );
 
+CREATE TABLE venuepackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255),
+    package_op_title VARCHAR(255), 
+    package_op_des VARCHAR(255), 
+    package_op_count INTEGER, 
+    package_op_area FLOAT, 
+    package_op_type VARCHAR(255)
+)
+
+CREATE TABLE decorationpackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+)
 CREATE TABLE public.todolist
 (
     todo_id integer,
@@ -81,3 +107,46 @@ CREATE TABLE public.todolist
     PRIMARY KEY (todo_id)
 );
 
+CREATE TABLE cakepackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+)
+
+CREATE TABLE cateringpackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+)
+
+CREATE TABLE lightsandsoundspackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+)
+
+CREATE TABLE photographypackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_location VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+)
