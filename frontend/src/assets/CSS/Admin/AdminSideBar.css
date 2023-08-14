@@ -375,6 +375,34 @@
   background-color: #0056b3;
 }
 
+/* //////////////////// */
+.navigation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.content {
+  margin: 0 20px;
+}
+.arrow-button{
+  background-color: #6D004F;
+  color: #fff;
+}
+.arrow-button:hover{
+  background-color: #9D3E83;
+  color: #fff;
+}
+
+.arrow-button:disabled{
+  background-color: #9D3E83;
+  color: #fff;}
+
+  .arrow-button:clicked{
+    background-color: #9D3E83;
+    color: #fff;}
+
 
  @media screen and (max-height: 450px) {
    .sidebar {

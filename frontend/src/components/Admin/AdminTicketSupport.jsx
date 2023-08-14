@@ -75,7 +75,7 @@ function AdminTicketSupport() {
                   me the explanation...
                 </td>
                 <td>
-                  <Link to="/#">
+                  <Link to="/AdminSupportView">
                     <Button
                       variant="primary"
                       className="viewButton"

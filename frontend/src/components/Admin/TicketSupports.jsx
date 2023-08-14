@@ -6,7 +6,7 @@ function TicketSupport() {
   return (
     <div>
       <SideBar value="4" />
-      <AdminTicketSupport />
+      <AdminTicketSupport/>
     </div>
   );
 }

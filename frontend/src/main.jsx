@@ -56,6 +56,7 @@ import CompareVenuePackages from './screens/Customer/CompareVenuePackages.jsx'
 import UsersDetails from './components/Admin/UsersDetails.jsx'
 import TicketSupports from './components/Admin/TicketSupports.jsx'
 import AdminSupportView from './components/Admin/AdminSupportView.jsx'
+import Revenue from './components/Admin/Revenue.jsx'
 
 
 
@@ -112,6 +113,7 @@ const router = createBrowserRouter(
       <Route path="/UsersDetails" element={<UsersDetails />} />
       <Route path="/TicketSupports" element={<TicketSupports />} />
       <Route path="/AdminSupportView" element={<AdminSupportView />} />
+      <Route path="/Revenue" element={<Revenue />} />
 
     </Route>
   )

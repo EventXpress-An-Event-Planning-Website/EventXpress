@@ -4,6 +4,7 @@ import { HiOutlineUsers } from "react-icons/hi";
 import { BiMessageAlt } from "react-icons/bi";
 import { BiDollar } from "react-icons/bi";
 import { BiHomeAlt2 } from "react-icons/bi";
+import { BiPackage } from "react-icons/bi";
 import { GoStack } from "react-icons/go";
 import { IoIosLogOut } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -52,6 +53,12 @@ function SideBar(props) {
                 <BiHomeAlt2 size={25} />
               </span>
               Events
+            </a>
+            <a href="#contact">
+              <span className="iconSize">
+                <BiPackage size={25} />
+              </span>
+              Package Request
             </a>
             <div className="logOut">
               <a href="#contact">
@@ -370,6 +377,12 @@ function SideBar(props) {
                 <BiHomeAlt2 size={25} />
               </span>
               Events
+            </a>
+            <a href="#contact">
+              <span className="iconSize">
+                <BiPackage size={25} />
+              </span>
+              Package Request
             </a>
             <div className="logOut">
               <a href="#contact">
