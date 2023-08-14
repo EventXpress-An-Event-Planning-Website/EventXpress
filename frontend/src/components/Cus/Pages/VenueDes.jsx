@@ -15,19 +15,33 @@ import venue5 from '../../../assets/images/venue5.jpg';
 import venue6 from '../../../assets/images/venue6.jpg';
 import venue7 from '../../../assets/images/venue7.jpg';
 import venue8 from '../../../assets/images/venue8.jpg';
+import { useLocation } from "react-router-dom";
+import { Modal } from "react-bootstrap";
 
-const Catering = () => {
+const VenueDes = () => {
 
+    const location = useLocation()
+    const [showModal, setShowModal] = useState(false)
+    const queryParams = new URLSearchParams(location.search);
+    const event_id= queryParams.get('event_id')
     const [dropDown,setdropDown] = useState('Dropdown Button')
-
+    console.log(event_id);
     const setHallName =(name)=>{
         setdropDown(name)
     }
+    const openModal = () => {
+        setShowModal(true)
+      }
+    
+      const closeModal = () => {
+        setShowModal(false)
+      }
 
+    
     return (
         <>
             <div style={{ "display": "flex" }}>
-                <Sidebar />
+            {event_id === null ? <Sidebar /> :null}
                 <Container>
                     <Row>
                         <Col>
@@ -39,9 +53,13 @@ const Catering = () => {
                                 <Image src={venue6} thumbnail />
                             </Col>
                             <br />
-                            <Link to={`/customer/eventdetails`}>
-                            <Button className="addToEvent-btn" variant="primary" size="lg">Add to Event</Button>{' '}
+                            {event_id !== null ? 
+                            <Link to={`/customer/event/VenueCompare`}>
+                            <Button className="addToEvent-btn" variant="primary" size="lg">Add to Compare</Button>{' '}
                             </Link>
+                            :
+                            <Button onClick={openModal} className="addToEvent-btn" variant="primary" size="lg">Add to Compare</Button>
+                            }
 
                             <Link to={`/ChatDes`}>
                             <Button variant="success" size="lg"><FaWhatsapp />Chat</Button>{' '}
@@ -108,10 +126,27 @@ const Catering = () => {
 
                 </Container >
             </div >
+            <Modal show={showModal} onHide={closeModal}>
+                <Modal.Header closeButton>
+                  <Modal.Title>EventXpree Policy</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Before You Select a Package Please Create An Event</p>
+                    <Link to={`/customer/myEvents`}>
+                        <Button className="addToEvent-btn" variant="primary" size="lg">Create Event</Button>{' '}
+                    </Link>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={closeModal}>
+                    Close
+                  </Button>
+                </Modal.Footer>
+            </Modal>
+            
         </>
     );
 };
 
 
 
-export default Catering;
+export default VenueDes;

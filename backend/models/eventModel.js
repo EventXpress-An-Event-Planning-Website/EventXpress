@@ -29,7 +29,7 @@ const createEvent = asyncHandler(
     ])
 
     if (createUser.rowCount > 0) {
-      console.log(createUser.raws);
+      // console.log(createUser.raws);
       return createUser.rows
     }
     else {
@@ -51,7 +51,7 @@ const addToDo = asyncHandler(
       event_id,
       todoText
     ])
-    console.log(todo);
+    // console.log(todo);
     if (todo.rowCount > 0) {
       // console.log(todo.raws);
       return todo.rows
@@ -65,10 +65,10 @@ const addToDo = asyncHandler(
 )
 
 const viewToDo = asyncHandler(
-  async () => {
-    // console.log(todoText);
-    const viewToDoQuery = `SELECT * FROM todolist`
-    const viewtTodo = await query(viewToDoQuery, [])
+  async (event_id) => {
+    // console.log(event_id);
+    const viewToDoQuery = `SELECT * FROM todolist WHERE event_id=$1`
+    const viewtTodo = await query(viewToDoQuery, [event_id])
     return viewtTodo
   }
 )
@@ -77,7 +77,7 @@ const eventdetails = asyncHandler(
   async () => {
     const eventQuery = `SELECT * FROM public.event`
     const result = await query(eventQuery, [])
-    console.log(result);
+    // console.log(result);
     return result
 
   })
@@ -87,7 +87,7 @@ const getEventdetails = asyncHandler(
   async (event_id) => {
     const viewEventDetailsQuery = `SELECT * FROM public.event WHERE event_id=$1`
     const explicitEventData = await query(viewEventDetailsQuery, [event_id])
-    console.log(explicitEventData);
+    // console.log(explicitEventData);
     return explicitEventData.rows
   }
 )

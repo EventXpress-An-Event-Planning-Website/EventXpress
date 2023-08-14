@@ -1,10 +1,20 @@
 import React from 'react'
 import { Button } from 'react-bootstrap';
 import ViewPackagesCarrousal from '../../components/Cus/ViewPackagesCarrousal';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const CompareVenuePackages = () => {
 
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search);
+    const event_id= queryParams.get('event_id')
     const package1 =[{id:1, imag:"birthday1.jpg",location:"Galle",}];
+    const navigate = useNavigate();
+
+    const handleAddPackage =(event_id)=>{
+        navigate(`/customer/event/Venue?event_id=${event_id}`)
+    }
   return (
     <>
 
@@ -16,13 +26,13 @@ const CompareVenuePackages = () => {
                 <tr className='compare-table-row'>
                     <th className='compare-table-header'>Package</th>
                     <td className='compare-table-data'>
-                        <Button>Add Package To Compare</Button>
+                        <Button onClick={()=>handleAddPackage(event_id)}>Add Package To Compare</Button>
                     </td>
                     <td className='compare-table-data'>
-                        <Button>Add Package To Compare</Button>
+                        <Button onClick={()=>handleAddPackage(event_id)}>Add Package To Compare</Button>
                     </td>
                     <td className='compare-table-data'>
-                        <Button>Add Package To Compare</Button>
+                        <Button onClick={()=>handleAddPackage(event_id)}>Add Package To Compare</Button>
                     </td>
                 </tr>
                 <tr className='compare-table-row'>

@@ -7,6 +7,7 @@ import { faEye } from '@fortawesome/free-regular-svg-icons';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import celebrationImage from '../../../assets/images/celebration.jpg';
 import { Link } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 
 
 const Todo = ({event_id, todos, completeTodo, removeTodo, updateTodo }) => {
@@ -14,6 +15,7 @@ const Todo = ({event_id, todos, completeTodo, removeTodo, updateTodo }) => {
     id: null,
     value: ''
   });
+  console.log(event_id);
   const [showDetailsId, setShowDetailsId] = useState(null); 
 
   const submitUpdate = value => {
@@ -42,7 +44,7 @@ const Todo = ({event_id, todos, completeTodo, removeTodo, updateTodo }) => {
           {todo.text}
         </div>
         <div className='icons'>
-          <Link to={`/customer/event/${todo.location}Compare`}>
+          <Link to={`/customer/event/${todo.location}?event_id=${event_id}`}>
             <FontAwesomeIcon icon={faEye} style={{ color: '#6D004F' }} />
           </Link>
           <RiCloseCircleLine
@@ -50,11 +52,11 @@ const Todo = ({event_id, todos, completeTodo, removeTodo, updateTodo }) => {
             className='delete-icon'
             style={{color: "#6D004F"}}
           />
-          <TiEdit
+          {/* <TiEdit
             onClick={() => setEdit({ id: todo.id, value: todo.text })}
             className='edit-icon'
             style={{color: "#6D004F"}}
-          />
+          /> */}
           <div className='view-details' onClick={() => toggleDetails(todo.id)}>
             <FontAwesomeIcon icon={faCaretDown} style={{ color: '#6D004F' }} />
           </div>
@@ -69,9 +71,12 @@ const Todo = ({event_id, todos, completeTodo, removeTodo, updateTodo }) => {
               <img src={`../../src/assets/images/${todo.img}`} />
             </div>
             {todo.selected}
+            <span style={{color:'green',marginLeft:'75px'}}>pending</span>
           </div>
       </div>
       )}
+      
+      
     </div>
   ));
 };
