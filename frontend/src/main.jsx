@@ -47,7 +47,6 @@ import Sidebar from './components/Cus/Sidebar.jsx'
 import VenueDes from './components/Cus/Pages/VenueDes.jsx'
 import Birthday from './components/Cus/PrePackages/Birthday.jsx'
 import BlockList from './screens/ServiceProvider/BlockList.jsx'
-import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
 import EmailVerification from './components/EmailVerification.jsx'
 import CheckYourEmail from './screens/CheckYourEmail.jsx'
 import BirthdayDes from './components/Cus/PrePackages/BirthdayDes.jsx'
@@ -116,9 +115,6 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/calendar" element={<Calendar />} />
       <Route path="/ServiceProvider/typePack" element={<PredefOneType />} />
       <Route path="/ServiceProvider/typePacklist" element={<AddtoPre />} />
-   
-      <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} />
-
 
     </Route>
   )

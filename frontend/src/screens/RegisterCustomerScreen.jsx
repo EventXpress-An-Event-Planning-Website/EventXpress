@@ -160,34 +160,34 @@ const RegisterCustomerScreen = () => {
   //   }
   // }, [navigate, userInfo])
 
-  const handleNicImageChange = (e) => {
-    const file = e.target.files[0]
-    setNicImage(file)
-  }
-  const handleProfileImageChange = (e) => {
-    const file = e.target.files[0]
-    setProfileImage(file)
-  }
+  // const handleNicImageChange = (e) => {
+  //   const file = e.target.files[0]
+  //   setNicImage(file)
+  // }
+  // const handleProfileImageChange = (e) => {
+  //   const file = e.target.files[0]
+  //   setProfileImage(file)
+  // }
 
-  const uploadImage = async (img) => {
-    try {
-      if (img) {
-        const imageFormData = new FormData();
-        imageFormData.append('file', img);
-        const response = await uploadSingle(imageFormData)
-        if (response && response.data.filename) {
-          const imageFilename = response.data.filename;
-          return imageFilename;
-        } else {
-          throw new Error('Error uploading image: Invalid response format');
-        }
-      }
-      return ''; // If no image is provided, return an empty string
-    } catch (error) {
-      console.error('Error uploading image:', error);
-      return ''; // Return an empty string if there is an error during upload
-    }
-  };
+  // const uploadImage = async (img) => {
+  //   try {
+  //     if (img) {
+  //       const imageFormData = new FormData();
+  //       imageFormData.append('file', img);
+  //       const response = await uploadSingle(imageFormData)
+  //       if (response && response.data.filename) {
+  //         const imageFilename = response.data.filename;
+  //         return imageFilename;
+  //       } else {
+  //         throw new Error('Error uploading image: Invalid response format');
+  //       }
+  //     }
+  //     return ''; // If no image is provided, return an empty string
+  //   } catch (error) {
+  //     console.error('Error uploading image:', error);
+  //     return ''; // Return an empty string if there is an error during upload
+  //   }
+  // };
 
   const handleNicImageChange = (e) => {
     const file = e.target.files[0]
@@ -246,14 +246,9 @@ const RegisterCustomerScreen = () => {
         profileImage: profileImageFilename,
         nicImage: nicImageFilename,
       }).unwrap()
-<<<<<<< HEAD
-      dispatch(setCredentials({ ...res }))
-      navigate('/login')
-=======
       // dispatch(setCredentials({ ...res }))
       toast.success('Please verify your email to continue');
       navigate(`/checkYourEmail`)
->>>>>>> 5e01d889b86a8684d849a5db531b6f4b669979b5
     } catch (err) {
       toast.error(err?.data?.message || err.error)
     }
