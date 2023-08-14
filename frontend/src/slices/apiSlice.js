@@ -1,23 +1,11 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { uploadApiSlice } from './uploadApiSlice.js'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-
-const baseQuery = fetchBaseQuery({ baseUrl: '' })
+const baseQuery = fetchBaseQuery({ baseUrl: '' });
 
 export const apiSlice = createApi({
   baseQuery,
   tagTypes: ['User'],
   endpoints: (builder) => ({}),
-})
+});
 
-// Inject the upload endpoints from uploadApiSlice
-apiSlice.injectEndpoints({
-  endpoints: (builder) => ({
-    ...uploadApiSlice.endpoints,
-  }),
-})
-
-export const { useBaseQuery } = apiSlice // You can add other exported hooks as needed
-
-export const { useUploadSingleMutation, useUploadMultipleMutation } =
-  uploadApiSlice
+export const { useBaseQuery } = apiSlice; 

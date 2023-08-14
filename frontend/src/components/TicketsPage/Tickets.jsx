@@ -72,7 +72,7 @@ const Tickets = () => {
       title: 'Ticket 6',
       image: image6,
       date: '2023-07-30',
-      time: '15:00',
+      time: '15:00', 
       venue: 'Some Venue 6',
       price: 2000,
       description:

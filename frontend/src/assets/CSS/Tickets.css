@@ -86,14 +86,14 @@
 }
 
 /* TicketFilter.css  */
-.filter-container {
+.ticket-filter-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px 0;
 }
 
-.filter-container select {
+.ticket-filter-container select {
   background-color: #6d004f;
   color: white;
   padding: 8px 12px;
@@ -101,12 +101,12 @@
   border-radius: 4px;
 }
 
-.filter-container select option:checked {
+.ticket-filter-container select option:checked {
   background-color: #6d004f;
   color: white;
 }
 
-.filter-container input[type='text'] {
+.ticket-filter-container input[type='text'] {
   background-color: rgba(50, 220, 246, 0.212);
   padding: 8px 12px;
   border: none;
@@ -115,12 +115,23 @@
   flex: 1;
 }
 
-.filter-container select::-ms-expand {
+.ticket-filter-container select::-ms-expand {
   display: none;
 }
 
-.filter-container select::before {
+.ticket-filter-container select::before {
   content: none;
+}
+
+.ticket-sort-by-date {
+  display: flex;
+  font-size: 1rem;
+}
+
+.ticket-sort-label {
+  margin: 0 0.5rem 0 3rem;
+  background-color: aliceblue;
+  padding: 0.5rem;
 }
 
 .ticket-custom-row {
@@ -138,6 +149,7 @@
 }
 
 .ticket-card {
+  background-color: rgba(240, 236, 245, 0.881);
   padding: 2rem;
 }
 
@@ -196,7 +208,7 @@
 .ticket-status-card {
   display: flex;
   flex-direction: row;
-  background-color: #FFF4FF;
+  background-color: #fff4ff;
   border: 1px solid #e9ecef;
   border-radius: 8px;
   margin: 1.2rem;
@@ -238,7 +250,6 @@
     font-size: 1rem;
   }
 }
-
 
 .ticket-status-row span:nth-child(2) {
   font-weight: bold;
@@ -332,7 +343,7 @@
 
 @media (max-width: 991px) {
   .registration-image {
-    display: none; 
+    display: none;
   }
 
   .registration-left-side {
@@ -344,12 +355,11 @@
   }
 }
 
-
 /* Ticket info */
 .ticket-info-container {
-  background-color: #FFF4FF;
+  background-color: #fff4ff;
   display: flex;
-  align-items: flex-start; 
+  align-items: flex-start;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
   margin: 2rem;
   padding: 1rem;
@@ -387,49 +397,49 @@
   }
 
   .ticket-info-image {
-    margin-right: 0; 
+    margin-right: 0;
   }
 
   .ticket-info-image img {
-    width: 100%; 
+    width: 100%;
   }
 
   .ticket-info-content h2 {
     margin-top: 1rem;
-    font-size: 1rem; 
+    font-size: 1rem;
   }
 
   .ticket-info-content p {
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
   }
 }
 
-@media (max-width: 991px){
+@media (max-width: 991px) {
   .ticket-info-container {
     flex-direction: column;
   }
 
   .ticket-info-image {
-    margin-right: 0; 
+    margin-right: 0;
   }
 
   .ticket-info-image img {
-    width: 100%; 
+    width: 100%;
   }
 
   .ticket-info-content h2 {
     margin-top: 1rem;
-    font-size: 1.2rem; 
+    font-size: 1.2rem;
   }
 
   .ticket-info-content p {
-    font-size: 1rem; 
+    font-size: 1rem;
   }
 }
 
-.confirmed-ticket-info-container {  
+.confirmed-ticket-info-container {
   margin: 2rem;
-  background-color: #FFF4FF;
+  background-color: #fff4ff;
   padding: 1rem;
   color: white;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
@@ -450,10 +460,9 @@
   background-color: #6d004f;
   color: white;
   display: flex;
-  align-items: center; 
+  align-items: center;
   border-radius: 4px 0 0 4px;
 }
-
 
 .confirmed-ticket-info-details {
   font-size: 1.2rem;
@@ -469,7 +478,7 @@
   font-size: 1rem;
 }
 
-.confirmed-ticket-info-total{
+.confirmed-ticket-info-total {
   display: flex;
   justify-content: space-between;
   text-align: left;
@@ -478,22 +487,22 @@
   color: #6d004f;
 }
 
-.confirmed-ticket-pay-button{
+.confirmed-ticket-pay-button {
   font-size: 1.2rem;
   width: 150px;
   border-radius: 20px;
-  color:white;
+  color: white;
   background-color: #6d004f;
 }
 
-.confirmed-ticket-pay-button:hover{
-  transform: scale(1.1)
+.confirmed-ticket-pay-button:hover {
+  transform: scale(1.1);
 }
 
 @media (min-width: 1024px) {
   .confirmed-ticket-info-wrapper {
     width: 50%;
-    margin: 0 auto; 
+    margin: 0 auto;
   }
 }
 
@@ -507,11 +516,31 @@
     font-size: 0.8rem;
   }
 
-  .confirmed-ticket-info-total{
+  .confirmed-ticket-info-total {
     font-size: 0.9rem;
   }
 
-  .confirmed-ticket-pay-button{
+  .confirmed-ticket-pay-button {
     width: 80px;
   }
+}
+
+/* TicketSortByDate.css */
+
+.date-input-container label {
+  background-color: #6d004f;
+  color: white;
+  padding: 8px 12px;
+  margin-left: 2rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-input-container .date-input {
+  background-color: #e6f1fb;
+  padding: 8px 12px;
 }

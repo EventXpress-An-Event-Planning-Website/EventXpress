@@ -4,6 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import Pagination from 'react-bootstrap/Pagination';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useViewPackageQuery } from "../../../slices/viewPackageSlice";
 
 import venue1 from '../../../assets/images/venue1.jpg';
 import venue2 from '../../../assets/images/venue2.jpg';
@@ -16,6 +19,22 @@ import venue8 from '../../../assets/images/venue8.jpg';
 
 const Venue = () => {
 
+    const { data: packageData, error, isLoading } = useViewPackageQuery();
+
+    console.log(isLoading)
+    useEffect(() => {
+        if (error) {
+          console.error('Error fetching packages:', error);
+        }
+
+    }, [error]);
+
+
+    useEffect(()=>{
+        if(!isLoading) {
+            console.log(packageData);
+        }
+    }, [isLoading])
     const venuesData = [
         {
             id: 1,

@@ -43,6 +43,22 @@ CREATE TABLE serviceProvider (
     subscribedDate DATE DEFAULT NULL
 );
 
+ALTER SEQUENCE serviceProvider_id_seq RESTART WITH 10000;
+
+ALTER TABLE serviceProvider
+    ALTER COLUMN id SET DEFAULT nextval('serviceProvider_id_seq');
+
+ALTER TABLE serviceProvider
+ADD COLUMN businessRegImage VARCHAR(255);
+
+ALTER TABLE customer
+ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
+ADD COLUMN verificationToken VARCHAR(255);
+
+-- For the "serviceprovider" table
+ALTER TABLE serviceProvider
+ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
+ADD COLUMN verificationToken VARCHAR(255);
 
 CREATE TABLE event (
     event_id SERIAL PRIMARY KEY,
@@ -57,5 +73,11 @@ CREATE TABLE event (
     created_at TIMESTAMP
 );
 
-
+CREATE TABLE public.todolist
+(
+    todo_id integer,
+    event_id integer,
+    todo_service text,
+    PRIMARY KEY (todo_id)
+);
 
