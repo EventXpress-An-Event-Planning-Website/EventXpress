@@ -127,6 +127,7 @@ const router = createBrowserRouter(
       <Route path="/Revenue" element={<Revenue />} />
       <Route path="/AdminEvents" element={<AdminEvents />} />
       <Route path="/AdminEventDetails" element={<AdminEventDetails />} />
+      {/* admin routes ends */}
       <Route path="/ServiceProvider/profile" element={<ProfileScreen />} />
       <Route path="/ServiceProvider/blockList" element={<BlockList />} />
       <Route path="/ServiceProvider/preferences" element={<PredefinedPrefList />} />

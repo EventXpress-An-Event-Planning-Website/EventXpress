@@ -12,21 +12,21 @@
    display: block;
    color: #ffffff;
    padding: 20px;
-   width: 300px;
+   width: 100%;
    text-decoration: none;
  }
 
  .sidebar a:hover {
    background-color: #ffffff;
    color: #9D3E83;
-   width: 300px;
+   width: 100%;
    margin-left: 0px;
  }
 
  .sidebar a.active {
    background-color: #ffffff;
    color: #9D3E83;
-   width: 300px;
+   width: 100%;
    margin-left: 0px;
  }
 
@@ -34,21 +34,21 @@
    display: block;
    color: #ffffff;
    padding: 20px;
-   width: 300px;
+   width: 100%;
    text-decoration: none;
  }
 
  .Link a:hover {
    background-color: #ffffff;
    color: #9D3E83;
-   width: 300px;
+   width: 100%;
    margin-left: 0px;
  }
 
  .Link a.active {
    background-color: #ffffff;
    color: #9D3E83;
-   width: 228px;
+   width: 100%;
    margin-left: 0px;
  }
 

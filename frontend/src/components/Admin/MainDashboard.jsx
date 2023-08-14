@@ -92,10 +92,11 @@ const MainDashboard = () => {
               <Bar dataKey="Income" fill="#6D004F" />
             </BarChart>
           </ResponsiveContainer>
-
-          <Button variant="primary" className="ticketButton">
-            View
-          </Button>
+          <Link to="/Revenue">
+            <Button variant="primary" className="ticketButton">
+              View
+            </Button>
+          </Link>
         </div>
         <div className="topLeftTickets">
           <div className="ticketsTopic">
@@ -141,17 +142,17 @@ const MainDashboard = () => {
           <tr className="tableRow">
             <td className="tableContent">Bron to shine</td>
             <td className="tableContent">501</td>
-            <td className="tableContent">18,890,200</td>
+            <td className="tableContent">8,890,200</td>
           </tr>
           <tr className="tableRow">
             <td className="tableContent">Bawaal</td>
             <td className="tableContent">222</td>
-            <td className="tableContent">2,345,190</td>
+            <td className="tableContent">345,190</td>
           </tr>
           <tr className="tableRow">
             <td className="tableContent">Black Pink</td>
             <td className="tableContent">450</td>
-            <td className="tableContent">10,445,521</td>
+            <td className="tableContent">445,521</td>
           </tr>
         </table>
       </div>

@@ -25,6 +25,7 @@ function AdminEventsMain() {
             <td className="userTableContent">750</td>
             <td className="userTableContent">650000</td>
             <td>
+              <Link to='/AdminEventDetails'>
               <Button
                 variant="primary"
                 style={{
@@ -35,6 +36,7 @@ function AdminEventsMain() {
               >
                 View
               </Button>
+              </Link>
             </td>
           </tr>
           <tr className="tableRow">
@@ -44,8 +46,9 @@ function AdminEventsMain() {
             <td className="userTableContent">750</td>
             <td className="userTableContent">650000</td>
             <td>
+            <Link to='/AdminEventDetails'>
               <Button
-                variant="primary" size="sm"
+                variant="primary"
                 style={{
                   backgroundColor: "#6D004F",
                   marginLeft: "10px",
@@ -54,6 +57,7 @@ function AdminEventsMain() {
               >
                 View
               </Button>
+              </Link>
             </td>
           </tr>
         </table>
