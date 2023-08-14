@@ -9,7 +9,7 @@ function AdminEventsMain() {
       <h2 className="title">Ticket Selling Events</h2>
 
       <div>
-        <table className="table" style={{width:'95%',marginLeft:'10px'}}>
+        <table className="table" style={{ width: "95%", marginLeft: "10px" }}>
           <tr>
             <th className="eventTableTh">Event Name</th>
             <th className="eventTableTh">Event Date</th>
@@ -19,39 +19,41 @@ function AdminEventsMain() {
             <th></th>
           </tr>
           <tr className="tableRow">
-            <td className="userTableContent">
-            A Night at the Opera Tour
-            </td>
+            <td className="userTableContent">A Night at the Opera Tour</td>
             <td className="userTableContent"> 09.12.2023 </td>
-            <td className="userTableContent">
-             400
-            </td>
-            <td className="userTableContent">
-             750
-            </td>
-            <td className="userTableContent">
-             650000
-            </td>
+            <td className="userTableContent">400</td>
+            <td className="userTableContent">750</td>
+            <td className="userTableContent">650000</td>
             <td>
-             <Button variant="primary" style={{backgroundColor:'#6D004F',marginLeft:'10px',color:'white'}}>View</Button>
+              <Button
+                variant="primary"
+                style={{
+                  backgroundColor: "#6D004F",
+                  marginLeft: "10px",
+                  color: "white",
+                }}
+              >
+                View
+              </Button>
             </td>
           </tr>
           <tr className="tableRow">
-            <td className="userTableContent">
-            A Night at the Opera Tour
-            </td>
+            <td className="userTableContent">A Night at the Opera Tour</td>
             <td className="userTableContent"> 09.12.2023 </td>
-            <td className="userTableContent">
-             400
-            </td>
-            <td className="userTableContent">
-             750
-            </td>
-            <td className="userTableContent">
-             650000
-            </td>
+            <td className="userTableContent">400</td>
+            <td className="userTableContent">750</td>
+            <td className="userTableContent">650000</td>
             <td>
-             <Button variant="primary" style={{backgroundColor:'#6D004F',marginLeft:'10px',color:'white'}}>View</Button>
+              <Button
+                variant="primary" size="sm"
+                style={{
+                  backgroundColor: "#6D004F",
+                  marginLeft: "10px",
+                  color: "white",
+                }}
+              >
+                View
+              </Button>
             </td>
           </tr>
         </table>
