@@ -81,7 +81,7 @@ const Catering = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
-
+                <h1 className="pckg-name">Catering Packages</h1>
                     {cateringsData.map((catering) => (
                         <div className="col-md-3 custom-col" key={catering.id}>
 
@@ -90,8 +90,8 @@ const Catering = () => {
                                 <Card.Body>
                                     <Card.Title className="s-main-title">{catering.title}</Card.Title>
                                     <Card.Text className="s-text">{catering.text}</Card.Text>
-                                    <Link to={`/cateringDes`}>
-                                    <Button className="s-btn" variant="primary">Select</Button>
+                                    <Link to={`/CateringDes`}>
+                                    <Button className="s-btn" variant="primary">Read More</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>

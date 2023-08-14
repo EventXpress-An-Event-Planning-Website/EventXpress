@@ -13,7 +13,7 @@ const CustomerEventDetails = () => {
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search);
     const event_id= queryParams.get('id')
-    console.log(event_id);
+    // console.log(event_id);
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);

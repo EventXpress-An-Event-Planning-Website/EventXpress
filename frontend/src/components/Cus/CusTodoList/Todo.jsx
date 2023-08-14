@@ -42,7 +42,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
           {todo.text}
         </div>
         <div className='icons'>
-          <Link to={`/customer/event/${todo.location}Compare`}>
+          <Link to={`/${todo.location}?packageCount=0`}>
             <FontAwesomeIcon icon={faEye} style={{ color: '#6D004F' }} />
           </Link>
           <RiCloseCircleLine

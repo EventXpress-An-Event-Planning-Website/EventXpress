@@ -34,7 +34,7 @@ import CusVenue from './components/Cus/CusVenue.jsx'
 import Venue from "../src/components/Cus/Pages/Venue.jsx";
 import Decoration from "../src/components/Cus/Pages/Decoration.jsx";
 import Catering from "../src/components/Cus/Pages/Catering.jsx";
-import Cake from "../src/components/Cus/Pages/cake.jsx";
+import Cake from "../src/components/Cus/Pages/Cake.jsx";
 import SoundAndLight from "../src/components/Cus/Pages/SoundAndLight.jsx";
 import Photography from "../src/components/Cus/Pages/Photography.jsx";
 import Entertainment from "../src/components/Cus/Pages/Entertainment.jsx";
@@ -51,7 +51,12 @@ import Anniversary from './components/Cus/PrePackages/Anniversary.jsx'
 import Social from './components/Cus/PrePackages/Social.jsx'
 import CustomerProfile from './screens/Customer/CustomerProfile.jsx'
 import CompareVenuePackages from './screens/Customer/CompareVenuePackages.jsx'
-
+import DecorationDes from './components/Cus/Pages/DecorationDes.jsx'
+import CateringDes from './components/Cus/Pages/CateringDes.jsx'
+import CakeDes from './components/Cus/Pages/CakeDes.jsx'
+import SoundAndLightDes from './components/Cus/Pages/SoundAndLightDes.jsx'
+import PhotographyDes from './components/Cus/Pages/PhotographyDes.jsx'
+import StageRentalsDes from './components/Cus/Pages/StageRentalsDes.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -84,6 +89,13 @@ const router = createBrowserRouter(
         {/* <Route path="/Entertainment" element={<Entertainment />} /> */}
         <Route path="/StageRentals" element={<StageRentals />} />
         <Route path="/VenueDes" element={<VenueDes />} />
+        <Route path="/DecorationDes" element={<DecorationDes />} />
+        <Route path="/CateringDes" element={<CateringDes />} />
+        <Route path="/CakeDes" element={<CakeDes />} />
+        <Route path="/SoundAndLightDes" element={<SoundAndLightDes />} />
+        <Route path="/PhotographyDes" element={<PhotographyDes />} />
+        <Route path="/StageRentalsDes" element={<StageRentalsDes />} />
+
         <Route path="/Birthday" element={<Birthday/>}/>
         <Route path="/BirthdayDes" element={<BirthdayDes/>}/>
         <Route path="/BrideToBe" element={<BrideToBe/>}/>
