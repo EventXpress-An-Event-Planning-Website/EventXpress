@@ -69,27 +69,30 @@ const SellTicketForm = () => {
         <div className="sell-ticket-left-side"></div>
         <div className="sell-ticket-right-side"> </div>
         <div className="sell-ticket-form-wrapper">
-          <div className="sell-ticket-header-container">
-            <h2>Fill the form to sell your tickets</h2>
-          </div>
-          <h3>Enter event details</h3>
-          <Form.Group className="my-2" controlId="eventCategory">
-            <Form.Label>Event category</Form.Label>
-            <Form.Control
-              as="select"
-              value={selectedCategory}
-              autoFocus
-              onChange={(e) => setSelectedCategory(e.target.value)}
-            >
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </Form.Control>
-          </Form.Group>
 
           <Form onSubmit={submitHandler}>
+            
+            <div className="sell-ticket-header-container">
+              <h2>Fill the form to sell your tickets</h2>
+            </div>
+            <h3>Enter event details</h3>
+
+            <Form.Group className="my-2" controlId="eventCategory">
+              <Form.Label>Event category</Form.Label>
+              <Form.Control
+                as="select"
+                value={selectedCategory}
+                autoFocus
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+
             <Form.Group className="my-2" controlId="eventTitle">
               <Form.Label>Event title*</Form.Label>
               <Form.Control
