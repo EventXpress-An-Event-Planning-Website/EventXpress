@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import img1 from '../../assets/images/hotel.jpg';
-import img2 from '../../assets/images/img4.jpg';
-import img3 from '../../assets/images/img5.avif';
+import img2 from '../../assets/images/cake4.jpg';
+import img3 from '../../assets/images/anniversary1.jpg';
 
 const blogData = [
   {
@@ -16,7 +16,7 @@ const blogData = [
   {
     id: 2,
     image: img2,
-    title: 'Citrus Hikkaduwa',
+    title: 'Fruit Cake',
     description:
       'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae repudiandae nisi sunt, quis error cumque tempore, recusandae illo ducimus dolor commodi non iste itaque soluta iusto laboriosam sint in cum?',
   },

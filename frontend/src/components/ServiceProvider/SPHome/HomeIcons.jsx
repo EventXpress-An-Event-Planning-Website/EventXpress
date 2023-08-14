@@ -9,7 +9,7 @@ const HomeIcons = () => {
       <Row>
         <Col>
           <a href="/ServiceProvider/packageForm" className='icon'><FaPlus /></a>
-          <h4>Create Packages</h4>
+          <h4>Create Normal or Predefined Packages</h4>
         </Col>
 
         {/* <Col>

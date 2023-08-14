@@ -1,6 +1,6 @@
 /* peference and block list */
 
-.right_block .allSPList .minus_icon{
+.allSPList .minus_icon{
     padding-left: 80px;
 }
 
@@ -39,37 +39,8 @@
     background: #f7e2ee;
 }
 
-/* .busSearch{
-    justify-content: right; 
-} */
-
-/* .search-header {
-    display: flex;
-    margin-left: 50%;
-}
-
-.search-text {
-    margin-right: 10%;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
-
-/* #search-box {
-    height: 30px;
-    width: 20%;
-    border-radius: 5px;
-} */
-
-/* #search-box[placeholder] {
-    line-height: 25px;
-    font-size: 25px;
-} */
-
 .search-header{
     width: 30%;
-    
 }
 
 .listTable{

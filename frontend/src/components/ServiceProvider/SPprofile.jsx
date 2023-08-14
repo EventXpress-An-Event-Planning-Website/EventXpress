@@ -1,16 +1,43 @@
-// import React from 'react'
+import {useState, useEffect} from 'react'
 import { Row,Col, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 import profile from '../../assets/images/default_profile.webp'
-import hot1 from '../../assets/images/hot1.jpg'
-import hot2 from '../../assets/images/hot2.webp'
-import hot3 from '../../assets/images/hot3.jpg'
-import hot4 from '../../assets/images/hot4.jpg'
+// import hot1 from '../../assets/images/hot1.jpg'
+// import hot2 from '../../assets/images/hot2.webp'
+// import hot3 from '../../assets/images/hot3.jpg'
+// import hot4 from '../../assets/images/hot4.jpg'
 import SPSidebar from "../ServiceProvider/SPSidebar";
 import { useSelector } from 'react-redux'
+import axios from 'axios';
 
 const SPprofile = () => {
   const { userInfo } = useSelector((state) => state.auth)
+  const [userData, setUserData] = useState(null);
+
+  const userId = localStorage.getItem('userInfo')
+  const user = JSON.parse(userId);
+  const id = user.id
+
+  console.log(id);
+
+  useEffect(() => {
+    if (userId) {
+      axios.post(`http://localhost:5000/api/serviceProvider/profile`, {
+        body: { userId: id }
+      })
+      .then(response => {
+        // Assuming the response data contains the user profile information
+        setUserData(response.data);
+      })
+      .catch(error => {
+        // Handle error here
+        console.error('Error fetching user profile:', error);
+      });
+    }
+  }, []);
+
+  console.log(userData);
+ 
 
   return (
     <div style={{ "display": "flex" }}>
@@ -38,41 +65,24 @@ const SPprofile = () => {
               <div className='personal'>
                 <p>Full Name: <span>{userInfo.name}</span></p>
                 <p>Email: <span>{userInfo.email}</span></p>
-                <p>NIC: <span>{userInfo.nic}</span></p>
+                <p>NIC: <span></span></p>
                 <p>Contact No: <span>{userInfo.contctNo}</span></p>
               </div>
+              
+            </Col>
 
+            <Col className='right_column'>
               <h3>Business Details</h3>
 
               <div className='business'>
                 <p>Business name: <span></span></p>
-                <p>Business email: <span></span></p>
-                <p>Business registration number: <span></span></p>
+                <p>Business email: <span>{userInfo.email}</span></p>
                 <p>Business type: <span></span></p>
                 <p>Business address: <span></span></p>
               </div>
               
               <Button className='profedit_btn'>Edit</Button>
               
-            </Col>
-            
-            <Col className='right_column'>
-              <div className="vertical"></div>
-              
-              <h3>My Work</h3>
-              <p>Engagement covered by Nime photos</p>
-
-              <Row className='right_images'>
-                  <Col><img className='optionimg' src={hot1}/></Col>
-                  <Col><img className='optionimg' src={hot2}/></Col>
-              </Row>
-              <br></br>
-              <Row className='right_images'>
-                  <Col><img className='optionimg' src={hot3}/></Col>
-                  <Col><img className='optionimg' src={hot4}/></Col>
-              </Row>
-
-              <Button className='addmore_btn'>Add more</Button>
             </Col>
 
           </Row>

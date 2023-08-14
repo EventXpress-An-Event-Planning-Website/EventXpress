@@ -8,15 +8,7 @@ const AllSPList = ( {rows}) => {
 
   return (
     <div className='tableContainer'>
-        {/* <div className='busSearch'>
-            <label htmlFor="search">Search here
-            <FaSearch />
-            </label>
-        </div> */}
-        {/* <div className="search-header">
-            <div className="search-text">Search:</div>
-            <input id="search-box" />
-        </div> */}
+        
         <InputGroup className="search-header">
             <Form.Control 
                 onChange={(e) => setSearch(e.target.value)}

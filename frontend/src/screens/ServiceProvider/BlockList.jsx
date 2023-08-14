@@ -7,11 +7,11 @@ import SPSidebar from "../../components/ServiceProvider/SPSidebar"
 const BlockList = () => {
 
   const [ rows ] = useState ([
-    {busName: "Araliya beach", busAddress: "Hikkaduwa"},
-    {busName: "Dua sound and lights", busAddress: "Galaha Kandy"},
-    {busName: "Mashi cakes", busAddress: "Dehiwala Colombo"},
-    {busName: "Amal catering service", busAddress: "Kalegana Galle"},
-    {busName: "Suvini decorations", busAddress: "Homagama"}
+    {busName: "Nimal Silva", busAddress: "Hikkaduwa"},
+    {busName: "Wasana Sandamali", busAddress: "Galaha Kandy"},
+    {busName: "Kamal Ekanayaka", busAddress: "Dehiwala Colombo"},
+    {busName: "Amal Jayarathna", busAddress: "Kalegana Galle"},
+    {busName: "Suvini Hansamali", busAddress: "Homagama"}
   ]); 
 
   return (

@@ -27,6 +27,9 @@ import Home from './screens/ServiceProvider/Home.jsx'
 import PackageForm from './screens/ServiceProvider/PackageForm.jsx'
 import PackagesView from './screens/ServiceProvider/PackagesView.jsx'
 import PackageFullDetails from './screens/ServiceProvider/PackageFullDetails.jsx'
+import Calendar from './screens/ServiceProvider/Calendar.jsx'
+import PredefinedPrefList from './screens/ServiceProvider/PredefinedPack/PrePrefList.jsx'
+import PredefOneType from './screens/ServiceProvider/PredefinedPack/TypeOne.jsx'
 import AllTicketsPage from './screens/AllTicketsPage.jsx'
 import SellTicketsPage from './screens/SellTicketsPage.jsx'
 import AddTicketsPage from './screens/addTicketsPage.jsx'
@@ -52,6 +55,7 @@ import Anniversary from './components/Cus/PrePackages/Anniversary.jsx'
 import Social from './components/Cus/PrePackages/Social.jsx'
 import CustomerProfile from './screens/Customer/CustomerProfile.jsx'
 import CompareVenuePackages from './screens/Customer/CompareVenuePackages.jsx'
+import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
 
 
 const router = createBrowserRouter(
@@ -102,9 +106,10 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
       <Route path="/ServiceProvider/profile" element={<ProfileScreen />} />
       <Route path="/ServiceProvider/blockList" element={<BlockList />} />
-      
-      {/* <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} /> */}
-      
+      <Route path="/ServiceProvider/preferences" element={<PredefinedPrefList />} />
+      <Route path="/ServiceProvider/calendar" element={<Calendar />} />
+      <Route path="/ServiceProvider/typePack" element={<PredefOneType />} />
+      <Route path="/ServiceProvider/typePacklist" element={<AddtoPre />} />
    
     </Route>
   )

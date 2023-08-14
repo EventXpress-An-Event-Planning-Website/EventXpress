@@ -83,9 +83,16 @@ const Header = () => {
                     <LinkContainer to="/ServiceProvider/home">
                       <Nav.Link>Home</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to="/ServiceProvider/packageForm">
-                      <Nav.Link>Create Packages</Nav.Link>
-                    </LinkContainer>
+                    <NavDropdown title="Create Packages">
+                      <LinkContainer to="/ServiceProvider/packageForm">
+                        <NavDropdown.Item>Normal Package</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/ServiceProvider/preferences">
+                        <NavDropdown.Item>
+                          Predefined Package
+                        </NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
                     <LinkContainer to="/ServiceProvider/packagesView">
                       <Nav.Link>My Packages</Nav.Link>
                     </LinkContainer>

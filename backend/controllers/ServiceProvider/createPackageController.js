@@ -15,8 +15,12 @@ const createpackage = asyncHandler(async(req,res)=>{
         packageDescription,
         packagePrice,
         packageType,
+        packageImage,
         packageOpTitle,
-        packageOpDescription
+        packageOpDescription,
+        packageOpMaxCount,
+        packageOparea,
+        packageOpType
 
     }=req.body
 
@@ -29,8 +33,12 @@ const createpackage = asyncHandler(async(req,res)=>{
             packageAddress,
             packageDescription,
             packagePrice,
+            packageImage,
             packageOpTitle,
-            packageOpDescription
+            packageOpDescription,
+            packageOpMaxCount,
+            packageOparea,
+            packageOpType
         )
         if (packages) {
             res.status(201).json({
@@ -50,6 +58,7 @@ const createpackage = asyncHandler(async(req,res)=>{
             packageAddress,
             packageDescription,
             packagePrice,
+            packageImage,
             packageType
         )
         if (packages) {

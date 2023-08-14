@@ -18,12 +18,12 @@ const Sidebar = ({ children }) => {
             icon: <FaListAlt />
         },
         {
-            path: "",
+            path: "/customer/buyTickets",
             name: "Buy Tickets",
             icon: <FaTicketAlt />
         },
         {
-            path: "",
+            path: "/ServiceProvider/calendar",
             name: "Calendar",
             icon: <FaCalendarAlt />
         },

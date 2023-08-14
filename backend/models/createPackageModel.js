@@ -15,13 +15,17 @@ const venuePackage = asyncHandler(
         packageAddress,
         packageDescription,
         packagePrice,
+        packageImage,
         packageOpTitle,
         packageOpDescription,
-
+        packageOpMaxCount,
+        packageOparea,
+        packageOpType
+        
     )=>{
         // const packageid //random id concat with the type
     const packageId = generateRandomId("Venue");
-    const createUserQuery = `INSERT INTO venuepackage(userid, package_id, package_title, package_location, package_address, package_description, package_price, package_op_title, package_op_des) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) `
+    const createUserQuery = `INSERT INTO venuepackage(userid, package_id, package_title, package_location, package_address, package_description, package_price, sp_images, package_op_title, package_op_des, package_op_count, package_op_area, package_op_type) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING userid`
     const createUser = await query(createUserQuery, [
       userId,
       packageId,
@@ -30,12 +34,16 @@ const venuePackage = asyncHandler(
       packageAddress,
       packageDescription,
       packagePrice,
+      packageImage,
       packageOpTitle,
-      packageOpDescription
+      packageOpDescription,
+      packageOpMaxCount,
+      packageOparea,
+      packageOpType
     ])
     
     if(createUser.rowCount>0){
-      console.log(createUser.raws);
+      console.log('package model',createUser);
       return createUser.rows
     }
     else{
@@ -52,11 +60,12 @@ const otherPackage = asyncHandler(
         packageAddress,
         packageDescription,
         packagePrice,
+        packageImage,
         packageType,
 
     )=>{
     const packageId = generateRandomId(packageType);
-    const createUserQuery = `INSERT INTO ${packageType}package(userid, package_id, package_title, package_location, package_address, package_description, package_price) VALUES($1, $2, $3, $4, $5, $6, $7)`
+    const createUserQuery = `INSERT INTO ${packageType}package(userid, package_id, package_title, package_location, package_address, package_description, package_price, sp_images) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING userid`
     const createUser = await query(createUserQuery, [
       userId,
       packageId,
@@ -64,12 +73,13 @@ const otherPackage = asyncHandler(
       packageLocation,
       packageAddress,
       packageDescription,
-      packagePrice
+      packagePrice,
+      packageImage
      
     ])
     
     if(createUser.rowCount>0){
-      console.log(createUser.raws);
+      console.log('package model',createUser);
       return createUser.rows
     }
     else{

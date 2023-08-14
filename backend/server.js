@@ -33,7 +33,9 @@ app.use('/api/upload', uploadRoutes)
 //customer routes
 app.use('/api/customer',customerRoutes)
 
+//serivice provider routes
 app.use('/api/serviceProvider', serviceProviderRoutes)
+
 
 // Handle errors
 app.use(notFound)

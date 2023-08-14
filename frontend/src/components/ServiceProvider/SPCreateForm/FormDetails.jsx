@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 // import { useDispatch } from "react-redux"
 import { useCreatePackageMutation } from "../../../slices/packageSlice";
 import { useUploadSingleMutation } from "../../../slices/uploadApiSlice";
-// import FormOption from "../../ServiceProvider/SPCreateForm/FormOption"
 
 const FormDetails = () => {
   const [packageTitle, setpackageTitle] = useState("");
@@ -21,49 +20,48 @@ const FormDetails = () => {
 
   const [packageOpTitle, setpackageOpTitle] = useState("");
   const [packageOpDescription, setpackageOpDescription] = useState("");
+  const [packageOpMaxCount, setpackageOpMaxCount] = useState("");
+  const [packageOparea, setpackageOparea] = useState("");
+  const [packageOpType, setpackageOpType] = useState("");
 
-  const [uploadSingle, { isLoading: uploadSingleLoading }] =
-  useUploadSingleMutation()
+  const [uploadSingle] = useUploadSingleMutation();
 
   const [createPackage, { isLoading: packageLoading }] =
-  useCreatePackageMutation();
+    useCreatePackageMutation();
   const navigate = useNavigate();
 
   const userInfo = localStorage.getItem("userInfo");
   const parsedUserInfo = JSON.parse(userInfo);
   const userId = parsedUserInfo.id;
 
+  //upload images
+  const uploadImage = async (img) => {
+    try {
+      if (img) {
+        const imageFormData = new FormData();
+        imageFormData.append("file", img);
+        const response = await uploadSingle(imageFormData);
+        if (response && response.data.filename) {
+          const imageFilename = response.data.filename;
+          return imageFilename;
+        } else {
+          throw new Error("Error uploading image: Invalid response format");
+        }
+      }
+      return ""; // If no image is provided, return an empty string
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      return ""; // Return an empty string if there is an error during upload
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // try {
-    //   const res = await createPackage({
-    //     userId,
-    //     packageTitle,
-    //     packageLocation,
-    //     packageAddress,
-    //     packageDescription,
-    //     packagePrice,
-    //     packageType,
-    //     // packageOpTitle,
-    //     // packageOpDescription
-
-    //   }).unwrap()
-
-    //   if (packageType === "Venue"){
-    //     const optionResponse = await createPackage({
-    //       userId,
-    //       packageOpTitle,
-    //       packageOpDescription,
-    //       packageType
-    //     }).unwrap();
-
-    //   }
-    //   navigate('/ServiceProvider/packagesView')
-    // } catch (err) {
-    //   toast.error(err?.data?.message || err.error)
-    // }
 
     try {
+      const spImageFilename = await uploadImage(packageImage);
+      console.log("uploadimagesp", spImageFilename);
+
       if (packageType === "Venue") {
         const optionResponse = await createPackage({
           userId,
@@ -74,7 +72,10 @@ const FormDetails = () => {
           packagePrice,
           packageOpTitle,
           packageOpDescription,
-          packageImage,
+          packageOpMaxCount,
+          packageOparea,
+          packageOpType,
+          packageImage: spImageFilename,
           packageType,
         }).unwrap();
       } else {
@@ -85,7 +86,7 @@ const FormDetails = () => {
           packageAddress,
           packageDescription,
           packagePrice,
-          packageImage,
+          packageImage: spImageFilename,
           packageType,
           // packageOpTitle,
           // packageOpDescription
@@ -98,10 +99,10 @@ const FormDetails = () => {
   };
 
   //upload image
-  const handleNicImageChange = (e) => {
-    const file = e.target.files[0]
-    setpackageImage(file)
-  }
+  const handleSPImageChange = (e) => {
+    const file = e.target.files[0];
+    setpackageImage(file);
+  };
 
   return (
     <div>
@@ -110,7 +111,7 @@ const FormDetails = () => {
         <div className="pack_info">
           <Form method="post" onSubmit={handleSubmit} className="form">
             <FormGroup className="input">
-              <Form.Label htmlFor="title">Business Name</Form.Label>
+              <Form.Label htmlFor="title">Package Name</Form.Label>
               <FormControl
                 type="text"
                 name="packageTitle"
@@ -185,7 +186,7 @@ const FormDetails = () => {
                 <option>Decoration</option>
                 <option>Catering</option>
                 <option>Cake</option>
-                <option>Lights and Sounds</option>
+                <option>LightsANDSounds</option>
               </Form.Select>
             </FormGroup>
 
@@ -194,10 +195,12 @@ const FormDetails = () => {
               <Form.Control
                 type="file"
                 accept=".jpg, .jpeg, .png"
-                onChange={handleNicImageChange}
+                onChange={handleSPImageChange}
+                required
               />
             </Form.Group>
 
+            {/* option part for venue type */}
             {packageType === "Venue" && (
               <FormContainer className="SPPackageForm">
                 <h3 className="packformh3">Options</h3>
@@ -226,6 +229,45 @@ const FormDetails = () => {
                       value={packageOpDescription}
                       required
                     />
+                  </FormGroup>
+
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="op_des">Maximum Count</Form.Label>
+                    <FormControl
+                      type="text"
+                      name="op_maxcount"
+                      placeholder="Enter hall maximum count"
+                      onChange={(e) => setpackageOpMaxCount(e.target.value)}
+                      value={packageOpMaxCount}
+                      required
+                    />
+                  </FormGroup>
+
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="op_des">Hall area</Form.Label>
+                    <FormControl
+                      type="text"
+                      name="op_maxcount"
+                      placeholder="Enter hall area(sqrt)"
+                      onChange={(e) => setpackageOparea(e.target.value)}
+                      value={packageOparea}
+                      required
+                    />
+                  </FormGroup>
+
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="op_des">Hall Type</Form.Label>
+                    <Form.Select
+                      size=""
+                      value={packageOpType}
+                      onChange={(e) => setpackageOpType(e.target.value)}
+                      required
+                    >
+                      <option></option>
+                      <option>Indoor - AC</option>
+                      <option>Indoor - Non-AC</option>
+                      <option>Outdoor</option>
+                    </Form.Select>
                   </FormGroup>
                 </div>
               </FormContainer>

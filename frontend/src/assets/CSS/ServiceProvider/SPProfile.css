@@ -39,52 +39,14 @@
     margin-top: 60px;
 }
 
-/* left column */
-
-.left_column{
-    margin-left: 10px;
-}
+/* left, right column */
 
 .personal, .business{
     margin-left: 30px;
 }
 
-
 .profedit_btn{
     margin-left: 60%;
     width: 50px;
     border: none;
-}
-
-/* vertical line */
-
-.vertical {
-    border-left: 2px solid black;
-    height: 80%;
-    position:absolute;
-    margin-left: -10%;
-    width: 10px;
-}
-
-/* right column */
-
-
-.right_column p{
-    margin-left: 30px;
-}
-
-.right_images .optionimg{
-    width: 80%;
-}
-
-.right_column .addmore_btn{
-    background: #6D004F;
-    color: white;
-    border: none;
-    margin: 30px 35%;
-}
-
-.profedit_btn:focus:active, .addmore_btn:focus:active{
-    color: #6D004F;
-    background: white;
 }
