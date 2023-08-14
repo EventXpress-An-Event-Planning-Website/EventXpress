@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Link } from 'react-router-dom';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+// import { Link } from 'react-router-dom';
+// import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Footer = () => {
 
@@ -55,11 +55,11 @@ const Footer = () => {
 
                     <Col lg={4} className="footer-col">
                         <h4>follow us</h4>
-                        <div class="social-links">
+                        <div className="social-links">
                             <a href="#"><i className="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i className="fab fa-twitter"></i></a>
+                            <a href="#"><i className="fab fa-instagram"></i></a>
+                            <a href="#"><i className="fab fa-linkedin-in"></i></a>
                         </div>
                     </Col>
 

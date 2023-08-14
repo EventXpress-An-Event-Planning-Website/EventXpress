@@ -97,15 +97,15 @@ const CompareVenuePackages = () => {
                 <tr className='compare-table-row'>
                     <th className='compare-table-header'></th>
                     <td className='compare-table-data'>
-                        <Link to={`/Venue?packageCount=2`}>
+                        <Link to={`/customer/eventdetails?id=1`}>
                         <Button className='compare-addEvent-btn'>Add to Event</Button>
                         </Link></td>
                     <td className='compare-table-data'>
-                        <Link to={`/Venue?packageCount=2`}>
+                        <Link to={`/customer/eventdetails?id=1`}>
                         <Button className='compare-addEvent-btn'>Add to Event</Button>
                         </Link></td>
                     <td className='compare-table-data'>
-                        <Link to={`/Venue?packageCount=2`}>
+                        <Link to={`/customer/eventdetails?id=1`}>
                         <Button className='compare-addEvent-btn'>Add to Event</Button>
                         </Link></td>
                 </tr>
