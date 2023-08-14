@@ -57,6 +57,8 @@ import UsersDetails from './components/Admin/UsersDetails.jsx'
 import TicketSupports from './components/Admin/TicketSupports.jsx'
 import AdminSupportView from './components/Admin/AdminSupportView.jsx'
 import Revenue from './components/Admin/Revenue.jsx'
+import AdminEvents from './components/Admin/AdminEvents.jsx'
+import AdminEventDetails from './components/Admin/AdminEventDetails.jsx'
 
 
 
@@ -114,6 +116,8 @@ const router = createBrowserRouter(
       <Route path="/TicketSupports" element={<TicketSupports />} />
       <Route path="/AdminSupportView" element={<AdminSupportView />} />
       <Route path="/Revenue" element={<Revenue />} />
+      <Route path="/AdminEvents" element={<AdminEvents />} />
+      <Route path="/AdminEventDetails" element={<AdminEventDetails />} />
 
     </Route>
   )

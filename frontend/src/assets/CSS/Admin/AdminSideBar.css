@@ -413,3 +413,43 @@
      font-size: 18px;
    }
  }
+
+ .eventTableTh{
+  width:16.5%;
+  text-align: center;
+ }
+
+ .EvDetailsBox{
+  margin-left: 150px; 
+  width: calc(100% - 450px);
+  height: 875px;
+ }
+
+.EvDetailsBoxTop{
+  width: 100%;
+  height: 60%;
+  display: flex;
+ }
+
+ .EvDetailsBoxLeft{
+  margin-top: 10px;
+  width: 50%;
+  height: 90%;
+  float: left;
+  padding: 20px;
+  outline: auto lightgray;
+ }
+
+ .EvDetailsBoxRight{
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding: 50px;
+ }
+ 
+ .EvDetailsBoxBottom{
+  width: 100%;
+  height: 40%;
+ }
+
+ 
