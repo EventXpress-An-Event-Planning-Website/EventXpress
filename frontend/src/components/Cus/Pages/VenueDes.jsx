@@ -25,7 +25,7 @@ const VenueDes = () => {
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search);
     const packageCount = queryParams.get('packageCount');
-    console.log(packageCount);
+    // console.log(packageCount);
     const event_id = queryParams.get('event_id')
     const [comparePackages, setcomparePackages] = useState(packageCount)
     const [showModal, setShowModal] = useState(false)
