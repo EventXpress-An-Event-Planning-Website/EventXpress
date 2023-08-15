@@ -1,0 +1,266 @@
+
+/* login screen */
+.authentication-container {
+  height: 100vh;
+  display: flex;
+}
+
+.authentication-left-side {
+  width: 70%;
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 3rem;
+}
+
+.authentication-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.authentication-image {
+  position: absolute;
+  width: 600px;
+  height: 590px;
+  left: 60%;
+  top: 5%;
+}
+
+.authentication-logo {
+  margin-top: 3rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.authentication-right-side {
+  width: 30%;
+  background-color: #6d004f;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authentication-form-wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+
+.authentication-header-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.authentication-header-container h2{
+  font-size: 2rem;
+}
+
+.authentication-form-wrapper .my-2 .form-label {
+  font-weight: bold;
+}
+
+.authentication-form-wrapper .mt-3 .btn-primary {
+  width: 100%;
+}
+
+.authentication-form-wrapper .py-3 .col {
+  text-align: center;
+}
+
+.authentication-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.authentication-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .authentication-image {
+    width: 300px;
+    height: 295px;
+    left: 50%;
+    top: 5%;
+  }
+
+  .authentication-left-side {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .authentication-right-side {
+    display: none;
+  }
+
+  .authentication-image{
+    display: none;
+  }
+}
+
+/* Register screen */
+.register-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.register-container {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.register-content h1 {
+  font-size: 4rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.register-content h3 {
+  font-size: 1.5rem;
+  text-align: left;
+  color: #6d004f;
+}
+
+.register-content-service-provide h1{
+  font-size: 4rem;
+  color: #6d004f;
+}
+
+.register-content-customer button{
+  margin-top: 2rem;
+  width: 150px;
+  background-color: white;
+  color: #6d004f;
+}
+
+.register-content-customer button:hover{
+  background-color: white;
+  color: #6d004f;
+}
+
+.register-content-service-provide button{
+  margin-top: 2rem;
+  width: 150px;
+  background-color:#6d004f;
+  color: white;
+}
+
+.customer-side {
+  background-color: #6d004f;
+  color: white;
+}
+
+.sp-side {
+  background-color: white;
+  color: #6d004f;
+}
+
+@media (max-width: 768px) {
+  .register-screen {
+    flex-direction: column;
+  }
+  
+  .register-container {
+    width: 100%;
+  }
+  
+  .register-content {
+    padding: 1rem;
+  }
+
+  .register-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .register-content h2 {
+    font-size: 1.2rem;
+  }
+}
+
+.registration-container {
+  display: flex;
+}
+
+.registration-header-container h2{
+  text-align: center;
+  font-weight:bold;
+  margin-top: 2rem;
+  margin-bottom: 1.4rem;
+}
+
+.registration-link-container {
+  padding-top: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.registration-left-side {
+  background-color: #6d004f;
+  width: 30%;
+  height: 120vh;
+}
+
+.registration-right-side {
+  background-color: whitesmoke;
+  width: 70%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.registration-form-wrapper {
+  width: 100%;
+  max-width: 700px;
+}
+
+.registration-form-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.registration-form-row .my-2 {
+  flex: 1 1 48%; 
+}
+
+.registration-image {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 400px; 
+}
+
+.registration-form-wrapper{
+  width: 100%;
+  margin-left: 5rem;
+}
+
+@media (max-width: 768px) {
+  .registration-right-side {
+    width: 100%;
+  }
+
+  .registration-form-wrapper {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .registration-left-side,
+  .registration-image {
+    display: none;
+  }
+}
+
+
+

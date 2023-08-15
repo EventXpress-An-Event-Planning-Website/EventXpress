@@ -1,0 +1,91 @@
+
+
+
+.createEvent_FormContainer{
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.pendingevent{
+    margin-top: 20px;
+}
+
+.eventcontainer{
+    padding: 30px 20px 20px 20px;
+    /* background-color: darksalmon; */
+    margin-top: 20px;
+    border-radius: 2rem;
+}
+
+.createeventbtn{
+    position: relative;
+    margin-top: 10px;
+    margin-left: 43%;
+    flex-direction: end;
+}
+
+.hidden{
+    display: none;
+}
+
+/* Add this to your CSS file or in the <style> tag within your component */
+.createEvent_PageContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Adjust the width as needed */
+    max-width: 500px; /* Add a maximum width to avoid it getting too wide */
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+  }
+  
+  .createEvent_PageContainer.hidden {
+    display: none;
+  }
+
+  .createEvent_Background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 998;
+  }
+
+  .create-event-container{
+    background-color: #af5cab;
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    display: flex;
+    color: white;
+  }
+.create-event-container-sentence{
+    position: relative;
+    margin-top: 10px;
+    margin-left: 2%;
+   
+}
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  

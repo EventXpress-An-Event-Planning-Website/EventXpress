@@ -1,0 +1,19 @@
+.customerEventCardcon{
+    margin-bottom: 30px;
+    height: 430px;
+}
+
+.event-card-image{
+    height: 190px;
+}
+
+.private-and-public-btn-container{
+    display: flex;
+    align-items: center;
+    /* margin-left: 30%; */
+    gap: 10px;
+}
+
+.event-heading-container{
+    display: flex;
+}

@@ -1,0 +1,56 @@
+.main_contentinfo{
+    background: #c4a9c4;
+    padding: 3% 0;
+    margin: 3% 10%;
+}
+
+.leftContentImg{
+    margin-top: 5%;
+}
+
+/* .leftContentImg:hover{
+    transform: scale(0.8) rotate(3deg);
+} */
+
+/* option details */
+
+.option_contentinfo{
+    background: #c4a9c4;
+    margin: 3% 10%;
+    padding-top: 50px;
+}
+
+.optionimg{
+    height: 100%;
+}
+
+.rowoption{
+    background: white;
+    border: 0.5px solid;
+    height: 40px;
+    padding-top: 5px;
+}
+
+.coloption{
+    border-left: 1px solid;
+    height: 30px;
+}
+
+.hourprice{
+    margin-top: 30px;
+}
+
+.optiondelete, .optionedit{
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    width: 100px;
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.optiondelete:focus:active, .optionedit:focus:active{
+    color: #6D004F;
+    background: white;
+}

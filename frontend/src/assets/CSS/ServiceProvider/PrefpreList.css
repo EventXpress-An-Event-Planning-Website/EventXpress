@@ -1,0 +1,72 @@
+.predefined_pack_container{
+    display: flex;
+}
+
+.prefContainer{
+    width: 80%;
+}
+
+.prefContainer .title_container{
+    width: 80%;
+}
+
+.top_pref{
+    display: flex;
+}
+
+.bottom_pref{
+    display: flex;
+}
+
+a{
+    color: black;
+}
+
+a:hover{
+    color: #6D004F;
+}
+
+.venue_preference, .catering_preference, .cake_preference, .photography_preference, .decoration_preference, .lightsandsounds_preference{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3%;
+    padding-top: 30px;
+    width: 30%;
+    box-shadow: 0px 10px 10px #ccc;
+    background: #f7e2ee;
+}
+
+.prefTable{
+    display: block;
+    overflow: hidden;
+    table-layout: auto;
+    border-collapse: collapse; 
+    white-space: nowrap;
+    max-width: 100%;
+    height: fit-content;
+    max-height: 40vh;
+    margin: 0 0 50px 0;
+    overflow-x: auto;
+    overflow-y: scroll;
+}
+
+.prefTable::-webkit-scrollbar{
+    display: none;
+}
+
+.prefTable th, .prefTable td{
+    padding: 0.8rem;
+}
+
+.prefTable td{
+    border-bottom: 0.5px solid #bfb4b4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.prefTable tbody tr:hover{
+    background: #f6f5f5;
+    cursor: pointer;
+}

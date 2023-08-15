@@ -1,18 +1,22 @@
+import { useLocation } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
-import { Container } from 'react-bootstrap'
-import Header from './components/header'
-import {ToastContainer} from 'react-toastify'
+import Header from './components/Header'
+import { ToastContainer } from 'react-toastify'
+import { CustomerNavbar } from './components/Cus/CustomerNavbar'
 import 'react-toastify/dist/ReactToastify.css'
 
-
 const App = () => {
+  const location = useLocation()
+  // Array of paths where the Header should not be rendered
+  const excludedPaths = ['/login', '/register/customer', '/register/serviceProvider', '/customer/sellTickets/add', '/users/verify', '/checkYourEmail']
+
+  // Function to check if the current path is in the excludedPaths
+  const shouldRenderHeader = !excludedPaths.includes(location.pathname)
   return (
     <>
-      <Header />
+      {shouldRenderHeader && <Header />}
       <ToastContainer />
-      <Container className="my-2">
-        <Outlet />
-      </Container>
+      <Outlet />
     </>
   )
 }

@@ -1,0 +1,490 @@
+ .sidebar {
+   position: absolute;
+   height: 100%;
+   width: 15%;
+   background-color: #9D3E83;
+   margin-top: 0px;
+   display: fixed;
+   /* padding: 20px; */
+ }
+
+ .sidebar a {
+   display: block;
+   color: #ffffff;
+   padding: 20px;
+   width: 100%;
+   text-decoration: none;
+ }
+
+ .sidebar a:hover {
+   background-color: #ffffff;
+   color: #9D3E83;
+   width: 100%;
+   margin-left: 0px;
+ }
+
+ .sidebar a.active {
+   background-color: #ffffff;
+   color: #9D3E83;
+   width: 100%;
+   margin-left: 0px;
+ }
+
+ .Link a {
+   display: block;
+   color: #ffffff;
+   padding: 20px;
+   width: 100%;
+   text-decoration: none;
+ }
+
+ .Link a:hover {
+   background-color: #ffffff;
+   color: #9D3E83;
+   width: 100%;
+   margin-left: 0px;
+ }
+
+ .Link a.active {
+   background-color: #ffffff;
+   color: #9D3E83;
+   width: 100%;
+   margin-left: 0px;
+ }
+
+ .iconSize {
+   margin-right: 20px;
+ }
+
+ .logOut {
+   margin-top: 350px;
+ }
+
+ /* Main part starts */
+
+ .main {
+   margin-left: 15%;
+   padding: 0px 10px;
+   background-color: #ffffff;
+   height: 100%;
+ }
+
+ .mainUsers {
+   margin-left: 228px;
+   padding: 0px 10px;
+ }
+
+ .title {
+   font-weight: bold;
+   color: #6D004F;
+   margin-left: 10px;
+   padding: 20px;
+ }
+
+ .top {
+   display: flex;
+ }
+
+ .topRightChart {
+   width: 800px;
+   height: 600px;
+   flex-shrink: 0;
+   background: #F4F1EF;
+   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+   margin-left: 150px;
+ }
+
+ .topLeftTickets {
+   width: 500px;
+   height: 600px;
+   flex-shrink: 0;
+   background: #F4F1EF;
+   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+   margin-left: 85px;
+ }
+
+ .middle {
+   width: 1385px;
+   height: 292px;
+   flex-shrink: 0;
+   background: #F4F1EF;
+   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+   margin-left: 150px;
+   margin-top: 50px;
+   text-align: center;
+ }
+
+ .bottom {
+   width: 1385px;
+   height: 167px;
+   flex-shrink: 0;
+   background: #F4F1EF;
+   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+   margin-left: 150px;
+   margin-top: 50px;
+   margin-bottom: 50px;
+   display: flex;
+   text-align: center;
+ }
+
+ .userTop {
+   width: 1385px;
+   height: 167px;
+   flex-shrink: 0;
+   background: #F4F1EF;
+   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+   margin-left: 150px;
+   padding: 50px;
+   margin-bottom: 50px;
+   display: flex;
+   text-align: center;
+ }
+
+ .ticketsTopic {
+   padding: 20px 20px;
+   color: #6D004F;
+ }
+
+ .ticketChat {
+   padding: 15px;
+   display: flex;
+ }
+
+ .message {
+   border-radius: 20px;
+   border: 1px solid #6D004F;
+   background: #FFF;
+   width: 400px;
+   height: 80px;
+   flex-shrink: 0;
+ }
+
+ .dp {
+   width: 60px;
+   height: 55px;
+   flex-shrink: 0;
+   border-radius: 46px;
+ }
+
+ .ticketButton {
+   font-size: small;
+   color: #FFF;
+   width: 90px;
+   height: 40px;
+   /* flex-shrink: 0; */
+   /* border-radius: 50px; */
+   background: rgba(109, 0, 79, 0.85);
+   margin-right: 20px;
+   float: right;
+ }
+
+ .tabTitle {
+  color: rgba(109, 0, 79, 0.85); /* Change this to your desired text color */
+}
+
+ .tableRow {
+   border-bottom: 1px solid black;
+ }
+
+ .admin-table {
+   /* margin: auto; */
+   width: 1200px;
+   padding: 20px;
+ }
+
+ .tableTopic {
+   text-align: center;
+   font-weight: bold;
+   color: #9D3E83;
+   font-weight: bold;
+   font-size: 30px;
+ }
+
+ .tableContent {
+   font-weight: bold;
+   text-align: center;
+   font-size: 40px;
+   color: #6D004F;
+ }
+
+ .bottomcolom {
+   width: 25%;
+   margin: auto;
+   font-size: medium;
+   color: #6D004F;
+   font-weight: bold;
+ }
+
+ .bottomNumbers {
+   font-size: 50px;
+ }
+
+ .userMiddle {
+   height: 150px;
+   margin-left: 100px;
+
+ }
+
+ .userMiddleButton {
+   width: 145px;
+   height: 48px;
+   flex-shrink: 0;
+   border-radius: 20px;
+   border: 1px solid #6D004F;
+   background: #FAF9F8;
+   margin-left: 320px;
+
+ }
+
+ .userRequestsBox {
+   width: 1385px;
+   height: 750px;
+   flex-shrink: 0;
+   background: #F4F1EF;
+   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+   margin-left: 150px;
+   margin-top: 50px;
+   text-align: center;
+   display: flex;
+   flex-wrap: wrap;
+
+ }
+
+ .userMiddleButton:hover {
+   background: #6D004F;
+   color: #FFF;
+ }
+
+ .userTableContent {
+   font-weight: bold;
+   text-align: center;
+   font-size: 20px;
+   color: #6D004F;
+   height: 70px;
+ }
+
+ .viewButton {
+   font-size: small;
+   width: 90px;
+   height: 40px;
+   border-radius: 50px;
+   background-color: #6a1352;
+   margin-right: 20px;
+   outline: 0.2px solid black;
+ }
+
+ .viewButton:hover {
+   background: #6D004F;
+   color: #FFF;
+ }
+
+ .DetailsBox {
+   width: 1450px;
+   height: 815px;
+   flex-shrink: 0;
+   color: black;
+   background: #F4F1EF;
+   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+   margin-right: 35px;
+   margin-left: 120px;
+ }
+
+ .DetailsInfo{
+    margin-left: 50px;
+    margin-top: 50px;
+    display: flex;
+ }
+
+.DetailsLeft{
+  width: 725px;
+}
+
+.DetailsRight{
+  width: 725px;
+  align-items: center;
+  justify-content: center;
+  padding: 80px;
+}
+
+
+.DetailsLeftIcon{
+  padding: 50px;
+}
+
+/* App.css */
+.chat-ui {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  margin-left: 200px;
+}
+
+.message {
+  margin-left: 200px;
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #F4F1EF;;
+}
+
+.sender {
+  font-weight: bold;
+}
+
+.content {
+  margin-top: 5px;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #888;
+}
+
+.message-input {
+  margin-left: 150px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 950px;
+  border-top: 1px solid #ccc;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.message-input button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+.message-input button:hover {
+  background-color: #0056b3;
+}
+
+/* //////////////////// */
+.navigation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.content {
+  margin: 0 20px;
+}
+.arrow-button{
+  background-color: #6D004F;
+  color: #fff;
+}
+.arrow-button:hover{
+  background-color: #9D3E83;
+  color: #fff;
+}
+
+.arrow-button:disabled{
+  background-color: #9D3E83;
+  color: #fff;}
+
+  .arrow-button:clicked{
+    background-color: #9D3E83;
+    color: #fff;}
+
+
+ @media screen and (max-height: 450px) {
+   .sidebar {
+     padding-top: 15px;
+   }
+
+   .sidebar a {
+     font-size: 18px;
+   }
+ }
+
+ .eventTableTh{
+  width:16.5%;
+  text-align: center;
+ }
+
+ .EvDetailsBox{
+  margin-left: 150px; 
+  width: calc(100% - 450px);
+  height: 875px;
+ }
+
+.EvDetailsBoxTop{
+  width: 100%;
+  height: 60%;
+  display: flex;
+ }
+
+ .EvDetailsBoxLeft{
+  margin-top: 10px;
+  width: 50%;
+  height: 90%;
+  float: left;
+  padding: 20px;
+  outline: auto lightgray;
+ }
+
+ .EvDetailsBoxRight{
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+
+ }
+ 
+ .tkDetailTable{
+  width:100%;
+  margin-top :25px;
+  color: rgba(0, 0, 0, 0.50);
+  background-color:rgba(180, 130, 159, 0.21);
+ }
+
+ .tkDetailTableBottom{
+  width:100%;
+  margin-top :25px;
+  color: rgba(0, 0, 0, 0.50);
+ 
+ }
+
+ .tkDetailTableBottom th,td{
+  padding: 5px;
+  text-align: center;
+ }
+
+ .tkDetailTable th,td{
+  text-align: center;
+ }
+
+ .EvDetailsBoxBottom{
+  width: 100%;
+  height: 40%;
+ }
+
+ .userTableContentTicket{
+  font-weight: bold;
+  text-align: center;
+  font-size: 13px;
+  color: #6D004F;
+  height: 70px;
+}
+
+ 

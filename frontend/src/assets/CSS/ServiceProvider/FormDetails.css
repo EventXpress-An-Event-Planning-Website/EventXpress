@@ -1,0 +1,101 @@
+.title_container{
+    margin: 5px 10px 0;
+    border: 1px solid;
+    border-radius: 40px;
+    padding: 0 30px 30px;
+    line-height: 0.5;
+    background: #6D004F;
+    color: white;
+    margin-left: 10%;
+    justify-content: center;
+}
+
+.title_container p{
+    margin-top: 25px;
+}
+
+.SPPackageForm{
+    margin-left: 10%;
+}
+
+.pack_info, .option, .more_option{
+    border-radius: 5px;
+    padding: 35px;
+    margin-left: 25px;
+    margin-top: 10px;
+    background: #B4829F;
+    margin-bottom: 30px;
+}
+
+.packformh3 {
+    color: #6D004F;
+    font-weight: bold;
+}
+
+label{
+    font-weight: bold;
+}
+
+.input{
+    margin-bottom: 20px;
+}
+
+.remove-icon{
+    margin-bottom: 30px;
+}
+
+.removeOptionBtn{
+    float: right;
+    width: 30px;
+    height: 30px;
+    color: #6D004F;
+}
+
+.image_container{
+    display: flex;
+    justify-content: center;
+}
+
+.image_container .image{
+    border-radius: 30px;
+    background: white;
+    width: 12%;
+    height: 12%;
+    padding: 5px;
+    margin-right: 6%;
+}
+
+.image_container img{
+    border-radius: 30px;
+}
+
+.more_option{
+    text-align: center;
+}
+
+.optionBtn{
+    text-align: center;
+    border: none;
+    border-radius: 40px;
+    width: 50%;
+    height: 80px;
+}
+
+.btn_container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submitBtn{
+    margin-top: 30px;
+    width: 120px; 
+    height: 50px;
+    text-align: center;
+    border: none;
+    border-radius: 40px;
+}
+
+.optionBtn:focus:active, .submitBtn:focus:active{
+    color: #6D004F;
+    background: white;
+}

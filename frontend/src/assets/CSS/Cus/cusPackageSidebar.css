@@ -1,0 +1,31 @@
+.p-sidebar{
+    background-color: rgb(247, 224, 246);
+    color: #fff;
+    height: 130vh;
+    width: 200px;
+    transition: all 0.5s;
+    padding: 35px 35px;
+}
+
+.p-sidebar-img{
+width: 100px;
+height: 100px;
+border-radius: 50%;
+}
+
+.p-sidebar-img:hover{
+    background-color: yellow;
+    color: #000;
+    transition: all 0.5s;
+}
+
+.p-link{
+    display: flex;
+    color: #fff;
+    padding: 10px 15px;
+    /* gap: 150px; */
+    transition: all 0.5s;
+}
+/* .p-link:hover{
+    background-color: purple;
+} */

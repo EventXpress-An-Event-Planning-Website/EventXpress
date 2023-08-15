@@ -1,0 +1,87 @@
+/******************** Venue *************************/
+
+.s-card{
+    margin: 10px 5%;
+}
+.s-img{
+    width: 100%;
+    height: 200px;
+}
+.s-btn{
+    background-color:#9D3E83;
+    border: #9D3E83;
+    /* border:rgb(62, 165, 140); */
+    margin-left: 30%;
+}
+
+.s-btn:hover{
+    background-color: rgb(163, 111, 183);
+    color: white;
+}
+
+.s-main-title{
+    text-align: center;
+    font-weight: bold;
+}
+
+.s-main-title-pckg{
+    text-align: center;
+    /* font-weight: bold; */
+    /* font-size: 15px; */
+}
+.s-text{
+    font-size: 15px;
+    text-align: center;
+}
+
+.s-pagination{
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* VenueDes */
+
+.addToEvent-btn{
+    background-color: #9D3E83;
+    border: #9D3E83;
+}
+
+.addToEvent-btn:hover{
+    background-color: rgb(203, 135, 246);
+}
+
+.chat-btn{
+    background-color: #9D3E83;
+    border: #9D3E83;
+}
+/* Venue.css */
+.chat-btn:hover{
+    background-color: rgb(203, 135, 246);
+}
+
+.venueDesImg{
+    width: 400px;
+    height: 250px;
+}
+.custom-col {
+    padding: 0px;
+    margin: auto -0.5%;
+}
+
+.custom-row{
+    overflow-x: hidden;
+    margin-right: 0;
+}
+
+/* .imgs-size{
+    width: 1000px;
+    padding-left: -100px;
+}
+
+.details-size{
+    width: 1200px;
+} */
+  
+.bullet-list {
+    list-style-type: disc;
+  }
