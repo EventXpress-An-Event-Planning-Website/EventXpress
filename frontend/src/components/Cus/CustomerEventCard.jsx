@@ -39,7 +39,7 @@ const CustomerEventCard = ({event}) => {
              
              {truncatedDescription}
             </Card.Text>
-            <Button variant="primary" onClick={()=>handleButtonClick(event.id)}>More Datails</Button>
+            <Button variant="primary" onClick={()=>handleButtonClick(event.id)}>More Details</Button>
         </Card.Body>
         </Card>
  

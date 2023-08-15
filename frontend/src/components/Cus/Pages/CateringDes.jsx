@@ -60,7 +60,8 @@ const CateringDes = () => {
 
 
                         <Col className="details-size">
-                            <h2>Elite Catering</h2>
+                            <h2>Birthday Package</h2>
+                            <p>by Elite Catering</p>
                             {/* <Image src={catering2} thumbnail />
 
                             <Dropdown>
@@ -88,20 +89,20 @@ const CateringDes = () => {
                             <br />
                             <h3>Menu</h3>
                             <Table striped bordered hover>
-                            <tbody>
-                            <tr>
+                                <tbody>
+                                    <tr>
                                         <td>Package price(for one person) - LKR 6660</td>
                                     </tr>
                                     <tr>
                                         <td>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</td>
                                     </tr>
-                                    
+
                                 </tbody>
-                                </Table>
+                            </Table>
                             <ul className="bullet-list">
                                 {/* <li>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</li>
                                 <li>Package price(for one person) - LKR 6660</li> */}
-                                <br/>
+                                <br />
                                 <h3>More Details</h3>
                                 <li>Minimum order for Outdoor catering is 25 pax</li>
                                 <li>Please inform if any changes required and final number of Covers 3 days prior to the function date.</li>

@@ -8,6 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useViewPackageQuery } from "../../../slices/viewPackageSlice";
 import { useLocation } from "react-router-dom";
+import { Form, FormControl } from 'react-bootstrap'
+import Dropdown from 'react-bootstrap/Dropdown';
+import FilterPackages from "./FilterPackages";
 
 import venue1 from '../../../assets/images/venue1.jpg';
 import venue2 from '../../../assets/images/venue2.jpg';
@@ -22,24 +25,25 @@ const Venue = () => {
 
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search);
-    const package_Count= queryParams.get('packageCount')
+    const package_Count = queryParams.get('packageCount')
+    const event_id = queryParams.get('event_id')
 
-    const [selectedCount,setselectedCount]= useState(package_Count)
-    console.log(selectedCount);
+    const [selectedCount, setselectedCount] = useState(package_Count)
+    // console.log(selectedCount);
 
     const { data: packageData, error, isLoading } = useViewPackageQuery();
 
-    console.log(isLoading)
+    // console.log(isLoading)
     useEffect(() => {
         if (error) {
-          console.error('Error fetching packages:', error);
+            console.error('Error fetching packages:', error);
         }
 
     }, [error]);
 
 
-    useEffect(()=>{
-        if(!isLoading) {
+    useEffect(() => {
+        if (!isLoading) {
             console.log(packageData);
         }
     }, [isLoading])
@@ -95,48 +99,189 @@ const Venue = () => {
     ];
 
     let active = 2;
-let items = [];
-for (let number = 1; number <= 5; number++) {
-  items.push(
-    <Pagination.Item key={number} active={number === active}>
-      {number}
-    </Pagination.Item>,
-  );
-}
+    let items = [];
+    for (let number = 1; number <= 5; number++) {
+        items.push(
+            <Pagination.Item key={number} active={number === active}>
+                {number}
+            </Pagination.Item>,
+        );
+    }
 
 
     return (
         <>
-            <div style={{ "display": "flex" }}>
-                <Sidebar />
-                <div className="row custom-row">
-                <h1 className="pckg-name">Venue Packages</h1>
-                    {venuesData.map((venue) => (
-                        <div className="col-md-3 custom-col" key={venue.id}>
+            {event_id === null ?
+                <div style={{ "display": "flex" }}>
+                    <Sidebar />
+                    <div className="row custom-row">
+                        {/* <div style={{ "display": "flex" }}>
+                            <span className="input-group-text all-text">All</span>
 
-                            <Card className="s-card" style={{ width: '18rem' }} >
-                                <Card.Img className="s-img" variant="top" src={venue.image} />
-                                <Card.Body>
-                                    <Card.Title className="s-main-title">{venue.title}</Card.Title>
-                                    <Card.Text className="s-text">{venue.text}</Card.Text>
-                                    <Link to={`/VenueDes?packageCount=${selectedCount}`}>
-                                        <Button className="s-btn" variant="primary">Read More</Button>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    ))}
-                    <div className="s-pagination">
-                        <div>
-                            <Pagination>{items}</Pagination>
-                        </div>
-            
-                    </div>
-                </div>
+                            <Form className="pckg-search-bar">
+                                <FormControl
+                                    type="text"
+                                    placeholder="Search for venues..."
+                                // value={searchQuery}
+                                // onChange={handleSearchChange}
+                                />
+                            </Form>
+
+                            <Dropdown>
+
+                                <Dropdown.Toggle className="location-dropdown">{selectedCity}</Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    {cities.map(city => (
+                                        <Dropdown.Item key={city} onClick={() => handleCitySelect(city)}>{city}</Dropdown.Item>
+                                    ))}
+                                </Dropdown.Menu>
+                            </Dropdown>
+
+                            <Dropdown>
+                                <Dropdown.Toggle className="location-dropdown">{selectedRating}</Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    {ratings.map(rating => (
+                                        <Dropdown.Item key={rating} onClick={() => handleRatingSelect(rating)}>
+                                            {rating}
+                                        </Dropdown.Item>
+                                    ))}
+                                </Dropdown.Menu>
+                            </Dropdown>
+
+                            <Dropdown>
+                                <Dropdown.Toggle className="location-dropdown">{selectedPriceRange}</Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    {priceRanges.map(priceRange => (
+                                        <Dropdown.Item key={priceRange} onClick={() => handlePriceRangeSelect(priceRange)}>
+                                            {priceRange}
+                                        </Dropdown.Item>
+                                    ))}
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div> */}
+                        <FilterPackages/>
+                        <h1 className="pckg-name">Venue Packages</h1>
+                        {venuesData.map((venue) => (
+                            <div className="col-md-3 custom-col" key={venue.id}>
+
+                                <Card className="s-card" style={{ width: '18rem' }} >
+                                    <Card.Img className="s-img" variant="top" src={venue.image} />
+                                    <Card.Body>
+                                        <Card.Title className="s-main-title">{venue.title}</Card.Title>
+                                        <Card.Text className="s-text">{venue.text}</Card.Text>
+
+                                        {event_id === null ?
+                                            <Link to={`/VenueDes`}>
+                                                <Button className="s-btn" variant="primary">View More</Button>
+                                            </Link> :
+                                            <Link to={`/customer/event/VenueDes?event_id=${event_id}&packageCount=${selectedCount}`}>
+                                                <Button className="s-btn" variant="primary">View More</Button>
+                                            </Link>}
+
+
+                                    </Card.Body>
+                                </Card>
+                            </div>
+                        ))}
+                        {/* <div className="s-pagination">
+                            <div>
+                                <Pagination>{items}</Pagination>
+                            </div>
                 
-            </div>
+                        </div> */}
+                    </div>
 
-            
+                </div> :
+                <div style={{ "display": "flex" }}>
+                    <div className="row custom-row" style={{ marginLeft: '3%' }}>
+                        {/* <div style={{ "display": "flex" }}>
+                            <span className="input-group-text all-text">All</span>
+
+                            <Form className="pckg-search-bar">
+                                <FormControl
+                                    type="text"
+                                    placeholder="Search for venues..."
+                                // value={searchQuery}
+                                // onChange={handleSearchChange}
+                                />
+                            </Form>
+
+                            <Dropdown>
+                                <Dropdown.Toggle className="location-dropdown">Select Location</Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">Colombo</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">Gampaha</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">Kandy</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">Jaffna</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">Galle</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+
+                            <Dropdown>
+                                <Dropdown.Toggle className="location-dropdown">
+                                    Select Rating No
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">1</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">2</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">3</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">4</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">5</Dropdown.Item>
+
+                                </Dropdown.Menu>
+                            </Dropdown>
+
+                            <Dropdown>
+                                <Dropdown.Toggle className="location-dropdown">
+                                    Select Price Range
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">LKR 10000 - LKR 40000</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">LKR 40000 - LKR 50000</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">LKR 50000 - LKR 70000</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">LKR 70000 - LKR 80000</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">LKR 80000 - LKR 100000</Dropdown.Item>
+
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div> */}
+                        <FilterPackages/>
+
+                        {venuesData.map((venue) => (
+                            <div className="col-md-3 custom-col" key={venue.id}>
+
+                                <Card className="s-card" style={{ width: '18rem' }} >
+                                    <Card.Img className="s-img" variant="top" src={venue.image} />
+                                    <Card.Body>
+                                        <Card.Title className="s-main-title">{venue.title}</Card.Title>
+                                        <Card.Text className="s-text">{venue.text}</Card.Text>
+                                        {event_id === null ?
+                                            <Link to={`/VenueDes`}>
+                                                <Button className="s-btn" variant="primary">View More</Button>
+                                            </Link> :
+                                            <Link to={`/customer/event/VenueDes?event_id=${event_id}&packageCount=${selectedCount}`}>
+                                                <Button className="s-btn" variant="primary">View More</Button>
+                                            </Link>}
+
+                                    </Card.Body>
+                                </Card>
+                            </div>
+                        ))}
+                        {/* <div className="s-pagination">
+                            <div>
+                                <Pagination>{items}</Pagination>
+                            </div>
+                
+                        </div> */}
+                    </div>
+
+                </div>}
+
+
         </>
     );
 };

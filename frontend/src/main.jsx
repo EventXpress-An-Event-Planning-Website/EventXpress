@@ -27,7 +27,7 @@ import Home from './screens/ServiceProvider/Home.jsx'
 import PackageForm from './screens/ServiceProvider/PackageForm.jsx'
 import PackagesView from './screens/ServiceProvider/PackagesView.jsx'
 import PackageFullDetails from './screens/ServiceProvider/PackageFullDetails.jsx'
-import Calendar from './screens/ServiceProvider/Calendar.jsx'
+import ServiceProviderAvailability from './screens/ServiceProvider/ServiceProviderAvailability.jsx'
 import PredefinedPrefList from './screens/ServiceProvider/PredefinedPack/PrePrefList.jsx'
 import PredefOneType from './screens/ServiceProvider/PredefinedPack/TypeOne.jsx'
 import AllTicketsPage from './screens/AllTicketsPage.jsx'
@@ -59,6 +59,8 @@ import BrideToBe from './components/Cus/PrePackages/BrideToBe.jsx'
 import Anniversary from './components/Cus/PrePackages/Anniversary.jsx'
 import Social from './components/Cus/PrePackages/Social.jsx'
 import CustomerProfile from './screens/Customer/CustomerProfile.jsx'
+import ServiceProviderRequests from './screens/ServiceProvider/ServiceProviderRequests.jsx'
+// import ServiceProviderAvailability from './screens/ServiceProvider/ServiceProviderAvailability.jsx'
 import CompareVenuePackages from './screens/Customer/CompareVenuePackages.jsx'
 import DecorationDes from './components/Cus/Pages/DecorationDes.jsx'
 import CateringDes from './components/Cus/Pages/CateringDes.jsx'
@@ -74,6 +76,7 @@ import AdminEvents from './components/Admin/AdminEvents.jsx'
 import AdminEventDetails from './components/Admin/AdminEventDetails.jsx'
 
 import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
+import PackageRequest from './components/Admin/PackageRequest.jsx'
 
 
 const router = createBrowserRouter(
@@ -125,6 +128,18 @@ const router = createBrowserRouter(
         <Route path="/ChatSidebar" element={<ChatSidebar/>}/>
         <Route path="/ChatDes" element={<ChatDes/>}/>
         <Route path="/customer/event/VenueCompare" element={<CompareVenuePackages/>}/>
+        <Route path="/customer/event/Venue" element={<Venue />} />
+        <Route path="/customer/event/VenueDes" element={<VenueDes />} />
+        <Route path="/customer/event/Catering" element={<Catering />} />
+        <Route path="/customer/event/CateringDes" element={<CateringDes />} />
+        <Route path="/customer/event/Cakes" element={<Cake />} />
+        <Route path="/customer/event/CakesDes" element={<CakeDes />} />
+        <Route path="/customer/event/Decoration" element={<Decoration />} />
+        <Route path="/customer/event/DecorationDes" element={<DecorationDes/>} />
+        <Route path="/customer/event/Photography" element={<Photography />} />
+        <Route path="/customer/event/PhotographyDes" element={<PhotographyDes />} />
+        <Route path="/customer/event/SoundAndLight" element={<SoundAndLight />} />
+        <Route path="/customer/event/SoundAndLightDes" element={<SoundAndLightDes />} />
 
       </Route>
 
@@ -132,6 +147,10 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/packageForm" element={<PackageForm />} />
       <Route path="/ServiceProvider/packagesView" element={<PackagesView />} />
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
+      <Route path="/ServiceProvider/Requests" element={<ServiceProviderRequests />} />
+      <Route path="/serviceProvider/availability" element={<ServiceProviderAvailability />} />
+      
+      
       {/* <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} /> */}
       {/* admin rout  */}
       <Route path="/adminDashboard" element={<AdminScreen />} />
@@ -142,12 +161,13 @@ const router = createBrowserRouter(
       <Route path="/Revenue" element={<Revenue />} />
       <Route path="/AdminEvents" element={<AdminEvents />} />
       <Route path="/AdminEventDetails" element={<AdminEventDetails />} />
+      {/* admin routes ends */}
       <Route path="/ServiceProvider/profile" element={<ProfileScreen />} />
       <Route path="/ServiceProvider/blockList" element={<BlockList />} />
       <Route path="/ServiceProvider/preferences" element={<PredefinedPrefList />} />
-      <Route path="/ServiceProvider/calendar" element={<Calendar />} />
       <Route path="/ServiceProvider/typePack" element={<PredefOneType />} />
       <Route path="/ServiceProvider/typePacklist" element={<AddtoPre />} />
+      <Route path="/PackageRequest" element={<PackageRequest />} />
 
     </Route>
   )

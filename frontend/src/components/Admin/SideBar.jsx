@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 function SideBar(props) {
   const a = props.value;
-  const b = parseInt(a);
+  const b = parseInt(a); //convert string to int
 
   switch (b) {
     case 1:
@@ -25,41 +25,35 @@ function SideBar(props) {
               Dashboard
             </Link>
             <Link to="/Users">
-                <span className="iconSize">
-                  <HiOutlineUsers size={25} />
-                </span>
-                Users
+              <span className="iconSize">
+                <HiOutlineUsers size={25} />
+              </span>
+              Users
             </Link>
-            <a href="#contact">
-              <span className="iconSize">
-                <BiMessageAlt size={25} />
-              </span>
-              Notifications
-              </a>
-              <Link to="/TicketSupports">
-              <span className="iconSize">
-                <GoStack size={25} />
-              </span>
-              Complains & Supports
-            </Link>
-            <a href="#contact">
-              <span className="iconSize">
-                <BiDollar size={25} />
-              </span>
-              Revenue
-            </a>
-            <a href="#contact">
-              <span className="iconSize">
-                <BiHomeAlt2 size={25} />
-              </span>
-              Events
-            </a>
-            <a href="#contact">
+            <a href="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
               Package Request
             </a>
+            <Link to="/TicketSupports">
+              <span className="iconSize">
+                <GoStack size={25} />
+              </span>
+              Complains & Supports
+            </Link>
+            <Link to="/Revenue">
+              <span className="iconSize">
+                <BiDollar size={25} />
+              </span>
+              Revenue
+            </Link>
+            <Link to="/AdminEvents">
+              <span className="iconSize">
+                <BiHomeAlt2 size={25} />
+              </span>
+              Events
+            </Link>
             <div className="logOut">
               <a href="#contact">
                 <span className="iconSize">
@@ -76,23 +70,23 @@ function SideBar(props) {
       return (
         <div>
           <div class="sidebar">
-            <Link to="/adminDashboard">
-                <span className="iconSize">
-                  <BsFillGridFill size={25} />
-                </span>
-                Dashboard
+            <Link to="/adminDashboard" >
+              <span className="iconSize">
+                <BsFillGridFill size={25} />
+              </span>
+              Dashboard
             </Link>
-            <a href="#news" className="active">
+            <Link to="/Users" className="active">
               <span className="iconSize">
                 <HiOutlineUsers size={25} />
               </span>
               Users
-            </a>
-            <a href="#contact">
+            </Link>
+            <a href="/PackageRequest">
               <span className="iconSize">
-                <BiMessageAlt size={25} />
+                <BiPackage size={25} />
               </span>
-              Notifications
+              Package Request
             </a>
             <Link to="/TicketSupports">
               <span className="iconSize">
@@ -100,18 +94,18 @@ function SideBar(props) {
               </span>
               Complains & Supports
             </Link>
-            <a href="#contact">
+            <Link to="/Revenue">
               <span className="iconSize">
                 <BiDollar size={25} />
               </span>
               Revenue
-            </a>
-            <a href="#contact">
+            </Link>
+            <Link to="/AdminEvents">
               <span className="iconSize">
                 <BiHomeAlt2 size={25} />
               </span>
               Events
-            </a>
+            </Link>
             <div className="logOut">
               <a href="#contact">
                 <span className="iconSize">
@@ -128,25 +122,23 @@ function SideBar(props) {
       return (
         <div>
           <div class="sidebar">
-            <Link to="/adminDashboard">
-              <a href="" >
-                <span className="iconSize">
-                  <BsFillGridFill size={25} />
-                </span>
-                Dashboard
-              </a>
+            <Link to="/adminDashboard" >
+              <span className="iconSize">
+                <BsFillGridFill size={25} />
+              </span>
+              Dashboard
             </Link>
-            <a href="#news">
+            <Link to="/Users">
               <span className="iconSize">
                 <HiOutlineUsers size={25} />
               </span>
               Users
-            </a>
-            <a href="#contact" className="active">
+            </Link>
+            <a href="/PackageRequest" className="active">
               <span className="iconSize">
-                <BiMessageAlt size={25} />
+                <BiPackage size={25} />
               </span>
-              Notifications
+              Package Request
             </a>
             <Link to="/TicketSupports">
               <span className="iconSize">
@@ -154,18 +146,18 @@ function SideBar(props) {
               </span>
               Complains & Supports
             </Link>
-            <a href="#contact">
+            <Link to="/Revenue">
               <span className="iconSize">
                 <BiDollar size={25} />
               </span>
               Revenue
-            </a>
-            <a href="#contact">
+            </Link>
+            <Link to="/AdminEvents">
               <span className="iconSize">
                 <BiHomeAlt2 size={25} />
               </span>
               Events
-            </a>
+            </Link>
             <div className="logOut">
               <a href="#contact">
                 <span className="iconSize">
@@ -182,25 +174,23 @@ function SideBar(props) {
       return (
         <div>
           <div class="sidebar">
-            <Link to="/adminDashboard">
-              <a href="" >
-                <span className="iconSize">
-                  <BsFillGridFill size={25} />
-                </span>
-                Dashboard
-              </a>
+            <Link to="/adminDashboard" >
+              <span className="iconSize">
+                <BsFillGridFill size={25} />
+              </span>
+              Dashboard
             </Link>
-            <a href="#news">
+            <Link to="/Users">
               <span className="iconSize">
                 <HiOutlineUsers size={25} />
               </span>
               Users
-            </a>
-            <a href="#contact">
+            </Link>
+            <a href="/PackageRequest">
               <span className="iconSize">
-                <BiMessageAlt size={25} />
+                <BiPackage size={25} />
               </span>
-              Notifications
+              Package Request
             </a>
             <Link to="/TicketSupports" className="active">
               <span className="iconSize">
@@ -208,18 +198,18 @@ function SideBar(props) {
               </span>
               Complains & Supports
             </Link>
-            <a href="#contact">
+            <Link to="/Revenue">
               <span className="iconSize">
                 <BiDollar size={25} />
               </span>
               Revenue
-            </a>
-            <a href="#contact">
+            </Link>
+            <Link to="/AdminEvents">
               <span className="iconSize">
                 <BiHomeAlt2 size={25} />
               </span>
               Events
-            </a>
+            </Link>
             <div className="logOut">
               <a href="#contact">
                 <span className="iconSize">
@@ -232,158 +222,150 @@ function SideBar(props) {
         </div>
       );
 
-    case 5:
-      return (
-        <div>
-          <div class="sidebar">
-            <Link to="/adminDashboard">
-              <a href="" >
+      case 5:
+        return (
+          <div>
+            <div class="sidebar">
+              <Link to="/adminDashboard">
                 <span className="iconSize">
                   <BsFillGridFill size={25} />
                 </span>
                 Dashboard
-              </a>
-            </Link>
-            <a href="#news">
-              <span className="iconSize">
-                <HiOutlineUsers size={25} />
-              </span>
-              Users
-            </a>
-            <a href="#contact">
-              <span className="iconSize">
-                <BiMessageAlt size={25} />
-              </span>
-              Notifications
-            </a>
-            <Link to="/TicketSupports">
-              <span className="iconSize">
-                <GoStack size={25} />
-              </span>
-              Complains & Supports
-            </Link>
-            <a href="#contact" className="active">
-              <span className="iconSize">
-                <BiDollar size={25} />
-              </span>
-              Revenue
-            </a>
-            <a href="#contact">
-              <span className="iconSize">
-                <BiHomeAlt2 size={25} />
-              </span>
-              Events
-            </a>
-            <div className="logOut">
-              <a href="#contact">
+              </Link>
+              <Link to="/Users">
                 <span className="iconSize">
-                  <IoIosLogOut size={25} />
+                  <HiOutlineUsers size={25} />
                 </span>
-                Log out
+                Users
+              </Link>
+              <a href="/PackageRequest">
+                <span className="iconSize">
+                  <BiPackage size={25} />
+                </span>
+                Package Request
               </a>
+              <Link to="/TicketSupports">
+                <span className="iconSize">
+                  <GoStack size={25} />
+                </span>
+                Complains & Supports
+              </Link>
+              <Link to="/Revenue" className="active">
+                <span className="iconSize">
+                  <BiDollar size={25} />
+                </span>
+                Revenue
+              </Link>
+              <Link to="/AdminEvents">
+                <span className="iconSize">
+                  <BiHomeAlt2 size={25} />
+                </span>
+                Events
+              </Link>
+              <div className="logOut">
+                <a href="#contact">
+                  <span className="iconSize">
+                    <IoIosLogOut size={25} />
+                  </span>
+                  Log out
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      );
+        );
 
-    case 6:
-      return (
-        <div>
-          <div class="sidebar">
-            <a href="">
-              <span className="iconSize">
-                <BsFillGridFill size={25} />
-              </span>
-              Dashboard
-            </a>
-            <a href="#news">
-              <span className="iconSize">
-                <HiOutlineUsers size={25} />
-              </span>
-              Users
-            </a>
-            <a href="#contact">
-              <span className="iconSize">
-                <BiMessageAlt size={25} />
-              </span>
-              Notifications
-            </a>
-            <Link to="/TicketSupports">
-              <span className="iconSize">
-                <GoStack size={25} />
-              </span>
-              Complains & Supports
-            </Link>
-            <a href="#contact">
-              <span className="iconSize">
-                <BiDollar size={25} />
-              </span>
-              Revenue
-            </a>
-            <a href="#contact" className="active">
-              <span className="iconSize">
-                <BiHomeAlt2 size={25} />
-              </span>
-              Events
-            </a>
-            <div className="logOut">
-              <a href="#contact">
-                <span className="iconSize">
-                  <IoIosLogOut size={25} />
-                </span>
-                Log out
-              </a>
+        case 6:
+          return (
+            <div>
+              <div class="sidebar">
+                <Link to="/adminDashboard">
+                  <span className="iconSize">
+                    <BsFillGridFill size={25} />
+                  </span>
+                  Dashboard
+                </Link>
+                <Link to="/Users">
+                  <span className="iconSize">
+                    <HiOutlineUsers size={25} />
+                  </span>
+                  Users
+                </Link>
+                <a href="/PackageRequest">
+                  <span className="iconSize">
+                    <BiPackage size={25} />
+                  </span>
+                  Package Request
+                </a>
+                <Link to="/TicketSupports">
+                  <span className="iconSize">
+                    <GoStack size={25} />
+                  </span>
+                  Complains & Supports
+                </Link>
+                <Link to="/Revenue">
+                  <span className="iconSize">
+                    <BiDollar size={25} />
+                  </span>
+                  Revenue
+                </Link>
+                <Link to="/AdminEvents" className="active">
+                  <span className="iconSize">
+                    <BiHomeAlt2 size={25} />
+                  </span>
+                  Events
+                </Link>
+                <div className="logOut">
+                  <a href="#contact">
+                    <span className="iconSize">
+                      <IoIosLogOut size={25} />
+                    </span>
+                    Log out
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      );
+          );
 
     default:
-      return (
+      return <div>
         <div>
           <div class="sidebar">
-            <a href="">
+            <Link to="/adminDashboard">
               <span className="iconSize">
                 <BsFillGridFill size={25} />
               </span>
               Dashboard
-            </a>
-            <a href="#news">
+            </Link>
+            <Link to="/Users">
               <span className="iconSize">
                 <HiOutlineUsers size={25} />
               </span>
               Users
-            </a>
-            <a href="#contact">
-              <span className="iconSize">
-                <BiMessageAlt size={25} />
-              </span>
-              Notifications
-            </a>
-            <Link to="/TicketSupports">
-              <span className="iconSize">
-                <GoStack size={25} />
-              </span>
-              Complains & Supports
             </Link>
-            <a href="#contact">
-              <span className="iconSize">
-                <BiDollar size={25} />
-              </span>
-              Revenue
-            </a>
-            <a href="#contact">
-              <span className="iconSize">
-                <BiHomeAlt2 size={25} />
-              </span>
-              Events
-            </a>
-            <a href="#contact">
+            <a href="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
               Package Request
             </a>
+            <Link to="/TicketSupports">
+              <span className="iconSize">
+                <GoStack size={25} />
+              </span>
+              Complains & Supports
+            </Link>
+            <Link to="/Revenue">
+              <span className="iconSize">
+                <BiDollar size={25} />
+              </span>
+              Revenue
+            </Link>
+            <Link to="/AdminEvents">
+              <span className="iconSize">
+                <BiHomeAlt2 size={25} />
+              </span>
+              Events
+            </Link>
             <div className="logOut">
               <a href="#contact">
                 <span className="iconSize">
@@ -394,7 +376,7 @@ function SideBar(props) {
             </div>
           </div>
         </div>
-      );
+      </div>;
   }
 }
 

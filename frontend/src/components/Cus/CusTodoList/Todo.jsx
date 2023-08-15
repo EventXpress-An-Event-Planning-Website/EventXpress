@@ -8,13 +8,18 @@ import { faEye } from '@fortawesome/free-regular-svg-icons';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import celebrationImage from '../../../assets/images/celebration.jpg';
 import { Link } from 'react-router-dom';
+import { Modal,Button } from 'react-bootstrap';
 
 
-const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
+
+const Todo = ({event_id, todos, completeTodo, removeTodo, updateTodo }) => {
+
+  const [showModal, setShowModal] = useState(false)
   const [edit, setEdit] = useState({
     id: null,
     value: ''
   });
+  console.log(event_id);
   const [showDetailsId, setShowDetailsId] = useState(null); 
 
   const submitUpdate = value => {
@@ -32,6 +37,16 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     return <TodoForm edit={edit} onSubmit={submitUpdate} />;
   }
 
+  const openModal = () => {
+    console.log(showModal);
+    setShowModal(true)
+    console.log(showModal);
+  }
+
+  const closeModal = () => {
+      setShowModal(false)
+  }
+
   return todos.map((todo, index) => (
     <div>
       <div
@@ -43,7 +58,9 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
           {todo.text}
         </div>
         <div className='icons'>
-          <Link to={`/${todo.location}?packageCount=0`}>
+
+          <Link to={`/customer/event/${todo.location}?event_id=${event_id}&packageCount=0`}>
+
             <FontAwesomeIcon icon={faEye} style={{ color: '#6D004F' }} />
           </Link>
           <RiCloseCircleLine
@@ -51,11 +68,11 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
             className='delete-icon'
             style={{color: "#6D004F"}}
           />
-          <TiEdit
+          {/* <TiEdit
             onClick={() => setEdit({ id: todo.id, value: todo.text })}
             className='edit-icon'
             style={{color: "#6D004F"}}
-          />
+          /> */}
           <div className='view-details' onClick={() => toggleDetails(todo.id)}>
             <FontAwesomeIcon icon={faCaretDown} style={{ color: '#6D004F' }} />
           </div>
@@ -70,9 +87,32 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
               <img src={`../../src/assets/images/${todo.img}`} />
             </div>
             {todo.selected}
+            <div style={{color:'green',marginLeft:'20%',display:'flex',flexDirection:'column'}}>
+              <span style={{marginLeft:'20%'}}>pending</span>
+              <Button style={{width:'100px'}} onClick={openModal}>Create Appoinment</Button>
+            </div>
+            
           </div>
+          
       </div>
       )}
+      <Modal show={showModal} onHide={closeModal}>
+        <Modal.Header closeButton>
+        <Modal.Title>EventXpree Policy</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <p>Before You Select a Package Please Create An Event</p>
+            <Link to={`/customer/myEvents`}>
+                <Button className="addToEvent-btn" variant="primary" size="lg">Create Event</Button>{' '}
+            </Link>
+        </Modal.Body>
+        <Modal.Footer>
+            <Button variant="secondary" onClick={closeModal}>
+                Close
+            </Button>
+        </Modal.Footer>
+      </Modal>
+      
     </div>
   ));
 };

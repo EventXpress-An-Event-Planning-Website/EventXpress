@@ -28,7 +28,7 @@ const HomeIcons = () => {
         </Col>
 
         <Col>
-          <a href="/ServiceProvider/calendar" className='icon'><FaCalendarAlt /></a>
+          <a href="/serviceProvider/availability" className='icon'><FaCalendarAlt /></a>
           <h4>Calendar</h4>
         </Col>
         

@@ -10,6 +10,8 @@ import uploadRoutes from './routes/uploadRoutes.js'
 import customerRoutes from './routes/customerRoutes.js'
 import serviceProviderRoutes from './routes/serviceProviderRoutes.js'
 import ticketRoutes from './routes/ticketRoutes.js'
+import adminRoutes from './routes/adminRoutes.js'
+
 
 // start database connection
 connectDB()
@@ -38,6 +40,10 @@ app.use('/api/serviceProvider', serviceProviderRoutes)
 
 //Tickets routes
 app.use('/api/tickets', ticketRoutes)
+
+//admin routes
+app.use('/api/admin', adminRoutes)
+
 
 // Handle errors
 app.use(notFound)

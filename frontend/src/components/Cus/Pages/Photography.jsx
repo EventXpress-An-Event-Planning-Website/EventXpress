@@ -4,6 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import Pagination from 'react-bootstrap/Pagination';
+import { Form, FormControl } from 'react-bootstrap'
+import Dropdown from 'react-bootstrap/Dropdown';
+import FilterPackages from "./FilterPackages";
 
 import photo1 from '../../../assets/images/photo1.jpg';
 import photo2 from '../../../assets/images/photo2.jpg';
@@ -22,49 +25,57 @@ const Photography = () => {
         {
             id: 1,
             image: photo5,
-            title: 'Candy Click',
+            pckgName: 'Silver Package',
+            title: 'by Candy Click',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 2,
             image: photo6,
-            title: 'Daisy Pixels',
+            pckgName: 'Elegant Package',
+            title: 'by Daisy Pixels',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
             image: photo7,
-            title: 'Picture Perfect',
+            pckgName: 'Gold Package',
+            title: 'by Picture Perfect',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
             image: photo8,
-            title: 'Shutter Surprise',
+            pckgName: 'Superior Package',
+            title: 'by Shutter Surprise',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
             image: photo1,
-            title: 'Photamora',
+            pckgName: 'Birthday Package',
+            title: 'by Photamora',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
             image: photo3,
-            title: 'Memoclips',
+            pckgName: 'Superior Package',
+            title: 'by Memoclips',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
             image: photo2,
-            title: 'Click It',
+            pckgName: 'Platinum Package',
+            title: 'by Click It',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
             image: photo4,
-            title: 'Capturra',
+            pckgName: 'Birthday Package',
+            title: 'by Capturra',
             text: ' Some quick example text to build on the card title'
         }
     ];
@@ -85,14 +96,16 @@ const Photography = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
-                <h1 className="pckg-name">Photography Packages</h1>
+                <FilterPackages/>
+                    <h1 className="pckg-name">Photography Packages</h1>
                     {photosData.map((photo) => (
                         <div className="col-md-3 custom-col" key={photo.id}>
 
                             <Card className="s-card" style={{ width: '18rem' }} >
                                 <Card.Img className="s-img" variant="top" src={photo.image} />
                                 <Card.Body>
-                                    <Card.Title className="s-main-title">{photo.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{photo.pckgName}</Card.Title>
+                                    <Card.Text className="s-main-title-pckg">{photo.title}</Card.Text>
                                     <Card.Text className="s-text">{photo.text}</Card.Text>
                                     <Link to={`/PhotographyDes`}>
                                         <Button className="s-btn" variant="primary">Read More</Button>
