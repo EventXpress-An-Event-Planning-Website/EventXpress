@@ -10,7 +10,7 @@
 .private-and-public-btn-container{
     display: flex;
     align-items: center;
-    margin-left: 30%;
+    /* margin-left: 30%; */
     gap: 10px;
 }
 

@@ -51,9 +51,8 @@ ALTER TABLE serviceProvider
 ALTER TABLE serviceProvider
 ADD COLUMN businessRegImage VARCHAR(255);
 
-ALTER TABLE customer
-ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
-ADD COLUMN verificationToken VARCHAR(255);
+ALTER TABLE serviceProvider
+ADD COLUMN businessRegImage VARCHAR(255);
 
 -- For the "serviceprovider" table
 ALTER TABLE serviceProvider
@@ -101,7 +100,7 @@ CREATE TABLE decorationpackage (
 )
 CREATE TABLE public.todolist
 (
-    todo_id integer,
+    todo_id SERIAL,
     event_id integer,
     todo_service text,
     PRIMARY KEY (todo_id)

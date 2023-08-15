@@ -23,12 +23,14 @@ const Venue = () => {
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search);
     const package_Count= queryParams.get('packageCount')
+    const event_id= queryParams.get('event_id')
 
     const [selectedCount,setselectedCount]= useState(package_Count)
     console.log(selectedCount);
 
     const { data: packageData, error, isLoading } = useViewPackageQuery();
-
+    
+   
     console.log(isLoading)
     useEffect(() => {
         if (error) {
@@ -107,34 +109,74 @@ for (let number = 1; number <= 5; number++) {
 
     return (
         <>
-            <div style={{ "display": "flex" }}>
-                <Sidebar />
-                <div className="row custom-row">
-                <h1 className="pckg-name">Venue Packages</h1>
-                    {venuesData.map((venue) => (
-                        <div className="col-md-3 custom-col" key={venue.id}>
+            {event_id === null ?
+                <div style={{ "display": "flex" }}>
+                    <Sidebar /> 
+                    <div className="row custom-row">
+                    <h1 className="pckg-name">Venue Packages</h1>
+                        {venuesData.map((venue) => (
+                            <div className="col-md-3 custom-col" key={venue.id}>
 
-                            <Card className="s-card" style={{ width: '18rem' }} >
-                                <Card.Img className="s-img" variant="top" src={venue.image} />
-                                <Card.Body>
-                                    <Card.Title className="s-main-title">{venue.title}</Card.Title>
-                                    <Card.Text className="s-text">{venue.text}</Card.Text>
-                                    <Link to={`/VenueDes?packageCount=${selectedCount}`}>
-                                        <Button className="s-btn" variant="primary">Read More</Button>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    ))}
-                    <div className="s-pagination">
-                        <div>
-                            <Pagination>{items}</Pagination>
-                        </div>
-            
-                    </div>
-                </div>
+                                <Card className="s-card" style={{ width: '18rem' }} >
+                                    <Card.Img className="s-img" variant="top" src={venue.image} />
+                                    <Card.Body>
+                                        <Card.Title className="s-main-title">{venue.title}</Card.Title>
+                                        <Card.Text className="s-text">{venue.text}</Card.Text>
+
+                                        {event_id === null?
+                                        <Link to={`/VenueDes`}>
+                                            <Button className="s-btn" variant="primary">View More</Button>
+                                        </Link>:
+                                        <Link to={`/customer/event/VenueDes?event_id=${event_id}&packageCount=${selectedCount}`}>
+                                        <Button className="s-btn" variant="primary">View More</Button>
+                                        </Link>}
+
+
+                                    </Card.Body>
+                                </Card>
+                            </div>
+                        ))}
+                        {/* <div className="s-pagination">
+                            <div>
+                                <Pagination>{items}</Pagination>
+                            </div>
                 
-            </div>
+                        </div> */}
+                    </div>
+                    
+                </div>:
+                <div style={{ "display": "flex" }}>
+                    <div className="row custom-row" style={{marginLeft:'3%'}}>
+
+                        {venuesData.map((venue) => (
+                            <div className="col-md-3 custom-col" key={venue.id}>
+
+                                <Card className="s-card" style={{ width: '18rem' }} >
+                                    <Card.Img className="s-img" variant="top" src={venue.image} />
+                                    <Card.Body>
+                                        <Card.Title className="s-main-title">{venue.title}</Card.Title>
+                                        <Card.Text className="s-text">{venue.text}</Card.Text>
+                                        {event_id === null?
+                                        <Link to={`/VenueDes`}>
+                                            <Button className="s-btn" variant="primary">View More</Button>
+                                        </Link>:
+                                        <Link to={`/customer/event/VenueDes?event_id=${event_id}&packageCount=${selectedCount}`}>
+                                        <Button className="s-btn" variant="primary">View More</Button>
+                                        </Link>}
+
+                                    </Card.Body>
+                                </Card>
+                            </div>
+                        ))}
+                        {/* <div className="s-pagination">
+                            <div>
+                                <Pagination>{items}</Pagination>
+                            </div>
+                
+                        </div> */}
+                    </div>
+                    
+                </div>}
 
             
         </>

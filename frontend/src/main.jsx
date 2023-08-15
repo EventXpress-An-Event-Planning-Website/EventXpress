@@ -125,6 +125,18 @@ const router = createBrowserRouter(
         <Route path="/ChatSidebar" element={<ChatSidebar/>}/>
         <Route path="/ChatDes" element={<ChatDes/>}/>
         <Route path="/customer/event/VenueCompare" element={<CompareVenuePackages/>}/>
+        <Route path="/customer/event/Venue" element={<Venue />} />
+        <Route path="/customer/event/VenueDes" element={<VenueDes />} />
+        <Route path="/customer/event/Catering" element={<Catering />} />
+        <Route path="/customer/event/CateringDes" element={<CateringDes />} />
+        <Route path="/customer/event/Cakes" element={<Cake />} />
+        <Route path="/customer/event/CakesDes" element={<CakeDes />} />
+        <Route path="/customer/event/Decoration" element={<Decoration />} />
+        <Route path="/customer/event/DecorationDes" element={<DecorationDes/>} />
+        <Route path="/customer/event/Photography" element={<Photography />} />
+        <Route path="/customer/event/PhotographyDes" element={<PhotographyDes />} />
+        <Route path="/customer/event/SoundAndLight" element={<SoundAndLight />} />
+        <Route path="/customer/event/SoundAndLightDes" element={<SoundAndLightDes />} />
 
       </Route>
 
