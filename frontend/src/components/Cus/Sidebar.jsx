@@ -43,9 +43,9 @@ const Sidebar = ({ children }) => {
         //     icon:<FaMusic/>
         // },
         {
-            path: "/StageRentals",
-            name: "StageRentals",
-            icon: <FaDrum />
+            // path: "/StageRentals",
+            // name: "StageRentals",
+            // icon: <FaDrum />
         }
     ]
 

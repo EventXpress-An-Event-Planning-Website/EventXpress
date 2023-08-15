@@ -86,18 +86,19 @@ const CusEvents = () => {
     return (
 
         <div className='block cus-event'>
-            <h3>Need a help to plan your Event?</h3>
-            <p>Choose a budget friendly package to your event</p>
+                                <h2 className='pre-package-title'>Pre Defined Packages</h2>
+            <h3 className='home-title'>Need a help to plan your Event?</h3>
+            <p>Choose a budget friendly pre defined package to your event</p>
 
             <Carousel showDots={true} responsive={responsive} className='cus-event-dots'>
                 {eventsData.map((event) => (
 
-                    <Card style={{ width: '15rem' }}>
-                        <Link to={event.path}>
+                    <Card style={{ width: '15rem' }} className='event-card'>
+                        <Link to={event.path} >
                         <img src={event.image} className='event-img' fluid />
                         </Link>
                         {/* <Card.Body> */}
-                        <p>{event.title}</p>
+                        <p >{event.title}</p>
                         {/* </Card.Body> */}
                     </Card>
 

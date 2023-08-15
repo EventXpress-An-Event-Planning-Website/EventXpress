@@ -4,6 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import Pagination from 'react-bootstrap/Pagination';
+import { Form, FormControl } from 'react-bootstrap'
+import Dropdown from 'react-bootstrap/Dropdown';
+import FilterPackages from "./FilterPackages";
 
 import sound1 from '../../../assets/images/sound1.jpg';
 import sound2 from '../../../assets/images/sound2.jpg';
@@ -20,48 +23,56 @@ const SoundAndLight = () => {
         {
             id: 1,
             image: sound5,
+            pckgName: '',
             title: 'Pure AV',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 2,
             image: sound6,
+            pckgName: '',
             title: 'Pure Audio Visual Inc',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
             image: sound3,
+            pckgName: '',
             title: 'Tailgate Express Events',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
             image: sound2,
+            pckgName: '',
             title: 'dBcontrol bv',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
             image: sound1,
+            pckgName: '',
             title: 'Auvicom',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
             image: sound4,
+            pckgName: '',
             title: 'A.S. Technology',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
             image: sound7,
+            pckgName: '',
             title: 'Painting with Light',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
             image: sound8,
+            pckgName: '',
             title: 'Alphatentevent',
             text: ' Some quick example text to build on the card title'
         }
@@ -83,7 +94,8 @@ const SoundAndLight = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
-
+                <FilterPackages/>
+                    <h1 className="pckg-name">Sound and Light Packages</h1>
                     {soundsData.map((sound) => (
                         <div className="col-md-3 custom-col" key={sound.id}>
 
@@ -92,8 +104,8 @@ const SoundAndLight = () => {
                                 <Card.Body>
                                     <Card.Title className="s-main-title">{sound.title}</Card.Title>
                                     <Card.Text className="s-text">{sound.text}</Card.Text>
-                                    <Link to={`/soundDes`}>
-                                        <Button className="s-btn" variant="primary">Select</Button>
+                                    <Link to={`/SoundAndLightDes`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>

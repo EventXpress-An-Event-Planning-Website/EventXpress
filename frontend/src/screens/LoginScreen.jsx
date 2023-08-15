@@ -34,7 +34,7 @@ const LoginScreen = () => {
     } else if (userInfo && userInfo.role === 'serviceProvider') {
       navigate('/ServiceProvider/home')
     } else if (userInfo && userInfo.role === 'admin') {
-      navigate('/customerHome')
+      navigate('/adminDashboard')
     }
   }, [navigate, userInfo])
 

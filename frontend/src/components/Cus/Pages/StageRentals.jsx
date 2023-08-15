@@ -4,6 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import Pagination from 'react-bootstrap/Pagination';
+import { Form, FormControl } from 'react-bootstrap'
+import Dropdown from 'react-bootstrap/Dropdown';
+import FilterPackages from "./FilterPackages";
 
 import stage1 from '../../../assets/images/stage1.png';
 import stage2 from '../../../assets/images/stage2.png';
@@ -83,7 +86,8 @@ const StageRentals = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
-
+                <FilterPackages/>
+                    <h1 className="pckg-name">Stage Rentals Packages</h1>
                     {stagesData.map((stage) => (
                         <div className="col-md-3 custom-col" key={stage.id}>
 
@@ -92,8 +96,8 @@ const StageRentals = () => {
                                 <Card.Body>
                                     <Card.Title className="s-main-title">{stage.title}</Card.Title>
                                     <Card.Text className="s-text">{stage.text}</Card.Text>
-                                    <Link to={`/stageDes`}>
-                                        <Button className="s-btn" variant="primary">Select</Button>
+                                    <Link to={`/StageRentalsDes`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>
