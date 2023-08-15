@@ -113,7 +113,7 @@ function AdminEventsDetailsMain() {
           </div>
         </div>
         <div className="EvDetailsBoxBottom">
-          <table className="table" style={{ width: "95%", marginLeft: "10px" }}>
+          <table className="admin-table" style={{ width: "95%", marginLeft: "10px" }}>
             <tr>
               <th className="eventTableTh">Full Name</th>
               <th className="eventTableTh">NIC</th>

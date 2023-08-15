@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Pagination from 'react-bootstrap/Pagination';
 import { Form, FormControl } from 'react-bootstrap'
 import Dropdown from 'react-bootstrap/Dropdown';
+import FilterPackages from "./FilterPackages";
 
 import stage1 from '../../../assets/images/stage1.png';
 import stage2 from '../../../assets/images/stage2.png';
@@ -85,59 +86,7 @@ const StageRentals = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
-                    <div style={{ "display": "flex" }}>
-                        <span className="input-group-text all-text">All</span>
-
-                        <Form className="pckg-search-bar">
-                            <FormControl
-                                type="text"
-                                placeholder="Search for stage rentals..."
-                            // value={searchQuery}
-                            // onChange={handleSearchChange}
-                            />
-                        </Form>
-
-                        <Dropdown>
-                            <Dropdown.Toggle className="location-dropdown">Select Location</Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Colombo</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Gampaha</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Kandy</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Jaffna</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Galle</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-
-                        <Dropdown>
-                            <Dropdown.Toggle className="location-dropdown">
-                                Select Rating No
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">1</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">2</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">3</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">4</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">5</Dropdown.Item>
-
-                            </Dropdown.Menu>
-                        </Dropdown>
-
-                        <Dropdown>
-                            <Dropdown.Toggle className="location-dropdown">
-                                Select Price Range
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">LKR 10000 - LKR 40000</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">LKR 40000 - LKR 50000</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">LKR 50000 - LKR 70000</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">LKR 70000 - LKR 80000</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">LKR 80000 - LKR 100000</Dropdown.Item>
-
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </div>
+                <FilterPackages/>
                     <h1 className="pckg-name">Stage Rentals Packages</h1>
                     {stagesData.map((stage) => (
                         <div className="col-md-3 custom-col" key={stage.id}>

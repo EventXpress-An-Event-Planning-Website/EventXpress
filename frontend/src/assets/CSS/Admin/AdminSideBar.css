@@ -1,7 +1,7 @@
  .sidebar {
    position: absolute;
-   height: 1325px;
-   width: 300px;
+   height: 100%;
+   width: 15%;
    background-color: #9D3E83;
    margin-top: 0px;
    display: fixed;
@@ -12,21 +12,21 @@
    display: block;
    color: #ffffff;
    padding: 20px;
-   width: 300px;
+   width: 100%;
    text-decoration: none;
  }
 
  .sidebar a:hover {
    background-color: #ffffff;
    color: #9D3E83;
-   width: 300px;
+   width: 100%;
    margin-left: 0px;
  }
 
  .sidebar a.active {
    background-color: #ffffff;
    color: #9D3E83;
-   width: 300px;
+   width: 100%;
    margin-left: 0px;
  }
 
@@ -34,21 +34,21 @@
    display: block;
    color: #ffffff;
    padding: 20px;
-   width: 300px;
+   width: 100%;
    text-decoration: none;
  }
 
  .Link a:hover {
    background-color: #ffffff;
    color: #9D3E83;
-   width: 300px;
+   width: 100%;
    margin-left: 0px;
  }
 
  .Link a.active {
    background-color: #ffffff;
    color: #9D3E83;
-   width: 228px;
+   width: 100%;
    margin-left: 0px;
  }
 
@@ -63,9 +63,10 @@
  /* Main part starts */
 
  .main {
-   margin-left: 300px;
+   margin-left: 15%;
    padding: 0px 10px;
    background-color: #ffffff;
+   height: 100%;
  }
 
  .mainUsers {
@@ -484,6 +485,56 @@
   font-size: 13px;
   color: #6D004F;
   height: 70px;
+}
+/* Admin Package Request*/
+.pending-pack .packtable{
+  width: 150%;
+  background: #fff;
+  padding: 20px 30px;
+  margin: 20px 50px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.pending-pack .pack-details{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pending-pack .box .title{
+  font-size: 24px;
+  font-weight: 500;
+  /* margin-bottom: 10px; */
+}
+.pending-pack .pack-details li.topic{
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+}
+.pending-pack .pack-details li{
+  list-style: none;
+  margin: 8px 0;
+  padding-top: 20px;
+}
+.pending-pack .pack-details li a{
+  font-size: 18px;
+  color: #333;
+  font-size: 400;
+  text-decoration: none;
+}
+
+.view li .btn{
+  margin-left: 0%;
+  width: 100%;
+  padding: 8px 10px;
+  height: 30px;
+  font-size: 15px; 
+  background:#6d004f;
+  color:#ffffff;
+  cursor:pointer;
+  border: 1px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  outline: none;
 }
 
  
