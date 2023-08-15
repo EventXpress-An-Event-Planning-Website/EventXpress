@@ -12,6 +12,7 @@ import { useCreateMutation,useGetEventQuery } from '../../slices/eventSlice'
 import { eventSlice } from '../../slices/eventSlice'
 import { ApiProvider } from '@reduxjs/toolkit/dist/query/react'
 import { isBefore } from 'date-fns';
+import CreateEventCarrousal from '../../components/Cus/CreateEventCarrousal'
 
 
 
@@ -150,11 +151,19 @@ const CreateEvent = () => {
         
         
         <section id='content' className='cus-block'>
-            <CusCrrousal />
+            <CreateEventCarrousal />
         </section>
-        <section className="createeventbtn">
-            <Button onClick={toggleCreateEvent}>Create Event</Button>
-        </section>
+        <div className='create-event-container'>
+            <div className='create-event-container-sentence'>
+                <span>ARE YOU INTERESTING TO PLAN AN EVENT FROM OUR PLATFORM?</span>
+                
+            </div>
+            <section className="createeventbtn">
+                <Button onClick={toggleCreateEvent}>Create Event</Button>
+            </section>
+
+        </div>
+        
         
         <section className="eventcontainer">
             <CusPendingEvent

@@ -18,14 +18,17 @@ import venue5 from '../../../assets/images/venue5.jpg';
 import venue6 from '../../../assets/images/venue6.jpg';
 import venue7 from '../../../assets/images/venue7.jpg';
 import venue8 from '../../../assets/images/venue8.jpg';
+import { Modal } from "react-bootstrap";
 
-const Catering = () => {
+const VenueDes = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search);
     const packageCount = queryParams.get('packageCount');
     console.log(packageCount);
+    const event_id = queryParams.get('event_id')
     const [comparePackages, setcomparePackages] = useState(packageCount)
+    const [showModal, setShowModal] = useState(false)
     const halls = [
         { name: "Hall Phoenix", location: "No:49, Canel Rd, Colombo", price: "LKR 24,500", guestCount: 200, area: "1200sqft", type: "Indoor" },
         { name: "Rose Veranda", location: "No:49, Canel Rd, Colombo", price: "LKR 30,000", guestCount: 150, area: "1000sqft", type: "Outdoor" },
@@ -47,13 +50,23 @@ const Catering = () => {
     const HandleAddCompare = () => {
         let pack = Number(comparePackages)
         setcomparePackages(pack + 1)
-        navigate(`/Venue?packageCount=${pack + 1}`)
+        navigate(`/Venue?event_id=${event_id}&packageCount=${pack + 1}`)
 
+    }
+    const openModal = () => {
+        console.log(showModal);
+        setShowModal(true)
+        console.log(showModal);
+    }
+    
+    const closeModal = () => {
+        setShowModal(false)
     }
 
 
     return (
         <>
+        {event_id !==null ? 
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <Container>
@@ -97,8 +110,8 @@ const Catering = () => {
                                                 </Form.Text>
                                             </Form.Group>
 
-                                            <Link to={`/customer/eventdetails?id=1`}>
-                                                <Button variant="primary" type="submit" className="compare-btns">Add to Event</Button>
+                                            <Link to={`/customer/eventdetails?id=${event_id}`}>
+                                                <Button variant="primary" type="submit">Add to Event</Button>
                                             </Link>
 
                                             {/* <Link to={`/Venue?packageCount=2`}> */}
@@ -115,12 +128,12 @@ const Catering = () => {
                                                 </Form.Text>
                                             </Form.Group>
 
-                                            <Link to={`/customer/eventdetails?id=1`}>
-                                                <Button variant="primary" type="submit" className="compare-btns">Add to Event</Button>
+                                            <Link to={`/customer/eventdetails?id=${event_id}`}>
+                                                <Button variant="primary" className="compare-btns" type="submit">Add to Event</Button>
                                             </Link>
 
-                                            <Link to={`/customer/event/VenueCompare`}>
-                                                <Button type="submit" className="compare-btns-2">Compare</Button>
+                                            <Link to={`/customer/event/VenueCompare?event_id=${event_id}`}>
+                                                <Button variant="primary" className="compare-btns-2" type="submit">Compare</Button>
                                             </Link>
 
 
@@ -183,11 +196,131 @@ const Catering = () => {
                     </Row>
 
                 </Container >
+            </div >:
+            <div style={{ "display": "flex" }}>
+                
+                <Container>
+                    <Row>
+                        <Col>
+                            <Col md={10} >
+                                <Image src={venue5} thumbnail className="venueDesImg" />
+                            </Col>
+
+                            <Col md={10} >
+                                <Image src={venue6} thumbnail className="venueDesImg" />
+                            </Col>
+                            <br />
+                            {/* <Link to={`/customer/eventdetails`}> */}
+                            <Button className="addToEvent-btn" variant="primary" size="lg" onClick={openModal}>Add to Compare</Button>{' '}
+                            {/* </Link> */}
+
+                            <Link to={`/ChatDes`}>
+                                <Button variant="success" className="addToEvent-btn chat-btn" size="lg"><FaWhatsapp /></Button>{' '}
+                            </Link>
+                        </Col>
+
+                        <Col>
+                            <Col md={10} >
+                                <Image src={venue7} thumbnail className="venueDesImg" />
+                            </Col>
+
+                            <Col md={10} >
+                                <Image src={venue8} thumbnail className="venueDesImg" />
+                            </Col>
+                        </Col>
+                        
+                        <Col>
+                            <h2>Araliya Beach Hotel</h2>
+                            <Image src={venue6} thumbnail />
+
+                            <Dropdown>
+                                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                    {selectedHall.name}
+                                </Dropdown.Toggle>
+                                {/* <Dropdown.Item>Select one</Dropdown.Item> */}
+
+                                <Dropdown.Menu>
+                                    {halls.map((hall) => (
+                                        <Dropdown.Item key={hall.name} onClick={() => handleHallSelection(hall)}> {hall.name}</Dropdown.Item>
+                                        // <Dropdown.Item onClick={() => setHallName("Rose Veranda")} >Rose Veranda</Dropdown.Item>
+                                        // <Dropdown.Item onClick={() => setHallName("Hall Draffodils")}>Hall Draffodils</Dropdown.Item>
+                                    ))}
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            <br />
+                            {selectedHall && (
+                                <Table striped bordered hover>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Location</td>
+                                            <td>{selectedHall.location}</td>
+                                            {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
+                                        </tr>
+                                        <tr>
+                                            <td>Price</td>
+                                            <td>{selectedHall.price}</td>
+                                            {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
+                                        </tr>
+
+                                        <tr>
+                                            <td>Maximum guest count</td>
+                                            <td>{selectedHall.guestCount}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hall area</td>
+                                            <td>{selectedHall.area}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hall type</td>
+                                            <td>{selectedHall.type}</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            )}
+                        </Col>
+                    </Row>
+
+                    
+
+                </Container >
+
+                    <Modal show={showModal} onHide={closeModal}>
+                        <Modal.Header closeButton>
+                        <Modal.Title>EventXpree Policy</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <p>Before You Select a Package Please Create An Event</p>
+                            <Link to={`/customer/myEvents`}>
+                                <Button className="addToEvent-btn" variant="primary" size="lg">Create Event</Button>{' '}
+                            </Link>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={closeModal}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
             </div >
+
+            
+                            }          
+            
+           
+
+
+            
+
+            
         </>
+        
+        
     );
 };
 
 
 
-export default Catering;
+
+
+
+export default VenueDes;

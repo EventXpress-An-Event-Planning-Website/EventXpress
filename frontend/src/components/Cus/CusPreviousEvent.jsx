@@ -96,15 +96,16 @@ const CusPreviousEvent = ({eventData}) => {
     <>
         <div className='pendingevent'>
           <div className='event-heading-container'>
-              <h2 style={{ marginTop: '10px',marginLeft:'10px' }}>Completed Events</h2>
-              <div className='private-and-public-btn-container'>
-                <Button className={showPrivateEventCarousel ? 'privateEvent-btn active' : 'privateEvent-btn'} onClick={handleShowPrivateEventCarousel}>
+          <div className='private-and-public-btn-container'>
+                <Button style={{marginLeft:'10px' }} className={showPrivateEventCarousel ? 'privateEvent-btn active' : 'privateEvent-btn'} onClick={handleShowPrivateEventCarousel}>
                   Private Event
                 </Button>
                 <Button className={!showPrivateEventCarousel ? 'publicEvent-btn active' : 'publicEvent-btn'} onClick={handleShowPublicEventCarousel}>
                   Public Event
                 </Button>
               </div>
+              <h2 style={{ marginTop: '10px',marginLeft:'30%' }}>Completed Events</h2>
+              
             </div>
             <hr></hr>
             {showPrivateEventCarousel && cusPreviousEvent.length > 0 ? (

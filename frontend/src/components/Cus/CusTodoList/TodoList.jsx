@@ -22,7 +22,7 @@ const TodoList=({event})=> {
           id: todo.todo_id,
           text: todo.todo_service,
           location: todo.todo_service,
-          selected: 'Araliya Garden',
+          selected: 'Araliya Beach Resort',
           img: 'venue5.jpg'
         }));
   
@@ -36,7 +36,7 @@ const TodoList=({event})=> {
       });
   }, [event.event_id]);
   
-
+  
   //   if (services.length === 0) {
   //     return <div>Loading...</div>;
   // }
@@ -102,6 +102,7 @@ const TodoList=({event})=> {
      
       <TodoForm onSubmit={addTodo} event={event} />
       <Todo
+        event_id={event.event_id}
         todos={todos}
         completeTodo={completeTodo}
         removeTodo={removeTodo}

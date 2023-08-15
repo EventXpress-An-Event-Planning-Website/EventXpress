@@ -19,7 +19,12 @@
 
 .cus-img{
   max-width: 100%;
-  height: 400px;
+  height: 460px;
+  vertical-align: top;
+}
+.cus-event-img{
+  max-width: 100%;
+  height: 460px;
   vertical-align: top;
 }
 

@@ -6,10 +6,20 @@ import venue6 from '../../assets/images/venue6.jpg';
 import venue1 from '../../assets/images/venue1.jpg';
 import { Link } from "react-router-dom";
 import Image from 'react-bootstrap/Image';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const CompareVenuePackages = () => {
 
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search);
+    const event_id= queryParams.get('event_id')
     const package1 =[{id:1, imag:"birthday1.jpg",location:"Galle",}];
+    const navigate = useNavigate();
+
+    const handleAddPackage =(event_id)=>{
+        navigate(`/customer/event/Venue?event_id=${event_id}`)
+    }
   return (
     <>
 
@@ -22,17 +32,17 @@ const CompareVenuePackages = () => {
                 <tr className='compare-table-row'>
                     <th className='compare-table-header'>Package</th>
                     <td className='compare-table-data'>
-                    <Link to={`/Venue?packageCount=2`}>
+                    <Link to={`/Venue?event_id=${event_id}&packageCount=2`}>
                         <Button>Add Package To Compare</Button>
                         </Link>
                     </td>
                     <td className='compare-table-data'>
-                    <Link to={`/Venue?packageCount=2`}>
+                    <Link to={`/Venue?event_id=${event_id}&packageCount=2`}>
                         <Button>Add Package To Compare</Button>
                         </Link>
                     </td>
                     <td className='compare-table-data'>
-                    <Link to={`/Venue?packageCount=2`}>
+                    <Link to={`/Venue?event_id=${event_id}&packageCount=2`}>
                         <Button>Add Package To Compare</Button>
                         </Link>
                     </td>
@@ -97,15 +107,15 @@ const CompareVenuePackages = () => {
                 <tr className='compare-table-row'>
                     <th className='compare-table-header'></th>
                     <td className='compare-table-data'>
-                        <Link to={`/customer/eventdetails?id=1`}>
+                        <Link to={`/customer/eventdetails?id=${event_id}`}>
                         <Button className='compare-addEvent-btn'>Add to Event</Button>
                         </Link></td>
                     <td className='compare-table-data'>
-                        <Link to={`/customer/eventdetails?id=1`}>
+                        <Link to={`/customer/eventdetails?id=${event_id}`}>
                         <Button className='compare-addEvent-btn'>Add to Event</Button>
                         </Link></td>
                     <td className='compare-table-data'>
-                        <Link to={`/customer/eventdetails?id=1`}>
+                        <Link to={`/customer/eventdetails?id=${event_id}`}>
                         <Button className='compare-addEvent-btn'>Add to Event</Button>
                         </Link></td>
                 </tr>
