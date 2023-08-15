@@ -46,7 +46,7 @@ function AdminTicketSupport() {
             <table className="admin-table">
               <tr className="tableRow">
                 <td className="userTableContent">
-                  <GrNotification size={45} style={{ color: "#6D004F" }} />
+                  <GrNotification size={25} style={{ color: "#6D004F" }} />
                 </td>
                 <td className="userTableContent"></td>
                 <td className="userTableContent">
@@ -67,7 +67,7 @@ function AdminTicketSupport() {
             <table className="admin-table">
               <tr className="tableRow">
                 <td className="userTableContent">
-                  <GrNotification size={45} style={{ color: "#6D004F" }} />
+                  <GrNotification size={25} style={{ color: "#6D004F" }} />
                 </td>
                 <td className="userTableContent"></td>
                 <td className="userTableContent">

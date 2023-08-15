@@ -21,7 +21,7 @@ function UsersMain() {
           style={{
             color: "black",
             fontWeight: "bold",
-            fontSize: "40px",
+            fontSize: "30px",
             marginLeft: "45px",
           }}
         >
@@ -55,20 +55,20 @@ function UsersMain() {
             </div>
           </div>
           <div className="DetailsRight">
-            <img src={Certification} style={{ marginLeft: "100px" }} />
+            <img src={Certification} style={{ marginLeft: "20%" }} />
             <Button
               variant="primary"
               onClick={handleShow}
-              style={{ position: "absolute", bottom: "10px", right: "330px" }}
+              style={{ position: "absolute", bottom: "10%", right: "20%", backgroundColor:"#23C309" }}
             >
               Accept
             </Button>
             <Button
               variant="primary"
               onClick={handleCancel}
-              style={{ position: "absolute", bottom: "10px", right: "200px" }}
+              style={{ position: "absolute", bottom: "10%", right: "10%", backgroundColor:"#C31B07"   }}
             >
-              Cancel
+              Rejecte
             </Button>
           </div>
           <Modal show={show} onHide={handleClose}>

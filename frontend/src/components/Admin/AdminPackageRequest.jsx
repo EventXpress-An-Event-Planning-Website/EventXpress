@@ -1,10 +1,8 @@
 import React from "react";
 
 const AdminPackageRequest = () => {
-  console.log("kalana");
   return (
     <>
-    <div className="main">
       <div className="pending-pack">
         <div className="packtable">
           <div className="title">
@@ -150,7 +148,6 @@ const AdminPackageRequest = () => {
             </ul>
           </div>
         </div>
-      </div>
       </div>
     </>
   );
