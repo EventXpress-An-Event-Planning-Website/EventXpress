@@ -83,7 +83,7 @@ const StageRentals = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
-
+                <h1 className="pckg-name">Stage Rentals Packages</h1>
                     {stagesData.map((stage) => (
                         <div className="col-md-3 custom-col" key={stage.id}>
 
@@ -92,8 +92,8 @@ const StageRentals = () => {
                                 <Card.Body>
                                     <Card.Title className="s-main-title">{stage.title}</Card.Title>
                                     <Card.Text className="s-text">{stage.text}</Card.Text>
-                                    <Link to={`/stageDes`}>
-                                        <Button className="s-btn" variant="primary">Select</Button>
+                                    <Link to={`/StageRentalsDes`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>

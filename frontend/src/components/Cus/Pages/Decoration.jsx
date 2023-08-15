@@ -85,7 +85,7 @@ const Decoration = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
-
+                <h1 className="pckg-name">Decoration Packages</h1>
                     {decosData.map((deco) => (
                         <div className="col-md-3 custom-col" key={deco.id}>
 
@@ -94,8 +94,8 @@ const Decoration = () => {
                                 <Card.Body>
                                     <Card.Title className="s-main-title">{deco.title}</Card.Title>
                                     <Card.Text className="s-text">{deco.text}</Card.Text>
-                                    <Link to={`/decoDes`}>
-                                        <Button className="s-btn" variant="primary">Select</Button>
+                                    <Link to={`/DecorationDes`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>

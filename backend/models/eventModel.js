@@ -29,6 +29,17 @@ const createEvent = asyncHandler(
     ])
 
     if (createUser.rowCount > 0) {
+      const InsertTodo = `INSERT INTO public.todolist(event_id, todo_service) VALUES ($1,$2),($1,$3),($1,$4),($1,$5),($1,$6),($1,$7)`
+      const eventTodo = await query(InsertTodo,[
+        createUser.rows[0].event_id,
+        'Venue',
+        'Catering',
+        'Cake',
+        'Photography',
+        'Decoration',
+        'SoundAndLight'
+
+      ])
       // console.log(createUser.raws);
       return createUser.rows
     }

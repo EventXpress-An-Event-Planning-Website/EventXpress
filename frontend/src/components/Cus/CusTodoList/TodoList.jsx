@@ -22,7 +22,7 @@ const TodoList=({event})=> {
           id: todo.todo_id,
           text: todo.todo_service,
           location: todo.todo_service,
-          selected: 'Araliya Garden',
+          selected: 'Araliya Beach Resort',
           img: 'venue5.jpg'
         }));
   

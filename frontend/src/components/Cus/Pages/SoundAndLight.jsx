@@ -83,7 +83,7 @@ const SoundAndLight = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
-
+                <h1 className="pckg-name">Sound and Light Packages</h1>
                     {soundsData.map((sound) => (
                         <div className="col-md-3 custom-col" key={sound.id}>
 
@@ -92,8 +92,8 @@ const SoundAndLight = () => {
                                 <Card.Body>
                                     <Card.Title className="s-main-title">{sound.title}</Card.Title>
                                     <Card.Text className="s-text">{sound.text}</Card.Text>
-                                    <Link to={`/soundDes`}>
-                                        <Button className="s-btn" variant="primary">Select</Button>
+                                    <Link to={`/SoundAndLightDes`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>

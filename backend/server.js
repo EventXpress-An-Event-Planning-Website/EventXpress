@@ -8,6 +8,7 @@ const port = process.env.PORT || 5000
 import userRoute from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 import customerRoutes from './routes/customerRoutes.js'
+import serviceProviderRoutes from './routes/serviceProviderRoutes.js'
 
 
 // start database connection
@@ -31,6 +32,10 @@ app.use('/api/upload', uploadRoutes)
 
 //customer routes
 app.use('/api/customer',customerRoutes)
+
+//serivice provider routes
+app.use('/api/serviceProvider', serviceProviderRoutes)
+
 
 // Handle errors
 app.use(notFound)

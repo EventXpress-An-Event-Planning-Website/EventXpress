@@ -2,6 +2,12 @@ import React, { useState } from 'react'
 import { Button, Container, Row, Col, Form } from 'react-bootstrap'
 
 const TicketFilter = () => {
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+  const formattedToday = today.toISOString().split('T')[0];
+  const formattedTomorrow = tomorrow.toISOString().split('T')[0];
+
   const categories = [
     'All',
     'Musical',
@@ -23,8 +29,8 @@ const TicketFilter = () => {
   }
 
   return (
-    <div className="filter-container">
-      <div className="filter">
+    <div className="ticket-filter-container">
+      <div className="ticket-filter">
         <Form.Group controlId="categoryFilter">
           <Form.Control
             as="select"
@@ -39,7 +45,7 @@ const TicketFilter = () => {
           </Form.Control>
         </Form.Group>
       </div>
-      <div className="search">
+      <div className="ticket-search">
         <Form.Group controlId="searchBar">
           <Form.Control
             type="text"
@@ -47,6 +53,20 @@ const TicketFilter = () => {
             value={searchQuery}
             onChange={handleSearchChange}
           />
+        </Form.Group>
+      </div>
+      <div className="ticket-sort-by-date">
+        <Form.Group controlId="sortByDate">
+          <div className="d-flex date-input-container">
+            <div className="d-flex">
+              <Form.Label>From</Form.Label>
+              <Form.Control type="date" className="date-input" min={formattedToday} />
+            </div>
+            <div className="d-flex">
+              <Form.Label>To</Form.Label>
+              <Form.Control type="date" className="date-input" min={formattedTomorrow} />
+            </div>
+          </div>
         </Form.Group>
       </div>
     </div>

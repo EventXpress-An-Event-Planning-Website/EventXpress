@@ -17,7 +17,8 @@ import LoginScreen from './screens/LoginScreen.jsx'
 import RegisterScreen from './screens/RegisterScreen.jsx'
 import RegisterCustomerScreen from './screens/RegisterCustomerScreen.jsx'
 import RegisterServiceProviderScreen from './screens/RegisterServiceProviderScreen.jsx'
-import ProfileScreen from './screens/ProfileScreen.jsx'
+import ProfileScreen from './screens/ServiceProvider/SPprofile.jsx'
+// import ProfileScreen from './screens/ProfileScreen.jsx'
 // import Cus_Home from './screens/Customer/Cus_Home.jsx'
 import CreateEvent from './screens/Customer/createEvent.jsx'
 import CusHome from './components/Cus/CusHome.jsx'
@@ -26,6 +27,9 @@ import Home from './screens/ServiceProvider/Home.jsx'
 import PackageForm from './screens/ServiceProvider/PackageForm.jsx'
 import PackagesView from './screens/ServiceProvider/PackagesView.jsx'
 import PackageFullDetails from './screens/ServiceProvider/PackageFullDetails.jsx'
+import Calendar from './screens/ServiceProvider/Calendar.jsx'
+import PredefinedPrefList from './screens/ServiceProvider/PredefinedPack/PrePrefList.jsx'
+import PredefOneType from './screens/ServiceProvider/PredefinedPack/TypeOne.jsx'
 import AllTicketsPage from './screens/AllTicketsPage.jsx'
 import SellTicketsPage from './screens/SellTicketsPage.jsx'
 import AddTicketsPage from './screens/addTicketsPage.jsx'
@@ -34,15 +38,20 @@ import CusVenue from './components/Cus/CusVenue.jsx'
 import Venue from "../src/components/Cus/Pages/Venue.jsx";
 import Decoration from "../src/components/Cus/Pages/Decoration.jsx";
 import Catering from "../src/components/Cus/Pages/Catering.jsx";
-import Cake from "../src/components/Cus/Pages/cake.jsx";
+import Cake from "../src/components/Cus/Pages/Cake.jsx";
 import SoundAndLight from "../src/components/Cus/Pages/SoundAndLight.jsx";
 import Photography from "../src/components/Cus/Pages/Photography.jsx";
-import Entertainment from "../src/components/Cus/Pages/Entertainment.jsx";
+// import Entertainment from "../src/components/Cus/Pages/Entertainment.jsx";
 import StageRentals from "../src/components/Cus/Pages/StageRentals.jsx";
 import Sidebar from './components/Cus/Sidebar.jsx'
 import VenueDes from './components/Cus/Pages/VenueDes.jsx'
 import Birthday from './components/Cus/PrePackages/Birthday.jsx'
-import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
+// import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
+import AdminScreen from './screens/AdminScreen.jsx'
+import Users from './components/Admin/Users.jsx'
+import BlockList from './screens/ServiceProvider/BlockList.jsx'
+import EmailVerification from './components/EmailVerification.jsx'
+import CheckYourEmail from './screens/CheckYourEmail.jsx'
 import BirthdayDes from './components/Cus/PrePackages/BirthdayDes.jsx'
 import ChatSidebar from './components/Cus/Chat/ChatSidebar.jsx'
 import ChatDes from './components/Cus/Chat/ChatDes.jsx'
@@ -51,6 +60,20 @@ import Anniversary from './components/Cus/PrePackages/Anniversary.jsx'
 import Social from './components/Cus/PrePackages/Social.jsx'
 import CustomerProfile from './screens/Customer/CustomerProfile.jsx'
 import CompareVenuePackages from './screens/Customer/CompareVenuePackages.jsx'
+import DecorationDes from './components/Cus/Pages/DecorationDes.jsx'
+import CateringDes from './components/Cus/Pages/CateringDes.jsx'
+import CakeDes from './components/Cus/Pages/CakeDes.jsx'
+import SoundAndLightDes from './components/Cus/Pages/SoundAndLightDes.jsx'
+import PhotographyDes from './components/Cus/Pages/PhotographyDes.jsx'
+import StageRentalsDes from './components/Cus/Pages/StageRentalsDes.jsx'
+import UsersDetails from './components/Admin/UsersDetails.jsx'
+import TicketSupports from './components/Admin/TicketSupports.jsx'
+import AdminSupportView from './components/Admin/AdminSupportView.jsx'
+import Revenue from './components/Admin/Revenue.jsx'
+import AdminEvents from './components/Admin/AdminEvents.jsx'
+import AdminEventDetails from './components/Admin/AdminEventDetails.jsx'
+
+import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
 
 
 const router = createBrowserRouter(
@@ -60,8 +83,11 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/logout" element={<HomeScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
+      <Route path="/users/verify" element={<EmailVerification />} />
       <Route path="/register/customer" element={<RegisterCustomerScreen />} />
       <Route path="/register/serviceProvider" element={<RegisterServiceProviderScreen />} />
+      <Route path="/checkYourEmail" element={<CheckYourEmail />} />
+
       {/* Private Route */}
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
@@ -84,6 +110,13 @@ const router = createBrowserRouter(
         {/* <Route path="/Entertainment" element={<Entertainment />} /> */}
         <Route path="/StageRentals" element={<StageRentals />} />
         <Route path="/VenueDes" element={<VenueDes />} />
+        <Route path="/DecorationDes" element={<DecorationDes />} />
+        <Route path="/CateringDes" element={<CateringDes />} />
+        <Route path="/CakeDes" element={<CakeDes />} />
+        <Route path="/SoundAndLightDes" element={<SoundAndLightDes />} />
+        <Route path="/PhotographyDes" element={<PhotographyDes />} />
+        <Route path="/StageRentalsDes" element={<StageRentalsDes />} />
+
         <Route path="/Birthday" element={<Birthday/>}/>
         <Route path="/BirthdayDes" element={<BirthdayDes/>}/>
         <Route path="/BrideToBe" element={<BrideToBe/>}/>
@@ -94,16 +127,40 @@ const router = createBrowserRouter(
         <Route path="/customer/event/VenueCompare" element={<CompareVenuePackages/>}/>
         <Route path="/customer/event/Venue" element={<Venue />} />
         <Route path="/customer/event/VenueDes" element={<VenueDes />} />
+        <Route path="/customer/event/Catering" element={<Catering />} />
+        <Route path="/customer/event/CateringDes" element={<CateringDes />} />
+        <Route path="/customer/event/Cakes" element={<Cake />} />
+        <Route path="/customer/event/CakesDes" element={<CakeDes />} />
+        <Route path="/customer/event/Decoration" element={<Decoration />} />
+        <Route path="/customer/event/DecorationDes" element={<DecorationDes/>} />
+        <Route path="/customer/event/Photography" element={<Photography />} />
+        <Route path="/customer/event/PhotographyDes" element={<PhotographyDes />} />
+        <Route path="/customer/event/SoundAndLight" element={<SoundAndLight />} />
+        <Route path="/customer/event/SoundAndLightDes" element={<SoundAndLightDes />} />
 
       </Route>
-   
+
       <Route path="/ServiceProvider/home" element={<Home />} />
       <Route path="/ServiceProvider/packageForm" element={<PackageForm />} />
       <Route path="/ServiceProvider/packagesView" element={<PackagesView />} />
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
-      <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} />
-      
-   
+      {/* <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} /> */}
+      {/* admin rout  */}
+      <Route path="/adminDashboard" element={<AdminScreen />} />
+      <Route path="/Users" element={<Users />} />
+      <Route path="/UsersDetails" element={<UsersDetails />} />
+      <Route path="/TicketSupports" element={<TicketSupports />} />
+      <Route path="/AdminSupportView" element={<AdminSupportView />} />
+      <Route path="/Revenue" element={<Revenue />} />
+      <Route path="/AdminEvents" element={<AdminEvents />} />
+      <Route path="/AdminEventDetails" element={<AdminEventDetails />} />
+      <Route path="/ServiceProvider/profile" element={<ProfileScreen />} />
+      <Route path="/ServiceProvider/blockList" element={<BlockList />} />
+      <Route path="/ServiceProvider/preferences" element={<PredefinedPrefList />} />
+      <Route path="/ServiceProvider/calendar" element={<Calendar />} />
+      <Route path="/ServiceProvider/typePack" element={<PredefOneType />} />
+      <Route path="/ServiceProvider/typePacklist" element={<AddtoPre />} />
+
     </Route>
   )
 )
