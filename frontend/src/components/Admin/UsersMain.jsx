@@ -7,13 +7,43 @@ import Button from "react-bootstrap/Button";
 // import img2 from "../../assets/images/img4.jpg";
 import { Link } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
+import axios from "axios";
+import { useEffect } from "react";
 
 function UsersMain() {
   const [key, setKey] = useState("tab1");
-
+  const [customer, setCustomer] = useState([]);
   const handleTabChange = (selectedKey) => {
     setKey(selectedKey);
+    if (selectedKey === "tab3") {
+      fetchData();
+    }
   };
+
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchData = () => {
+    setLoading(true);
+    axios
+      .get(`/api/admin/getAllCustomers`)
+      .then((response) => {
+        setData(response.data);
+        setLoading(false);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    if (key === "tab3" && loading) {
+      fetchData();
+    }
+  }, [key, loading]);
 
   return (
     <div className="mainUsers ">
@@ -302,99 +332,55 @@ function UsersMain() {
             </div>
           </Tab>
           <Tab eventKey="tab3" title="Customers">
-          <div className="userRequestsBox">
-            <table className="admin-table">
-              <tr className="tableRow">
-                <td className="userTableContent"></td>
-                <td className="userTableContent"></td>
-                <td className="userTableContent">Nalaka Perera</td>
-                <td>
-                  <Link to="/UsersDetails">
-                    <Button variant="primary">View Profile</Button>
-                  </Link>
-                </td>
-              </tr>
-              <tr className="tableRow">
-                <td className="userTableContent"></td>
-                <td className="userTableContent"></td>
-                <td className="userTableContent">Nalaka Perera</td>
-                <td>
-                  <Link to="/UsersDetails">
-                    <Button variant="primary">View Profile</Button>
-                  </Link>
-                </td>
-              </tr>
-              <tr className="tableRow">
-                <td className="userTableContent"></td>
-                <td className="userTableContent"></td>
-                <td className="userTableContent">Nalaka Perera</td>
-                <td>
-                  <Link to="/UsersDetails">
-                    <Button variant="primary">View Profile</Button>
-                  </Link>
-                </td>
-              </tr>
-              <tr className="tableRow">
-                <td className="userTableContent"></td>
-                <td className="userTableContent"></td>
-                <td className="userTableContent">Nalaka Perera</td>
-                <td>
-                  <Link to="/UsersDetails">
-                    <Button variant="primary">View Profile</Button>
-                  </Link>
-                </td>
-              </tr>
-              <tr className="tableRow">
-                <td className="userTableContent"></td>
-                <td className="userTableContent"></td>
-                <td className="userTableContent">Nalaka Perera</td>
-                <td>
-                  <Link to="/UsersDetails">
-                    <Button variant="primary">View Profile</Button>
-                  </Link>
-                </td>
-              </tr>
-              <tr className="tableRow">
-                <td className="userTableContent"></td>
-                <td className="userTableContent"></td>
-                <td className="userTableContent">Nalaka Perera</td>
-                <td>
-                  <Link to="/UsersDetails">
-                    <Button variant="primary">View Profile</Button>
-                  </Link>
-                </td>
-              </tr>
-              <tr className="tableRow">
-                <td className="userTableContent"></td>
-                <td className="userTableContent"></td>
-                <td className="userTableContent">Nalaka Perera</td>
-                <td>
-                  <Link to="/UsersDetails">
-                    <Button variant="primary">View Profile</Button>
-                  </Link>
-                </td>
-              </tr>
-              <tr className="tableRow">
-                <td className="userTableContent"></td>
-                <td className="userTableContent"></td>
-                <td className="userTableContent">Nalaka Perera</td>
-                <td>
-                  <Link to="/UsersDetails">
-                    <Button variant="primary">View Profile</Button>
-                  </Link>
-                </td>
-              </tr>
-              <tr className="tableRow">
-                <td className="userTableContent"></td>
-                <td className="userTableContent"></td>
-                <td className="userTableContent">Nalaka Perera</td>
-                <td>
-                  <Link to="/UsersDetails">
-                    <Button variant="primary">View Profile</Button>
-                  </Link>
-                </td>
-              </tr>
-            </table>
+            <div className="userRequestsBox">
+              {loading ? (
+                <p>Loading...</p>
+              ) : (
+                <table className="admin-table">
+                  
+                    <tr className="tableRow" >
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent">Kalana Weranga</td>
+                      <td>
+                        <Link to="/UsersDetails">
+                          <Button variant="primary">View Profile</Button>
+                        </Link>
+                      </td>
+                    </tr>
+                    <tr className="tableRow" >
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent">Kalana Weranga</td>
+                      <td>
+                        <Link to="/UsersDetails">
+                          <Button variant="primary">View Profile</Button>
+                        </Link>
+                      </td>
+                    </tr>
+                    <tr className="tableRow" >
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent">Kalana Weranga</td>
+                      <td>
+                        <Link to="/UsersDetails">
+                          <Button variant="primary">View Profile</Button>
+                        </Link>
+                      </td>
+                    </tr>
+                    <tr className="tableRow" >
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent">Kalana Weranga</td>
+                      <td>
+                        <Link to="/UsersDetails">
+                          <Button variant="primary">View Profile</Button>
+                        </Link>
+                      </td>
+                    </tr>
+                 
+                </table>
+              )}
             </div>
           </Tab>
         </Tabs>
