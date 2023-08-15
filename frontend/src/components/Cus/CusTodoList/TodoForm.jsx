@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const TodoForm=(props) =>{
@@ -7,7 +8,7 @@ const TodoForm=(props) =>{
 
   const event_id=props.event.event_id;
   // console.log(event);
-
+  const navigate=useNavigate();
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -31,6 +32,10 @@ const TodoForm=(props) =>{
     });
     setInput('');
   };
+
+  const HandleNavigate = async()=>{
+    navigate(`/Birthday?event_id=${event_id}`)
+  }
 
   return (
     <form onSubmit={handleSubmit} className='todo-form'>
@@ -63,6 +68,10 @@ const TodoForm=(props) =>{
           />
           <button onClick={handleSubmit} className='todo-button'>
             Add todo
+          </button>
+
+          <button style={{marginLeft:'5%'}} onClick={HandleNavigate} className='todo-button'>
+            Select Predefine Package
           </button>
         </>
       )}

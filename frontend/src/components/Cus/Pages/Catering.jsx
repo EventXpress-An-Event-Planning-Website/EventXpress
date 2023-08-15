@@ -4,6 +4,10 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import Pagination from 'react-bootstrap/Pagination';
+import { Form, FormControl } from 'react-bootstrap'
+import Dropdown from 'react-bootstrap/Dropdown';
+import FilterPackages from "./FilterPackages";
+
 import catering1 from '../../../assets/images/catering-1.webp';
 import catering2 from '../../../assets/images/catering-2.webp';
 import catering3 from '../../../assets/images/catering-3.webp';
@@ -19,49 +23,57 @@ const Catering = () => {
         {
             id: 1,
             image: catering1,
-            title: 'Elite Catering',
+            pckgName: 'Birthday Package',
+            title: 'by Elite Catering',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 2,
             image: catering2,
-            title: 'Taste Ming',
+            pckgName: 'Platinum Menu',
+            title: 'by Taste Ming',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
             image: catering3,
-            title: 'Butlers Catering Service',
+            pckgName: 'Gold Menu',
+            title: 'by Butlers Catering Service',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
             image: catering4,
-            title: 'Classics catering',
+            pckgName: 'Silver Menu',
+            title: 'by Classics catering',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
             image: catering5,
-            title: 'Toast the Host',
+            pckgName: 'Bronze Menu',
+            title: 'by Toast the Host',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
             image: catering6,
-            title: 'Cool Caterers',
+            pckgName: 'Silver Menu',
+            title: 'by Cool Caterers',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
             image: catering7,
-            title: 'Better Cater',
+            pckgName: 'Gold Menu',
+            title: 'by Better Cater',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
             image: catering8,
-            title: 'YummyMist Foods',
+            pckgName: 'Bronze Menu',
+            title: 'by YummyMist Foods',
             text: ' Some quick example text to build on the card title'
         }
     ];
@@ -81,17 +93,20 @@ const Catering = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
+                <FilterPackages/>
 
+                    <h1 className="pckg-name">Catering Packages</h1>
                     {cateringsData.map((catering) => (
                         <div className="col-md-3 custom-col" key={catering.id}>
 
                             <Card className="s-card" style={{ width: '18rem' }} >
                                 <Card.Img className="s-img" variant="top" src={catering.image} />
                                 <Card.Body>
-                                    <Card.Title className="s-main-title">{catering.title}</Card.Title>
+                                    <Card.Title className="s-main-title">{catering.pckgName}</Card.Title>
+                                    <Card.Text className="s-main-title-pckg">{catering.title}</Card.Text>
                                     <Card.Text className="s-text">{catering.text}</Card.Text>
-                                    <Link to={`/cateringDes`}>
-                                    <Button className="s-btn" variant="primary">Select</Button>
+                                    <Link to={`/CateringDes`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>
