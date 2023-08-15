@@ -43,7 +43,7 @@ function AdminTicketSupport() {
           className="justify-content-end" // Add this class for right alignment
         >
           <Tab eventKey="tab1" title="Unread">
-            <table className="table">
+            <table className="admin-table">
               <tr className="tableRow">
                 <td className="userTableContent">
                   <GrNotification size={45} style={{ color: "#6D004F" }} />
@@ -64,7 +64,7 @@ function AdminTicketSupport() {
             </table>
           </Tab>
           <Tab eventKey="tab2" title="Responded">
-            <table className="table">
+            <table className="admin-table">
               <tr className="tableRow">
                 <td className="userTableContent">
                   <GrNotification size={45} style={{ color: "#6D004F" }} />

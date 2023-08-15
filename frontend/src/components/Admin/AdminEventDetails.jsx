@@ -5,7 +5,7 @@ import AdminEventsDetailsMain from './AdminEventsDetailsMain'
 function AdminEventDetails() {
   return (
     <div>
-    <SideBar value="5" />
+    <SideBar value="6" />
     <AdminEventsDetailsMain/>
 
 
