@@ -27,7 +27,6 @@ import Home from './screens/ServiceProvider/Home.jsx'
 import PackageForm from './screens/ServiceProvider/PackageForm.jsx'
 import PackagesView from './screens/ServiceProvider/PackagesView.jsx'
 import PackageFullDetails from './screens/ServiceProvider/PackageFullDetails.jsx'
-import Calendar from './screens/ServiceProvider/Calendar.jsx'
 import PredefinedPrefList from './screens/ServiceProvider/PredefinedPack/PrePrefList.jsx'
 import PredefOneType from './screens/ServiceProvider/PredefinedPack/TypeOne.jsx'
 import AllTicketsPage from './screens/AllTicketsPage.jsx'
@@ -112,7 +111,6 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/profile" element={<ProfileScreen />} />
       <Route path="/ServiceProvider/blockList" element={<BlockList />} />
       <Route path="/ServiceProvider/preferences" element={<PredefinedPrefList />} />
-      <Route path="/ServiceProvider/calendar" element={<Calendar />} />
       <Route path="/ServiceProvider/typePack" element={<PredefOneType />} />
       <Route path="/ServiceProvider/typePacklist" element={<AddtoPre />} />
 

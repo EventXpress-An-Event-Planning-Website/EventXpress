@@ -10,7 +10,7 @@ const createpackage = asyncHandler(async(req,res)=>{
     const {
         userId,
         packageTitle,
-        packageLocation,
+        // packageLocation,
         packageAddress,
         packageDescription,
         packagePrice,
@@ -29,7 +29,7 @@ const createpackage = asyncHandler(async(req,res)=>{
         packages= await venuePackage(
             userId,
             packageTitle,
-            packageLocation,
+            // packageLocation,
             packageAddress,
             packageDescription,
             packagePrice,
@@ -54,7 +54,7 @@ const createpackage = asyncHandler(async(req,res)=>{
         packages= await otherPackage(
             userId,
             packageTitle,
-            packageLocation,
+            // packageLocation,
             packageAddress,
             packageDescription,
             packagePrice,

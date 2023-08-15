@@ -1,4 +1,4 @@
-// import React from 'react'
+//import React from 'react'
 import { useState } from "react";
 // import { useRef } from "react"
 import { Form, FormControl, FormGroup, Button } from "react-bootstrap";
@@ -11,7 +11,7 @@ import { useUploadSingleMutation } from "../../../slices/uploadApiSlice";
 
 const FormDetails = () => {
   const [packageTitle, setpackageTitle] = useState("");
-  const [packageLocation, setpackageLocation] = useState("");
+  // const [packageLocation, setpackageLocation] = useState("");
   const [packageAddress, setpackageAddress] = useState("");
   const [packageDescription, setpackageDescription] = useState("");
   const [packagePrice, setpackagePrice] = useState("");
@@ -66,7 +66,7 @@ const FormDetails = () => {
         const optionResponse = await createPackage({
           userId,
           packageTitle,
-          packageLocation,
+          // packageLocation,
           packageAddress,
           packageDescription,
           packagePrice,
@@ -82,7 +82,7 @@ const FormDetails = () => {
         const res = await createPackage({
           userId,
           packageTitle,
-          packageLocation,
+          // packageLocation,
           packageAddress,
           packageDescription,
           packagePrice,
@@ -105,8 +105,8 @@ const FormDetails = () => {
   };
 
   return (
-    <div>
-      <FormContainer className="SPPackageForm">
+    <div className="SPPackageForm">
+      <FormContainer>
         <h3 className="packformh3">Package Information</h3>
         <div className="pack_info">
           <Form method="post" onSubmit={handleSubmit} className="form">
@@ -122,7 +122,7 @@ const FormDetails = () => {
               />
             </FormGroup>
 
-            <FormGroup className="input">
+            {/* <FormGroup className="input">
               <Form.Label htmlFor="location">Area cover</Form.Label>
               <FormControl
                 type="text"
@@ -132,7 +132,7 @@ const FormDetails = () => {
                 value={packageLocation}
                 required
               />
-            </FormGroup>
+            </FormGroup> */}
 
             <FormGroup className="input">
               <Form.Label htmlFor="address">Business address</Form.Label>
@@ -199,6 +199,40 @@ const FormDetails = () => {
                 required
               />
             </Form.Group>
+
+            {/* {packageType !== "Venue" && (
+              <React.Fragment>
+                <Form.Group className="my-4" controlId="additionalImage1">
+                  <Form.Label>Add Additional Image 1</Form.Label>
+                  <Form.Control
+                    type="file"
+                    accept=".jpg, .jpeg, .png"
+                    
+                    required
+                  />
+                </Form.Group>
+                
+                <Form.Group className="my-4" controlId="additionalImage2">
+                  <Form.Label>Add Additional Image 2</Form.Label>
+                  <Form.Control
+                    type="file"
+                    accept=".jpg, .jpeg, .png"
+                    
+                    required
+                  />
+                </Form.Group>
+                
+                <Form.Group className="my-4" controlId="additionalImage3">
+                  <Form.Label>Add Additional Image 3</Form.Label>
+                  <Form.Control
+                    type="file"
+                    accept=".jpg, .jpeg, .png"
+                    
+                    required
+                  />
+                </Form.Group>
+              </React.Fragment>
+            )} */}
 
             {/* option part for venue type */}
             {packageType === "Venue" && (

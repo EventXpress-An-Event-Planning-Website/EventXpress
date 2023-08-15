@@ -49,7 +49,7 @@ const SPprofile = () => {
             </td>
 
             <td className='main_details'>
-              <h2>Hello {userInfo.name}</h2>
+              <h2>Hello {userInfo.name} !</h2>
               <p>{userInfo.email}</p>
             </td>
 
@@ -65,8 +65,8 @@ const SPprofile = () => {
               <div className='personal'>
                 <p>Full Name: <span>{userInfo.name}</span></p>
                 <p>Email: <span>{userInfo.email}</span></p>
-                <p>NIC: <span></span></p>
-                <p>Contact No: <span>{userInfo.contctNo}</span></p>
+                <p>NIC: <span>996142586V</span></p>
+                <p>Contact No: <span>+94773345284{userInfo.contctNo}</span></p>
               </div>
               
             </Col>
@@ -75,10 +75,10 @@ const SPprofile = () => {
               <h3>Business Details</h3>
 
               <div className='business'>
-                <p>Business name: <span></span></p>
+                <p>Package names: <span>Araliya Beach hotel</span></p>
                 <p>Business email: <span>{userInfo.email}</span></p>
-                <p>Business type: <span></span></p>
-                <p>Business address: <span></span></p>
+                <p>Business types: <span>Venue, Cake</span></p>
+                <p>Business address: <span>43/B, Galaha road, Peradeniya</span></p>
               </div>
               
               <Button className='profedit_btn'>Edit</Button>
