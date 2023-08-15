@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import deco9 from '../../../assets/images/deco9.jpg';
-import sound6 from '../../../assets/images/sound6.jpg';
+import sound5 from '../../../assets/images/sound5.jpg';
 import photo4 from '../../../assets/images/photo4.jpg';
 import catering4 from '../../../assets/images/catering-4.webp';
 import cake4 from '../../../assets/images/cake4.jpg';
@@ -19,9 +19,10 @@ const BirthdayDes = () => {
     const birthdayDesData = [
         {
             id: 1,
-            image: venue5,
-            pckgName: 'Araliya Beach Resort',
-            link: '/VenueDes'
+            image: cake9,
+            pckgName: 'Black Forest Cake',
+            title: 'by Cake Talent',
+            link: '/CakeDes'
         },
         {
             id: 2,
@@ -32,24 +33,24 @@ const BirthdayDes = () => {
         },
         {
             id: 3,
-            image: cake9,
-            pckgName: 'Black Forest cake',
-            title: 'by Cake Talent',
-            link: '/CakeDes'
+            image: sound5,
+            pckgName: 'DJ package',
+            title: 'by Pure AV',
+            link: '/SoundAndLightDes'
         },
         {
             id: 4,
-            image: catering4,
-            pckgName: 'Birthday Package',
-            title: 'by Classics catering',
-            link: '/CateringDes'
-        },
-        {
-            id: 5,
             image: photo4,
             pckgName: 'Silver Package',
             title: 'by Capturra',
             link: '/PhotographyDes'
+        },
+        {
+            id: 5,
+            image: catering4,
+            pckgName: 'Birthday Package',
+            title: 'by Classics catering',
+            link: '/CateringDes'
         }
     ];
     return (
@@ -57,7 +58,7 @@ const BirthdayDes = () => {
             <div style={{ "display": "flex" }} >
                 <Sidebar />
                 <div>
-                    <h3 className="s-title">21st Birthday Package</h3>
+                    <h3 className="s-title">Forever Young-ish</h3>
                     <p className="s-para">by Roshan</p>
 
                     <div className="b-container">
