@@ -1,15 +1,14 @@
-import React from 'react'
-import Calender from "../../components/ServiceProvider/Calender"
-import Sidebar from "../../components/ServiceProvider/Sidebar"
+import React from "react";
+import Calender from "../../components/ServiceProvider/Calender";
+import Sidebar from "../../components/ServiceProvider/Sidebar";
 
 const ServiceProviderAvailability = () => {
   return (
-   
     <>
-       <Calender />
+      <Calender />
       <Sidebar />
     </>
-  )
-}
+  );
+};
 
-export default ServiceProviderAvailability
+export default ServiceProviderAvailability;

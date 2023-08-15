@@ -30,7 +30,7 @@ function SideBar(props) {
                 </span>
                 Users
             </Link>
-            <a href="#contact">
+            <a href="/PackageRequest">
               <span className="iconSize">
                 <BiMessageAlt size={25} />
               </span>
@@ -54,12 +54,12 @@ function SideBar(props) {
               </span>
               Events
             </a>
-            <a href="#contact">
+            {/* <a href="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
               Package Request
-            </a>
+            </a> */}
             <div className="logOut">
               <a href="#contact">
                 <span className="iconSize">

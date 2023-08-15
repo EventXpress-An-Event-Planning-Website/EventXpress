@@ -1,55 +1,53 @@
-.sidebar{
+.spsidebar{
     position:fixed ;
     font-family: 'Poppins', sans-serif;
-    width:240px;
+    width:15%;
     height:100%;
     background: white;
     overflow-x: hidden; 
     box-shadow: 5px 10px 20px rgb(236, 233, 246);  
 }
-.logo img{
-    
-    height: 40px;
-    width:100px;
-    margin:2px;
-   
-   }
 
-.sidebar ul{
+.spsidebar ul{
     margin-top: 20px;
 }
 
-.sidebar ul li{
+.spsidebar ul li{
     width: 100%;
     list-style: none;
     font-size: 13px;
 
 }
 
-.sidebar ul li a{
+.spsidebar ul li a{
     width: 100%;
     text-decoration: none;
-    color:  #8d8da7;
+    color:  #8d8da7 !important;
     height: 65px;
     display: flex;
     align-items: center;
 }
 
-.sidebar ul li a i{
+.spsidebar ul li a i{
     min-width: 80px;
     font-size: 25px;
     text-align: center;
 }
 
-.sidebar ul li:hover {
+.spsidebar ul li:hover {
     transform: scale(1.05);
     
   }
 
-.sidebar ul li .active {
+.spsidebar ul li .active {
 
     color: #6D004F;
     
 
 
+}
+.sidebar-icon {
+    min-width: 80px;
+    font-size: 25px;
+    text-align: center;
 }

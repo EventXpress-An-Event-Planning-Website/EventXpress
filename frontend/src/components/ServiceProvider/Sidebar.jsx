@@ -1,42 +1,44 @@
 import React from 'react';
+import { FaPlus, FaCalendarAlt, FaListAlt, FaTicketAlt,FaPortrait, FaBars } from 'react-icons/fa';
+
 
 function Sidebar() {
   return (
-    <div className="sidebar">
+    <div className="spsidebar">
       <ul>
         <li>
-          <a className="active" href="#">
-            <i className="fa fa-th-large"></i>
+          <a href="#">
+            <FaBars className="sidebar-icon" />
             <div>Dashboard</div>
           </a>
         </li>
         <li>
           <a href="#">
-            <i className="fa fa-plus"></i>
+            <FaPlus className="sidebar-icon" />
             <div>Create Package</div>
           </a>
         </li>
         <li>
           <a href="#">
-            <i className="fa fa-list-alt"></i>
+            <FaListAlt className="sidebar-icon" />
             <div>My Package</div>
           </a>
         </li>
         <li>
-          <a href="#">
-            <i className="fa fa-calendar"></i>
+          <a className="active" href="#">
+            <FaCalendarAlt className="sidebar-icon" />
             <div>Calendar</div>
           </a>
         </li>
         <li>
           <a href="#">
-            <i className="fa fa-ticket"></i>
+            <FaTicketAlt className="sidebar-icon" />
             <div>Buy Tickets</div>
           </a>
         </li>
         <li>
           <a href="#">
-            <i className="fa fa-volume-control-phone"></i>
+            <FaPortrait className="sidebar-icon" />
             <div>Help</div>
           </a>
         </li>

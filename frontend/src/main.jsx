@@ -27,7 +27,7 @@ import Home from './screens/ServiceProvider/Home.jsx'
 import PackageForm from './screens/ServiceProvider/PackageForm.jsx'
 import PackagesView from './screens/ServiceProvider/PackagesView.jsx'
 import PackageFullDetails from './screens/ServiceProvider/PackageFullDetails.jsx'
-import Calendar from './screens/ServiceProvider/Calendar.jsx'
+import ServiceProviderAvailability from './screens/ServiceProvider/ServiceProviderAvailability.jsx'
 import PredefinedPrefList from './screens/ServiceProvider/PredefinedPack/PrePrefList.jsx'
 import PredefOneType from './screens/ServiceProvider/PredefinedPack/TypeOne.jsx'
 import AllTicketsPage from './screens/AllTicketsPage.jsx'
@@ -46,7 +46,6 @@ import StageRentals from "../src/components/Cus/Pages/StageRentals.jsx";
 import Sidebar from './components/Cus/Sidebar.jsx'
 import VenueDes from './components/Cus/Pages/VenueDes.jsx'
 import Birthday from './components/Cus/PrePackages/Birthday.jsx'
-import MyEventHome from './screens/ServiceProvider/SPEventHome.jsx'
 import AdminScreen from './screens/AdminScreen.jsx'
 import Users from './components/Admin/Users.jsx'
 import BlockList from './screens/ServiceProvider/BlockList.jsx'
@@ -60,7 +59,7 @@ import Anniversary from './components/Cus/PrePackages/Anniversary.jsx'
 import Social from './components/Cus/PrePackages/Social.jsx'
 import CustomerProfile from './screens/Customer/CustomerProfile.jsx'
 import ServiceProviderRequests from './screens/ServiceProvider/ServiceProviderRequests.jsx'
-import ServiceProviderAvailability from './screens/ServiceProvider/ServiceProviderAvailability.jsx'
+// import ServiceProviderAvailability from './screens/ServiceProvider/ServiceProviderAvailability.jsx'
 import CompareVenuePackages from './screens/Customer/CompareVenuePackages.jsx'
 import UsersDetails from './components/Admin/UsersDetails.jsx'
 import TicketSupports from './components/Admin/TicketSupports.jsx'
@@ -70,6 +69,7 @@ import AdminEvents from './components/Admin/AdminEvents.jsx'
 import AdminEventDetails from './components/Admin/AdminEventDetails.jsx'
 
 import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
+import PackageRequest from './components/Admin/PackageRequest.jsx'
 
 
 const router = createBrowserRouter(
@@ -121,7 +121,6 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/packageForm" element={<PackageForm />} />
       <Route path="/ServiceProvider/packagesView" element={<PackagesView />} />
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
-      <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} />
       <Route path="/ServiceProvider/Requests" element={<ServiceProviderRequests />} />
       <Route path="/serviceProvider/availability" element={<ServiceProviderAvailability />} />
       
@@ -138,9 +137,9 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/profile" element={<ProfileScreen />} />
       <Route path="/ServiceProvider/blockList" element={<BlockList />} />
       <Route path="/ServiceProvider/preferences" element={<PredefinedPrefList />} />
-      <Route path="/ServiceProvider/calendar" element={<Calendar />} />
       <Route path="/ServiceProvider/typePack" element={<PredefOneType />} />
       <Route path="/ServiceProvider/typePacklist" element={<AddtoPre />} />
+      <Route path="/PackageRequest" element={<PackageRequest />} />
 
     </Route>
   )
