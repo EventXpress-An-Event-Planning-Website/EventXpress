@@ -1,0 +1,166 @@
+/* Chat Sidebar */
+.chat-container {
+    display: flex;
+    
+  }
+  
+  .chat-sidebar {
+    flex: 1;
+    padding: 20px;
+    background-color: #edeced;
+
+  }
+  
+  .search-input {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 20px;
+  }
+  
+  .search{
+    flex: 1;
+    padding: 5px;
+    padding-right: 20px;
+    border: none;
+    border-radius: 20px;
+  }
+  
+  .search-icon {
+    background-color: transparent;
+    padding: 10px;
+    padding-right: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .chat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .chat-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  
+  .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+    
+  }
+  
+  .chat-content {
+    flex: 1;
+    margin-top: 10px;
+  }
+  
+  .chat-header {
+    display: flex;
+    
+    align-items: center;
+  }
+  
+  .chat-name {
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .badge {
+    border-radius: 50%;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  .chat-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center
+  }
+  
+  .chat-message {
+    margin: 5px 0;
+  }
+  
+  .chat-time {
+    font-size: 12px;
+    color: #829C99;
+  }
+  
+  /* Chat Main */
+  .chat-main {
+    flex: 3;
+    padding: 20px;
+    background-color: #f5f6f7;
+    overflow-y: auto;
+    
+  }
+  
+  .chat-messages {
+    background-color: #c7aec6a6;
+    list-style: none;
+    padding: 10px 10px 10px 10px;
+    width:40%;
+    border-radius: 5%;
+    margin: 0;
+  }
+
+  
+
+
+  .cus-details{
+    color: #706f70;
+  }
+
+  .othersp{
+  color: #4a3a4b;
+  }
+  
+  .message-time {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .message-input {
+
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    
+    width: calc(100% - 30%);
+    position:absolute;
+    bottom: 0;
+    background-color: transparent;
+  }
+  .input::placeholder {
+  color: #999;
+}
+  
+  .input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .send-button {
+    background-color: #4a3a4b;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding-left: 2%;
+    border: none;
+    cursor: pointer;
+  }
+
+  .bg{
+    background-color: #126a2e9e;
+    height: 25px;
+    width: 25px;
+  }
+

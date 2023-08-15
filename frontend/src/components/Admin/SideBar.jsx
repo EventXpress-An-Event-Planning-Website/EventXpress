@@ -30,7 +30,7 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <a href="#contact">
+            <a href="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
@@ -82,7 +82,7 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <a href="#contact">
+            <a href="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
@@ -134,7 +134,7 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <a href="#contact" className="active">
+            <a href="/PackageRequest" className="active">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
@@ -186,7 +186,7 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <a href="#contact">
+            <a href="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
@@ -238,7 +238,7 @@ function SideBar(props) {
                 </span>
                 Users
               </Link>
-              <a href="#contact">
+              <a href="/PackageRequest">
                 <span className="iconSize">
                   <BiPackage size={25} />
                 </span>
@@ -290,7 +290,7 @@ function SideBar(props) {
                   </span>
                   Users
                 </Link>
-                <a href="#contact">
+                <a href="/PackageRequest">
                   <span className="iconSize">
                     <BiPackage size={25} />
                   </span>
@@ -342,7 +342,7 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <a href="#contact">
+            <a href="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
