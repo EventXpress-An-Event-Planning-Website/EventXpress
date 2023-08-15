@@ -7,9 +7,6 @@ import Button from "react-bootstrap/Button";
 // import img2 from "../../assets/images/img4.jpg";
 import { Link } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
-import { useEffect } from 'react';
-import axios from 'axios';
-
 
 function UsersMain() {
   const [key, setKey] = useState("tab1");
