@@ -65,6 +65,10 @@
     padding: 0.8rem;
 }
 
+.listTable .allSPList .spDetails{
+    float: left;
+}
+
 .listTable td{
     border-bottom: 0.5px solid #bfb4b4;
     overflow: hidden;
