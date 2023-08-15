@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useViewPackageQuery } from "../../../slices/viewPackageSlice";
 import { useLocation } from "react-router-dom";
+import { Form, FormControl } from 'react-bootstrap'
+import Dropdown from 'react-bootstrap/Dropdown';
 
 import venue1 from '../../../assets/images/venue1.jpg';
 import venue2 from '../../../assets/images/venue2.jpg';
@@ -25,7 +27,7 @@ const Venue = () => {
     const package_Count= queryParams.get('packageCount')
     const event_id= queryParams.get('event_id')
 
-    const [selectedCount,setselectedCount]= useState(package_Count)
+    const [selectedCount, setselectedCount] = useState(package_Count)
     console.log(selectedCount);
 
     const { data: packageData, error, isLoading } = useViewPackageQuery();
@@ -34,14 +36,14 @@ const Venue = () => {
     console.log(isLoading)
     useEffect(() => {
         if (error) {
-          console.error('Error fetching packages:', error);
+            console.error('Error fetching packages:', error);
         }
 
     }, [error]);
 
 
-    useEffect(()=>{
-        if(!isLoading) {
+    useEffect(() => {
+        if (!isLoading) {
             console.log(packageData);
         }
     }, [isLoading])
@@ -97,14 +99,14 @@ const Venue = () => {
     ];
 
     let active = 2;
-let items = [];
-for (let number = 1; number <= 5; number++) {
-  items.push(
-    <Pagination.Item key={number} active={number === active}>
-      {number}
-    </Pagination.Item>,
-  );
-}
+    let items = [];
+    for (let number = 1; number <= 5; number++) {
+        items.push(
+            <Pagination.Item key={number} active={number === active}>
+                {number}
+            </Pagination.Item>,
+        );
+    }
 
 
     return (
@@ -113,6 +115,59 @@ for (let number = 1; number <= 5; number++) {
                 <div style={{ "display": "flex" }}>
                     <Sidebar /> 
                     <div className="row custom-row">
+                    <div style={{ "display": "flex" }}>
+                        <span className="input-group-text all-text">All</span>
+
+                        <Form className="pckg-search-bar">
+                            <FormControl
+                                type="text"
+                                placeholder="Search for venues..."
+                            // value={searchQuery}
+                            // onChange={handleSearchChange}
+                            />
+                        </Form>
+
+                        <Dropdown>
+                            <Dropdown.Toggle className="location-dropdown">Select Location</Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">Colombo</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Gampaha</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Kandy</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Jaffna</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Galle</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        <Dropdown>
+                            <Dropdown.Toggle className="location-dropdown">
+                                Select Rating No
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">1</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">2</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">3</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">4</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">5</Dropdown.Item>
+
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        <Dropdown>
+                            <Dropdown.Toggle className="location-dropdown">
+                                Select Price Range
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">LKR 10000 - LKR 40000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">LKR 40000 - LKR 50000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">LKR 50000 - LKR 70000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">LKR 70000 - LKR 80000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">LKR 80000 - LKR 100000</Dropdown.Item>
+
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
                     <h1 className="pckg-name">Venue Packages</h1>
                         {venuesData.map((venue) => (
                             <div className="col-md-3 custom-col" key={venue.id}>
@@ -147,6 +202,59 @@ for (let number = 1; number <= 5; number++) {
                 </div>:
                 <div style={{ "display": "flex" }}>
                     <div className="row custom-row" style={{marginLeft:'3%'}}>
+                    <div style={{ "display": "flex" }}>
+                        <span className="input-group-text all-text">All</span>
+
+                        <Form className="pckg-search-bar">
+                            <FormControl
+                                type="text"
+                                placeholder="Search for venues..."
+                            // value={searchQuery}
+                            // onChange={handleSearchChange}
+                            />
+                        </Form>
+
+                        <Dropdown>
+                            <Dropdown.Toggle className="location-dropdown">Select Location</Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">Colombo</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Gampaha</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Kandy</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Jaffna</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Galle</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        <Dropdown>
+                            <Dropdown.Toggle className="location-dropdown">
+                                Select Rating No
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">1</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">2</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">3</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">4</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">5</Dropdown.Item>
+
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        <Dropdown>
+                            <Dropdown.Toggle className="location-dropdown">
+                                Select Price Range
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">LKR 10000 - LKR 40000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">LKR 40000 - LKR 50000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">LKR 50000 - LKR 70000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">LKR 70000 - LKR 80000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">LKR 80000 - LKR 100000</Dropdown.Item>
+
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
 
                         {venuesData.map((venue) => (
                             <div className="col-md-3 custom-col" key={venue.id}>
@@ -178,7 +286,7 @@ for (let number = 1; number <= 5; number++) {
                     
                 </div>}
 
-            
+
         </>
     );
 };

@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import Pagination from 'react-bootstrap/Pagination';
+import { Form, FormControl } from 'react-bootstrap'
+import Dropdown from 'react-bootstrap/Dropdown';
 
 import sound1 from '../../../assets/images/sound1.jpg';
 import sound2 from '../../../assets/images/sound2.jpg';
@@ -20,48 +22,56 @@ const SoundAndLight = () => {
         {
             id: 1,
             image: sound5,
+            pckgName: '',
             title: 'Pure AV',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 2,
             image: sound6,
+            pckgName: '',
             title: 'Pure Audio Visual Inc',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 3,
             image: sound3,
+            pckgName: '',
             title: 'Tailgate Express Events',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 4,
             image: sound2,
+            pckgName: '',
             title: 'dBcontrol bv',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 5,
             image: sound1,
+            pckgName: '',
             title: 'Auvicom',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 6,
             image: sound4,
+            pckgName: '',
             title: 'A.S. Technology',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 7,
             image: sound7,
+            pckgName: '',
             title: 'Painting with Light',
             text: ' Some quick example text to build on the card title'
         },
         {
             id: 8,
             image: sound8,
+            pckgName: '',
             title: 'Alphatentevent',
             text: ' Some quick example text to build on the card title'
         }
@@ -83,7 +93,60 @@ const SoundAndLight = () => {
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
-                <h1 className="pckg-name">Sound and Light Packages</h1>
+                    <div style={{ "display": "flex" }}>
+                        <span className="input-group-text all-text">All</span>
+
+                        <Form className="pckg-search-bar">
+                            <FormControl
+                                type="text"
+                                placeholder="Search for sound and lights..."
+                            // value={searchQuery}
+                            // onChange={handleSearchChange}
+                            />
+                        </Form>
+
+                        <Dropdown>
+                            <Dropdown.Toggle className="location-dropdown">Select Location</Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">Colombo</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Gampaha</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Kandy</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Jaffna</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Galle</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        <Dropdown>
+                            <Dropdown.Toggle className="location-dropdown">
+                                Select Rating No
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">1</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">2</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">3</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">4</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">5</Dropdown.Item>
+
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        <Dropdown>
+                            <Dropdown.Toggle className="location-dropdown">
+                                Select Price Range
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#/action-1">LKR 10000 - LKR 40000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">LKR 40000 - LKR 50000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">LKR 50000 - LKR 70000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">LKR 70000 - LKR 80000</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">LKR 80000 - LKR 100000</Dropdown.Item>
+
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
+                    <h1 className="pckg-name">Sound and Light Packages</h1>
                     {soundsData.map((sound) => (
                         <div className="col-md-3 custom-col" key={sound.id}>
 

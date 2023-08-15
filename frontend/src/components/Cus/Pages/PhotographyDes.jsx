@@ -18,9 +18,9 @@ import photo12 from '../../../assets/images/photo12.png';
 
 const PhotographyDes = () => {
 
-    const [dropDown,setdropDown] = useState('Dropdown Button')
+    const [dropDown, setdropDown] = useState('Dropdown Button')
 
-    const setHallName =(name)=>{
+    const setHallName = (name) => {
         setdropDown(name)
     }
 
@@ -32,35 +32,37 @@ const PhotographyDes = () => {
                     <Row>
                         <Col>
                             <Col md={10} >
-                                <Image src={photo9} thumbnail className="venueDesImg"/>
+                                <Image src={photo9} thumbnail className="venueDesImg" />
                             </Col>
 
                             <Col md={10} >
-                                <Image src={photo10} thumbnail className="venueDesImg"/>
+                                <Image src={photo10} thumbnail className="venueDesImg" />
                             </Col>
                             <br />
                             <Link to={`/customer/eventdetails`}>
-                            <Button className="addToEvent-btn" variant="primary" size="lg">Add to Compare</Button>{' '}
+                                <Button className="addToEvent-btn" size="lg">Add to Compare</Button>{' '}
                             </Link>
 
                             <Link to={`/ChatDes`}>
-                            <Button variant="success" className="chat-btn" size="lg"><FaWhatsapp /></Button>{' '}
+                                <Button className="chat-btn" size="lg"><FaWhatsapp /></Button>{' '}
                             </Link>
                         </Col>
 
                         <Col>
                             <Col md={10} >
-                                <Image src={photo11} thumbnail className="venueDesImg"/>
+                                <Image src={photo11} thumbnail className="venueDesImg" />
                             </Col>
 
                             <Col md={10} >
-                                <Image src={photo12} thumbnail className="venueDesImg"/>
+                                <Image src={photo12} thumbnail className="venueDesImg" />
                             </Col>
                         </Col>
 
 
                         <Col>
-                            <h2>Candy Click</h2>
+                            <h2>Silver Package</h2>
+                            <p>by Candy Click</p>
+
                             {/* <Image src={venue6} thumbnail /> */}
 
                             {/* <Dropdown>
@@ -75,34 +77,38 @@ const PhotographyDes = () => {
                                 </Dropdown.Menu>
                             </Dropdown> */}
                             <br />
-                            <Table striped bordered hover>
 
+                            <Table striped bordered hover>
                                 <tbody>
                                     <tr>
-                                        <td>Location</td>
-                                        <td>No:49, Canel Rd, Colombo</td>
-                                        {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
+                                        <td>Package price - LKR 16660</td>
                                     </tr>
                                     <tr>
-                                        <td>Price</td>
-                                        <td>LKR 24,500</td>
-                                        {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
-                                    </tr>
+                                        <td>Location - No:49, Canel Rd, Colombo</td>
 
-                                    <tr>
-                                        <td>Maximum guest count</td>
-                                        <td>200</td>
                                     </tr>
-                                    <tr>
-                                        <td>Hall area</td>
-                                        <td>1200sqft</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hall type</td>
-                                        <td>Indoor</td>
-                                    </tr>
+                                    {/* <tr>
+                                        <td>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</td>
+                                    </tr> */}
+
                                 </tbody>
                             </Table>
+                            <ul className="bullet-list">
+                                {/* <li>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</li>
+                                <li>Package price(for one person) - LKR 6660</li> */}
+                                <br />
+                                <h3>Package included with, </h3>
+                                <li>10 x 24 Album</li>
+                                <li>50 Pages</li>
+                                <li>Two Tone Album Cover & Box</li>
+                                <li>02 – 16” x 24” Framed Photos</li>
+                                <li>02 – 12” x 18” Photos Without Frame</li>
+                                <li>100 – 6 x 8 One Side Thank You Cards</li>
+                                <li>10Pcs Chrome Metallic Heart Latex Balloons</li>
+                                <li>8 x 24 Family Album with 100 Photos</li>
+                                <li>A transport fee will be charged beyond suburbs of Colombo.</li>
+                                <li>Our office is open on weekdays from 8.00 a.m. to 5.00p.m. & on Saturdays 8.00a.m to 1.00 p.m. except on Sundays and Mercantile Holidays.</li>
+                            </ul>
                         </Col>
                     </Row>
 

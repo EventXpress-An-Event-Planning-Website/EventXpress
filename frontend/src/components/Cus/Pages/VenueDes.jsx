@@ -106,7 +106,6 @@ const VenueDes = () => {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Text>
                                                     Do you want to add this selected packages to be added to the event or do you
-                                                    <br />
                                                     want to compare this package with another package?
                                                 </Form.Text>
                                             </Form.Group>
@@ -116,7 +115,7 @@ const VenueDes = () => {
                                             </Link>
 
                                             {/* <Link to={`/Venue?packageCount=2`}> */}
-                                            <Button onClick={HandleAddCompare} variant="primary" type="submit">Compare More</Button>
+                                            <Button onClick={HandleAddCompare} type="submit" className="compare-btns-2">Compare More</Button>
 
 
 
@@ -125,18 +124,16 @@ const VenueDes = () => {
                                         <Form>
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Text>
-                                                    Do you want to add this selected packages to be added to the event or do you
-                                                    <br />
-                                                    want to compare this package with another package?
+                                                    Do you want to add this selected packages to be added to the event or compare selected packages?
                                                 </Form.Text>
                                             </Form.Group>
 
                                             <Link to={`/customer/eventdetails?id=${event_id}`}>
-                                                <Button variant="primary" type="submit">Add to Event</Button>
+                                                <Button variant="primary" className="compare-btns" type="submit">Add to Event</Button>
                                             </Link>
 
                                             <Link to={`/customer/event/VenueCompare?event_id=${event_id}`}>
-                                                <Button variant="primary" type="submit">Compare</Button>
+                                                <Button variant="primary" className="compare-btns-2" type="submit">Compare</Button>
                                             </Link>
 
 

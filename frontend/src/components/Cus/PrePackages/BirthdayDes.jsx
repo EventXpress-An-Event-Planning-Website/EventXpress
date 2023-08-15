@@ -11,34 +11,45 @@ import sound6 from '../../../assets/images/sound6.jpg';
 import photo4 from '../../../assets/images/photo4.jpg';
 import catering4 from '../../../assets/images/catering-4.webp';
 import cake4 from '../../../assets/images/cake4.jpg';
+import venue5 from '../../../assets/images/venue5.jpg';
+import cake9 from '../../../assets/images/cake9.png';
 
 const BirthdayDes = () => {
 
     const birthdayDesData = [
         {
             id: 1,
-            image: cake4,
-            title: 'Gluten-free Fruit Bliss cake',
+            image: venue5,
+            pckgName: 'Araliya Beach Resort',
+            link: '/VenueDes'
         },
         {
             id: 2,
             image: deco9,
-            title: 'Party House Decor',
+            pckgName: '21st Birthday Package',
+            title: 'by Party House Decor',
+            link: '/DecorationDes'
         },
         {
             id: 3,
-            image: sound6,
-            title: 'Pure Audio Visual Inc',
+            image: cake9,
+            pckgName: 'Black Forest cake',
+            title: 'by Cake Talent',
+            link: '/CakeDes'
         },
         {
             id: 4,
-            image: photo4,
-            title: 'Capturra',
+            image: catering4,
+            pckgName: 'Birthday Package',
+            title: 'by Classics catering',
+            link: '/CateringDes'
         },
         {
             id: 5,
-            image: catering4,
-            title: 'Classics catering',
+            image: photo4,
+            pckgName: 'Silver Package',
+            title: 'by Capturra',
+            link: '/PhotographyDes'
         }
     ];
     return (
@@ -46,7 +57,7 @@ const BirthdayDes = () => {
             <div style={{ "display": "flex" }} >
                 <Sidebar />
                 <div>
-                    <h3 className="s-title">Teen Birthday Package</h3>
+                    <h3 className="s-title">21st Birthday Package</h3>
                     <p className="s-para">by Roshan</p>
 
                     <div className="b-container">
@@ -56,9 +67,13 @@ const BirthdayDes = () => {
                             {birthdayDesData.map((birthdayDes) => (
                                 <Col sm={2} className="b-pcg-img">
                                     <Card style={{ width: '15rem' }} className="mb-2" >
-                                        <Card.Header>{birthdayDes.title}</Card.Header>
+                                        <Card.Header className="pckg-header">{birthdayDes.pckgName}</Card.Header>
                                         <Card.Body>
-                                            <Card.Img className="s-img" variant="top" src={birthdayDes.image} />
+                                            <Link to={birthdayDes.link}>
+                                                <Card.Img className="s-img" variant="top" src={birthdayDes.image} />
+                                            </Link>
+                                            <Card.Text className="s-text">{birthdayDes.title}</Card.Text>
+
                                         </Card.Body>
                                     </Card>
 
