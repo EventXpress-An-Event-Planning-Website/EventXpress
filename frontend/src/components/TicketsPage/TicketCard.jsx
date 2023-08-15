@@ -9,6 +9,7 @@ import {
   faMoneyBillWave,
 } from '@fortawesome/free-solid-svg-icons'
 
+
 const TicketCard = ({
   id,
   src,
@@ -19,15 +20,19 @@ const TicketCard = ({
   price,
   description,
 }) => {
+    const updatedSrc = `../../src/assets/images/uploads/${src}`
+    const editedPrice = JSON.parse(price)
+    const editedTime = date.split("T")[0]
+
   return (
     <Card className="ticket-card">
-      <Card.Img variant="top" src={src} alt="Ticket Image" />
+      <Card.Img variant="top" src={updatedSrc} alt="Ticket Image" />
       <Card.Body>
         <Card.Title className="font-weight-bold mb-4">{title}</Card.Title>
         <div className="d-flex justify-content-between">
           <div>
             <Card.Text>
-              <FontAwesomeIcon icon={faCalendarAlt} /> {date}
+              <FontAwesomeIcon icon={faCalendarAlt} /> {editedTime}
             </Card.Text>
           </div>
           <div>
@@ -43,7 +48,7 @@ const TicketCard = ({
         </div>
         <div className="mt-3">
           <Card.Text className="font-weight-bold">
-            <FontAwesomeIcon icon={faMoneyBillWave} /> Rs. {price}
+            <FontAwesomeIcon icon={faMoneyBillWave} /> Rs. {editedPrice[0].price}
           </Card.Text>
         </div>
         <div className="d-flex justify-content-center mt-3">
