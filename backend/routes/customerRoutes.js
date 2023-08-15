@@ -3,10 +3,10 @@ const router = express.Router()
 
 import { createevent,getEvent, getEventDetails,addEventToDo, viewEventToDo } from '../controllers/Customer/createEventController.js'
 import {protect}  from '../middleware/authMiddleware.js'
-import { viewPackage } from '../controllers/Customer/packageController.js'
+import { viewVenuePackage} from '../controllers/Customer/packageController.js'
 
 router.post('/createEvent', createevent)
-router.get('/viewPackage', viewPackage)
+router.get('/viewPackage', viewVenuePackage)
 router.post('/addToDo',addEventToDo)
 router.get('/viewToDo',viewEventToDo)
 router.get('/myEvents', getEvent)

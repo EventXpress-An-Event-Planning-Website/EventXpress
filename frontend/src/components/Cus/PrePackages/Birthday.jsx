@@ -91,7 +91,7 @@ const Birthday = () => {
                                     <Card.Title className="s-main-title">{birthday.title}</Card.Title>
                                     <Card.Text className="s-text">{birthday.text}</Card.Text>
                                     <Link to={`/BirthdayDes`}>
-                                        <Button className="s-btn" variant="primary">Select</Button>
+                                        <Button className="s-btn" variant="primary">View More</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>

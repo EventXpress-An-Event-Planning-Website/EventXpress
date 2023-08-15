@@ -4,7 +4,8 @@ const AdminPackageRequest = () => {
   console.log("kalana");
   return (
     <>
-      <div classNameName="pending-pack">
+    <div className="main">
+      <div className="pending-pack">
         <div className="packtable">
           <div className="title">
             <h3>PACKAGE REQUESTS</h3>
@@ -149,6 +150,7 @@ const AdminPackageRequest = () => {
             </ul>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

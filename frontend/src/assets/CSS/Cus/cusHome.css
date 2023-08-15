@@ -19,7 +19,12 @@
 
 .cus-img{
   max-width: 100%;
-  height: 400px;
+  height: 460px;
+  vertical-align: top;
+}
+.cus-event-img{
+  max-width: 100%;
+  height: 460px;
   vertical-align: top;
 }
 
@@ -49,15 +54,19 @@
   width: 100%;
   height: 16em;
   object-fit: cover;
+  /* margin-left: 30px; */
 }
 
+.event-card{
+  margin-left: 30px;
+}
 .card-cardevent {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 320px;
   margin: auto 1rem;
   text-align: center;
   font-family: arial;
-} */
+} 
 
 .block.cus-event h3 {
   font-size: 24px;
@@ -188,5 +197,17 @@ padding-left: 500px;
 
 .blog-date{
   text-align: center;
+
+}
+
+.home-title{
+  padding-left: 20px;
+  color: #500a54;
+  font-weight: bold;
+}
+
+.pre-package-title{
+  text-align: center;
+  font-weight: bold;
 
 }

@@ -3,7 +3,7 @@ import AdminPackageRequest from './AdminPackageRequest'
 
 function PackageRequest() {
   return (
-    <div>
+    <div style={{display:'flex'}}>
     <SideBar value="3"/>
     <AdminPackageRequest/>
     </div>

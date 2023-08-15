@@ -9,6 +9,7 @@ import userRoute from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 import customerRoutes from './routes/customerRoutes.js'
 import serviceProviderRoutes from './routes/serviceProviderRoutes.js'
+import adminRoutes from './routes/adminRoutes.js'
 
 
 // start database connection
@@ -35,6 +36,9 @@ app.use('/api/customer',customerRoutes)
 
 //serivice provider routes
 app.use('/api/serviceProvider', serviceProviderRoutes)
+
+//admin routes
+app.use('/api/admin', adminRoutes)
 
 
 // Handle errors
