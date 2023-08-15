@@ -82,12 +82,50 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index: 1001;
+    width: 40%;
+    height: 30%;
+    text-align: center;
+    font-size: 20px;
 }
 
+.compare-btns{
+    margin: 25px;
+}
+.compare-btns-2{
+    margin: 25px;
+    background-color: rgb(62, 165, 140);
+}
+
+.compare-btns-2:hover{
+    background-color: rgb(143, 175, 167);
+}
 .pckg-name{
     color: black;
     font-weight: bold;
     text-align: center;
     font-size: 25px;
-    padding: 10px;
+    padding: 5px;
+    margin-bottom: 0px;
+}
+
+.pckg-search-bar{
+    width: 300px;
+    margin-top: 20px;
+}
+
+.location-dropdown{
+    margin: 20px 70px;
+    background-color: rgb(79, 78, 80);
+}
+
+.all-text{
+    background-color: rgb(79, 78, 80);
+    height: 50px;
+    margin-top: 15px;
+    color: white;
+  
+}
+
+.pckg-header{
+    text-align: center;
 }

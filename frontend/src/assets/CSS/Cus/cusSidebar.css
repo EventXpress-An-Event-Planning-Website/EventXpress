@@ -14,7 +14,7 @@
 .cusSidebar-sidebar{
     background: #6D004F;
     color: #fff;
-    min-height: 100vh;
+    min-height: 120vh;
     width: 200px;
     transition: all 0.5s;
     /* margin-left: 175px; */

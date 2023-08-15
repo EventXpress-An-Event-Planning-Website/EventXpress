@@ -93,17 +93,16 @@ const Catering = () => {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Text>
                                                     Do you want to add this selected packages to be added to the event or do you
-                                                    <br />
                                                     want to compare this package with another package?
                                                 </Form.Text>
                                             </Form.Group>
 
                                             <Link to={`/customer/eventdetails?id=1`}>
-                                                <Button variant="primary" type="submit">Add to Event</Button>
+                                                <Button variant="primary" type="submit" className="compare-btns">Add to Event</Button>
                                             </Link>
 
                                             {/* <Link to={`/Venue?packageCount=2`}> */}
-                                            <Button onClick={HandleAddCompare} variant="primary" type="submit">Compare More</Button>
+                                            <Button onClick={HandleAddCompare} type="submit" className="compare-btns-2">Compare More</Button>
 
 
 
@@ -112,18 +111,16 @@ const Catering = () => {
                                         <Form>
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Text>
-                                                    Do you want to add this selected packages to be added to the event or do you
-                                                    <br />
-                                                    want to compare this package with another package?
+                                                    Do you want to add this selected packages to be added to the event or compare selected packages?
                                                 </Form.Text>
                                             </Form.Group>
 
                                             <Link to={`/customer/eventdetails?id=1`}>
-                                                <Button variant="primary" type="submit">Add to Event</Button>
+                                                <Button variant="primary" type="submit" className="compare-btns">Add to Event</Button>
                                             </Link>
 
                                             <Link to={`/customer/event/VenueCompare`}>
-                                                <Button variant="primary" type="submit">Compare</Button>
+                                                <Button type="submit" className="compare-btns-2">Compare</Button>
                                             </Link>
 
 

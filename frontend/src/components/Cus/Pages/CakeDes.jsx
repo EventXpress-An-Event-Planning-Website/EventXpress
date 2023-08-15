@@ -18,9 +18,9 @@ import cake12 from '../../../assets/images/cake12.png';
 
 const CakeDes = () => {
 
-    const [dropDown,setdropDown] = useState('Dropdown Button')
+    const [dropDown, setdropDown] = useState('Dropdown Button')
 
-    const setHallName =(name)=>{
+    const setHallName = (name) => {
         setdropDown(name)
     }
 
@@ -32,35 +32,36 @@ const CakeDes = () => {
                     <Row>
                         <Col>
                             <Col md={10} >
-                                <Image src={cake10} thumbnail className="venueDesImg"/>
+                                <Image src={cake10} thumbnail className="venueDesImg" />
                             </Col>
 
                             <Col md={10} >
-                                <Image src={cake11} thumbnail className="venueDesImg"/>
+                                <Image src={cake11} thumbnail className="venueDesImg" />
                             </Col>
                             <br />
                             <Link to={`/customer/eventdetails`}>
-                            <Button className="addToEvent-btn" variant="primary" size="lg">Add to Compare</Button>{' '}
+                                <Button className="addToEvent-btn" variant="primary" size="lg">Add to Compare</Button>{' '}
                             </Link>
 
                             <Link to={`/ChatDes`}>
-                            <Button variant="success" className="chat-btn" size="lg"><FaWhatsapp /></Button>{' '}
+                                <Button variant="success" className="chat-btn" size="lg"><FaWhatsapp /></Button>{' '}
                             </Link>
                         </Col>
 
                         <Col>
                             <Col md={10} >
-                                <Image src={cake9} thumbnail className="venueDesImg"/>
+                                <Image src={cake9} thumbnail className="venueDesImg" />
                             </Col>
 
                             <Col md={10} >
-                                <Image src={cake12} thumbnail className="venueDesImg"/>
+                                <Image src={cake12} thumbnail className="venueDesImg" />
                             </Col>
                         </Col>
 
 
                         <Col>
                             <h2>Black Forest Cake 1KG </h2>
+                            <p>by Cake Talent</p>
                             {/* <Image src={cake12} thumbnail />
 
                             <Dropdown>
@@ -108,17 +109,17 @@ const CakeDes = () => {
                             <ul className="bullet-list">
                                 {/* <li>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</li>
                                 <li>Package price(for one person) - LKR 6660</li> */}
-                                <br/>
-                                <li>This delicious black forest sponge cake is layered soaked in a cherry brandy syrup and covered in whipped cream and shaved chocolate. 
+                                <br />
+                                <li>This delicious black forest sponge cake is layered soaked in a cherry brandy syrup and covered in whipped cream and shaved chocolate.
                                     Unfold the taste of mysterious cherries with classical whipped cream filling, it's light and perfectly sweet which makes a great addition to your next celebration.</li>
-                                    <br/>
-                                    <h3>More Details</h3>
+                                <br />
+                                <h3>More Details</h3>
 
                                 <li>We offer the best and most delectable range of cakes made to stringent quality standards using the finest ingredients for our valued customers.</li>
                                 <li>Cakes are baked by our own in-house pastry chefs who have years of experience in confectioneries.</li>
                                 <li>Please mention the cake wording and the special instructions at the checkout.</li>
                                 <li>Cake wording will be free of charge.</li>
-                                <br/>
+                                <br />
                                 <h3>Allergy Information</h3>
                                 <li>Our products are Inclusive of dairy, wheat, soy, eggs, and nuts.</li>
                             </ul>
