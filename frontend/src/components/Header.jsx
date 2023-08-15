@@ -95,6 +95,9 @@ const Header = () => {
                     <LinkContainer to="/customer/buyTickets">
                       <Nav.Link>Buy Tickets</Nav.Link>
                     </LinkContainer>
+                    <LinkContainer to="/ServiceProvider/Requests">
+                      <Nav.Link>Requests</Nav.Link>
+                    </LinkContainer>
                     <LinkContainer to="/customer/notification">
                       <Navbar.Brand></Navbar.Brand>
                     </LinkContainer>
