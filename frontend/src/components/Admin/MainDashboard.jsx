@@ -167,19 +167,19 @@ const MainDashboard = () => {
       <div className="bottom">
         <div className="bottomcolom">
           <GoPersonAdd size={25} /> New Requests <br />{" "}
-          <span className="bottomNumbers">010</span>
+          <span className="bottomNumbers">04</span>
         </div>
         <div className="bottomcolom">
           <FaRegUser size={25} /> Total Users <br />{" "}
-          <span className="bottomNumbers">1782</span>{" "}
+          <span className="bottomNumbers">013</span>{" "}
         </div>
         <div className="bottomcolom">
           <FaRegUser size={25} /> Service Providers <br />{" "}
-          <span className="bottomNumbers">534</span>{" "}
+          <span className="bottomNumbers">06</span>{" "}
         </div>
         <div className="bottomcolom">
           <HiOutlineUserGroup size={25} /> Customers <br />{" "}
-          <span className="bottomNumbers">764</span>{" "}
+          <span className="bottomNumbers">07</span>{" "}
         </div>
       </div>
     </div>
