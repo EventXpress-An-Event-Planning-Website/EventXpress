@@ -14,11 +14,13 @@ import Form from 'react-bootstrap/Form';
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import venue5 from '../../../assets/images/venue5.jpg';
 import venue6 from '../../../assets/images/venue6.jpg';
 import venue7 from '../../../assets/images/venue7.jpg';
 import venue8 from '../../../assets/images/venue8.jpg';
 import { Modal } from "react-bootstrap";
+import StarRating from "./Ratings";
 
 const VenueDes = () => {
     const navigate = useNavigate()
@@ -68,7 +70,6 @@ const VenueDes = () => {
         <>
         {event_id !==null ? 
             <div style={{ "display": "flex" }}>
-                <Sidebar />
                 <Container>
                     <Row>
                         <Col>
@@ -145,6 +146,7 @@ const VenueDes = () => {
                         )}
                         <Col>
                             <h2>Araliya Beach Hotel</h2>
+                            <StarRating initialRating={4} />
                             <Image src={venue6} thumbnail />
 
                             <Dropdown>
@@ -198,7 +200,7 @@ const VenueDes = () => {
                 </Container >
             </div >:
             <div style={{ "display": "flex" }}>
-                
+                <Sidebar />
                 <Container>
                     <Row>
                         <Col>
@@ -231,6 +233,7 @@ const VenueDes = () => {
                         
                         <Col>
                             <h2>Araliya Beach Hotel</h2>
+                            <StarRating initialRating={4} />
                             <Image src={venue6} thumbnail />
 
                             <Dropdown>

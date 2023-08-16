@@ -10,6 +10,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import Sidebar from "../Sidebar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import StarRating from "./Ratings";
 
 import venue5 from '../../../assets/images/venue5.jpg';
 import venue6 from '../../../assets/images/venue6.jpg';
@@ -65,6 +66,7 @@ const SoundAndLightDes = () => {
 
                         <Col>
                             <h2>Pure AV</h2>
+                            <StarRating initialRating={4} />
                             {/* <Image src={venue6} thumbnail />
 
                             <Dropdown>

@@ -25,56 +25,56 @@ const Catering = () => {
             image: catering1,
             pckgName: 'Birthday Package',
             title: 'by Elite Catering',
-            text: ' Some quick example text to build on the card title'
+            text: 'Elite Catering considers about menu selection, customization, beverage services of your event.'
         },
         {
             id: 2,
             image: catering2,
             pckgName: 'Platinum Menu',
             title: 'by Taste Ming',
-            text: ' Some quick example text to build on the card title'
+            text: 'Taste Ming considers about menu selection, customization, beverage services of your event.'
         },
         {
             id: 3,
             image: catering3,
             pckgName: 'Gold Menu',
             title: 'by Butlers Catering Service',
-            text: ' Some quick example text to build on the card title'
+            text: 'Butlers Catering Service considers about menu selection, customization, beverage services of your event.'
         },
         {
             id: 4,
             image: catering4,
             pckgName: 'Silver Menu',
             title: 'by Classics catering',
-            text: ' Some quick example text to build on the card title'
+            text: 'Classics catering considers about menu selection, customization, beverage services of your event.'
         },
         {
             id: 5,
             image: catering5,
             pckgName: 'Bronze Menu',
             title: 'by Toast the Host',
-            text: ' Some quick example text to build on the card title'
+            text: 'Toast the Host considers about menu selection, customization, beverage services of your event.'
         },
         {
             id: 6,
             image: catering6,
             pckgName: 'Silver Menu',
             title: 'by Cool Caterers',
-            text: ' Some quick example text to build on the card title'
+            text: 'Cool Caterers considers about menu selection, customization, beverage services of your event.'
         },
         {
             id: 7,
             image: catering7,
             pckgName: 'Gold Menu',
             title: 'by Better Cater',
-            text: ' Some quick example text to build on the card title'
+            text: 'Better Cater considers about menu selection, customization, beverage services of your event.'
         },
         {
             id: 8,
             image: catering8,
             pckgName: 'Bronze Menu',
             title: 'by YummyMist Foods',
-            text: ' Some quick example text to build on the card title'
+            text: 'YummyMist Foods considers about menu selection, customization, beverage services of your event.'
         }
     ];
 

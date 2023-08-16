@@ -10,6 +10,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import Sidebar from "../Sidebar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import StarRating from "./Ratings";
 
 import photo9 from '../../../assets/images/photo9.png';
 import photo10 from '../../../assets/images/photo10.png';
@@ -62,6 +63,7 @@ const PhotographyDes = () => {
                         <Col>
                             <h2>Silver Package</h2>
                             <p>by Candy Click</p>
+                            <StarRating initialRating={4} />
 
                             {/* <Image src={venue6} thumbnail /> */}
 
