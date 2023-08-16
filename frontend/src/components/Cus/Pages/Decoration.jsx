@@ -27,56 +27,56 @@ const Decoration = () => {
             image: deco9,
             pckgName: '21st Birthday Package',
             title: 'by Cool Party Rentals',
-            text: ' Some quick example text to build on the card title'
+            text: 'Cool Party Rentals considers about concept, theme, decor items and set up of the event.'
         },
         {
             id: 2,
             image: deco1,
             pckgName: 'Bridal Shower',
             title: 'by Party House Decor',
-            text: ' Some quick example text to build on the card title'
+            text: 'Party House Decor considers about concept, theme, decor items and set up of the event.'
         },
         {
             id: 3,
             image: deco3,
             pckgName: 'Baby Shower',
             title: 'by Epic Party Magic',
-            text: ' Some quick example text to build on the card title'
+            text: 'Epic Party Magic considers about concept, theme, decor items and set up of the event.'
         },
         {
             id: 4,
             image: deco4,
             pckgName: 'Teens Birthday Package',
             title: 'by Party Funland',
-            text: ' Some quick example text to build on the card title'
+            text: 'Party Funland considers about concept, theme, decor items and set up of the event.'
         },
         {
             id: 5,
             image: deco6,
             pckgName: 'Gender Reveal',
             title: 'by Creative Dreams',
-            text: ' Some quick example text to build on the card title'
+            text: 'Creative Dreams considers about concept, theme, decor items and set up of the event.'
         },
         {
             id: 6,
             image: deco5,
             pckgName: 'Proposal Package',
             title: 'by Glitter and Glue',
-            text: ' Some quick example text to build on the card title'
+            text: 'Glitter and Glue considers about concept, theme, decor items and set up of the event.'
         },
         {
             id: 7,
             image: deco2,
             pckgName: 'Gender Reveal',
             title: 'by Streamers Suprise',
-            text: ' Some quick example text to build on the card title'
+            text: 'Streamers Suprise considers about concept, theme, decor items and set up of the event.'
         },
         {
             id: 8,
             image: deco8,
             pckgName: 'Kids Birthday Package',
             title: 'by Fun Times Inc',
-            text: ' Some quick example text to build on the card title'
+            text: 'Fun Times Inc considers about concept, theme, decor items and set up of the event.'
         }
     ];
 

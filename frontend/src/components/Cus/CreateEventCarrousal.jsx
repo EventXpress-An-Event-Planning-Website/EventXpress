@@ -3,23 +3,24 @@ import {Carousel,Button} from 'react-bootstrap';
 import gardenImage from '../../assets/images/festival.png';
 import celebrationImage from '../../assets/images/celebration.jpg';
 import cateringImage from '../../assets/images/catering3.jpg';
-import eventCarrousal from '../../assets/images/eventCarousal1.jpg'
-import eventCarrousal2 from '../../assets/images/eventCarousal2.jpg'
+import eventCarrousal_1 from '../../assets/images/festival4.jpg'
+import eventCarrousal_2 from '../../assets/images/festival5.jpg'
+import eventCarrousal_3 from '../../assets/images/festival6.jpg';
 
 const CreateEventCarrousal = () => {
   
     const contentData = [
         {
           id: 1,
-          image: celebrationImage,
+          image: eventCarrousal_2,
         },
         {
           id: 2,
-          image: eventCarrousal2,
+          image: eventCarrousal_3,
         },
         {
           id: 3,
-          image: eventCarrousal,
+          image: eventCarrousal_1,
         }
       ];
   return (

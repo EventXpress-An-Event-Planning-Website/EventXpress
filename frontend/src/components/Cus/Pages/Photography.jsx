@@ -27,56 +27,56 @@ const Photography = () => {
             image: photo5,
             pckgName: 'Silver Package',
             title: 'by Candy Click',
-            text: ' Some quick example text to build on the card title'
+            text: 'Candy Click considers about session type, coverage, editing and retouching in your event.'
         },
         {
             id: 2,
             image: photo6,
             pckgName: 'Elegant Package',
             title: 'by Daisy Pixels',
-            text: ' Some quick example text to build on the card title'
+            text: 'Daisy Pixels considers about session type, coverage, editing and retouching in your event.'
         },
         {
             id: 3,
             image: photo7,
             pckgName: 'Gold Package',
             title: 'by Picture Perfect',
-            text: ' Some quick example text to build on the card title'
+            text: 'Picture Perfect considers about session type, coverage, editing and retouching in your event.'
         },
         {
             id: 4,
             image: photo8,
             pckgName: 'Superior Package',
             title: 'by Shutter Surprise',
-            text: ' Some quick example text to build on the card title'
+            text: 'Shutter Surprise considers about session type, coverage, editing and retouching in your event.'
         },
         {
             id: 5,
             image: photo1,
             pckgName: 'Birthday Package',
             title: 'by Photamora',
-            text: ' Some quick example text to build on the card title'
+            text: 'Photamora considers about session type, coverage, editing and retouching in your event.'
         },
         {
             id: 6,
             image: photo3,
             pckgName: 'Superior Package',
             title: 'by Memoclips',
-            text: ' Some quick example text to build on the card title'
+            text: 'Memoclips considers about session type, coverage, editing and retouching in your event.'
         },
         {
             id: 7,
             image: photo2,
             pckgName: 'Platinum Package',
             title: 'by Click It',
-            text: ' Some quick example text to build on the card title'
+            text: 'Click It considers about session type, coverage, editing and retouching in your event.'
         },
         {
             id: 8,
             image: photo4,
             pckgName: 'Birthday Package',
             title: 'by Capturra',
-            text: ' Some quick example text to build on the card title'
+            text: 'Capturra considers about session type, coverage, editing and retouching in your event.'
         }
     ];
 

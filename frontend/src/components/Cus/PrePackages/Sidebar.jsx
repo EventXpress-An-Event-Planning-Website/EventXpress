@@ -33,11 +33,11 @@ const Birthday = ({ children }) => {
             name: "SocialEvents",
             image: event2
         },
-        {
-            path: "/Birthday",
-            name: "Concert",
-            image: event5
-        }
+        // {
+        //     path: "/Birthday",
+        //     name: "Concert",
+        //     image: event5
+        // }
     ]
 
     return (
