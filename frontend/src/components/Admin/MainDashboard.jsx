@@ -70,7 +70,7 @@ const MainDashboard = () => {
       <div className="top">
         <div className="topRightChart">
           <div className="chartTopic">
-            <h3 style={{ fontWeight: "bold", color: "#6D004F" }}>Revenue</h3>
+            <h4 style={{ fontWeight: "bold", color: "#6D004F" }}>Revenue</h4>
           </div>
           <ResponsiveContainer width="80%" height="80%">
             <BarChart
@@ -93,7 +93,7 @@ const MainDashboard = () => {
             </BarChart>
           </ResponsiveContainer>
           <Link to="/Revenue">
-            <Button variant="primary" className="ticketButton">
+            <Button variant="primary" className="ticketButton" size="sm">
               View
             </Button>
           </Link>
@@ -102,6 +102,7 @@ const MainDashboard = () => {
           <div className="ticketsTopic">
             <h3 style={{ fontWeight: "bold" }}>Complains & Support</h3>
           </div>
+          <Link to='/AdminSupportView'>
           <div className="ticketChat">
             <img className="dp" src={dp} />
             <div className="message">
@@ -109,6 +110,8 @@ const MainDashboard = () => {
               need help to do the payment for adding packaged. can you...
             </div>
           </div>
+          </Link>
+          <Link to='/AdminSupportView'>
           <div className="ticketChat">
             <img className="dp" src={dp} />
             <div className="message">
@@ -116,6 +119,8 @@ const MainDashboard = () => {
               need help to do the payment for adding packaged. can you...
             </div>
           </div>
+          </Link>
+          <Link to='/AdminSupportView'>
           <div className="ticketChat">
             <img className="dp" src={dp} />
             <div className="message">
@@ -123,7 +128,8 @@ const MainDashboard = () => {
               need help to do the payment for adding packaged. can you...
             </div>
           </div>
-
+          </Link>
+          
           <Link to="/TicketSupports">
             <Button varient="primary" className="ticketButton">
               View More
@@ -132,6 +138,7 @@ const MainDashboard = () => {
         </div>
       </div>
 
+      <Link to='/AdminEvents'>
       <div className="middle">
         <table className="admin-table">
           <tr>
@@ -156,21 +163,22 @@ const MainDashboard = () => {
           </tr>
         </table>
       </div>
+      </Link>
       <div className="bottom">
         <div className="bottomcolom">
-          <GoPersonAdd size={45} /> New Requests <br />{" "}
+          <GoPersonAdd size={25} /> New Requests <br />{" "}
           <span className="bottomNumbers">010</span>
         </div>
         <div className="bottomcolom">
-          <FaRegUser size={45} /> Total Users <br />{" "}
+          <FaRegUser size={25} /> Total Users <br />{" "}
           <span className="bottomNumbers">1782</span>{" "}
         </div>
         <div className="bottomcolom">
-          <FaRegUser size={45} /> Service Providers <br />{" "}
+          <FaRegUser size={25} /> Service Providers <br />{" "}
           <span className="bottomNumbers">534</span>{" "}
         </div>
         <div className="bottomcolom">
-          <HiOutlineUserGroup size={45} /> Customers <br />{" "}
+          <HiOutlineUserGroup size={25} /> Customers <br />{" "}
           <span className="bottomNumbers">764</span>{" "}
         </div>
       </div>

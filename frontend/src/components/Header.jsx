@@ -119,7 +119,7 @@ const Header = () => {
                   </>
                 ) : userInfo.role === "admin" ? (
                   <>
-                    <LinkContainer to="/adminDashboard">
+                    <LinkContainer to="/adminDashboard" >
                       <Nav.Link> Home &nbsp;&nbsp;</Nav.Link>
                     </LinkContainer>
                     <LinkContainer to="/customerHome">
