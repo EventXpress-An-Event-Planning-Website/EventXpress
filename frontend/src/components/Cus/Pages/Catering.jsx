@@ -16,8 +16,13 @@ import catering5 from '../../../assets/images/catering-5.webp';
 import catering6 from '../../../assets/images/catering-6.webp';
 import catering7 from '../../../assets/images/catering-7.webp';
 import catering8 from '../../../assets/images/catering-8.webp';
+import { useLocation } from "react-router-dom";
 
 const Catering = () => {
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search);
+    const package_Count= queryParams.get('packageCount')
+    const event_id= queryParams.get('event_id')
 
     const cateringsData = [
         {
@@ -90,6 +95,7 @@ const Catering = () => {
 
     return (
         <>
+        {event_id ===null ?
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
@@ -113,7 +119,30 @@ const Catering = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div>: <div style={{ "display": "flex" }} >
+               
+                <div className="row custom-row" style={{marginLeft:'3%'}}>
+                <FilterPackages/>
+
+                    <h1 className="pckg-name">Catering Packages</h1>
+                    {cateringsData.map((catering) => (
+                        <div className="col-md-3 custom-col" key={catering.id}>
+
+                            <Card className="s-card" style={{ width: '18rem' }} >
+                                <Card.Img className="s-img" variant="top" src={catering.image} />
+                                <Card.Body>
+                                    <Card.Title className="s-main-title">{catering.pckgName}</Card.Title>
+                                    <Card.Text className="s-main-title-pckg">{catering.title}</Card.Text>
+                                    <Card.Text className="s-text">{catering.text}</Card.Text>
+                                    <Link to={`/CateringDes`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
+                                    </Link>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    ))}
+                </div>
+            </div>}
         </>
     );
 };
