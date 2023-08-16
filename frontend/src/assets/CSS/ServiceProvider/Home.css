@@ -61,8 +61,8 @@ body{
 
 .home_icons{
     background: white;
-    max-height: 500px;
-    padding: 150px;
+    max-height: 50%;
+    padding: 8%;
     text-align: center;
 }
 
@@ -86,14 +86,18 @@ body{
     background: #6D004F;
     color: white;
     text-align: center;
-    height: 300px;
-    padding: 70px;
+    height: 25%;
+    padding: 2.5%;
     max-width: 2000px;
 }
 
 .homefooter .logo{
     margin-top: 50px;
     display: flex;
+}
+
+.homefooter .logo p{
+    margin-top: 4%;
 }
 
 .homefooter .picture{
@@ -123,5 +127,5 @@ body{
     background: white;
     font-size: 30px;
     padding: 5px;
-    margin: 30px;
+    margin: 3.5%;
 }

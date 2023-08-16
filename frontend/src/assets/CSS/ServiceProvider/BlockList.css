@@ -1,7 +1,7 @@
 /* peference and block list */
 
 .allSPList .minus_icon{
-    padding-left: 80px;
+    padding-left: 100px;
 }
 
 .preference_block_list{
@@ -14,7 +14,8 @@
 .left_preference, .right_block{
     margin: 3%;
     padding: 2%;
-    width: 45%;
+    width: 40%;
+    border-radius: 3%;
 }
 
 .left_preference{

@@ -89,15 +89,20 @@ const Header = () => {
                         <NavDropdown.Item>Predefined Package</NavDropdown.Item>
                       </LinkContainer>
                     </NavDropdown>
-                    <LinkContainer to="/ServiceProvider/packagesView">
-                      <Nav.Link>My Packages</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/customer/buyTickets">
+                    <NavDropdown title="My Packages">
+                      <LinkContainer to="/ServiceProvider/packagesView">
+                        <NavDropdown.Item>Normal Package</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/Birthday">
+                        <NavDropdown.Item>Predefined Package</NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
+                    {/* <LinkContainer to="/customer/buyTickets">
                       <Nav.Link>Buy Tickets</Nav.Link>
                     </LinkContainer>
                     <LinkContainer to="/ServiceProvider/Requests">
                       <Nav.Link>Requests</Nav.Link>
-                    </LinkContainer>
+                    </LinkContainer> */}
                     <LinkContainer to="/customer/notification">
                       <Navbar.Brand></Navbar.Brand>
                     </LinkContainer>
