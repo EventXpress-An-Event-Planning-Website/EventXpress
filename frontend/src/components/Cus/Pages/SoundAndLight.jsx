@@ -25,56 +25,56 @@ const SoundAndLight = () => {
             image: sound5,
             pckgName: '',
             title: 'Pure AV',
-            text: ' Some quick example text to build on the card title'
+            text: 'Pure AV focuses sound equipment and setup, lighting design, stage and set design in the event.'
         },
         {
             id: 2,
             image: sound6,
             pckgName: '',
             title: 'Pure Audio Visual Inc',
-            text: ' Some quick example text to build on the card title'
+            text: 'Pure Audio Visual Inc focuses sound equipment and setup, lighting design, stage and set design in the event.'
         },
         {
             id: 3,
             image: sound3,
             pckgName: '',
             title: 'Tailgate Express Events',
-            text: ' Some quick example text to build on the card title'
+            text: 'Tailgate Express Events focuses sound equipment and setup, lighting design, stage and set design in the event.'
         },
         {
             id: 4,
             image: sound2,
             pckgName: '',
-            title: 'dBcontrol bv',
-            text: ' Some quick example text to build on the card title'
+            title: 'DBcontrol bv',
+            text: 'DBcontrol bv focuses sound equipment and setup, lighting design, stage and set design in the event.'
         },
         {
             id: 5,
             image: sound1,
             pckgName: '',
             title: 'Auvicom',
-            text: ' Some quick example text to build on the card title'
+            text: 'Auvicom focuses sound equipment and setup, lighting design, stage and set design in the event.'
         },
         {
             id: 6,
             image: sound4,
             pckgName: '',
             title: 'A.S. Technology',
-            text: ' Some quick example text to build on the card title'
+            text: 'A.S. Technology focuses sound equipment and setup, lighting design, stage and set design in the event.'
         },
         {
             id: 7,
             image: sound7,
             pckgName: '',
             title: 'Painting with Light',
-            text: ' Some quick example text to build on the card title'
+            text: 'Painting with Light focuses sound equipment and setup, lighting design, stage and set design in the event.'
         },
         {
             id: 8,
             image: sound8,
             pckgName: '',
             title: 'Alphatentevent',
-            text: ' Some quick example text to build on the card title'
+            text: 'Alphatentevent focuses sound equipment and setup, lighting design, stage and set design in the event.'
         }
     ];
 

@@ -1,0 +1,23 @@
+.star-rating {
+    display: flex;
+    align-items: center;
+  }
+  
+  .star {
+    font-size: 24px;
+    color: #f39c12; /* Color for filled stars */
+    margin-right: 5px;
+  }
+  
+  .star:last-child {
+    margin-right: 0;
+  }
+  
+  .star.empty {
+    color: #ccc; /* Color for empty stars */
+  }
+  
+  .star:hover {
+    color: #f39c12; /* Hover color for filled stars */
+  }
+  

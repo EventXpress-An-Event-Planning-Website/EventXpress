@@ -32,56 +32,56 @@ const Cake = () => {
             image: cake9,
             title: 'Black Forest cake',
             shopName: 'by Cake Talent',
-            text: ' Some quick example text to build on the card title'
+            text: 'Cake Talent focus about cake design, flavor selection, customization, size and budget.'
         },
         {
             id: 2,
             image: cake2,
             shopName: 'by Dream Day Cakes',
             title: 'Eggless Chocolate Cake',
-            text: ' Some quick example text to build on the card title'
+            text: 'Dream Day Cakes focus about cake design, flavor selection, customization, size and budget.'
         },
         {
             id: 3,
             image: cake3,
             shopName: 'by SweetArt Cakes',
             title: 'Violet Ribbon Cake',
-            text: ' Some quick example text to build on the card title'
+            text: 'SweetArt Cakes focus about cake design, flavor selection, customization, size and budget.'
         },
         {
             id: 4,
             image: cake4,
             shopName: 'by Cake Stand Bakery',
             title: 'Gluten-free Fruit cake',
-            text: ' Some quick example text to build on the card title'
+            text: 'Cake Stand Bakery focus about cake design, flavor selection, customization, size and budget.'
         },
         {
             id: 5,
             image: cake5,
             shopName: 'by The Brilliant Bakers',
             title: 'Forever Together Cake',
-            text: ' Some quick example text to build on the card title'
+            text: 'The Brilliant Bakers focus about cake design, flavor selection, customization, size and budget.'
         },
         {
             id: 6,
             image: cake6,
             shopName: 'by First taste cake',
             title: 'Strawberry Heaven Cake',
-            text: ' Some quick example text to build on the card title'
+            text: 'First taste cake focus about cake design, flavor selection, customization, size and budget.'
         },
         {
             id: 7,
             image: cake7,
             shopName: 'by Wonders Bakery',
             title: 'Coffee Vanila Sponge Cake',
-            text: ' Some quick example text to build on the card title'
+            text: 'Wonders Bakery focus about cake design, flavor selection, customization, size and budget.'
         },
         {
             id: 8,
             image: cake8,
             shopName: 'by Cake Affection',
             title: 'Purple Patch Ribbon Cake',
-            text: ' Some quick example text to build on the card title'
+            text: 'Cake Affection focus about cake design, flavor selection, customization, size and budget.'
         }
     ];
 

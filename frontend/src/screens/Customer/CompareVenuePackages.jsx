@@ -116,7 +116,7 @@ const CompareVenuePackages = () => {
                         </Link></td>
                     <td className='compare-table-data'>
                         <Link to={`/customer/eventdetails?id=${event_id}`}>
-                        <Button className='compare-addEvent-btn'>Add to Event</Button>
+                        {/* <Button className='compare-addEvent-btn'>Add to Event</Button> */}
                         </Link></td>
                 </tr>
                 
