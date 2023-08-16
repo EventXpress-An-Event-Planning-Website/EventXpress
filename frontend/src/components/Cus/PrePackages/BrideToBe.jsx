@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import Stack from 'react-bootstrap/Stack';
 import Pagination from 'react-bootstrap/Pagination';
+import FilterPackages from "../Pages/FilterPackages";
 
 import Bride1 from '../../../assets/images/Bride1.jpg';
 import Bride2 from '../../../assets/images/Bride2.jpg';
@@ -81,7 +82,7 @@ const BrideToBe = () => {
                 <div>
 
                 <div className="row">
-
+                <FilterPackages/>
                     {BridesData.map((Bride) => (
                         <div className="col-md-3" key={Bride.id}>
 

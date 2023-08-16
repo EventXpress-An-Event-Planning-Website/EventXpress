@@ -30,4 +30,5 @@
 
 @import './Admin/AdminSidebar.css';
 @import './Cus/customerProfile.css';
-@import './Cus/compareTable.css'
+@import './Cus/compareTable.css';
+@import './Cus/rating.css'

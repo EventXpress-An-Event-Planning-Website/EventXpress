@@ -37,6 +37,15 @@
 
 }
 
+.k-chat-box{
+    background-color: #c7aec6a6;
+    list-style: none;
+    padding: 10px 10px 10px 10px;
+    width:40%;
+    border-radius: 5%;
+    margin-left: 650px;
+    margin-top: 400px;
+}
 /***************************** BirthdayDes ***************************/
 
 .b-container{
