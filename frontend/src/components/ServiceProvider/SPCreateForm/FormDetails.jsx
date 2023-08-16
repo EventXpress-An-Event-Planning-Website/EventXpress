@@ -164,11 +164,12 @@ const FormDetails = () => {
             <FormGroup className="input">
               <Form.Label htmlFor="price">Price</Form.Label>
               <FormControl
-                type="text"
+                type="number"
                 name="packagePrice"
                 placeholder="Enter price"
                 onChange={(e) => setpackagePrice(e.target.value)}
                 value={packagePrice}
+                min="0"
                 required
               />
             </FormGroup>
@@ -269,11 +270,12 @@ const FormDetails = () => {
                   <FormGroup className="input">
                     <Form.Label htmlFor="op_des">Maximum Count</Form.Label>
                     <FormControl
-                      type="text"
+                      type="number"
                       name="op_maxcount"
                       placeholder="Enter hall maximum count"
                       onChange={(e) => setpackageOpMaxCount(e.target.value)}
                       value={packageOpMaxCount}
+                      min="0"
                       required
                     />
                   </FormGroup>
@@ -281,11 +283,12 @@ const FormDetails = () => {
                   <FormGroup className="input">
                     <Form.Label htmlFor="op_des">Hall area</Form.Label>
                     <FormControl
-                      type="text"
+                      type="number"
                       name="op_maxcount"
                       placeholder="Enter hall area(sqrt)"
                       onChange={(e) => setpackageOparea(e.target.value)}
                       value={packageOparea}
+                      min="0"
                       required
                     />
                   </FormGroup>
