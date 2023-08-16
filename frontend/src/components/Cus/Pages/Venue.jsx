@@ -10,6 +10,7 @@ import { useViewPackageQuery } from "../../../slices/viewPackageSlice";
 import { useLocation } from "react-router-dom";
 import { Form, FormControl } from 'react-bootstrap'
 import Dropdown from 'react-bootstrap/Dropdown';
+import FilterPackages from "./FilterPackages";
 
 import venue1 from '../../../assets/images/venue1.jpg';
 import venue2 from '../../../assets/images/venue2.jpg';
@@ -115,7 +116,7 @@ const Venue = () => {
                 <div style={{ "display": "flex" }}>
                     <Sidebar /> 
                     <div className="row custom-row">
-                    <div style={{ "display": "flex" }}>
+                    {/* <div style={{ "display": "flex" }}>
                         <span className="input-group-text all-text">All</span>
 
                         <Form className="pckg-search-bar">
@@ -167,7 +168,8 @@ const Venue = () => {
 
                             </Dropdown.Menu>
                         </Dropdown>
-                    </div>
+                    </div> */}
+                    <FilterPackages />
                     <h1 className="pckg-name">Venue Packages</h1>
                         {venuesData.map((venue) => (
                             <div className="col-md-3 custom-col" key={venue.id}>
@@ -202,7 +204,7 @@ const Venue = () => {
                 </div>:
                 <div style={{ "display": "flex" }}>
                     <div className="row custom-row" style={{marginLeft:'3%'}}>
-                    <div style={{ "display": "flex" }}>
+                    {/* <div style={{ "display": "flex" }}>
                         <span className="input-group-text all-text">All</span>
 
                         <Form className="pckg-search-bar">
@@ -254,8 +256,9 @@ const Venue = () => {
 
                             </Dropdown.Menu>
                         </Dropdown>
-                    </div>
-
+                    </div> */}
+                    <FilterPackages />
+                    <h1 className="pckg-name">Venue Packages</h1>
                         {venuesData.map((venue) => (
                             <div className="col-md-3 custom-col" key={venue.id}>
 
