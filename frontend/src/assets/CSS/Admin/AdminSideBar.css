@@ -154,9 +154,9 @@
  }
 
  .message {
-   border-radius: 20px;
+   border-radius: 10px;
    border: 1px solid #6D004F;
-   background: #FFF;
+   background-color: #FFF;
    width: 80%;
    height: 20%;
    flex-shrink: 0;
@@ -320,7 +320,8 @@
 .chat-ui {
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 20%;
+  width: 65%;
 }
 
 .message-list {
@@ -330,10 +331,11 @@
   margin-left: 200px;
 }
 
-.message {
+.messageDetails {
   margin-left: 200px;
   margin: 10px 0;
   padding: 5px;
+  font-size: smaller;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #F4F1EF;;
@@ -341,11 +343,9 @@
 
 .sender {
   font-weight: bold;
+  
 }
 
-.content {
-  margin-top: 5px;
-}
 
 .timestamp {
   font-size: 12px;
@@ -390,7 +390,8 @@
 }
 
 .content {
-  margin: 0 20px;
+  margin-top: 2%;
+  margin-left: 5%;
 }
 .arrow-button{
   background-color: #6D004F;

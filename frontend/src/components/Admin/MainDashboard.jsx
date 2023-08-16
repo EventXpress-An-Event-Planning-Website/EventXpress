@@ -102,6 +102,7 @@ const MainDashboard = () => {
           <div className="ticketsTopic">
             <h3 style={{ fontWeight: "bold" }}>Complains & Support</h3>
           </div>
+          <Link to='/AdminSupportView'>
           <div className="ticketChat">
             <img className="dp" src={dp} />
             <div className="message">
@@ -109,6 +110,8 @@ const MainDashboard = () => {
               need help to do the payment for adding packaged. can you...
             </div>
           </div>
+          </Link>
+          <Link to='/AdminSupportView'>
           <div className="ticketChat">
             <img className="dp" src={dp} />
             <div className="message">
@@ -116,6 +119,8 @@ const MainDashboard = () => {
               need help to do the payment for adding packaged. can you...
             </div>
           </div>
+          </Link>
+          <Link to='/AdminSupportView'>
           <div className="ticketChat">
             <img className="dp" src={dp} />
             <div className="message">
@@ -123,7 +128,8 @@ const MainDashboard = () => {
               need help to do the payment for adding packaged. can you...
             </div>
           </div>
-
+          </Link>
+          
           <Link to="/TicketSupports">
             <Button varient="primary" className="ticketButton">
               View More
