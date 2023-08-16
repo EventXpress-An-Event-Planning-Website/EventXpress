@@ -10,6 +10,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import Sidebar from "../Sidebar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import StarRating from "./Ratings";
 
 import burger1 from '../../../assets/images/burger1.jpg';
 import burger2 from '../../../assets/images/burger2.jpg';
@@ -62,6 +63,8 @@ const CateringDes = () => {
                         <Col className="details-size">
                             <h2>Birthday Package</h2>
                             <p>by Elite Catering</p>
+                            <StarRating initialRating={3} />
+
                             {/* <Image src={catering2} thumbnail />
 
                             <Dropdown>

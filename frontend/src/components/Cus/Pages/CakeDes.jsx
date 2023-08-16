@@ -10,6 +10,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import Sidebar from "../Sidebar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import StarRating from "./Ratings";
 
 import cake9 from '../../../assets/images/cake9.png';
 import cake10 from '../../../assets/images/cake10.png';
@@ -62,6 +63,7 @@ const CakeDes = () => {
                         <Col>
                             <h2>Black Forest Cake 1KG </h2>
                             <p>by Cake Talent</p>
+                            <StarRating initialRating={3} />
                             {/* <Image src={cake12} thumbnail />
 
                             <Dropdown>

@@ -132,7 +132,7 @@ const router = createBrowserRouter(
         <Route path="/customer/event/VenueDes" element={<VenueDes />} />
         <Route path="/customer/event/Catering" element={<Catering />} />
         <Route path="/customer/event/CateringDes" element={<CateringDes />} />
-        <Route path="/customer/event/Cakes" element={<Cake />} />
+        <Route path="/customer/event/Cake" element={<Cake />} />
         <Route path="/customer/event/CakesDes" element={<CakeDes />} />
         <Route path="/customer/event/Decoration" element={<Decoration />} />
         <Route path="/customer/event/DecorationDes" element={<DecorationDes/>} />
@@ -140,7 +140,7 @@ const router = createBrowserRouter(
         <Route path="/customer/event/PhotographyDes" element={<PhotographyDes />} />
         <Route path="/customer/event/SoundAndLight" element={<SoundAndLight />} />
         <Route path="/customer/event/SoundAndLightDes" element={<SoundAndLightDes />} />
-
+        <Route path="/customer/PredefinePackage/ServiceProvider-profile" element={<ProfileScreen />} />
       </Route>
 
       <Route path="/ServiceProvider/home" element={<Home />} />

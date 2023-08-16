@@ -11,22 +11,24 @@ const createEvent = asyncHandler(
     eventDate,
     eventStartTime,
     eventEndTime,
-
+    eventImages,
+    eventType,
     eventDescription,
-    eventType
   ) => {
-    const createUserQuery = `INSERT INTO event(userId,event_name,event_maintype,event_date,start_time,end_time,event_description,event_type) VALUES($1, $2, $3, $4, $5,$6,$7,$8) RETURNING event_id,event_name`
+    const createUserQuery = `INSERT INTO event(userId,event_name,event_maintype,event_date,start_time,end_time,event_description,event_type,event_img) VALUES($1, $2, $3, $4, $5,$6,$9,$8,$7) RETURNING event_id,event_name`
     const createUser = await query(createUserQuery, [
-      userId,
-      eventName,
-      eventtype,
-      eventDate,
-      eventStartTime,
-      eventEndTime,
-      eventDescription,
-      eventType
+    userId,
+    eventName,
+    eventtype,
+    eventDate,
+    eventStartTime,
+    eventEndTime,
+    eventImages,
+    eventType,
+    eventDescription,
 
     ])
+    console.log(eventImages);
 
     if (createUser.rowCount > 0) {
       const InsertTodo = `INSERT INTO public.todolist(event_id, todo_service) VALUES ($1,$2),($1,$3),($1,$4),($1,$5),($1,$6),($1,$7)`
@@ -85,9 +87,9 @@ const viewToDo = asyncHandler(
 )
 
 const eventdetails = asyncHandler(
-  async () => {
-    const eventQuery = `SELECT * FROM public.event`
-    const result = await query(eventQuery, [])
+  async (user_id) => {
+    const eventQuery = `SELECT * FROM public.event WHERE userid=$1`
+    const result = await query(eventQuery, [user_id])
     // console.log(result);
     return result
 

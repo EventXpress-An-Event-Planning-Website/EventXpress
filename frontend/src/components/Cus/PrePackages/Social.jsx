@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import Stack from 'react-bootstrap/Stack';
 import Pagination from 'react-bootstrap/Pagination';
+import FilterPackages from "../Pages/FilterPackages";
 
 import Social1 from '../../../assets/images/Social1.jpg';
 import Social2 from '../../../assets/images/Social2.jpg';
@@ -81,7 +82,7 @@ const Social = () => {
                 <div>
 
                 <div className="row">
-
+                <FilterPackages/>
                     {SocialData.map((Social) => (
                         <div className="col-md-3" key={Social.id}>
 

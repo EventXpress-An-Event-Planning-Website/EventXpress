@@ -1,31 +1,31 @@
 import Carousel from 'react-bootstrap/Carousel';
 import gardenImage from '../../assets/images/garden.jpg';
 import celebrationImage from '../../assets/images/celebration.jpg';
-import cateringImage from '../../assets/images/catering3.jpg';
+import cateringImage from '../../assets/images/landing.jpg';
 
 const Content = () => {
 
   const contentData = [
     {
       id: 1,
-      image: celebrationImage,
-      title: 'The perfect design for your website',
-      description: 'Use an integrated toolchain for the best user and developer experience. This page describes a few popular React toolchains which help with tasks like Scaling to many files and components. Using third-party libraries from npm.',
-      link: 'https://www.google.com'
+      image: gardenImage,
+      title: 'Create Your Event Perfectly With Us',
+      description: 'Embark on an unparalleled journey of perfection at EventXpress. Unleash your creativity and witness your visions come to life in an immersive event planning experience like no other.Join the event innovation revolution at EventXpress',
+      // link: 'https://www.google.com'
     },
     {
       id: 2,
-      image: gardenImage,
-      title: 'Start your future financial plan',
-      description: 'Use an integrated toolchain for the best user and developer experience. This page describes a few popular React toolchains which help with tasks like Scaling to many files and components. Using third-party libraries from npm.',
-      link: 'https://www.facebook.com'
+      image: celebrationImage,
+      title: 'Start Planning Your Event With Us',
+      description: 'Join us for a day of inspiration, expert insights, and hands-on activities that will empower you to craft flawless and unforgettable events.Dive into the world of event mastery at EventXpress',
+      // link: 'https://www.facebook.com'
     },
     {
       id: 3,
       image: cateringImage,
-      title: 'Enjoy the difference',
-      description: 'Use an integrated toolchain for the best user and developer experience. This page describes a few popular React toolchains which help with tasks like Scaling to many files and components. Using third-party libraries from npm.',
-      link: 'https://www.twitter.com'
+      title: 'Enjoy The Services In Our Platform',
+      description: 'Unveil the art of seamless planning, innovative design, and flawless execution as we guide you through a day of workshops, networking, and inspiration. Elevate your event game and join us in shaping extraordinary experiences together.',
+      // link: 'https://www.twitter.com'
     }
   ];
 

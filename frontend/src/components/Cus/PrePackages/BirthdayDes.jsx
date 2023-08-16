@@ -13,6 +13,7 @@ import catering4 from '../../../assets/images/catering-4.webp';
 import cake4 from '../../../assets/images/cake4.jpg';
 import venue5 from '../../../assets/images/venue5.jpg';
 import cake9 from '../../../assets/images/cake9.png';
+import { useNavigate } from "react-router-dom";
 
 const BirthdayDes = () => {
 
@@ -53,13 +54,18 @@ const BirthdayDes = () => {
             link: '/CateringDes'
         }
     ];
+    const navigate = useNavigate()
+
+    const handleViewServiceProvider=()=>{
+        navigate('/customer/PredefinePackage/ServiceProvider-profile')
+    }
     return (
         <>
             <div style={{ "display": "flex" }} >
                 <Sidebar />
                 <div>
                     <h3 className="s-title">Forever Young-ish</h3>
-                    <p className="s-para">by Roshan</p>
+                    <p className="s-para" onClick={handleViewServiceProvider}>by Kalana Weranga</p>
 
                     <div className="b-container">
 
