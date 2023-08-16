@@ -436,8 +436,27 @@ const closeModal = () => {
                   >
                     <option></option>
                     <option>Birthday Party</option>
-                    <option>Anivesary</option>
-                    <option>Bachelor Party</option>
+                    <option>Anniversary</option>
+                    <option>Bride To Be</option>
+                    <option>Social Event</option>
+                    <option>Farewell</option>
+                    <option>Christmas Celebration</option>
+                    <option>Other</option>
+                  </Form.Select>
+                </Form.Group>
+              )}
+              {eventtype === "Public" && (
+                <Form.Group className="mb-3" controlId="eventType">
+                  <Form.Label>Select Event Type:</Form.Label>
+                  <Form.Select
+                    size=""
+                    value={eventType}
+                    onChange={(e) => seteventType(e.target.value)}
+                  >
+                    <option></option>
+                    <option>Music Concert</option>
+                    <option>Drama</option>
+                    <option>Other</option>
                   </Form.Select>
                 </Form.Group>
               )}
