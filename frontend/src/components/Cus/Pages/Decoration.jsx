@@ -16,8 +16,14 @@ import deco5 from '../../../assets/images/deco5.jpg';
 import deco6 from '../../../assets/images/deco6.jpg';
 import deco9 from '../../../assets/images/deco9.jpg';
 import deco8 from '../../../assets/images/deco8.jpg';
+import { useLocation } from "react-router-dom";
 
 const Decoration = () => {
+
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search);
+    const package_Count= queryParams.get('packageCount')
+    const event_id= queryParams.get('event_id')
 
 
 
@@ -93,6 +99,7 @@ const Decoration = () => {
 
     return (
         <>
+        {event_id === null ?
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
@@ -115,14 +122,36 @@ const Decoration = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div>:<div style={{ "display": "flex" }}>
+               
+                <div className="row custom-row" style={{marginLeft:'3%'}}>
+                <FilterPackages/>
+                    <h1 className="pckg-name">Decoration Packages</h1>
+                    {decosData.map((deco) => (
+                        <div className="col-md-3 custom-col" key={deco.id}>
 
-            <div className="s-pagination">
+                            <Card className="s-card" style={{ width: '18rem' }} >
+                                <Card.Img className="s-img" variant="top" src={deco.image} />
+                                <Card.Body>
+                                    <Card.Title className="s-main-title">{deco.pckgName}</Card.Title>
+                                    <Card.Text className="s-main-title-pckg">{deco.title}</Card.Text>
+                                    <Card.Text className="s-text">{deco.text}</Card.Text>
+                                    <Link to={`/DecorationDes`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
+                                    </Link>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    ))}
+                </div>
+            </div>}
+
+            {/* <div className="s-pagination">
                 <div>
                     <Pagination>{items}</Pagination>
                 </div>
 
-            </div>
+            </div> */}
         </>
     );
 };

@@ -122,7 +122,7 @@ const FormDetails = () => {
               />
             </FormGroup>
 
-            <FormGroup className="input">
+            {/* <FormGroup className="input">
               <Form.Label htmlFor="location">Area cover</Form.Label>
               <FormControl
                 type="text"
@@ -132,7 +132,7 @@ const FormDetails = () => {
                 value={packageLocation}
                 required
               />
-            </FormGroup>
+            </FormGroup> */}
 
             <FormGroup className="input">
               <Form.Label htmlFor="address">Business address</Form.Label>

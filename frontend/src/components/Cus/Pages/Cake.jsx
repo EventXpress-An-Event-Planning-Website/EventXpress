@@ -16,8 +16,15 @@ import cake7 from '../../../assets/images/cake7.jpg';
 import cake8 from '../../../assets/images/cake8.jpg';
 import cake9 from '../../../assets/images/cake9.png';
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Cake = () => {
+
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search);
+    const package_Count= queryParams.get('packageCount')
+    const event_id= queryParams.get('event_id')
+
 
     const cakesData = [
         {
@@ -80,6 +87,7 @@ const Cake = () => {
 
     return (
         <>
+        {event_id ===null ?
             <div style={{ "display": "flex" }}>
                 <Sidebar />
                 <div className="row custom-row">
@@ -103,7 +111,30 @@ const Cake = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div>:<div style={{ "display": "flex" }}>
+               
+                <div className="row custom-row" style={{marginLeft:'3%'}}>
+                <FilterPackages/>
+                    <h1 className="pckg-name">Cake Packages</h1>
+
+                    {cakesData.map((cake) => (
+                        <div className="col-md-3 custom-col" key={cake.id}>
+
+                            <Card className="s-card" style={{ width: '18rem' }}>
+                                <Card.Img className="s-img" variant="top" src={cake.image} />
+                                <Card.Body>
+                                    <Card.Title className="s-main-title">{cake.title}</Card.Title>
+                                    <Card.Text className="s-main-title-pckg">{cake.shopName}</Card.Text>
+                                    <Card.Text className="s-text">{cake.text}</Card.Text>
+                                    <Link to={`/CakeDes`}>
+                                        <Button className="s-btn" variant="primary">Read More</Button>
+                                    </Link>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    ))}
+                </div>
+            </div>}
         </>
     );
 };

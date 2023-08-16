@@ -68,7 +68,7 @@ const VenueDes = () => {
         <>
         {event_id !==null ? 
             <div style={{ "display": "flex" }}>
-                <Sidebar />
+                
                 <Container>
                     <Row>
                         <Col>
@@ -198,7 +198,7 @@ const VenueDes = () => {
                 </Container >
             </div >:
             <div style={{ "display": "flex" }}>
-                
+                <Sidebar />
                 <Container>
                     <Row>
                         <Col>
@@ -287,7 +287,7 @@ const VenueDes = () => {
 
                     <Modal show={showModal} onHide={closeModal}>
                         <Modal.Header closeButton>
-                        <Modal.Title>EventXpree Policy</Modal.Title>
+                        <Modal.Title>EventXpress Policy</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <p>Before You Select a Package Please Create An Event</p>
