@@ -15,11 +15,15 @@ const TicketInfoPage = () => {
   const description = queryParams.get('description');
   const price = queryParams.get('price');
 
+
+  const updatedSrc = `../../src/assets/images/uploads/${src}`
+  const editedPrice = JSON.parse(price)
+  const editedTime = date.split("T")[0]
   const [numberOfTickets, setNumberOfTickets] = useState(1);
   const [totalPayable, setTotalPayable] = useState(price);
 
   useEffect(() => {
-    const calculatedTotal = numberOfTickets * price;
+    const calculatedTotal = numberOfTickets * editedPrice[0].price;
     setTotalPayable(calculatedTotal);
   }, [numberOfTickets, price]);
 
@@ -37,14 +41,14 @@ const TicketInfoPage = () => {
     <>
       <div className='ticket-info-container'>
         <div className='ticket-info-image'>
-          <img src={src} alt='Ticket' />
+          <img src={updatedSrc} alt='Ticket' />
         </div>
         <div className='ticket-info-content' >
           <h2>{title}</h2>
           <p>{description}</p>
           <p>
             <FontAwesomeIcon icon={faCalendar} />
-            {date}
+            {editedTime}
           </p>
           <p>
             <FontAwesomeIcon icon={faClock} />
@@ -56,7 +60,7 @@ const TicketInfoPage = () => {
           </p>
           <p>
             <FontAwesomeIcon icon={faRupeeSign} />
-            {price}
+            {editedPrice[0].price}
           </p>
 
         </div>
@@ -65,13 +69,13 @@ const TicketInfoPage = () => {
         <div className='confirmed-ticket-info-wrapper'>
           <div className='confirmed-ticket-info-row'>
             <span className='confirmed-ticket-info-label'>Event Name:</span>
-            <div className='confirmed-ticket-info-details'>Event Name Here</div>
+            <div className='confirmed-ticket-info-details'>{title}</div>
           </div>
 
           <div className='confirmed-ticket-info-row'>
             <span className='confirmed-ticket-info-label'>Event Date:</span>
             <select className='confirmed-ticket-info-details'>
-              <option>{date}</option>
+              <option>{editedTime}</option>
             </select>
           </div>
 
@@ -92,7 +96,7 @@ const TicketInfoPage = () => {
           <div className='confirmed-ticket-info-row'>
             <span className='confirmed-ticket-info-label'>Ticket Type:</span>
             <select className='confirmed-ticket-info-details'>
-              <option>{price}</option>
+              <option>{editedPrice[0].price}</option>
             </select>
           </div>
 
