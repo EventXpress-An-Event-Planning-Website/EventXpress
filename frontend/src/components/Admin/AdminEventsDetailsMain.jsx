@@ -47,10 +47,10 @@ function AdminEventsDetailsMain() {
                 <Accordion.Header>Bank Details</Accordion.Header>
                 <Accordion.Body>
                 <span  style={{ fontSize: "12px" }}>
-                  Bank name <br />
-                  Branch Name <br />
-                  Account Number <br />
-                  Account holders name <br />
+                  Sampath Bank <br />
+                  Delkanda <br />
+                  132427891882939 <br />
+                  Luqman Fazal <br />
                   </span>
                 </Accordion.Body>
               </Accordion.Item>
