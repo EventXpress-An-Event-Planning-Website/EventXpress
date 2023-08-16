@@ -53,16 +53,8 @@ function SideBar(props) {
                 <BiHomeAlt2 size={25} />
               </span>
               Events
-            </Link>
-            <div className="logOut">
-              <a href="#contact">
-                <span className="iconSize">
-                  <IoIosLogOut size={25} />
-                </span>
-                Log out
-              </a>
+            </Link>          
             </div>
-          </div>
         </div>
       );
 
