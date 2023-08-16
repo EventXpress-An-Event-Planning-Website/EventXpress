@@ -147,12 +147,12 @@ function Revenue() {
                 <span
                   style={{
                     fontWeight: "bold",
-                    fontSize: "25px",
-                    marginLeft: "5px",
-                    marginRight: "5px",
+                    fontSize: "20px",
+                    marginLeft: "20%",
+                    marginRight: "20%",
                   }}
                 >
-                  <span style={{ margin: "25px" }}>
+                  <span style={{ margin: "2%" }}>
                     {items[currentIndex][0]}
                   </span>
                 </span>
@@ -166,23 +166,23 @@ function Revenue() {
                 <br />
                 <br />
                 <br />
-                <h3 style={{ fontWeight: "bold", padding: "5px" }}>
+                <h4 style={{ fontWeight: "bold", padding: "0%" }}>
                   Total revenue of the month
-                </h3>
-                <p style={{fontWeight:'bold', marginLeft:'225px'}}>LKR. {items[currentIndex][1]}.00</p>
-                <h3 style={{ fontWeight: "bold", padding: "5px" }}>
+                </h4>
+                <p style={{fontWeight:'bold', marginLeft:'60%'}}>LKR. {items[currentIndex][1]}.00</p>
+                <h4 style={{ fontWeight: "bold", padding: "0%" }}>
                   Income from ticket comission
-                </h3>
-                <p style={{fontWeight:'bold', marginLeft:'225px'}}>LKR. {items[currentIndex][2]}.00</p>
-                <h3 style={{ fontWeight: "bold", padding: "5px" }}>
+                </h4>
+                <p style={{fontWeight:'bold', marginLeft:'60%'}}>LKR. {items[currentIndex][2]}.00</p>
+                <h4 style={{ fontWeight: "bold", padding: "0%" }}>
                   Income from subscription fee
-                </h3>
-                <p style={{fontWeight:'bold', marginLeft:'225px'}}>LKR. {items[currentIndex][3]}.00</p>
-                <h3 style={{ fontWeight: "bold", padding: "5px" }}>
+                </h4>
+                <p style={{fontWeight:'bold', marginLeft:'60%'}}>LKR. {items[currentIndex][3]}.00</p>
+                <h4 style={{ fontWeight: "bold", padding: "0%" }}>
                   Maintenance cost{" "}
-                </h3>
-                <p style={{fontWeight:'bold', marginLeft:'225px'}}>LKR. {items[currentIndex][4]}.00</p>
-                <p style={{fontWeight:'bold', marginLeft:'150px',color:'green'}}>Profite: LKR. {items[currentIndex][1]}.00</p>
+                </h4>
+                <span style={{fontWeight:'bold', marginLeft:'60%'}}>LKR. {items[currentIndex][4]}.00</span>
+                <p style={{fontWeight:'bold', marginLeft:'40%',color:'green'}}>Profite: LKR. {items[currentIndex][1]}.00</p>
               </div>
               </div>
             </div>

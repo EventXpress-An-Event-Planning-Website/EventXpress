@@ -17,37 +17,41 @@ function AdminEventsDetailsMain() {
             <p style={{ fontSize: "20px", fontWeight: "bold" }}>
               A Night at the Opera Tour
             </p>
-            <p style={{ fontSize: "15px" }}></p>`
             <Accordion defaultActiveKey="0">
               <Accordion.Item eventKey="0">
                 <Accordion.Header style={{ fontSize: "15px" }}>
                   About
                 </Accordion.Header>
                 <Accordion.Body>
+                  <span  style={{ fontSize: "12px" }}>
                   Queen are a British rock band formed in London in 1970. Their
                   They began their first tour of Japan in April 1975, where
                   thousands of fans met them at Haneda Airport and they played
                   two sold out shows at the Nippon Budokan, Tokyo. After a
                   nine-month dispute, Queen were finally free of Trident and
                   signed directly with EMI Records in the UK and Elektra Records
-                  in North America.
+                  in North America.</span>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">
                 <Accordion.Header>Organizer</Accordion.Header>
                 <Accordion.Body>
+                <span  style={{ fontSize: "12px" }}>
                   By Fazal Events <br />
                   LuqmanFazal@gmail.com <br />
                   90172890197v <br />
+                  </span>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="2">
                 <Accordion.Header>Bank Details</Accordion.Header>
                 <Accordion.Body>
+                <span  style={{ fontSize: "12px" }}>
                   Bank name <br />
                   Branch Name <br />
                   Account Number <br />
                   Account holders name <br />
+                  </span>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
@@ -113,7 +117,7 @@ function AdminEventsDetailsMain() {
           </div>
         </div>
         <div className="EvDetailsBoxBottom">
-          <table className="table" style={{ width: "95%", marginLeft: "10px" }}>
+          <table className="admin-table" style={{ width: "95%", marginLeft: "10px" }}>
             <tr>
               <th className="eventTableTh">Full Name</th>
               <th className="eventTableTh">NIC</th>

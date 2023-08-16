@@ -149,3 +149,20 @@ CREATE TABLE photographypackage (
     package_price FLOAT, 
     sp_images VARCHAR(255)
 )
+
+CREATE TABLE ticket (
+    id SERIAL PRIMARY KEY,
+    selectedCategory VARCHAR(255),
+    eventTitle VARCHAR(255),
+    eventDate DATE,
+    eventTime TIME,
+    eventVenue VARCHAR(255),
+    eventDescription TEXT,
+    eventPoster VARCHAR(255),
+    ticketItems VARCHAR(255),
+    accountHolderName VARCHAR(255),
+    bankName VARCHAR(255),
+    branchName VARCHAR(255),
+    accountNumber VARCHAR(255),
+    bankPassbookImage VARCHAR(255)
+);

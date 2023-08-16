@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 import { useRegisterMutation } from '../slices/userApiSlice'
 import { useUploadSingleMutation } from '../slices/uploadApiSlice'
 import { setCredentials } from '../slices/authSlice'
-import Header from '../components/header'
+// import Header from '../components/header'
 
 const RegisterCustomerScreen = () => {
   const [name, setName] = useState('')

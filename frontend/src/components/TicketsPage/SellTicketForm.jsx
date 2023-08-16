@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
 import FormContainer from '../FormContainer'
 import { Form, Button, Modal } from 'react-bootstrap'
-
+import { useUploadSingleMutation } from '../../slices/uploadApiSlice'
+import axios from 'axios'
+import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
 const categories = ['Musical', 'Drama', 'Sports', 'Seminar', 'Exhibition']
 
 const SellTicketForm = () => {
   const [eventTitle, setEventTitle] = useState('')
+  const [eventDate, setEventDate] = useState('');
+  const [eventTime, setEventTime] = useState('');
+  const [eventVenue, setEventVenue] = useState('');
   const [eventDescription, setEventDescription] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('Musical')
   const [eventPoster, setEventPoster] = useState(null)
@@ -20,8 +26,62 @@ const SellTicketForm = () => {
   const [agreedToPolicy, setAgreedToPolicy] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
-  const submitHandler = (e) => {
+  const [uploadSingle] = useUploadSingleMutation();
+
+  const navigate = useNavigate()
+
+  const today = new Date().toISOString().split('T')[0];
+
+  const uploadImage = async (img) => {
+    try {
+      if (img) {
+        const imageFormData = new FormData();
+        imageFormData.append('file', img);
+        const response = await uploadSingle(imageFormData)
+        if (response && response.data.filename) {
+          const imageFilename = response.data.filename;
+          return imageFilename;
+        } else {
+          throw new Error('Error uploading image: Invalid response format');
+        }
+      }
+      return ''; // If no image is provided, return an empty string
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      return ''; // Return an empty string if there is an error during upload
+    }
+  };
+
+  const submitHandler = async (e) => {
     e.preventDefault()
+    const bankPassbookImageFilename = await uploadImage(bankPassbookImage);
+    const eventPosterFilename = await uploadImage(eventPoster);
+
+    const formData = {
+      selectedCategory,
+      eventTitle,
+      eventDate,
+      eventTime,
+      eventVenue,
+      eventDescription,
+      eventPoster: eventPosterFilename,
+      ticketItems,
+      accountHolderName,
+      bankName,
+      branchName,
+      accountNumber,
+      bankPassbookImage: bankPassbookImageFilename,
+    };
+    axios
+      .post('/api/tickets/addTicket', formData)
+      .then((response) => {
+        console.log('Form submitted successfully');
+        toast.success('Ticket added successfully!')
+        navigate('/customer/buyTickets')
+      })
+      .catch((error) => {
+        console.error('Error submitting form:', error);
+      });
   }
 
   const handleImageChange = (e) => {
@@ -69,27 +129,30 @@ const SellTicketForm = () => {
         <div className="sell-ticket-left-side"></div>
         <div className="sell-ticket-right-side"> </div>
         <div className="sell-ticket-form-wrapper">
-          <div className="sell-ticket-header-container">
-            <h2>Fill the form to sell your tickets</h2>
-          </div>
-          <h3>Enter event details</h3>
-          <Form.Group className="my-2" controlId="eventCategory">
-            <Form.Label>Event category</Form.Label>
-            <Form.Control
-              as="select"
-              value={selectedCategory}
-              autoFocus
-              onChange={(e) => setSelectedCategory(e.target.value)}
-            >
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </Form.Control>
-          </Form.Group>
 
           <Form onSubmit={submitHandler}>
+
+            <div className="sell-ticket-header-container">
+              <h2>Fill the form to sell your tickets</h2>
+            </div>
+            <h3>Enter event details</h3>
+
+            <Form.Group className="my-2" controlId="eventCategory">
+              <Form.Label>Event category</Form.Label>
+              <Form.Control
+                as="select"
+                value={selectedCategory}
+                autoFocus
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+
             <Form.Group className="my-2" controlId="eventTitle">
               <Form.Label>Event title*</Form.Label>
               <Form.Control
@@ -99,6 +162,38 @@ const SellTicketForm = () => {
                 onChange={(e) => setEventTitle(e.target.value)}
                 required
               ></Form.Control>
+            </Form.Group>
+
+            <Form.Group className="my-2" controlId="eventDate">
+              <Form.Label>Event date*</Form.Label>
+              <Form.Control
+                type="date"
+                value={eventDate}
+                onChange={(e) => setEventDate(e.target.value)}
+                min={today}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="my-2" controlId="eventTime">
+              <Form.Label>Event time*</Form.Label>
+              <Form.Control
+                type="time"
+                value={eventTime}
+                onChange={(e) => setEventTime(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="my-2" controlId="eventVenue">
+              <Form.Label>Event venue*</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter event venue"
+                value={eventVenue}
+                onChange={(e) => setEventVenue(e.target.value)}
+                required
+              />
             </Form.Group>
 
             <Form.Group className="my-2" controlId="eventDescription">
@@ -114,11 +209,12 @@ const SellTicketForm = () => {
             </Form.Group>
 
             <Form.Group className="my-2" controlId="eventPoster">
-              <Form.Label>Event poster</Form.Label>
+              <Form.Label>Event poster*</Form.Label>
               <Form.Control
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
+                required
               />
             </Form.Group>
 

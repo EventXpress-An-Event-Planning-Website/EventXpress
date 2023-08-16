@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap'
 import TicketCard from './TicketCard'
 import image1 from '../../assets/images/tickets/CT-NEW-EVENT.jpg'
@@ -9,8 +9,25 @@ import image5 from '../../assets/images/tickets/legends-new-event-banner.jpg'
 import image6 from '../../assets/images/tickets/MA-NOWANA-MAMA11.png'
 import image7 from '../../assets/images/tickets/Marians-teaser.jpg'
 import image8 from '../../assets/images/tickets/sankranthi-event-new.jpg'
+import axios from 'axios'
 
 const Tickets = () => {
+  const [tickets1, setTickets1] = useState([]);
+
+  useEffect(() => {
+    // Make a GET request when the component mounts
+    axios
+      .get('/api/tickets/getAllTickets')
+      .then((response) => {
+        // Update the state with the fetched data
+        console.log(response.data.getAllTicketsResponse);
+        setTickets1(response.data.getAllTicketsResponse);
+      })
+      .catch((error) => {
+        console.error('Error fetching tickets:', error);
+      });
+  }, []);
+
   const tickets = [
     {
       id: 1,
@@ -72,7 +89,7 @@ const Tickets = () => {
       title: 'Ticket 6',
       image: image6,
       date: '2023-07-30',
-      time: '15:00', 
+      time: '15:00',
       venue: 'Some Venue 6',
       price: 2000,
       description:
@@ -115,7 +132,7 @@ const Tickets = () => {
 
   return (
     <div className="ticket-grid-container">
-      {ticketChunks.map((ticketRow, index) => (
+      {/* {ticketChunks.map((ticketRow, index) => (
         <Row key={index} className="ticket-custom-row">
           {ticketRow.map((ticket, innerIndex) => (
             <Col key={innerIndex} xs={12} md={4} className="mb-4 ticket-custom-col">
@@ -132,7 +149,24 @@ const Tickets = () => {
             </Col>
           ))}
         </Row>
-      ))}
+      ))} */}
+
+      <Row className="ticket-custom-row">
+        {tickets1.map((ticket) => (
+          <Col key={ticket.id} xs={12} md={4} className="mb-4 ticket-custom-col">
+            <TicketCard
+              id={ticket.id}
+              src={ticket.eventposter}
+              title={ticket.eventtitle}
+              date={ticket.eventdate}
+              time={ticket.eventtime}
+              venue={ticket.eventvenue}
+              price={ticket.ticketitems}
+              description={ticket.eventdescription}
+            />
+          </Col>
+        ))}
+      </Row>
     </div>
   )
 }
