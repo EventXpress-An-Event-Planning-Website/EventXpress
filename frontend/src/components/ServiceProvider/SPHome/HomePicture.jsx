@@ -1,6 +1,6 @@
 // import React from 'react'
-import { Button } from "react-bootstrap"
-import { Link } from "react-router-dom"
+// import { Button } from "react-bootstrap"
+// import { Link } from "react-router-dom"
 import pic from '../../../assets/images/djfes.jpg'
 
 const HomePicture = () => {
@@ -8,9 +8,9 @@ const HomePicture = () => {
     <section className="home_pic">
       <img className='picture' src={pic} />
 
-      <Link to={`/ServiceProvider/packageForm`}>
+      {/* <Link to={`/ServiceProvider/packageForm`}>
           <Button className="create_btn">Create Package</Button> 
-      </Link>
+      </Link> */}
     </section>
     
   )

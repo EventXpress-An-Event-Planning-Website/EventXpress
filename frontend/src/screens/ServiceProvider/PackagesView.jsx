@@ -6,7 +6,7 @@ const PackagesView = () => {
   return (
     <div style={{ "display": "flex" }}>
       <div><SPSidebar /></div>
-      <div><Packages /></div>
+      <div style={{ "width": "85%" }}><Packages /></div>
     </div>
   )
 }

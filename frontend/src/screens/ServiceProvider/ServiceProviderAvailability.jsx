@@ -1,13 +1,13 @@
-import React from "react";
+//import React from "react";
 import Calender from "../../components/ServiceProvider/Calender";
-import Sidebar from "../../components/ServiceProvider/Sidebar";
+import SPSidebar from "../../components/ServiceProvider/SPSidebar"
 
 const ServiceProviderAvailability = () => {
   return (
-    <>
-      <Calender />
-      <Sidebar />
-    </>
+    <div style={{ "display": "flex" }}>
+      <div><SPSidebar /></div>
+      <div><Calender /></div>
+  </div>
   );
 };
 

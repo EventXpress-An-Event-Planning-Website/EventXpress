@@ -1,7 +1,6 @@
 // import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap';
 import { FaPlus, FaCalendarAlt, FaListAlt, FaTicketAlt } from 'react-icons/fa';
-// import { FaPlus } from 'react-icons/fa';
 
 const HomeIcons = () => {
   return (
@@ -11,11 +10,6 @@ const HomeIcons = () => {
           <a href="/ServiceProvider/packageForm" className='icon'><FaPlus /></a>
           <h4>Create Normal or Predefined Packages</h4>
         </Col>
-
-        {/* <Col>
-          <a href="/ServiceProvider/myEventhome" className='icon'><FaPlus /></a>
-          <h4>Create Event</h4>
-        </Col> */}
 
         <Col>
           <a href="/ServiceProvider/packagesView" className='icon'><FaListAlt /></a>

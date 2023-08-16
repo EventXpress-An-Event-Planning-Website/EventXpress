@@ -38,8 +38,13 @@ const CreateEvent = () => {
     const [showCreateEvent, setShowCreateEvent] = useState(false);
     const [containerWidth, setContainerWidth] = useState("100%");
 
+    const user = JSON.parse(localStorage.getItem('userInfo'));
+    const user_id = user.id;
+    
+    console.log(user_id);
+
   useEffect(() => {
-    axios.get(`/api/customer/myEvents`)
+    axios.get(`/api/customer/myEvents?id=${user_id}`)
       .then(response => {
         setData(response.data);
         setEventData(data)
@@ -496,9 +501,9 @@ const closeModal = () => {
      
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={closeModal}>
+          {/* <Button variant="secondary" onClick={closeModal}>
             Close
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
     </>
