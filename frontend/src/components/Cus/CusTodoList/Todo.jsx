@@ -9,14 +9,16 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import celebrationImage from "../../../assets/images/celebration.jpg";
 import { Link } from "react-router-dom";
 import { Modal, Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-const Todo = ({ event_id, todos, completeTodo, removeTodo, updateTodo }) => {
+const Todo = ({ success,event_id, todos, completeTodo, removeTodo, updateTodo }) => {
   const [showModal, setShowModal] = useState(false);
   const [edit, setEdit] = useState({
     id: null,
     value: "",
   });
   console.log(event_id);
+  const navigate = useNavigate();
   const [showDetailsId, setShowDetailsId] = useState(null);
 
   const submitUpdate = (value) => {
@@ -42,6 +44,14 @@ const Todo = ({ event_id, todos, completeTodo, removeTodo, updateTodo }) => {
 
   const closeModal = () => {
     setShowModal(false);
+  };
+
+  const handleSubmit=(id)=>{
+    navigate(`/customer/eventdetails?id=${id}&success=1`)
+  }
+  const handleFormSubmit = () => {
+    handleSubmit(event_id); // Pass the event_id to the handleSubmit function
+    closeModal(); // Close the modal after submitting the form
   };
 
   return todos.map((todo, index) => (
@@ -89,10 +99,12 @@ const Todo = ({ event_id, todos, completeTodo, removeTodo, updateTodo }) => {
                 flexDirection: "column",
               }}
             >
-              <span style={{ marginLeft: "20%" }}>pending</span>
+              {success==='1'?
+              <span style={{ marginLeft: "20%" }}>pending</span>:
+              
               <Button style={{ width: "100px" }} onClick={openModal}>
                 Create Appoinment
-              </Button>
+              </Button>}
             </div>
           </div>
         </div>
@@ -103,7 +115,7 @@ const Todo = ({ event_id, todos, completeTodo, removeTodo, updateTodo }) => {
         </Modal.Header>
         <Modal.Body>
           <p> Create An Appointment For Physical Meating</p>
-          <Form>
+          <Form onSubmit={handleFormSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Name</Form.Label>
               <Form.Control type="email" placeholder="Enter email" />
@@ -118,15 +130,15 @@ const Todo = ({ event_id, todos, completeTodo, removeTodo, updateTodo }) => {
                 min={new Date().toISOString().split("T")[0]} // Set the min attribute to the current date
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" onClick={handleFormSubmit}>
               Submit
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={closeModal}>
+          {/* <Button variant="secondary" onClick={closeModal}>
             Close
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
     </div>

@@ -101,7 +101,7 @@ const CreateEvent = () => {
     e.preventDefault();
 
     try {
-      const eventImages= uploadImage(eventImage)
+      const eventImages= await uploadImage(eventImage)
       console.log(eventImages);
       const res = await create({
         userId,
@@ -110,7 +110,7 @@ const CreateEvent = () => {
         eventDate,
         eventStartTime,
         eventEndTime,
-        eventImages,
+        eventImages: eventImages,
         eventType,
         eventDescription,
         
@@ -456,6 +456,9 @@ const closeModal = () => {
                     <option></option>
                     <option>Music Concert</option>
                     <option>Drama</option>
+                    <option>Sports</option>
+                    <option>Seminar</option>
+                    <option>Exhibition</option>
                     <option>Other</option>
                   </Form.Select>
                 </Form.Group>

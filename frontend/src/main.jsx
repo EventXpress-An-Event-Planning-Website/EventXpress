@@ -126,7 +126,7 @@ const router = createBrowserRouter(
         <Route path="/Anniversary" element={<Anniversary/>}/>
         <Route path="/Social" element={<Social/>}/>
         <Route path="/ChatSidebar" element={<ChatSidebar/>}/>
-        <Route path="/ChatDes" element={<ChatDes/>}/>
+        <Route path="/ChatDes" element={<ServiceProviderRequests/>}/>
         <Route path="/customer/event/VenueCompare" element={<CompareVenuePackages/>}/>
         <Route path="/customer/event/Venue" element={<Venue />} />
         <Route path="/customer/event/VenueDes" element={<VenueDes />} />
