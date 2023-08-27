@@ -68,4 +68,15 @@ const getAllTickets = asyncHandler(async () => {
   }
 })
 
-export { addNewTicket, getAllTickets }
+// get all tickets
+const getTicket = asyncHandler(async (id) => {
+  const getTicketQuery = `SELECT * FROM ticket where id = $1`
+  const getTicket = await query(getTicketQuery, [id])
+  if (getTicket) {
+    return getTicket.rows[0]
+  } else {
+    throw new Error('Internal Error')
+  }
+})
+
+export { addNewTicket, getAllTickets, getTicket }

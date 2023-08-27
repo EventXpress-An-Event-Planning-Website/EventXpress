@@ -2,36 +2,49 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar, faClock, faMapMarkerAlt, faRupeeSign } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios'
 
 const TicketInfoPage = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get('id');
-  const src = queryParams.get('src');
-  const title = queryParams.get('title');
-  const date = queryParams.get('date');
-  const time = queryParams.get('time');
-  const venue = queryParams.get('venue');
-  const description = queryParams.get('description');
-  const price = queryParams.get('price');
-
-
-  const updatedSrc = `../../src/assets/images/uploads/${src}`
-  const editedPrice = JSON.parse(price)
-  const editedTime = date.split("T")[0]
+  const [ticket, setTicket] = useState(null);
   const [numberOfTickets, setNumberOfTickets] = useState(1);
-  const [totalPayable, setTotalPayable] = useState(price);
+  const [totalPayable, setTotalPayable] = useState(0);
 
   useEffect(() => {
-    const calculatedTotal = numberOfTickets * editedPrice[0].price;
-    setTotalPayable(calculatedTotal);
-  }, [numberOfTickets, price]);
+    axios
+      .get(`/api/tickets/getTicketInfo?id=${id}`)
+      .then((response) => {
+        setTicket(response.data.getTicketResponse)
+        const editedPrice = JSON.parse(response.data.getTicketResponse.ticketitems);
+        const initialTotalPayable = editedPrice[0].price * numberOfTickets;
+        setTotalPayable(initialTotalPayable);
+      })
+      .catch((error) => {
+        console.error('Error fetching ticket Info:', error);
+      });
+  }, []);
 
+  // Conditionally render the content when ticket data is available
+  if (!ticket) {
+    return <p>Loading...</p>;
+  }
+
+
+  const updatedSrc = `../../src/assets/images/uploads/${ticket.eventposter}`
+  const editedPrice = JSON.parse(ticket.ticketitems)
+  const editedTime = ticket.eventdate.split("T")[0]
 
   const handleNumberOfTicketsChange = (e) => {
     const value = parseInt(e.target.value, 10);
     if (value >= 1 && value <= 10) {
       setNumberOfTickets(value);
+       // Recalculate total payable based on editedPrice and new number of tickets
+       if (ticket) {
+        const editedPrice = JSON.parse(ticket.ticketitems);
+        setTotalPayable(editedPrice[0].price * value);
+      }
     } else if (value > 10) {
       setNumberOfTickets(10);
     }
@@ -44,19 +57,19 @@ const TicketInfoPage = () => {
           <img src={updatedSrc} alt='Ticket' />
         </div>
         <div className='ticket-info-content' >
-          <h2>{title}</h2>
-          <p>{description}</p>
+          <h2>{ticket.eventtitle}</h2>
+          <p>{ticket.eventdescription}</p>
           <p>
             <FontAwesomeIcon icon={faCalendar} />
             {editedTime}
           </p>
           <p>
             <FontAwesomeIcon icon={faClock} />
-            {time}
+            {ticket.eventtime}
           </p>
           <p>
             <FontAwesomeIcon icon={faMapMarkerAlt} />
-            {venue}
+            {ticket.eventvenue}
           </p>
           <p>
             <FontAwesomeIcon icon={faRupeeSign} />
@@ -69,7 +82,7 @@ const TicketInfoPage = () => {
         <div className='confirmed-ticket-info-wrapper'>
           <div className='confirmed-ticket-info-row'>
             <span className='confirmed-ticket-info-label'>Event Name:</span>
-            <div className='confirmed-ticket-info-details'>{title}</div>
+            <div className='confirmed-ticket-info-details'>{ticket.eventtitle}</div>
           </div>
 
           <div className='confirmed-ticket-info-row'>
@@ -82,14 +95,14 @@ const TicketInfoPage = () => {
           <div className='confirmed-ticket-info-row'>
             <span className='confirmed-ticket-info-label'>Event Time:</span>
             <select className='confirmed-ticket-info-details'>
-              <option>{time}</option>
+              <option>{ticket.eventtime}</option>
             </select>
           </div>
 
           <div className='confirmed-ticket-info-row'>
             <span className='confirmed-ticket-info-label'>Event Venue:</span>
             <select className='confirmed-ticket-info-details'>
-              <option>{venue}</option>
+              <option>{ticket.eventvenue}</option>
             </select>
           </div>
 
@@ -123,5 +136,6 @@ const TicketInfoPage = () => {
     </>
   );
 };
+
 
 export default TicketInfoPage;

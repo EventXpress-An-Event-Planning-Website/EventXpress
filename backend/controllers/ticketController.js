@@ -1,8 +1,5 @@
 import asyncHandler from 'express-async-handler'
-import {
-  addNewTicket,
-  getAllTickets
-} from '../models/ticketModel.js'
+import { addNewTicket, getAllTickets, getTicket } from '../models/ticketModel.js'
 
 const addTicket = asyncHandler(async (req, res) => {
   const {
@@ -18,12 +15,12 @@ const addTicket = asyncHandler(async (req, res) => {
     bankName,
     branchName,
     accountNumber,
-    bankPassbookImage
+    bankPassbookImage,
   } = req.body
 
   const ticketItemsString = JSON.stringify(ticketItems)
 
-  const addTicketResponse = await addNewTicket( 
+  const addTicketResponse = await addNewTicket(
     selectedCategory,
     eventTitle,
     eventDate,
@@ -36,7 +33,8 @@ const addTicket = asyncHandler(async (req, res) => {
     bankName,
     branchName,
     accountNumber,
-    bankPassbookImage)
+    bankPassbookImage
+  )
 
   if (addTicketResponse) {
     res.status(200).json({
@@ -49,17 +47,30 @@ const addTicket = asyncHandler(async (req, res) => {
 })
 
 const getAllTicket = asyncHandler(async (req, res) => {
- 
   const getAllTicketsResponse = await getAllTickets()
 
   if (getAllTicketsResponse) {
     res.status(200).json({
-      getAllTicketsResponse
+      getAllTicketsResponse,
     })
   } else {
     res.status(404)
-    throw new Error('Fail to add new ticket')
+    throw new Error('Fail to fetch tickets')
   }
 })
 
-export { addTicket, getAllTicket }
+const getTicketInfo = asyncHandler(async (req, res) => {
+  const { id } = req.query
+  const getTicketResponse = await getTicket(id)
+
+  if (getTicketResponse) {
+    res.status(200).json({
+      getTicketResponse,
+    })
+  } else {
+    res.status(404)
+    throw new Error('Fail to fetch ticket')
+  }
+})
+
+export { addTicket, getAllTicket, getTicketInfo }
