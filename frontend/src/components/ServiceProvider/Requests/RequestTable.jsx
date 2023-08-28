@@ -135,15 +135,19 @@ Caters : Katta Sambal  </p>
           </li>
           {/* Add more chat messages */}
         </ul>
-        <div className="message-input">
+        {/* <div className="message-input">
           <input
             className="input"
             type="text"
             placeholder="Send Confirmation"
           />
           <button className="send-button">
-              <FaPaperPlane /> {/* Use the FaPaperPlane icon */}
+              <FaPaperPlane /> 
             </button>
+        </div> */}
+        <div className='req_btn_section' style={{"margin": "5px 0"}}>
+          <button style={{"background": "green", "margin": "60px", "color": "white", "width": "150px", "height": "50px", "border-radius": "10px"}}>Accept</button>
+          <button style={{"background": "#6D004F", "color": "white", "width": "150px", "height": "50px", "border-radius": "10px"}}>Reject</button>
         </div>
       </div>
     

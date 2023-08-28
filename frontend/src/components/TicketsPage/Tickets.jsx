@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap'
 import TicketCard from './TicketCard'
 import image1 from '../../assets/images/tickets/CT-NEW-EVENT.jpg'

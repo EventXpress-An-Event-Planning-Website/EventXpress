@@ -1,4 +1,4 @@
-// import React from 'react'
+//import React from 'react'
 import { useState } from "react";
 // import { useRef } from "react"
 import { Form, FormControl, FormGroup, Button } from "react-bootstrap";
@@ -10,8 +10,8 @@ import { useCreatePackageMutation } from "../../../slices/packageSlice";
 import { useUploadSingleMutation } from "../../../slices/uploadApiSlice";
 
 const FormDetails = () => {
+  const [packageBusName, setpackageBusName] = useState("");
   const [packageTitle, setpackageTitle] = useState("");
-  const [packageLocation, setpackageLocation] = useState("");
   const [packageAddress, setpackageAddress] = useState("");
   const [packageDescription, setpackageDescription] = useState("");
   const [packagePrice, setpackagePrice] = useState("");
@@ -65,8 +65,8 @@ const FormDetails = () => {
       if (packageType === "Venue") {
         const optionResponse = await createPackage({
           userId,
+          packageBusName,
           packageTitle,
-          packageLocation,
           packageAddress,
           packageDescription,
           packagePrice,
@@ -81,8 +81,8 @@ const FormDetails = () => {
       } else {
         const res = await createPackage({
           userId,
+          packageBusName,
           packageTitle,
-          packageLocation,
           packageAddress,
           packageDescription,
           packagePrice,
@@ -105,34 +105,35 @@ const FormDetails = () => {
   };
 
   return (
-    <div>
-      <FormContainer className="SPPackageForm">
+    <div className="SPPackageForm">
+      <FormContainer>
         <h3 className="packformh3">Package Information</h3>
         <div className="pack_info">
           <Form method="post" onSubmit={handleSubmit} className="form">
+
+            <FormGroup className="input">
+              <Form.Label htmlFor="location">Business Name</Form.Label>
+              <FormControl
+                type="text"
+                name="packageLocation"
+                placeholder="Enter your business name"
+                onChange={(e) => setpackageBusName(e.target.value)}
+                value={packageBusName}
+                required
+              />
+            </FormGroup>
+
             <FormGroup className="input">
               <Form.Label htmlFor="title">Package Name</Form.Label>
               <FormControl
                 type="text"
                 name="packageTitle"
-                placeholder="Enter your business name"
+                placeholder="Enter your package name"
                 onChange={(e) => setpackageTitle(e.target.value)}
                 value={packageTitle}
                 required
               />
             </FormGroup>
-
-            {/* <FormGroup className="input">
-              <Form.Label htmlFor="location">Area cover</Form.Label>
-              <FormControl
-                type="text"
-                name="packageLocation"
-                placeholder="Enter area you cover"
-                onChange={(e) => setpackageLocation(e.target.value)}
-                value={packageLocation}
-                required
-              />
-            </FormGroup> */}
 
             <FormGroup className="input">
               <Form.Label htmlFor="address">Business address</Form.Label>
@@ -163,11 +164,12 @@ const FormDetails = () => {
             <FormGroup className="input">
               <Form.Label htmlFor="price">Price</Form.Label>
               <FormControl
-                type="text"
+                type="number"
                 name="packagePrice"
                 placeholder="Enter price"
                 onChange={(e) => setpackagePrice(e.target.value)}
                 value={packagePrice}
+                min="0"
                 required
               />
             </FormGroup>
@@ -199,6 +201,40 @@ const FormDetails = () => {
                 required
               />
             </Form.Group>
+
+            {/* {packageType !== "Venue" && (
+              <React.Fragment>
+                <Form.Group className="my-4" controlId="additionalImage1">
+                  <Form.Label>Add Additional Image 1</Form.Label>
+                  <Form.Control
+                    type="file"
+                    accept=".jpg, .jpeg, .png"
+                    
+                    required
+                  />
+                </Form.Group>
+                
+                <Form.Group className="my-4" controlId="additionalImage2">
+                  <Form.Label>Add Additional Image 2</Form.Label>
+                  <Form.Control
+                    type="file"
+                    accept=".jpg, .jpeg, .png"
+                    
+                    required
+                  />
+                </Form.Group>
+                
+                <Form.Group className="my-4" controlId="additionalImage3">
+                  <Form.Label>Add Additional Image 3</Form.Label>
+                  <Form.Control
+                    type="file"
+                    accept=".jpg, .jpeg, .png"
+                    
+                    required
+                  />
+                </Form.Group>
+              </React.Fragment>
+            )} */}
 
             {/* option part for venue type */}
             {packageType === "Venue" && (
@@ -234,11 +270,12 @@ const FormDetails = () => {
                   <FormGroup className="input">
                     <Form.Label htmlFor="op_des">Maximum Count</Form.Label>
                     <FormControl
-                      type="text"
+                      type="number"
                       name="op_maxcount"
                       placeholder="Enter hall maximum count"
                       onChange={(e) => setpackageOpMaxCount(e.target.value)}
                       value={packageOpMaxCount}
+                      min="0"
                       required
                     />
                   </FormGroup>
@@ -246,11 +283,12 @@ const FormDetails = () => {
                   <FormGroup className="input">
                     <Form.Label htmlFor="op_des">Hall area</Form.Label>
                     <FormControl
-                      type="text"
+                      type="number"
                       name="op_maxcount"
                       placeholder="Enter hall area(sqrt)"
                       onChange={(e) => setpackageOparea(e.target.value)}
                       value={packageOparea}
+                      min="0"
                       required
                     />
                   </FormGroup>

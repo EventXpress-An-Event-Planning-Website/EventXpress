@@ -1,13 +1,19 @@
 .predefined_pack_container{
     display: flex;
+    width: 100%;
+}
+
+.predefined_preference_list{
+    margin-left: 6%;
 }
 
 .prefContainer{
-    width: 80%;
+    width: 85%;
 }
 
 .prefContainer .title_container{
-    width: 90%;
+    width: 85%;
+    margin-left: 10%;
 }
 
 .top_pref{
@@ -35,7 +41,8 @@ a:hover{
     padding-top: 30px;
     width: 30%;
     box-shadow: 0px 10px 10px #ccc;
-    background: #f7e2ee;
+    /* background: #f7e2ee; */
+    
 }
 
 .prefTable{

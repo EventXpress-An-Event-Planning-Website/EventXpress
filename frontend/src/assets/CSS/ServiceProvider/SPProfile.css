@@ -37,16 +37,22 @@
 
 .profile_body{
     margin-top: 60px;
+    margin-left: 10%;
 }
 
 /* left, right column */
 
+.right_column{
+    margin-left: -10%;
+}
+
 .personal, .business{
-    margin-left: 30px;
+    margin-left: 5%;
 }
 
 .profedit_btn{
-    margin-left: 60%;
-    width: 50px;
+    margin-left: 40%;
+    margin-top: 5%;
+    width: 15%;
     border: none;
 }

@@ -16,7 +16,7 @@ const HomePackages = () => {
           <Col><img className='picture' src={cam} /></Col>
           <Col><img className='picture' src={party} /></Col>
         </Row>
-        <Link to={`/ServiceProvider/packagesView`}><Button className="more_btn">Show More</Button></Link> 
+        <Link to={`/ServiceProvider/packagesView`}><Button className="more_btn">View Packages</Button></Link> 
     </Container>
   )
 }

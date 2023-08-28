@@ -1,6 +1,7 @@
 // import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 import mainImage from '../../../assets/images/hotel.jpg'
+import { FaMapMarkerAlt } from 'react-icons/fa'
 
 const PackageFullView = () => {
   return (
@@ -12,11 +13,13 @@ const PackageFullView = () => {
                 <Col sm={6} className='rightcontentinfo'>
                     <h3>Araliya Beach Resort</h3>
                     <h4>Dehiwala</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae repudiandae nisi sunt, quis error cumque tempore, 
-                        recusandae illo ducimus dolor commodi non iste itaque soluta iusto laboriosam sint in cum?</p>
-                    <p>Add location from the map</p>
-                    <p>Contact no: <span>+94 33 234</span></p>
-                    <p>Address: <span>Dehiwala, Mount Lavinia</span></p>
+                    <p>Embellished with the charms of immaculate beaches, lush coconut groves, and stunning oceanic vistas 
+                        from all its abodes, Araliya Beach Resort is a premier amongst Dehiwala hotels! Being the 
+                        first star-class and five-star hotel in Dehiwala, the property is composed of a wide array of exclusive 
+                        accommodation options, bars, restaurants, boutiques, and entertainment hubs making it an idyllic destination 
+                        to experience pure tropical bliss!</p>
+                    <p><FaMapMarkerAlt/><span> Dehiwala, Mount Lavinia</span><a> (Show map)</a></p>
+                    <p>Contact no: <span>+94 773322340</span></p>
                     <p>Established Date: <span>2023/04/15</span></p>
                 </Col>
             </Row>

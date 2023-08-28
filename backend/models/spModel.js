@@ -17,4 +17,19 @@ const getSPprofileDetails = asyncHandler(
     }
 )
 
-export { getSPprofileDetails }
+const getSPCakePackDetails = asyncHandler(
+  async()=>{
+    
+    const viewServiceProviderCakeDetails = `SELECT * FROM cakepackage`
+    const SPCakeData = await query(viewServiceProviderCakeDetails,[])
+    
+    if (SPCakeData.rowCount > 0) {
+      return SPCakeData.rows
+    } else {
+      throw new Error('Internal Error')
+    }
+
+  }
+)
+
+export { getSPprofileDetails,getSPCakePackDetails }

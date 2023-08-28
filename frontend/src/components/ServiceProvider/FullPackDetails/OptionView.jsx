@@ -25,7 +25,8 @@ const PackageFullView = () => {
                 <Col sm={6} className='rightoptioninfo'>
                     <h3>Option 1</h3>
                     <h4>Hall Phoenix</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis optio quisquam in omnis dolorum quos placeat.</p>
+                    <p>Our hotel is home to grand ballroom space for up to 1,200 people, smaller flexible ballrooms, and a 
+                        conference room. Speak with our event staff to create personalized experiences and plan customized catering.</p>
 
                     <Row className='rowoption'>
                         <Col>Maximum guest count</Col>
