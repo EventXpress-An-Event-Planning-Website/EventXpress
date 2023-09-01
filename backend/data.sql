@@ -166,3 +166,13 @@ CREATE TABLE ticket (
     accountNumber VARCHAR(255),
     bankPassbookImage VARCHAR(255)
 );
+
+CREATE TABLE public.compareservices
+(
+    compare_id serial,
+    event_id integer,
+    service text,
+    package_id text,
+    column_id integer,
+    PRIMARY KEY (compare_id)
+);
