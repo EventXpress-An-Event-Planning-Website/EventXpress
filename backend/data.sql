@@ -173,5 +173,6 @@ CREATE TABLE public.compareservices
     event_id integer,
     service text,
     package_id text,
+    column_id integer,
     PRIMARY KEY (compare_id)
 );
