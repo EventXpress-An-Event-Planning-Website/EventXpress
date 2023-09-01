@@ -69,7 +69,8 @@ const viewEventToDo = asyncHandler(async (req, res) => {
 });
 
 const getEvent = asyncHandler(async (req, res) => {
-  const event_dateils = await eventdetails();
+  const user_id = req.query.id;
+  const event_dateils = await eventdetails(user_id);
   if (event_dateils) {
     res.json(event_dateils.rows);
   } else {

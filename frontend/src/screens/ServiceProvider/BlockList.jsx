@@ -8,16 +8,16 @@ const BlockList = () => {
 
   const [ rows ] = useState ([
     {busName: "Nimal Silva", busAddress: "Hikkaduwa"},
-    {busName: "Wasana Sandamali", busAddress: "Galaha Kandy"},
-    {busName: "Kamal Ekanayaka", busAddress: "Dehiwala Colombo"},
-    {busName: "Amal Jayarathna", busAddress: "Kalegana Galle"},
+    {busName: "Wasana Sandamali", busAddress: "Peradeniya"},
+    {busName: "Kamal Ekanayaka", busAddress: "Dehiwala"},
+    {busName: "Amal Jayarathna", busAddress: "Galle"},
     {busName: "Suvini Hansamali", busAddress: "Homagama"}
   ]); 
 
   return (
     <div style={{ "display": "flex" }}>
       <div><SPSidebar /></div>
-      <div style={{ "width": "80%" }}>
+      <div style={{ "width": "80%", "marginLeft": "9%" }}>
         <PrefBlock rows={rows}/>
         <AllList rows={rows}/>
       </div>

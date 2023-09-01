@@ -55,7 +55,7 @@ const Todo = ({ success,event_id, todos, completeTodo, removeTodo, updateTodo })
   };
 
   return todos.map((todo, index) => (
-    <div>
+    <>
       <div
         className={todo.isComplete ? "todo-row complete" : "todo-row"}
         key={index}
@@ -114,11 +114,11 @@ const Todo = ({ success,event_id, todos, completeTodo, removeTodo, updateTodo })
           <Modal.Title>EventXpress</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p> Create An Appointment For Physical Meating</p>
+          <p> Create An Appointment For Physical Meeting</p>
           <Form onSubmit={handleFormSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control type="email" placeholder="Enter Name" />
               {/* <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text> */}
@@ -141,7 +141,7 @@ const Todo = ({ success,event_id, todos, completeTodo, removeTodo, updateTodo })
           </Button> */}
         </Modal.Footer>
       </Modal>
-    </div>
+    </>
   ));
 };
 

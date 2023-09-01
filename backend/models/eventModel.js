@@ -87,9 +87,9 @@ const viewToDo = asyncHandler(
 )
 
 const eventdetails = asyncHandler(
-  async () => {
-    const eventQuery = `SELECT * FROM public.event`
-    const result = await query(eventQuery, [])
+  async (user_id) => {
+    const eventQuery = `SELECT * FROM public.event WHERE userid=$1`
+    const result = await query(eventQuery, [user_id])
     // console.log(result);
     return result
 

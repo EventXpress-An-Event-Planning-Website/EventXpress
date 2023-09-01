@@ -10,8 +10,8 @@ const generateRandomId  = (packageType) => {
 const venuePackage = asyncHandler(
     async(
         userId,
+        packageBusName,
         packageTitle,
-        packageLocation,
         packageAddress,
         packageDescription,
         packagePrice,
@@ -25,12 +25,12 @@ const venuePackage = asyncHandler(
     )=>{
         // const packageid //random id concat with the type
     const packageId = generateRandomId("Venue");
-    const createUserQuery = `INSERT INTO venuepackage(userid, package_id, package_title, package_location, package_address, package_description, package_price, sp_images, package_op_title, package_op_des, package_op_count, package_op_area, package_op_type) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING userid`
+    const createUserQuery = `INSERT INTO venuepackage(userid, package_id, package_busname, package_title, package_address, package_description, package_price, sp_images, package_op_title, package_op_des, package_op_count, package_op_area, package_op_type) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING userid`
     const createUser = await query(createUserQuery, [
       userId,
       packageId,
+      packageBusName,
       packageTitle,
-      packageLocation,
       packageAddress,
       packageDescription,
       packagePrice,
@@ -55,8 +55,8 @@ const venuePackage = asyncHandler(
 const otherPackage = asyncHandler(
     async(
         userId,
+        packageBusName,
         packageTitle,
-        packageLocation,
         packageAddress,
         packageDescription,
         packagePrice,
@@ -65,12 +65,12 @@ const otherPackage = asyncHandler(
 
     )=>{
     const packageId = generateRandomId(packageType);
-    const createUserQuery = `INSERT INTO ${packageType}package(userid, package_id, package_title, package_location, package_address, package_description, package_price, sp_images) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING userid`
+    const createUserQuery = `INSERT INTO ${packageType}package(userid, package_id, package_busname, package_title, package_address, package_description, package_price, sp_images) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING userid`
     const createUser = await query(createUserQuery, [
       userId,
       packageId,
+      packageBusName,
       packageTitle,
-      packageLocation,
       packageAddress,
       packageDescription,
       packagePrice,

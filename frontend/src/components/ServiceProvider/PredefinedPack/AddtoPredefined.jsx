@@ -5,6 +5,7 @@ import hot1 from '../../../assets/images/hot1.jpg'
 import hot2 from '../../../assets/images/hot2.webp'
 import hot3 from '../../../assets/images/hot3.jpg'
 import hot4 from '../../../assets/images/hot4.jpg'
+import { FaMapMarkerAlt } from 'react-icons/fa'
 
 
 const AddtoPredefined = () => {
@@ -18,11 +19,13 @@ const AddtoPredefined = () => {
                     <Col sm={6} className='rightcontentinfo'>
                         <h3>Araliya Beach Resort</h3>
                         <h4>Dehiwala</h4>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae repudiandae nisi sunt, quis error cumque tempore, 
-                            recusandae illo ducimus dolor commodi non iste itaque soluta iusto laboriosam sint in cum?</p>
-                        <p>Add location from the map</p>
-                        <p>Contact no: <span>+94 33 234</span></p>
-                        <p>Address: <span>Dehiwala, Mount Lavinia</span></p>
+                        <p>Embellished with the charms of immaculate beaches, lush coconut groves, and stunning oceanic vistas 
+                            from all its abodes, Araliya Beach Resort is a premier amongst Dehiwala hotels! Being the 
+                            first star-class and five-star hotel in Dehiwala, the property is composed of a wide array of exclusive 
+                            accommodation options, bars, restaurants, boutiques, and entertainment hubs making it an idyllic destination 
+                            to experience pure tropical bliss!</p>
+                        <p><FaMapMarkerAlt/><span> Dehiwala, Mount Lavinia</span><a> (Show map)</a></p>
+                        <p>Contact no: <span>+94 773322340</span></p>
                         <p>Established Date: <span>2023/04/15</span></p>
                     </Col>
                 </Row>
@@ -47,7 +50,8 @@ const AddtoPredefined = () => {
                     <Col sm={6} className='rightoptioninfo'>
                         <h3>Option 1</h3>
                         <h4>Hall Phoenix</h4>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis optio quisquam in omnis dolorum quos placeat.</p>
+                        <p>Our hotel is home to grand ballroom space for up to 1,200 people, smaller flexible ballrooms, and a 
+                            conference room. Speak with our event staff to create personalized experiences and plan customized catering.</p>
 
                         <Row className='rowoption'>
                             <Col>Maximum guest count</Col>

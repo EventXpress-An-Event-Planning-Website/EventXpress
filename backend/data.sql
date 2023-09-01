@@ -75,8 +75,8 @@ CREATE TABLE event (
 CREATE TABLE venuepackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
@@ -91,8 +91,8 @@ CREATE TABLE venuepackage (
 CREATE TABLE decorationpackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
@@ -109,8 +109,8 @@ CREATE TABLE public.todolist
 CREATE TABLE cakepackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
@@ -120,8 +120,8 @@ CREATE TABLE cakepackage (
 CREATE TABLE cateringpackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
@@ -131,8 +131,8 @@ CREATE TABLE cateringpackage (
 CREATE TABLE lightsandsoundspackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
@@ -142,8 +142,8 @@ CREATE TABLE lightsandsoundspackage (
 CREATE TABLE photographypackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
