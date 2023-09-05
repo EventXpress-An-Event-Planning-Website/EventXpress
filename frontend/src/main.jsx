@@ -74,7 +74,7 @@ import AdminSupportView from './components/Admin/AdminSupportView.jsx'
 import Revenue from './components/Admin/Revenue.jsx'
 import AdminEvents from './components/Admin/AdminEvents.jsx'
 import AdminEventDetails from './components/Admin/AdminEventDetails.jsx'
-
+import CompareCakePackages from './screens/Customer/CompareCakePackages.jsx'
 import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
 import PackageRequest from './components/Admin/PackageRequest.jsx'
 
@@ -132,8 +132,8 @@ const router = createBrowserRouter(
         <Route path="/customer/event/VenueDes" element={<VenueDes />} />
         <Route path="/customer/event/Catering" element={<Catering />} />
         <Route path="/customer/event/CateringDes" element={<CateringDes />} />
-        <Route path="/customer/event/Cake" element={<Cake />} />
-        <Route path="/customer/event/CakesDes" element={<CakeDes />} />
+        <Route path="/customer/event/Cakes" element={<Cake />} />
+        <Route path="/customer/event/CakeDes" element={<CakeDes />} />
         <Route path="/customer/event/Decoration" element={<Decoration />} />
         <Route path="/customer/event/DecorationDes" element={<DecorationDes/>} />
         <Route path="/customer/event/Photography" element={<Photography />} />
@@ -141,6 +141,7 @@ const router = createBrowserRouter(
         <Route path="/customer/event/SoundAndLight" element={<SoundAndLight />} />
         <Route path="/customer/event/SoundAndLightDes" element={<SoundAndLightDes />} />
         <Route path="/customer/PredefinePackage/ServiceProvider-profile" element={<ProfileScreen />} />
+        <Route path="/customer/event/CakeCompare" element={<CompareCakePackages/>}/>
       </Route>
 
       <Route path="/ServiceProvider/home" element={<Home />} />

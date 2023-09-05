@@ -3,7 +3,7 @@ const router = express.Router()
 
 import { createevent,getEvent, getEventDetails,addEventToDo, viewEventToDo } from '../controllers/Customer/createEventController.js'
 import {protect}  from '../middleware/authMiddleware.js'
-import { viewVenuePackage,viewVenuePackageDetails,addVenuePack,addVenuePackToCompare,getPackageCount,getComparePackage,addPackageToCompareTable } from '../controllers/Customer/packageController.js'
+import { viewVenuePackage,viewVenuePackageDetails,addVenuePack,addVenuePackToCompare,getPackageCount,getComparePackage,addPackageToCompareTable,viewCakePackage,viewCakesPackageDetails,addCakePackToCompare,getCompareCakePackage } from '../controllers/Customer/packageController.js'
 
 router.post('/createEvent', createevent)
 router.get('/viewVenuePackage', viewVenuePackage)
@@ -19,9 +19,10 @@ router.post('/addvenuePackToCompare',addVenuePackToCompare )
 router.get('/getPackageCount',getPackageCount)
 router.get('/CompareVenue',getComparePackage)
 router.post('/addvenuePackToCompareTable',addPackageToCompareTable)
-
-
-
+router.get('/viewCakePackage',viewCakePackage)
+router.get('/viewCakePackageDetails',viewCakesPackageDetails)
+router.post('/addCakePackToCompare',addCakePackToCompare )
+router.get('/CompareCake',getCompareCakePackage)
 
 
 export default router
