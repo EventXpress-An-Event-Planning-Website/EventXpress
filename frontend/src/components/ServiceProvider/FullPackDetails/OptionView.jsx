@@ -23,27 +23,26 @@ const PackageFullView = () => {
                 </Col>
                 
                 <Col sm={6} className='rightoptioninfo'>
-                    <h3>Option 1</h3>
-                    <h4>Hall Phoenix</h4>
-                    <p>Our hotel is home to grand ballroom space for up to 1,200 people, smaller flexible ballrooms, and a 
-                        conference room. Speak with our event staff to create personalized experiences and plan customized catering.</p>
+                    <h3>Option</h3>
+                    <h4>Tpoic:</h4>
+                    <p>Description:</p>
 
                     <Row className='rowoption'>
                         <Col>Maximum guest count</Col>
-                        <Col className='coloption'>200</Col>
+                        <Col className='coloption'></Col>
                     </Row>
 
                     <Row className='rowoption'>
                         <Col>Hall area</Col>
-                        <Col className='coloption'>1200 sqft</Col>
+                        <Col className='coloption'></Col>
                     </Row>
 
                     <Row className='rowoption'>
                         <Col>Hall type</Col>
-                        <Col className='coloption'>Outdoor</Col>
+                        <Col className='coloption'></Col>
                     </Row>
 
-                    <p className='hourprice'>Rs. 150,000 per one hour</p>
+                    <p className='hourprice'>per one hour</p>
 
                     <Button className='optionedit'>Edit</Button>
                     <Button className='optiondelete'>Delete</Button>

@@ -74,7 +74,7 @@ CREATE TABLE event (
 
 CREATE TABLE venuepackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
@@ -90,7 +90,7 @@ CREATE TABLE venuepackage (
 
 CREATE TABLE decorationpackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
@@ -108,7 +108,7 @@ CREATE TABLE public.todolist
 
 CREATE TABLE cakepackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
@@ -119,7 +119,7 @@ CREATE TABLE cakepackage (
 
 CREATE TABLE cateringpackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
@@ -130,7 +130,7 @@ CREATE TABLE cateringpackage (
 
 CREATE TABLE lightsandsoundspackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
@@ -141,7 +141,7 @@ CREATE TABLE lightsandsoundspackage (
 
 CREATE TABLE photographypackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
@@ -165,4 +165,18 @@ CREATE TABLE ticket (
     branchName VARCHAR(255),
     accountNumber VARCHAR(255),
     bankPassbookImage VARCHAR(255)
+);
+
+ALTER TABLE venuepackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE cakepackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE lightsandsoundspackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE cateringpackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE photographypackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE decorationpackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+
+CREATE TABLE blocklist (
+    blockpref_id SERIAL PRIMARY KEY,
+    my_id INTEGER,
+    block_id INTEGER,
+    block_status CHAR(1)
 );

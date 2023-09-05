@@ -12,11 +12,14 @@
 
 .profimg_containe{
     width: 30%;
+    height: 100%;
+    margin-right: 8%;
 }
 
 .profile_img{
     margin-left: 30%;
     width: 55%;
+    border-radius: 50%;
 }
 
 .blockLink {
@@ -36,15 +39,12 @@
 /* profile body */
 
 .profile_body{
+    width: 80%;
     margin-top: 60px;
     margin-left: 10%;
 }
 
 /* left, right column */
-
-.right_column{
-    margin-left: -10%;
-}
 
 .personal, .business{
     margin-left: 5%;

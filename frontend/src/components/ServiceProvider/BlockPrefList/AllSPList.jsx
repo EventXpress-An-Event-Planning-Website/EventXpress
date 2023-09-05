@@ -1,46 +1,57 @@
 // import React from 'react'
-import { useState } from 'react'
-import { Button, InputGroup, Form } from 'react-bootstrap'
+import { useEffect, useState } from 'react'
+import { Button,InputGroup,Form } from 'react-bootstrap'
+import axios from 'axios'
 // import { FaSearch } from 'react-icons/fa';
 
-const AllSPList = ( {rows}) => {
+const AllSPList = () => {
     const [search, setSearch] = useState('');
+    const [SPnames, setSPnames] = useState([]);
 
-  return (
-    <div className='tableContainer'>
-        
-        <InputGroup className="search-header">
-            <Form.Control 
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search here" className="search-text">
-            </Form.Control>
-        </InputGroup>
-        <table className='listTable'>
-            <tbody className='allSPList'>
-                {rows
-                    .filter((row) => {
-                        return search.toLowerCase() === '' ? row : 
-                        row.busName.toLowerCase().includes(search) ||
-                        row.busAddress.toLowerCase().includes(search)
-                    })
-                    .map((row, idx) => {
-                    // capitalize the status first letter
-                    // const statusText = row.status.charAt(0).toUppserCase() + row.status.slice(1);
-                    return <tr key={idx}>
-                        <td>{row.busName} - {row.busAddress}</td>
-                        
-                        <td className='BPlistBtn'>
-                            <Button className='prefeBtn'>Add to preference</Button>
-                            <Button className='blockBtn'>Block</Button>
-                        </td>
-                    </tr>
-                })
-            }
+    useEffect(() => {
+        axios
+            .get('/api/serviceprovider/getAllSProviders')
+            .then((response) => {
+                setSPnames(response.data.PNames);
+            })
+            .catch((error) => {
+                console.log('Error fetching names:', error);
+            });
+    }, []);
 
-            </tbody>
-        </table>
-    </div>
-  )
+    // Filter the SPnames array based on the search query
+    const filteredSPnames = SPnames.filter((snames) => {
+        const nameMatch = snames.name.toLowerCase().includes(search.toLowerCase());
+        const locationMatch = snames.location.toLowerCase().includes(search.toLowerCase());
+        return nameMatch || locationMatch;
+    });
+
+    return (
+        <div className='tableContainer'>
+            <InputGroup className="search-header">
+                <Form.Control 
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Search here" className="search-text"
+                    value={search} // Set the input value to the state
+                />
+            </InputGroup>
+            <table className='listTable'>
+                <tbody className='allSPList'>
+                    {filteredSPnames.map((snames) => {
+                        return (
+                            <tr key={snames.id}>
+                                <td>{snames.name} - {snames.location}</td>
+                                <td className='BPlistBtn'>
+                                    <Button className='prefeBtn'>Add to preference</Button>
+                                    <Button className='blockBtn'>Block</Button>
+                                </td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+        </div>
+    )
 }
 
 export default AllSPList

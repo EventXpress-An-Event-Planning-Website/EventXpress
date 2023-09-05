@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 // import { useDispatch } from "react-redux"
 import { useCreatePackageMutation } from "../../../slices/packageSlice";
 import { useUploadSingleMutation } from "../../../slices/uploadApiSlice";
+import { toast } from 'react-toastify';
 
 const FormDetails = () => {
   const [packageBusName, setpackageBusName] = useState("");
@@ -92,6 +93,7 @@ const FormDetails = () => {
           // packageOpDescription
         }).unwrap();
       }
+      toast.success("Package Created Successfully")
       navigate("/ServiceProvider/packagesView");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
