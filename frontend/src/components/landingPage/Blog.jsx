@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import celebrationImage from '../../assets/images/img3.jpg';
 import photo7 from '../../assets/images/photo7.jpg';
 import venue8 from '../../assets/images/venue8.jpg';
+import { id } from 'date-fns/locale';
 
 const Blog = () => {
 
@@ -15,7 +16,7 @@ const Blog = () => {
             time: '15 Nov 2022',
             title: 'How to choose a perfect photographer',
             description: 'Every photographer has a different style. Are you looking for more candid, photo-journalistic images? Or do you want posed portraits? Maybe you have your heart set on natural light photos...',
-            link: 'https://www.google.com'
+            link: ``
         },
         {
             id: 2,
@@ -55,7 +56,7 @@ const Blog = () => {
                                                 <time className='blog-date'>{blog.time}</time>
                                                 <Card.Title className='blog-title'>{blog.title}</Card.Title>
                                                 <Card.Text className='blog-des'>{blog.description}</Card.Text>
-                                                <a href={blog.link} className='button button-primary blog-read-more'>Read More<i className="fa-solid fa-angle-right"></i></a>
+                                                <a href={`/viewBlogs?id=${blog.id}`} className='button button-primary blog-read-more'>Read More<i className="fa-solid fa-angle-right"></i></a>
                                             </Card.Body>
                                         </Card>
 
