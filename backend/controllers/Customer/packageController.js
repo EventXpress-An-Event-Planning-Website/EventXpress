@@ -1,7 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import path from 'path'
 import {viewVenuePackagesModel,viewVenuePackageDetailsUserId} from '../../models/venuePackageModel.js'
-import { getNoOfComparepackages,insertPackageToCompare,getComparePack,getComparePackCount } from '../../models/compareServicesModel.js'
+import { getNoOfComparepackages,insertPackageToCompare,getComparePack,getComparePackCount,updatePackageToCompare } from '../../models/compareServicesModel.js'
 import { viewCakePackagesModel,viewCakePackageDetails } from '../../models/cakePackageModel.js'
 // import Venue from '../../../frontend/src/components/Cus/Pages/Venue.jsx'
 
@@ -85,7 +85,8 @@ const addPackageToCompareTable = asyncHandler(async(req,res)=>{
         const pack = await insertPackageToCompare(event_id,service,package_id,column_id)
         res.json(pack.rows[0].column_id)
     }else{
-        
+        const pack = await updatePackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
     }
 
 
@@ -142,4 +143,28 @@ const getCompareCakePackage = asyncHandler(async(req,res)=>{
     res.json(packages)
 })
 
-export {viewVenuePackage, viewVenuePackageDetails,addVenuePack,addVenuePackToCompare,getPackageCount,getComparePackage,addPackageToCompareTable,viewCakePackage,viewCakesPackageDetails,addCakePackToCompare,getCompareCakePackage  } 
+const addCakePackageToCompareTable = asyncHandler(async(req,res)=>{
+    const pack=req.body
+    const event_id=pack.event_id
+    const package_id=pack.package_id
+    const column_id = pack.column_id
+    const service = 'Cake'
+    console.log(pack);
+    
+    const count = await getComparePackCount(event_id,column_id,service)
+    console.log(count);
+    if (count===0) {
+        const pack = await insertPackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }else{
+        const pack = await updatePackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }
+
+
+    
+
+
+})
+
+export {viewVenuePackage, viewVenuePackageDetails,addVenuePack,addVenuePackToCompare,getPackageCount,getComparePackage,addPackageToCompareTable,viewCakePackage,viewCakesPackageDetails,addCakePackToCompare,getCompareCakePackage,addCakePackageToCompareTable  } 
