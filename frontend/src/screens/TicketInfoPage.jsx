@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar, faClock, faMapMarkerAlt, faRupeeSign } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios'
+import StripeCheckout from 'react-stripe-checkout'
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const TicketInfoPage = () => {
   const location = useLocation();
@@ -11,6 +14,13 @@ const TicketInfoPage = () => {
   const [ticket, setTicket] = useState(null);
   const [numberOfTickets, setNumberOfTickets] = useState(1);
   const [totalPayable, setTotalPayable] = useState(0);
+
+  const user = JSON.parse(localStorage.getItem('userInfo'));
+  const user_email = user.email;
+
+  const publishableKey = 'pk_test_51NoJfsSAEsih9IEozgBErrqrFJ55gGXNa9TnileDPUxzEGYfIobHHzgIWTQ6fM01rgi8qxPFuhVHsvPMj4tqay780068h5NhjO'
+
+  const MySwal = withReactContent(Swal);
 
   useEffect(() => {
     axios
@@ -40,14 +50,46 @@ const TicketInfoPage = () => {
     const value = parseInt(e.target.value, 10);
     if (value >= 1 && value <= 10) {
       setNumberOfTickets(value);
-       // Recalculate total payable based on editedPrice and new number of tickets
-       if (ticket) {
+      // Recalculate total payable based on editedPrice and new number of tickets
+      if (ticket) {
         const editedPrice = JSON.parse(ticket.ticketitems);
         setTotalPayable(editedPrice[0].price * value);
       }
     } else if (value > 10) {
       setNumberOfTickets(10);
     }
+  };
+
+  const payNow = async (token) => {
+    try {
+      const response = await axios.post('/api/payment/buyTicket', {
+        token: token,
+        amount: totalPayable * 100
+      });
+      handleSuccess()
+      // Handle the response from your server (e.g., show a success message)
+      console.log('Payment successful:', response.data);
+
+    } catch (error) {
+      handleFailure()
+      console.error('Payment failed:', error);
+    }
+  };
+
+  const handleSuccess = () => {
+    MySwal.fire({
+      icon: 'success',
+      title: 'Payment was successful',
+      time: 1000,
+    });
+  };
+
+  const handleFailure = () => {
+    MySwal.fire({
+      icon: 'error',
+      title: 'Payment was not successful',
+      time: 1000,
+    });
   };
 
   return (
@@ -127,9 +169,19 @@ const TicketInfoPage = () => {
           <div className='confirmed-ticket-info-total'>
             <div>
               <span>Total Payable: </span>
-              <strong>{totalPayable}</strong>
+              <strong>Rs. {totalPayable}</strong>
             </div>
-            <button className='confirmed-ticket-pay-button'>Pay</button>
+            <StripeCheckout
+              stripeKey={publishableKey}
+              label='Pay Now'
+              name='Enter your card details'
+              email={user_email}
+              currency='LKR'
+              amount={totalPayable * 100}
+              description={`E-Ticket will be sent to the email`}
+              token={payNow}
+            />
+
           </div>
         </div>
       </div>
