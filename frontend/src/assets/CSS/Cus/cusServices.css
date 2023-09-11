@@ -22,12 +22,20 @@
 .s-main-title{
     text-align: center;
     font-weight: bold;
+    margin-bottom: -4px;
+
 }
 
 .s-main-title-pckg{
     text-align: center;
     /* font-weight: bold; */
     /* font-size: 15px; */
+}
+
+.s-main-title-pckg-price{
+    text-align: center;
+    font-weight: bold;
+    margin: -5px;
 }
 .s-text{
     font-size: 15px;

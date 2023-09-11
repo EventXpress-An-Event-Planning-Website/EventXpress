@@ -11,7 +11,7 @@ import Sidebar from "../Sidebar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import StarRating from "./Ratings";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import { useEffect } from "react";
 import Form from "react-bootstrap/Form";
@@ -34,48 +34,48 @@ const CakeDes = () => {
   const [cakePackage, setCakePackage] = useState([]);
 
   const [dropDown, setdropDown] = useState("Dropdown Button");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const setHallName = (name) => {
     setdropDown(name);
   };
   const openModal = () => {
-    console.log(showModal);
+    // console.log(showModal);
     setShowModal(true);
-    console.log(showModal);
+    // console.log(showModal);
   };
   const closeModal = () => {
     setShowModal(false);
   };
   const HandleAddCompare = () => {
     let pack = Number(comparePackages);
-    console.log(pack);
-   
+    // console.log(pack);
+
     if (column_id !== 0) {
-        
-        const eventData = {
-            event_id: event_id,
-            package_id: cakePackage[0].package_id, // Modify this to match your data structure
-            column_id:column_id
-            // ... Add other necessary data for your POST request
-        };
-        axios
-          .post("/api/customer/addCakePackToCompareTable", eventData)
-          .then((response) => {
-            const packCount = response.data;
-            console.log(packCount);
-            // Perform navigation after successful POST
-            navigate(`/Venue?event_id=${event_id}&packageCount=${packCount}`);
-          })
-          .catch((error) => {
-            console.error("Error adding event:", error);
-            // Handle error if needed
-          });
+
+      const eventData = {
+        event_id: event_id,
+        package_id: cakePackage[0].package_id, // Modify this to match your data structure
+        column_id: column_id
+        // ... Add other necessary data for your POST request
+      };
+      axios
+        .post("/api/customer/addCakePackToCompareTable", eventData)
+        .then((response) => {
+          const packCount = response.data;
+          // console.log(packCount);
+          // Perform navigation after successful POST
+          navigate(`/Venue?event_id=${event_id}&packageCount=${packCount}`);
+        })
+        .catch((error) => {
+          console.error("Error adding event:", error);
+          // Handle error if needed
+        });
 
     } else {
       if (pack > 1) {
       } else {
         setcomparePackages(pack + 1);
-         // Use the selected hall/package
+        // Use the selected hall/package
         const eventData = {
           event_id: event_id,
           package_id: cakePackage[0].package_id, // Modify this to match your data structure
@@ -85,7 +85,7 @@ const CakeDes = () => {
           .post("/api/customer/addCakePackToCompare", eventData)
           .then((response) => {
             const packCount = response.data;
-            console.log(packCount);
+            // console.log(packCount);
             // Perform navigation after successful POST
             navigate(`/customer/event/Cakes?event_id=${event_id}&packageCount=${packCount}`);
           })
@@ -104,12 +104,12 @@ const CakeDes = () => {
         setCakePackage(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         setError(error);
         setLoading(false);
       });
   }, []);
-  console.log(cakePackage);
+  // console.log(cakePackage);
 
   const [showForm, setShowForm] = useState(false);
 
@@ -276,16 +276,16 @@ const CakeDes = () => {
                     />
                   </Col>
                   <br />
-                  
-                    <Button
-                      className="addToEvent-btn"
-                      variant="primary"
-                      size="lg"
-                      onClick={toggleForm}
-                    >
-                      Add to Compare
-                    </Button>{" "}
-                  
+
+                  <Button
+                    className="addToEvent-btn"
+                    variant="primary"
+                    size="lg"
+                    onClick={toggleForm}
+                  >
+                    Add to Compare
+                  </Button>{" "}
+
 
                   {showForm && (
                     <div className="popup-overlay">
@@ -305,7 +305,7 @@ const CakeDes = () => {
 
                             <Button
                               variant="primary"
-                             
+
                             >
                               Add to Event
                             </Button>

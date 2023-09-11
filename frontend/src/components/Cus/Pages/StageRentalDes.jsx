@@ -12,18 +12,17 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import StarRating from "./Ratings";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import axios from "axios";
 import { Modal } from "react-bootstrap";
+import { useEffect } from "react";
 import Form from "react-bootstrap/Form";
+import axios from "axios";
 
-import burger1 from '../../../assets/images/burger1.jpg';
-import burger2 from '../../../assets/images/burger2.jpg';
-import burger3 from '../../../assets/images/burger3.jpg';
-import burger4 from '../../../assets/images/burger4.jpg';
-import catering2 from '../../../assets/images/catering2.jpg';
+import venue5 from '../../../assets/images/venue5.jpg';
+import venue6 from '../../../assets/images/venue6.jpg';
+import venue7 from '../../../assets/images/venue7.jpg';
+import venue8 from '../../../assets/images/venue8.jpg';
 
-const CateringDes = () => {
+const StageRentalDes = () => {
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -34,7 +33,7 @@ const CateringDes = () => {
     // console.log(`column_id ${column_id}`);
     const [comparePackages, setcomparePackages] = useState(packageCount);
     const [showModal, setShowModal] = useState(false);
-    const [cateringPackage, setCateringPackage] = useState([]);
+    const [stageRentalPackage, setStageRentalPackage] = useState([]);
 
     const [dropDown, setdropDown] = useState("Dropdown Button");
     const navigate = useNavigate();
@@ -57,12 +56,12 @@ const CateringDes = () => {
 
             const eventData = {
                 event_id: event_id,
-                package_id: cateringPackage[0].package_id, // Modify this to match your data structure
+                package_id: stageRentalPackage[0].package_id, // Modify this to match your data structure
                 column_id: column_id
                 // ... Add other necessary data for your POST request
             };
             axios
-                .post("/api/customer/addCateringPackToCompareTable", eventData)
+                .post("/api/customer/addStageRentalPackToCompareTable", eventData)
                 .then((response) => {
                     const packCount = response.data;
                     // console.log(packCount);
@@ -81,16 +80,16 @@ const CateringDes = () => {
                 // Use the selected hall/package
                 const eventData = {
                     event_id: event_id,
-                    package_id: cateringPackage[0].package_id, // Modify this to match your data structure
+                    package_id: stageRentalPackage[0].package_id, // Modify this to match your data structure
                     // ... Add other necessary data for your POST request
                 };
                 axios
-                    .post("/api/customer/addCateringPackToCompare", eventData)
+                    .post("/api/customer/addStageRentalPackToCompare", eventData)
                     .then((response) => {
                         const packCount = response.data;
                         // console.log(packCount);
                         // Perform navigation after successful POST
-                        navigate(`/customer/event/Catering?event_id=${event_id}&packageCount=${packCount}`);
+                        navigate(`/customer/event/StageRental?event_id=${event_id}&packageCount=${packCount}`);
                     })
                     .catch((error) => {
                         console.error("Error adding event:", error);
@@ -102,12 +101,12 @@ const CateringDes = () => {
     };
     useEffect(() => {
         axios
-            .get(`/api/customer/viewCateringPackageDetails?pac=${package_id}`)
+            .get(`/api/customer/viewStageRentalPackageDetails?pac=${package_id}`)
             .then((response) => {
-                setCateringPackage(response.data);
+                setStageRentalPackage(response.data);
             })
             .catch((error) => {
-                // console.log(error);
+                console.log(error);
                 setError(error);
                 setLoading(false);
             });
@@ -119,7 +118,7 @@ const CateringDes = () => {
     const toggleForm = () => {
         setShowForm(!showForm);
     };
-    if (cateringPackage.length === 0) {
+    if (stageRentalPackage.length === 0) {
         return <div>Loading...</div>;
     } else {
 
@@ -130,17 +129,17 @@ const CateringDes = () => {
                         <Sidebar />
                         <Container>
                             <Row>
-                                <Col className="imgs-size">
-                                    <Col>
-                                        <Image src={`../../src/assets/images/uploads/${cateringPackage[0].sp_images}`} thumbnail className="venueDesImg" />
+                                <Col>
+                                    <Col md={10} >
+                                        <Image src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`} thumbnail />
                                     </Col>
 
-                                    <Col>
-                                        <Image src={`../../src/assets/images/uploads/${cateringPackage[0].sp_images}`} thumbnail className="venueDesImg" />
+                                    <Col md={10} >
+                                        <Image src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`} thumbnail />
                                     </Col>
                                     <br />
                                     {/* <Link to={`/customer/eventdetails`}> */}
-                                    <Button className="addToEvent-btn" variant="primary" size="lg" onClick={openModal} >Add to Compare</Button>{' '}
+                                    <Button className="addToEvent-btn" variant="primary" size="lg" onClick={openModal}>Add to Compare</Button>{' '}
                                     {/* </Link> */}
 
                                     <Link to={`/ChatDes`}>
@@ -149,84 +148,98 @@ const CateringDes = () => {
                                 </Col>
 
                                 <Col>
-                                    <Col  >
-                                        <Image src={`../../src/assets/images/uploads/${cateringPackage[0].sp_images}`} thumbnail className="venueDesImg" />
+                                    <Col md={10} >
+                                        <Image src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`} thumbnail />
                                     </Col>
 
-                                    <Col  >
-                                        <Image src={`../../src/assets/images/uploads/${cateringPackage[0].sp_images}`} thumbnail className="venueDesImg" />
+                                    <Col md={10} >
+                                        <Image src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`} thumbnail />
                                     </Col>
                                 </Col>
 
 
-                                <Col className="details-size">
-                                    <h2>{cateringPackage[0].package_title} </h2>
-                                    <p>by {cateringPackage[0].package_busname}</p>
-                                    <StarRating initialRating={3} />
-
-                                    {/* <Image src={catering2} thumbnail />
-
+                                <Col>
+                                    <h2>{stageRentalPackage[0].package_title}</h2>
+                                    <p>by {stageRentalPackage[0].package_busname}</p>
+                                    <StarRating initialRating={4} />
+                                    {/* <Image src={venue6} thumbnail /> */}
+                                    {/* 
                             <Dropdown>
                                 <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                                     {dropDown}
-                                </Dropdown.Toggle> */}
-                                    {/* 
+                                </Dropdown.Toggle>
+
                                 <Dropdown.Menu>
-                                    <Dropdown.Item>Hall Phoenix</Dropdown.Item>
-                                    <Dropdown.Item>Rose Veranda</Dropdown.Item>
-                                    <Dropdown.Item>Hall Draffodils</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setHallName("Hall Phoenix")}>Hall Phoenix</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setHallName("Rose Veranda")} >Rose Veranda</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setHallName("Hall Draffodils")}>Hall Draffodils</Dropdown.Item>
                                 </Dropdown.Menu> */}
                                     {/* </Dropdown> */}
                                     <br />
                                     <Table striped bordered hover>
 
                                         <tbody>
+
                                             <tr>
                                                 <td>Price</td>
-                                                <td>LKR {cateringPackage[0].package_price}</td>
+                                                <td>LKR {stageRentalPackage[0].package_price}</td>
                                                 {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
                                             </tr>
                                             <tr>
                                                 <td>Location</td>
-                                                <td>{cateringPackage[0].package_address}</td>
+                                                <td>LKR {stageRentalPackage[0].package_address}</td>
                                                 {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
                                             </tr>
-                                        </tbody>
-                                    </Table>
-                                    <br />
-                                    <h3>Menu</h3>
-                                    <Table striped bordered hover>
-                                        <tbody>
-                                            {/* <tr>
-                                                <td>Package price(for one person) - LKR 6660</td>
-                                            </tr> */}
-                                            <tr>
-                                                <td>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</td>
-                                            </tr>
 
+                                            {/* <tr>
+                                        <td>Maximum guest count</td>
+                                        <td>200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hall area</td>
+                                        <td>1200sqft</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hall type</td>
+                                        <td>Indoor</td>
+                                    </tr> */}
                                         </tbody>
                                     </Table>
                                     <ul className="bullet-list">
                                         {/* <li>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</li>
                                 <li>Package price(for one person) - LKR 6660</li> */}
                                         <br />
+                                        <li>{stageRentalPackage[0].package_description}</li>
+                                        <br />
                                         <h3>More Details</h3>
-                                        <li>Minimum order for Outdoor catering is 25 pax</li>
-                                        <li>Please inform if any changes required and final number of Covers 3 days prior to the function date.</li>
-                                        <li>Upon placing the order please make an advance payment of 50% of the total value and balance payment to be paid two (02) days before the function date.
-                                            We accept Credit and Debit cards.</li>
-                                        <li>In the event of a cancellation of an order prior to 48 hours, only 50% of the advance payment will be refunded.</li>
-                                        <li>Welcome drink is not included in the Menu, but will be provided at an additional cost of Rs.150/= Per Glass of Fruit Drink- (Cordial), Rs.200/= Per Glass of Ice Coffee & Rs.250/= Per Glass of Fresh Mixed Fruit Juice.</li>
-                                        <li>Buffet Tables (size 6, x 3′), Tables, Chairs, Drinking Water and Ice have to be provided by the client.</li>
-                                        <li>A transport fee will be charged beyond suburbs of Colombo.</li>
-                                        <li>Our office is open on weekdays from 8.00 a.m. to 5.00p.m. & on Saturdays 8.00a.m to 1.00 p.m. except on Sundays and Mercantile Holidays.</li>
+
+                                        <li>
+                                            We offer the best and most delectable range of cakes made
+                                            to stringent quality standards using the finest
+                                            ingredients for our valued customers.
+                                        </li>
+                                        <li>
+                                            Cakes are baked by our own in-house pastry chefs who have
+                                            years of experience in confectioneries.
+                                        </li>
+                                        <li>
+                                            Please mention the cake wording and the special
+                                            instructions at the checkout.
+                                        </li>
+                                        <li>Cake wording will be free of charge.</li>
+                                        <br />
+                                        <h3>Allergy Information</h3>
+                                        <li>
+                                            Our products are Inclusive of dairy, wheat, soy, eggs, and
+                                            nuts.
+                                        </li>
                                     </ul>
+
                                 </Col>
                             </Row>
 
                         </Container >
                     </div >
-
                 ) : (
                     <div style={{ display: "flex" }}>
                         {/* <Sidebar /> */}
@@ -235,7 +248,7 @@ const CateringDes = () => {
                                 <Col>
                                     <Col md={10}>
                                         <Image
-                                            src={`../../src/assets/images/uploads/${cateringPackage[0].sp_images}`}
+                                            src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`}
                                             thumbnail
                                             className="venueDesImg"
                                         />
@@ -243,7 +256,7 @@ const CateringDes = () => {
 
                                     <Col md={10}>
                                         <Image
-                                            src={`../../src/assets/images/uploads/${cateringPackage[0].sp_images}`}
+                                            src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`}
                                             thumbnail
                                             className="venueDesImg"
                                         />
@@ -331,7 +344,7 @@ const CateringDes = () => {
                                                             </Form.Text>
                                                         </Form.Group>
                                                         <Link
-                                                            to={`/customer/event/CateringCompare?event_id=${event_id}`}
+                                                            to={`/customer/event/StageRentalCompare?event_id=${event_id}`}
                                                         >
                                                             <Button
                                                                 className="addToEvent-btn"
@@ -355,7 +368,7 @@ const CateringDes = () => {
                                 <Col>
                                     <Col md={10}>
                                         <Image
-                                            src={`../../src/assets/images/uploads/${cateringPackage[0].sp_images}`}
+                                            src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`}
                                             thumbnail
                                             className="venueDesImg"
                                         />
@@ -363,7 +376,7 @@ const CateringDes = () => {
 
                                     <Col md={10}>
                                         <Image
-                                            src={`../../src/assets/images/uploads/${cateringPackage[0].sp_images}`}
+                                            src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`}
                                             thumbnail
                                             className="venueDesImg"
                                         />
@@ -371,8 +384,8 @@ const CateringDes = () => {
                                 </Col>
 
                                 <Col>
-                                    <h2>{cateringPackage[0].package_title} </h2>
-                                    <p>by {cateringPackage[0].package_busname}</p>
+                                    <h2>{stageRentalPackage[0].package_title} </h2>
+                                    <p>by {stageRentalPackage[0].package_busname}</p>
                                     <StarRating initialRating={3} />
                                     {/* <Image src={cake12} thumbnail />
   
@@ -390,29 +403,61 @@ const CateringDes = () => {
                                     <br />
                                     <Table striped bordered hover>
                                         <tbody>
+                                            {/* <tr>
+                                      <td>LocatistageRentalon</td>
+                                      <td>No:49, Canel Rd, Colombo</td>
+                                      {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
+                                            {/* </tr> */}
                                             <tr>
-                                                <td>Package price(for one person) - LKR 6660</td>
-                                            </tr>
-                                            <tr>
-                                                <td>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</td>
+                                                <td>Price</td>
+                                                <td>{stageRentalPackage[0].package_price}</td>
+                                                {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
                                             </tr>
 
+                                            <tr>
+                                                <td>Location</td>
+                                                <td>LKR {stageRentalPackage[0].package_address}</td>
+                                                {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
+                                            </tr>
+                                            {/* <tr>
+                                      <td>Hall area</td>
+                                      <td>1200sqft</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Hall type</td>
+                                      <td>Indoor</td>
+                                  </tr> */}
                                         </tbody>
                                     </Table>
+
                                     <ul className="bullet-list">
                                         {/* <li>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</li>
-                                <li>Package price(for one person) - LKR 6660</li> */}
+                              <li>Package price(for one person) - LKR 6660</li> */}
+                                        <br />
+                                        <li>{stageRentalPackage[0].package_description}</li>
                                         <br />
                                         <h3>More Details</h3>
-                                        <li>Minimum order for Outdoor catering is 25 pax</li>
-                                        <li>Please inform if any changes required and final number of Covers 3 days prior to the function date.</li>
-                                        <li>Upon placing the order please make an advance payment of 50% of the total value and balance payment to be paid two (02) days before the function date.
-                                            We accept Credit and Debit cards.</li>
-                                        <li>In the event of a cancellation of an order prior to 48 hours, only 50% of the advance payment will be refunded.</li>
-                                        <li>Welcome drink is not included in the Menu, but will be provided at an additional cost of Rs.150/= Per Glass of Fruit Drink- (Cordial), Rs.200/= Per Glass of Ice Coffee & Rs.250/= Per Glass of Fresh Mixed Fruit Juice.</li>
-                                        <li>Buffet Tables (size 6, x 3′), Tables, Chairs, Drinking Water and Ice have to be provided by the client.</li>
-                                        <li>A transport fee will be charged beyond suburbs of Colombo.</li>
-                                        <li>Our office is open on weekdays from 8.00 a.m. to 5.00p.m. & on Saturdays 8.00a.m to 1.00 p.m. except on Sundays and Mercantile Holidays.</li>
+
+                                        <li>
+                                            We offer the best and most delectable range of cakes made
+                                            to stringent quality standards using the finest
+                                            ingredients for our valued customers.
+                                        </li>
+                                        <li>
+                                            Cakes are baked by our own in-house pastry chefs who have
+                                            years of experience in confectioneries.
+                                        </li>
+                                        <li>
+                                            Please mention the cake wording and the special
+                                            instructions at the checkout.
+                                        </li>
+                                        <li>Cake wording will be free of charge.</li>
+                                        <br />
+                                        <h3>Allergy Information</h3>
+                                        <li>
+                                            Our products are Inclusive of dairy, wheat, soy, eggs, and
+                                            nuts.
+                                        </li>
                                     </ul>
                                 </Col>
                             </Row>
@@ -445,6 +490,4 @@ const CateringDes = () => {
 
 
 
-
-
-export default CateringDes;
+export default StageRentalDes;
