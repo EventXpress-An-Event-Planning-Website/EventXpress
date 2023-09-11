@@ -23,7 +23,7 @@ const viewCakePackageDetails =asyncHandler(
         try {
             const viewPackageQuery = `SELECT * FROM public.cakepackage WHERE package_id=$1`
             const packageDetail = await query(viewPackageQuery, [package_id])
-            console.log(packageDetail)
+            // console.log(packageDetail)
             return packageDetail
             
         } catch (error) {
