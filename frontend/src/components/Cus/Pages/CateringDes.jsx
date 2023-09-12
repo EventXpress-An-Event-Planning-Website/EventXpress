@@ -67,7 +67,7 @@ const CateringDes = () => {
                     const packCount = response.data;
                     // console.log(packCount);
                     // Perform navigation after successful POST
-                    navigate(`/Venue?event_id=${event_id}&packageCount=${packCount}`);
+                    navigate(`/customer/event/CateringCompare?event_id=${event_id}`);
                 })
                 .catch((error) => {
                     console.error("Error adding event:", error);

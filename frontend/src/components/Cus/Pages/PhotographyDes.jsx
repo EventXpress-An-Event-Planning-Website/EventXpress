@@ -66,7 +66,7 @@ const PhotographyDes = () => {
                     const packCount = response.data;
                     //   console.log(packCount);
                     // Perform navigation after successful POST
-                    navigate(`/Photography?event_id=${event_id}&packageCount=${packCount}`);
+                    navigate(`/customer/event/PhotographyCompare?event_id=${event_id}`);
                 })
                 .catch((error) => {
                     console.error("Error adding event:", error);

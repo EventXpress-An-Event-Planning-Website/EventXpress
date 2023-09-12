@@ -43,16 +43,16 @@ const getComparePack = asyncHandler(
         event_id,
         service,
         service1
-    ) => {
-        try {
-            const getpackageQuery = `SELECT * FROM compareservices INNER JOIN ${service}package ON compareservices.package_id=${service}package.package_id WHERE compareservices.event_id=$1 AND compareservices.service=$2`
-            const packages = await query(getpackageQuery, [event_id, service1])
-            return packages.rows
-        } catch (error) {
+)=>{
+    try {
+        const getpackageQuery = `SELECT * FROM compareservices INNER JOIN ${service}package ON compareservices.package_id=${service}package.package_id WHERE compareservices.event_id=$1 AND compareservices.service=$2 ORDER BY column_id ASC`
+        const packages = await query(getpackageQuery,[event_id,service1])
+        return packages.rows 
+    } catch (error) {
+        
+    }
 
-        }
-
-    })
+})
 
 const getComparePackCount = asyncHandler(
     async (
@@ -70,6 +70,29 @@ const getComparePackCount = asyncHandler(
 
     })
 
+const updatePackageToCompare = asyncHandler(
+    async(
+        event_id,
+        service,
+        package_id,
+        column_id
+
+    )=>{
+        try {
+            console.log(column_id);
+            console.log(event_id);
+            const insertPackageToComparequery = `UPDATE compareservices SET package_id=$1 WHERE event_id=$2 AND column_id=$3 AND service=$4 RETURNING column_id`
+            const column = await query(insertPackageToComparequery,[package_id,event_id,column_id,service])
+            // console.log(column);
+            return column
+        } catch (error) {
+            console.error(`Error checking contact number existence: ${error.message}`)
+            throw new Error(`Internal Error`)
+        }
+
+    }
+)
 
 
-export { getNoOfComparepackages, insertPackageToCompare, getComparePack, getComparePackCount }
+
+export {getNoOfComparepackages,insertPackageToCompare,getComparePack,getComparePackCount,updatePackageToCompare}

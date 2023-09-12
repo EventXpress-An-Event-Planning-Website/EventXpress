@@ -51,25 +51,25 @@ const CakeDes = () => {
     // console.log(pack);
 
     if (column_id !== 0) {
-
-      const eventData = {
-        event_id: event_id,
-        package_id: cakePackage[0].package_id, // Modify this to match your data structure
-        column_id: column_id
-        // ... Add other necessary data for your POST request
-      };
-      axios
-        .post("/api/customer/addCakePackToCompareTable", eventData)
-        .then((response) => {
-          const packCount = response.data;
-          // console.log(packCount);
-          // Perform navigation after successful POST
-          navigate(`/Venue?event_id=${event_id}&packageCount=${packCount}`);
-        })
-        .catch((error) => {
-          console.error("Error adding event:", error);
-          // Handle error if needed
-        });
+        
+        const eventData = {
+            event_id: event_id,
+            package_id: cakePackage[0].package_id, // Modify this to match your data structure
+            column_id:column_id
+            // ... Add other necessary data for your POST request
+        };
+        axios
+          .post("/api/customer/addCakePackToCompareTable", eventData)
+          .then((response) => {
+            const packCount = response.data;
+            console.log(packCount);
+            // Perform navigation after successful POST
+            navigate(`/customer/event/CakeCompare?event_id=${event_id}`);
+          })
+          .catch((error) => {
+            console.error("Error adding event:", error);
+            // Handle error if needed
+          });
 
     } else {
       if (pack > 1) {
