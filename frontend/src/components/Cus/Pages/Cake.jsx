@@ -83,7 +83,7 @@ const Cake = () => {
         }
       }, [loading]);
 
-
+      
     // const cakesData = [
     //     {
     //         id: 1,
@@ -179,7 +179,7 @@ const Cake = () => {
                         <div className="col-md-3 custom-col" key={cake.package_id}>
 
                             <Card className="s-card" style={{ width: '18rem' }}>
-                                <Card.Img className="s-img" variant="top" src={cake.sp_images} />
+                                <Card.Img className="s-img" variant="top" src={`../../src/assets/images/uploads/${cake.sp_images}`} />
                                 <Card.Body>
                                     <Card.Title className="s-main-title">{cake.package_title}</Card.Title>
                                     <Card.Text className="s-main-title-pckg">{cake.package_busname}</Card.Text>

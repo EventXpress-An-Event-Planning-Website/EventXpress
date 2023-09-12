@@ -56,6 +56,7 @@ const VenueDes = () => {
           guestCount: venue.package_op_count,
           area: venue.package_op_area,
           type: venue.package_op_type,
+          sp_images:venue.sp_images
         }));
         setHalls(services);
         setLoading(false);
@@ -78,6 +79,7 @@ const VenueDes = () => {
 
   const handleHallSelection = (hall) => {
     setSelectedHall(hall);
+    console.log(selectedHall.sp_images);
   };
 
   const [showForm, setShowForm] = useState(false);
@@ -313,7 +315,10 @@ const VenueDes = () => {
                 <Col>
                   <h2>Araliya Beach Hotel</h2>
                   <StarRating initialRating={4} />
-                  <Image src={venue6} thumbnail />
+                  {selectedHall !== null ? 
+                  <Image src={`../../src/assets/images/uploads/${selectedHall.sp_images}`} thumbnail />:
+                  <Image  thumbnail />
+                  }
 
                   <Dropdown>
                     {selectedHall !== null ? ( // Add a check before rendering Dropdown.Toggle content

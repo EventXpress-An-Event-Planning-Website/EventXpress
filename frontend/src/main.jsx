@@ -77,6 +77,7 @@ import AdminEventDetails from './components/Admin/AdminEventDetails.jsx'
 import CompareCakePackages from './screens/Customer/CompareCakePackages.jsx'
 import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
 import PackageRequest from './components/Admin/PackageRequest.jsx'
+import CompareDecoPackages from './screens/Customer/CompareDecoPackages.jsx'
 
 
 const router = createBrowserRouter(
@@ -142,6 +143,7 @@ const router = createBrowserRouter(
         <Route path="/customer/event/SoundAndLightDes" element={<SoundAndLightDes />} />
         <Route path="/customer/PredefinePackage/ServiceProvider-profile" element={<ProfileScreen />} />
         <Route path="/customer/event/CakeCompare" element={<CompareCakePackages/>}/>
+        <Route path="/customer/event/DecoCompare" element={<CompareDecoPackages/>}/>
       </Route>
 
       <Route path="/ServiceProvider/home" element={<Home />} />
