@@ -25,7 +25,7 @@ const CompareCakePackages = () => {
         setLoading(false);
       });
   }, []);
-  console.log(data);
+  // console.log(data);
   const package1 = [{ id: 1, imag: "birthday1.jpg", location: "Galle" }];
   const navigate = useNavigate();
 
@@ -41,13 +41,13 @@ const CompareCakePackages = () => {
         <div>
           {/* <ViewPackagesCarrousal /> */}
           <h2 className="compare-title">
-            <b>Comparing Selected Cakes</b>
+            <b>Comparing Selected Cake Packages</b>
           </h2>
         </div>
         <div>
           <table className="compare-table">
             <tr className="compare-table-row">
-              <th className="compare-table-header">Package</th>
+              <th className="compare-table-header"></th>
               <td className="compare-table-data">
                 <Link
                   to={`/customer/event/Cakes?event_id=${event_id}&packageCount=2&column=1`}
@@ -71,7 +71,7 @@ const CompareCakePackages = () => {
               </td>
             </tr>
             <tr className="compare-table-row">
-              <th className="compare-table-header">Name</th>
+              <th className="compare-table-header">Package Name</th>
 
               <td className="compare-table-data">{data[0].package_title}</td>
               <td className="compare-table-data">{data[1].package_title}</td>
@@ -82,7 +82,7 @@ const CompareCakePackages = () => {
               )}
             </tr>
             <tr className="compare-table-row">
-              <th className="compare-table-header">Image</th>
+              <th className="compare-table-header"></th>
               <td className="compare-table-data">
                 <Image
                   src={`../../src/assets/images/uploads/${data[0].sp_images}`}
@@ -114,12 +114,12 @@ const CompareCakePackages = () => {
               </td>
             </tr>
             <tr className="compare-table-row">
-              <th className="compare-table-header">Package Name</th>
-              <td className="compare-table-data">{data[0].package_title}</td>
-              <td className="compare-table-data">{data[1].package_title}</td>
+              <th className="compare-table-header">Service Provider</th>
+              <td className="compare-table-data">{data[0].package_busname}</td>
+              <td className="compare-table-data">{data[1].package_busname}</td>
               {data[2] !== undefined ? (
                 <td className="compare-table-data">
-                  {data[2].package_title}
+                  {data[2].package_busname}
                 </td>
               ) : (
                 <td className="compare-table-data"></td>

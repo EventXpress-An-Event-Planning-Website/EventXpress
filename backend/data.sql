@@ -59,6 +59,10 @@ ALTER TABLE serviceProvider
 ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
 ADD COLUMN verificationToken VARCHAR(255);
 
+ALTER TABLE customer
+ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
+ADD COLUMN verificationToken VARCHAR(255);
+
 CREATE TABLE event (
     event_id SERIAL PRIMARY KEY,
     userId INTEGER,
@@ -71,6 +75,8 @@ CREATE TABLE event (
     event_type VARCHAR(255),
     created_at TIMESTAMP
 );
+
+Alter Table event ADD COLUMN event_img text;
 
 CREATE TABLE venuepackage (
     userid INTEGER, 
@@ -98,7 +104,8 @@ CREATE TABLE decorationpackage (
     package_price FLOAT, 
     sp_images VARCHAR(255)
 )
-CREATE TABLE public.todolist
+
+CREATE TABLE todolist
 (
     todo_id SERIAL,
     event_id integer,
@@ -115,7 +122,7 @@ CREATE TABLE cakepackage (
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
 
 CREATE TABLE cateringpackage (
     userid INTEGER, 
@@ -126,7 +133,7 @@ CREATE TABLE cateringpackage (
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
 
 CREATE TABLE lightsandsoundspackage (
     userid INTEGER, 
@@ -137,7 +144,7 @@ CREATE TABLE lightsandsoundspackage (
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
 
 CREATE TABLE photographypackage (
     userid INTEGER, 
@@ -148,7 +155,18 @@ CREATE TABLE photographypackage (
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
+
+CREATE TABLE stagerentalpackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_busname VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+);
 
 CREATE TABLE ticket (
     id SERIAL PRIMARY KEY,

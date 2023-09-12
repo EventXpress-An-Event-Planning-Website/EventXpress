@@ -21,12 +21,8 @@ import venue5 from '../../../assets/images/venue5.jpg';
 import venue6 from '../../../assets/images/venue6.jpg';
 import venue7 from '../../../assets/images/venue7.jpg';
 import venue8 from '../../../assets/images/venue8.jpg';
-import sound9 from '../../../assets/images/sound9.jpg';
-import sound10 from '../../../assets/images/sound10.jpg';
-import sound11 from '../../../assets/images/sound11.jpg';
-import sound12 from '../../../assets/images/sound12.jpg';
 
-const SoundAndLightDes = () => {
+const StageRentalDes = () => {
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -34,10 +30,10 @@ const SoundAndLightDes = () => {
     const event_id = queryParams.get("event_id");
     const column_id = Number(queryParams.get("column"));
     const package_id = queryParams.get("pac");
-    console.log(`column_id ${column_id}`);
+    // console.log(`column_id ${column_id}`);
     const [comparePackages, setcomparePackages] = useState(packageCount);
     const [showModal, setShowModal] = useState(false);
-    const [soundAndLightPackage, setSoundAndLightPackage] = useState([]);
+    const [stageRentalPackage, setStageRentalPackage] = useState([]);
 
     const [dropDown, setdropDown] = useState("Dropdown Button");
     const navigate = useNavigate();
@@ -60,17 +56,17 @@ const SoundAndLightDes = () => {
 
             const eventData = {
                 event_id: event_id,
-                package_id: soundAndLightPackage[0].package_id, // Modify this to match your data structure
+                package_id: stageRentalPackage[0].package_id, // Modify this to match your data structure
                 column_id: column_id
                 // ... Add other necessary data for your POST request
             };
             axios
-                .post("/api/customer/addSoundAndLightPackToCompareTable", eventData)
+                .post("/api/customer/addStageRentalPackToCompareTable", eventData)
                 .then((response) => {
                     const packCount = response.data;
                     // console.log(packCount);
                     // Perform navigation after successful POST
-                    navigate(`/customer/event/SoundAndLightCompare?event_id=${event_id}`);
+                    navigate(`/customer/event/CompareStageRental?event_id=${event_id}`);
                 })
                 .catch((error) => {
                     console.error("Error adding event:", error);
@@ -84,16 +80,16 @@ const SoundAndLightDes = () => {
                 // Use the selected hall/package
                 const eventData = {
                     event_id: event_id,
-                    package_id: soundAndLightPackage[0].package_id, // Modify this to match your data structure
+                    package_id: stageRentalPackage[0].package_id, // Modify this to match your data structure
                     // ... Add other necessary data for your POST request
                 };
                 axios
-                    .post("/api/customer/addSoundAndLightPackToCompare", eventData)
+                    .post("/api/customer/addStageRentalPackToCompare", eventData)
                     .then((response) => {
                         const packCount = response.data;
                         // console.log(packCount);
                         // Perform navigation after successful POST
-                        navigate(`/customer/event/SoundAndLight?event_id=${event_id}&packageCount=${packCount}`);
+                        navigate(`/customer/event/StageRental?event_id=${event_id}&packageCount=${packCount}`);
                     })
                     .catch((error) => {
                         console.error("Error adding event:", error);
@@ -105,12 +101,12 @@ const SoundAndLightDes = () => {
     };
     useEffect(() => {
         axios
-            .get(`/api/customer/viewSoundAndLightPackageDetails?pac=${package_id}`)
+            .get(`/api/customer/viewStageRentalPackageDetails?pac=${package_id}`)
             .then((response) => {
-                setSoundAndLightPackage(response.data);
+                setStageRentalPackage(response.data);
             })
             .catch((error) => {
-                // console.log(error);
+                console.log(error);
                 setError(error);
                 setLoading(false);
             });
@@ -122,7 +118,7 @@ const SoundAndLightDes = () => {
     const toggleForm = () => {
         setShowForm(!showForm);
     };
-    if (soundAndLightPackage.length === 0) {
+    if (stageRentalPackage.length === 0) {
         return <div>Loading...</div>;
     } else {
 
@@ -135,11 +131,11 @@ const SoundAndLightDes = () => {
                             <Row>
                                 <Col>
                                     <Col md={10} >
-                                        <Image src={`../../src/assets/images/uploads/${soundAndLightPackage[0].sp_images}`} thumbnail className="venueDesImg" />
+                                        <Image src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`} thumbnail />
                                     </Col>
 
                                     <Col md={10} >
-                                        <Image src={`../../src/assets/images/uploads/${soundAndLightPackage[0].sp_images}`} thumbnail className="venueDesImg" />
+                                        <Image src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`} thumbnail />
                                     </Col>
                                     <br />
                                     {/* <Link to={`/customer/eventdetails`}> */}
@@ -153,20 +149,21 @@ const SoundAndLightDes = () => {
 
                                 <Col>
                                     <Col md={10} >
-                                        <Image src={`../../src/assets/images/uploads/${soundAndLightPackage[0].sp_images}`} thumbnail className="venueDesImg" />
+                                        <Image src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`} thumbnail />
                                     </Col>
 
                                     <Col md={10} >
-                                        <Image src={`../../src/assets/images/uploads/${soundAndLightPackage[0].sp_images}`} thumbnail className="venueDesImg" />
+                                        <Image src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`} thumbnail />
                                     </Col>
                                 </Col>
 
 
                                 <Col>
-                                    <h2>Pure AV</h2>
+                                    <h2>{stageRentalPackage[0].package_title}</h2>
+                                    <p>by {stageRentalPackage[0].package_busname}</p>
                                     <StarRating initialRating={4} />
-                                    {/* <Image src={venue6} thumbnail />
-
+                                    {/* <Image src={venue6} thumbnail /> */}
+                                    {/* 
                             <Dropdown>
                                 <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                                     {dropDown}
@@ -176,46 +173,73 @@ const SoundAndLightDes = () => {
                                     <Dropdown.Item onClick={() => setHallName("Hall Phoenix")}>Hall Phoenix</Dropdown.Item>
                                     <Dropdown.Item onClick={() => setHallName("Rose Veranda")} >Rose Veranda</Dropdown.Item>
                                     <Dropdown.Item onClick={() => setHallName("Hall Draffodils")}>Hall Draffodils</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown> */}
+                                </Dropdown.Menu> */}
+                                    {/* </Dropdown> */}
                                     <br />
-
                                     <Table striped bordered hover>
+
                                         <tbody>
-                                            <tr>
-                                                <td>Package price - LKR 16660</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Location - No:49, Canel Rd, Colombo</td>
 
+                                            <tr>
+                                                <td>Price</td>
+                                                <td>LKR {stageRentalPackage[0].package_price}</td>
+                                                {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
                                             </tr>
+                                            <tr>
+                                                <td>Location</td>
+                                                <td>LKR {stageRentalPackage[0].package_address}</td>
+                                                {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
+                                            </tr>
+
                                             {/* <tr>
-                                        <td>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</td>
+                                        <td>Maximum guest count</td>
+                                        <td>200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hall area</td>
+                                        <td>1200sqft</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hall type</td>
+                                        <td>Indoor</td>
                                     </tr> */}
-
                                         </tbody>
                                     </Table>
                                     <ul className="bullet-list">
                                         {/* <li>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</li>
                                 <li>Package price(for one person) - LKR 6660</li> */}
                                         <br />
-                                        <li>DJ Booth</li>
-                                        <li>2 LED Moving Head Dance Lights</li>
-                                        <li>2 x Powered Speaker</li>
-                                        <li>1 x Powered Subwoofer</li>
-                                        <li>1 x Wireless Microphone</li>
-                                        <li>Fog Machine Machine</li>
-                                        <li>Black Tufted Tower Covers</li>
-                                        <li>1 x Wireless Microphone</li>
-                                        <li>A transport fee will be charged beyond suburbs of Colombo.</li>
-                                        <li>Our office is open on weekdays from 8.00 a.m. to 5.00p.m. & on Saturdays 8.00a.m to 1.00 p.m. except on Sundays and Mercantile Holidays.</li>
+                                        <li>{stageRentalPackage[0].package_description}</li>
+                                        <br />
+                                        <h3>More Details</h3>
+
+                                        <li>
+                                            We offer the best and most delectable range of cakes made
+                                            to stringent quality standards using the finest
+                                            ingredients for our valued customers.
+                                        </li>
+                                        <li>
+                                            Cakes are baked by our own in-house pastry chefs who have
+                                            years of experience in confectioneries.
+                                        </li>
+                                        <li>
+                                            Please mention the cake wording and the special
+                                            instructions at the checkout.
+                                        </li>
+                                        <li>Cake wording will be free of charge.</li>
+                                        <br />
+                                        <h3>Allergy Information</h3>
+                                        <li>
+                                            Our products are Inclusive of dairy, wheat, soy, eggs, and
+                                            nuts.
+                                        </li>
                                     </ul>
+
                                 </Col>
                             </Row>
 
                         </Container >
                     </div >
-
                 ) : (
                     <div style={{ display: "flex" }}>
                         {/* <Sidebar /> */}
@@ -224,7 +248,7 @@ const SoundAndLightDes = () => {
                                 <Col>
                                     <Col md={10}>
                                         <Image
-                                            src={`../../src/assets/images/uploads/${soundAndLightPackage[0].sp_images}`}
+                                            src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`}
                                             thumbnail
                                             className="venueDesImg"
                                         />
@@ -232,7 +256,7 @@ const SoundAndLightDes = () => {
 
                                     <Col md={10}>
                                         <Image
-                                            src={`../../src/assets/images/uploads/${soundAndLightPackage[0].sp_images}`}
+                                            src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`}
                                             thumbnail
                                             className="venueDesImg"
                                         />
@@ -320,7 +344,7 @@ const SoundAndLightDes = () => {
                                                             </Form.Text>
                                                         </Form.Group>
                                                         <Link
-                                                            to={`/customer/event/SoundAndLightCompare?event_id=${event_id}`}
+                                                            to={`/customer/event/StageRentalCompare?event_id=${event_id}`}
                                                         >
                                                             <Button
                                                                 className="addToEvent-btn"
@@ -344,7 +368,7 @@ const SoundAndLightDes = () => {
                                 <Col>
                                     <Col md={10}>
                                         <Image
-                                            src={`../../src/assets/images/uploads/${soundAndLightPackage[0].sp_images}`}
+                                            src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`}
                                             thumbnail
                                             className="venueDesImg"
                                         />
@@ -352,7 +376,7 @@ const SoundAndLightDes = () => {
 
                                     <Col md={10}>
                                         <Image
-                                            src={`../../src/assets/images/uploads/${soundAndLightPackage[0].sp_images}`}
+                                            src={`../../src/assets/images/uploads/${stageRentalPackage[0].sp_images}`}
                                             thumbnail
                                             className="venueDesImg"
                                         />
@@ -360,8 +384,8 @@ const SoundAndLightDes = () => {
                                 </Col>
 
                                 <Col>
-                                    <h2>{soundAndLightPackage[0].package_title} </h2>
-                                    <p>by {soundAndLightPackage[0].package_busname}</p>
+                                    <h2>{stageRentalPackage[0].package_title} </h2>
+                                    <p>by {stageRentalPackage[0].package_busname}</p>
                                     <StarRating initialRating={3} />
                                     {/* <Image src={cake12} thumbnail />
   
@@ -379,33 +403,61 @@ const SoundAndLightDes = () => {
                                     <br />
                                     <Table striped bordered hover>
                                         <tbody>
+                                            {/* <tr>
+                                      <td>LocatistageRentalon</td>
+                                      <td>No:49, Canel Rd, Colombo</td>
+                                      {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
+                                            {/* </tr> */}
                                             <tr>
-                                                <td>Package price - LKR 16660</td>
+                                                <td>Price</td>
+                                                <td>{stageRentalPackage[0].package_price}</td>
+                                                {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
                                             </tr>
-                                            <tr>
-                                                <td>Location - No:49, Canel Rd, Colombo</td>
 
+                                            <tr>
+                                                <td>Location</td>
+                                                <td>LKR {stageRentalPackage[0].package_address}</td>
+                                                {/* budget, accommodation, facilities, Security, parking, connectivity, vendor restrictions */}
                                             </tr>
                                             {/* <tr>
-                                        <td>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</td>
-                                    </tr> */}
-
+                                      <td>Hall area</td>
+                                      <td>1200sqft</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Hall type</td>
+                                      <td>Indoor</td>
+                                  </tr> */}
                                         </tbody>
                                     </Table>
+
                                     <ul className="bullet-list">
                                         {/* <li>This package included one Bacon cheeseburger, French fries, Chicken wings, Stroganoff plate</li>
-                                <li>Package price(for one person) - LKR 6660</li> */}
+                              <li>Package price(for one person) - LKR 6660</li> */}
                                         <br />
-                                        <li>DJ Booth</li>
-                                        <li>2 LED Moving Head Dance Lights</li>
-                                        <li>2 x Powered Speaker</li>
-                                        <li>1 x Powered Subwoofer</li>
-                                        <li>1 x Wireless Microphone</li>
-                                        <li>Fog Machine Machine</li>
-                                        <li>Black Tufted Tower Covers</li>
-                                        <li>1 x Wireless Microphone</li>
-                                        <li>A transport fee will be charged beyond suburbs of Colombo.</li>
-                                        <li>Our office is open on weekdays from 8.00 a.m. to 5.00p.m. & on Saturdays 8.00a.m to 1.00 p.m. except on Sundays and Mercantile Holidays.</li>
+                                        <li>{stageRentalPackage[0].package_description}</li>
+                                        <br />
+                                        <h3>More Details</h3>
+
+                                        <li>
+                                            We offer the best and most delectable range of cakes made
+                                            to stringent quality standards using the finest
+                                            ingredients for our valued customers.
+                                        </li>
+                                        <li>
+                                            Cakes are baked by our own in-house pastry chefs who have
+                                            years of experience in confectioneries.
+                                        </li>
+                                        <li>
+                                            Please mention the cake wording and the special
+                                            instructions at the checkout.
+                                        </li>
+                                        <li>Cake wording will be free of charge.</li>
+                                        <br />
+                                        <h3>Allergy Information</h3>
+                                        <li>
+                                            Our products are Inclusive of dairy, wheat, soy, eggs, and
+                                            nuts.
+                                        </li>
                                     </ul>
                                 </Col>
                             </Row>
@@ -437,4 +489,5 @@ const SoundAndLightDes = () => {
 };
 
 
-export default SoundAndLightDes;
+
+export default StageRentalDes;
