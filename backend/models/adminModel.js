@@ -8,7 +8,7 @@ const getCustomers = async (email) => {
     const userExists = await query(userExistsQuery, [])
     console.log(userExists);
 
-    return userExists.rowCount > 0 ?  userExists.rows[0]: false
+    return userExists.rowCount > 0 ?  userExists.rows: false
   } catch (error) {
     console.error(`Internal Error: ${error.message}`)
     throw new Error(`Internal Error`)

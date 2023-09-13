@@ -12,26 +12,22 @@ import { useEffect } from "react";
 
 function UsersMain() {
   const [key, setKey] = useState("tab1");
-  const [customer, setCustomer] = useState([]);
-  const handleTabChange = (selectedKey) => {
-    setKey(selectedKey);
-    if (selectedKey === "tab3") {
-      fetchData();
-    }
-  };
-
   const [data, setData] = useState([]);
+  const [serviceProviders, setServiceProviders] = useState([]);
+  const [customer, setCustomer] = useState([]);
+  
+
+ 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchData = () => {
-    setLoading(true);
+  const fetchCustomerData = () => {
     axios
       .get(`/api/admin/getAllCustomers`)
       .then((response) => {
-        setData(response.data);
-        setLoading(false);
-        console.log(response.data);
+        setCustomer(response.data.customers);
+        
+        // console.log(data);
       })
       .catch((error) => {
         setError(error);
@@ -39,11 +35,14 @@ function UsersMain() {
       });
   };
 
-  useEffect(() => {
-    if (key === "tab3" && loading) {
-      fetchData();
+
+  const handleTabChange = (selectedKey) => {
+    setKey(selectedKey);
+    if (selectedKey === "tab3") {
+      fetchCustomerData();
     }
-  }, [key, loading]);
+  };
+
 
   return (
     <div className="mainUsers ">
@@ -224,16 +223,20 @@ function UsersMain() {
               </table>
             </div>
           </Tab>
-          <Tab eventKey="tab3" title="Customers">
+
+          {/* Customers satrts */}
+          <Tab eventKey="tab3"  title="Customers">
             <div className="userRequestsBox">
-              {loading ? (
+              {customer.length === 0 ? (
                 <p>Loading...</p>
               ) : (
+                
                 <table className="admin-table">
+                  {customer.map((customer) => (
                   <tr className="tableRow">
                     <td className="userTableContent"></td>
                     <td className="userTableContent"></td>
-                    <td className="userTableContent">Kalana Weranga</td>
+                    <td className="userTableContent">{customer.name}</td>
                     <td>
                       <Button
                         variant="primary"
@@ -244,51 +247,7 @@ function UsersMain() {
                       </Button>{" "}
                     </td>
                   </tr>
-
-                  <tr className="tableRow">
-                    <td className="userTableContent"></td>
-                    <td className="userTableContent"></td>
-                    <td className="userTableContent"> Supun Deshan </td>
-                    <td>
-                      <Button
-                        variant="primary"
-                        className="viewButton"
-                        style={{ width: "80px", fontSize: "10px" }}
-                      >
-                        View Profile
-                      </Button>{" "}
-                    </td>
-                  </tr>
-
-                  <tr className="tableRow">
-                    <td className="userTableContent"></td>
-                    <td className="userTableContent"></td>
-                    <td className="userTableContent">Sandaru Sathsara</td>
-                    <td>
-                      <Button
-                        variant="primary"
-                        className="viewButton"
-                        style={{ width: "80px", fontSize: "10px" }}
-                      >
-                        View Profile
-                      </Button>{" "}
-                    </td>
-                  </tr>
-
-                  <tr className="tableRow">
-                    <td className="userTableContent"></td>
-                    <td className="userTableContent"></td>
-                    <td className="userTableContent">Janith Weerasinghe</td>
-                    <td>
-                      <Button
-                        variant="primary"
-                        className="viewButton"
-                        style={{ width: "80px", fontSize: "10px" }}
-                      >
-                        View Profile
-                      </Button>
-                    </td>
-                  </tr>
+                  ))}
                 </table>
               )}
             </div>
