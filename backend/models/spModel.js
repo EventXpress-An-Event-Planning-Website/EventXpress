@@ -1,7 +1,33 @@
 import { query } from '../config/db.js'
 import asyncHandler from 'express-async-handler'
 
+//add service providers to block/preference list
+const addSPToBlockPrefList = asyncHandler(
+  async(
+    blockPrefId,
+    userId, 
+    blockId,
+    blockStatus
+  )=>{
+    const createBlockPrefQuery = `INSERT INTO blocklist(blockpref_id, my_id, block_id, block_status) VALUES($1, $2, $3, $4)`
+    const createBlockPrefList = await query(createBlockPrefQuery, [
+      blockPrefId,
+      userId, 
+      blockId,
+      blockStatus
+    ])
 
+    if(createBlockPrefList.rowCount>0){
+      console.log('block user',createBlockPrefList);
+      return createBlockPrefList.rows
+    }
+    else{
+      throw new Error('Internal Error')
+    }
+  }
+)
+
+//get service provider data for the profile
 const getSPprofileDetails = asyncHandler(
     async(userId)=>{
       
@@ -17,6 +43,7 @@ const getSPprofileDetails = asyncHandler(
     }
 )
 
+//get all packages for a service provider
 const getSPPackDetails = asyncHandler(
   async(userId)=>{
     
@@ -55,21 +82,27 @@ const getSPPackDetails = asyncHandler(
   }
 )
 
+//view one package details
 const getPackageDetails = asyncHandler(
-  async(package_id)=>{
-    const viewCakePackage = `SELECT * FROM cakepackage WHERE package_id=$1`
+  async(package_id,service)=>{
+    const viewCakePackage = `SELECT * FROM ${service}package WHERE package_id=$1`
     const CakePackData = await query(viewCakePackage,[package_id])
     
     //console.log(CakePackData);
-    return CakePackData.rows
+    if (CakePackData.rowCount > 0) {
+      return CakePackData.rows
+    } else {
+      throw new Error('Internal Error')
+    }
     
   }
 )
 
+//get all service providers names
 const getAllSPNames = asyncHandler(
-  async()=>{
-    const viewSPNames = `SELECT name, location FROM serviceprovider`
-    const SPNames = await query(viewSPNames,[])
+  async(userId)=>{
+    const viewSPNames = `SELECT name, location FROM serviceprovider WHERE id !=$1`
+    const SPNames = await query(viewSPNames,[userId])
 
     if (SPNames.rowCount > 0) {
       return SPNames.rows
@@ -79,4 +112,10 @@ const getAllSPNames = asyncHandler(
   }
 )
 
-export { getSPprofileDetails,getSPPackDetails,getPackageDetails,getAllSPNames }
+export { 
+  getSPprofileDetails,
+  getSPPackDetails,
+  getPackageDetails,
+  getAllSPNames, 
+  addSPToBlockPrefList 
+}

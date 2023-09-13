@@ -14,6 +14,7 @@ const FormDetails = () => {
   const [packageBusName, setpackageBusName] = useState("");
   const [packageTitle, setpackageTitle] = useState("");
   const [packageAddress, setpackageAddress] = useState("");
+  const [packageContact, setpackageContact] = useState("");
   const [packageDescription, setpackageDescription] = useState("");
   const [packagePrice, setpackagePrice] = useState("");
   const [packageType, setpackageType] = useState("");
@@ -69,6 +70,7 @@ const FormDetails = () => {
           packageBusName,
           packageTitle,
           packageAddress,
+          packageContact,
           packageDescription,
           packagePrice,
           packageOpTitle,
@@ -85,6 +87,7 @@ const FormDetails = () => {
           packageBusName,
           packageTitle,
           packageAddress,
+          packageContact,
           packageDescription,
           packagePrice,
           packageImage: spImageFilename,
@@ -145,6 +148,18 @@ const FormDetails = () => {
                 placeholder="Enter your business address"
                 onChange={(e) => setpackageAddress(e.target.value)}
                 value={packageAddress}
+                required
+              />
+            </FormGroup>
+
+            <FormGroup className="input">
+              <Form.Label htmlFor="busContact">Contact Number</Form.Label>
+              <FormControl
+                type="number"
+                name="packageContact"
+                placeholder="Enter your business contact number"
+                onChange={(e) => setpackageContact(e.target.value)}
+                value={packageContact}
                 required
               />
             </FormGroup>

@@ -5,12 +5,16 @@ import axios from 'axios'
 // import { FaSearch } from 'react-icons/fa';
 
 const AllSPList = () => {
+    const userId = localStorage.getItem('userInfo')
+    const user = JSON.parse(userId);
+    const id = user.id
+
     const [search, setSearch] = useState('');
-    const [SPnames, setSPnames] = useState([]);
+    const [spNames, setSPnames] = useState([]);
 
     useEffect(() => {
         axios
-            .get('/api/serviceprovider/getAllSProviders')
+            .get(`/api/serviceprovider/getAllSProviders?id=${id}`)
             .then((response) => {
                 setSPnames(response.data.PNames);
             })
@@ -20,7 +24,7 @@ const AllSPList = () => {
     }, []);
 
     // Filter the SPnames array based on the search query
-    const filteredSPnames = SPnames.filter((snames) => {
+    const filteredSPnames = spNames.filter((snames) => {
         const nameMatch = snames.name.toLowerCase().includes(search.toLowerCase());
         const locationMatch = snames.location.toLowerCase().includes(search.toLowerCase());
         return nameMatch || locationMatch;

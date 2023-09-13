@@ -4,13 +4,17 @@
     margin: 3% 10%;
 }
 
-.leftContentImg{
-    margin-top: 5%;
+.leftContentImg .leftimg{
+   width: 300px;
+   height: 300px;
+   border-radius: 5px;
 }
 
-/* .leftContentImg:hover{
-    transform: scale(0.8) rotate(3deg);
-} */
+.showmap{
+    margin-left: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
 /* option details */
 

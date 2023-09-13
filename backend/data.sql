@@ -78,6 +78,7 @@ CREATE TABLE venuepackage (
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255),
@@ -94,6 +95,7 @@ CREATE TABLE decorationpackage (
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
@@ -112,6 +114,7 @@ CREATE TABLE cakepackage (
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
@@ -123,6 +126,7 @@ CREATE TABLE cateringpackage (
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
@@ -134,6 +138,7 @@ CREATE TABLE lightsandsoundspackage (
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
@@ -145,6 +150,7 @@ CREATE TABLE photographypackage (
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)

@@ -12,6 +12,7 @@ const createpackage = asyncHandler(async(req,res)=>{
         packageBusName,
         packageTitle,
         packageAddress,
+        packageContact,
         packageDescription,
         packagePrice,
         packageType,
@@ -24,6 +25,8 @@ const createpackage = asyncHandler(async(req,res)=>{
 
     }=req.body
 
+    const createdate = new Date();
+
     if (packageType==="Venue") {
 
         packages= await venuePackage(
@@ -31,9 +34,11 @@ const createpackage = asyncHandler(async(req,res)=>{
             packageBusName,
             packageTitle,
             packageAddress,
+            packageContact,
             packageDescription,
             packagePrice,
             packageImage,
+            createdate,
             packageOpTitle,
             packageOpDescription,
             packageOpMaxCount,
@@ -41,13 +46,13 @@ const createpackage = asyncHandler(async(req,res)=>{
             packageOpType
         )
         if (packages) {
-            res.status(201).json({
-              id: packages.id
-            })
-          } else {
-            res.status(400)
-            throw new Error('Invalid user data')
-          }
+          res.status(201).json({
+            id: packages.id
+          })
+        } else {
+          res.status(400)
+          throw new Error('Invalid user data')
+        }
         
         
     } else {
@@ -56,9 +61,11 @@ const createpackage = asyncHandler(async(req,res)=>{
             packageBusName,
             packageTitle,
             packageAddress,
+            packageContact,
             packageDescription,
             packagePrice,
             packageImage,
+            createdate,
             packageType
         )
         if (packages) {

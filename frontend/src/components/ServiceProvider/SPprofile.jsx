@@ -76,13 +76,12 @@ const SPprofile = () => {
               </Col>
 
               <Col className='right_column'>
-                <h3>Business Details</h3>
+                <h3>Social Media Details</h3>
 
                 <div className='business'>
-                  <p>Business name: <span></span></p>
-                  <p>Business email: <span>{userData.data.email}</span></p>
-                  <p>Business types: <span></span></p>
-                  <p>Business address: <span></span></p>
+                  <p>Facebook Link: <span>{userData.data.facebooklink}</span></p>
+                  <p>Instagram Link: <span>{userData.data.instagramlink}</span></p>
+                  <p>Twitter Link: <span>{userData.data.twitterlink}</span></p>
                 </div>
                 
                 <Button className='profedit_btn'>Edit</Button>
