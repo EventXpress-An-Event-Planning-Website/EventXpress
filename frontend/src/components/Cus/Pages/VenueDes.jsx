@@ -14,7 +14,7 @@ import Form from "react-bootstrap/Form";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { toast } from "react-toastify";
 import venue5 from "../../../assets/images/venue5.jpg";
 import venue6 from "../../../assets/images/venue6.jpg";
 import venue7 from "../../../assets/images/venue7.jpg";
@@ -87,7 +87,35 @@ const VenueDes = () => {
   const toggleForm = () => {
     setShowForm(!showForm);
   };
+  const HandleAddToEvent=()=>{
+    const eventData = {
+      event_id: event_id,
+      package_id: selectedHall.pack_id,
+      service:'Venue' // Modify this to match your data structure
+      // ... Add other necessary data for your POST request
+    };
 
+    axios.post("/api/customer/addCakePackToEvent", eventData)
+          .then((response) => {
+            const packCount = response.data;
+            console.log(packCount);
+
+            if(packCount===false){
+              toast.error("You Doesn't Can Update Selected Package. Your Request Already Accept.")
+              navigate(`/customer/eventdetails?id=${event_id}`);
+            }else{
+              toast.success("Package Added Successfully And Please Select Other Packages And Send Notification.")
+              navigate(`/customer/eventdetails?id=${event_id}`);
+            }
+            // console.log(packCount);
+            // Perform navigation after successful POST
+            
+          })
+          .catch((error) => {
+            console.error("Error adding event:", error);
+            // Handle error if needed
+          });
+  }
   const HandleAddCompare = () => {
     let pack = Number(comparePackages);
     console.log(pack);
@@ -245,7 +273,7 @@ const VenueDes = () => {
                             </Form.Text>
                           </Form.Group>
 
-                          <Button variant="primary" onClick={handleAddToEvent}>
+                          <Button variant="primary" onClick={HandleAddToEvent}>
                             Add to Event
                           </Button>
 
@@ -272,7 +300,7 @@ const VenueDes = () => {
                           <Button
                             variant="primary"
                             className="compare-btns"
-                            onClick={handleAddToEvent}
+                            onClick={HandleAddToEvent}
                           >
                             Add to Event
                           </Button>
