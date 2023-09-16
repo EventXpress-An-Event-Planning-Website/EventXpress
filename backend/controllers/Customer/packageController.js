@@ -8,6 +8,8 @@ import { viewCateringPackagesModel, viewCateringPackageDetails } from '../../mod
 import { viewPhotographyPackagesModel, viewPhotographyPackageDetails } from '../../models/photographyPackageModel.js'
 import { viewSoundAndLightPackagesModel, viewSoundAndLightPackageDetails } from '../../models/soundAndLightPackageModel.js'
 import { viewStageRentalPackagesModel, viewStageRentalPackageDetails } from '../../models/stageRentalPackageModel.js'
+import { isSelectedPackage,addPackageToEvent } from '../../models/todoListModel.js'
+import { getNotificationByEventAndPackage,deleteNotificationByEventAndPackage } from '../../models/customer_notificationModel.js'
 
 // import Venue from '../../../frontend/src/components/Cus/Pages/Venue.jsx'
 
@@ -511,4 +513,31 @@ const addStageRentalPackageToCompareTable = asyncHandler(async(req,res)=>{
 
 })
 
-export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare,addCakePackageToCompareTable, getCompareCakePackage, viewCateringPackage,viewdecoPackage,viewDecoPackageDetails,addDecoPackToCompare,addDecoPackageToCompareTable, getCompareDecoPackage , viewCateringsPackageDetails, viewPhotographyPackage, viewPhotographiesPackageDetails, viewPhotographyPackageDetails, viewSoundAndLightPackage, viewSoundAndLightsPackageDetails, viewSoundAndLightPackageDetails, viewStageRentalPackage, viewStageRentalsPackageDetails, viewStageRentalPackageDetails, addPhotographyPackToCompare, getComparePhotographyPackage, getCompareCateringPackage, addCateringPackToCompare, addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,addCateringPackageToCompareTable,addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable } 
+const addPackToEvent = asyncHandler(async(req,res)=>{
+    const package_id=req.body.package_id
+    const event_id= req.body.event_id
+    const service= req.body.service
+    console.log(package_id);
+    console.log(event_id);
+    console.log(service);
+    const isSelected = await isSelectedPackage(event_id,package_id,service)
+    console.log(isSelected);
+    if (isSelected==='false') {
+        const update = await addPackageToEvent(event_id,package_id,service)
+        res.json('true')
+    }else{
+        
+        const notification=await getNotificationByEventAndPackage(service,event_id)
+        if (notification.status==='Accept') {
+            res.json('false')
+        }else{
+            const deleted = await deleteNotificationByEventAndPackage(service,event_id);
+            const update = await addPackageToEvent(event_id,package_id,service)
+            res.json('true')
+
+        }
+    }
+
+})
+
+export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare,addCakePackageToCompareTable, getCompareCakePackage, viewCateringPackage,viewdecoPackage,viewDecoPackageDetails,addDecoPackToCompare,addDecoPackageToCompareTable, getCompareDecoPackage , viewCateringsPackageDetails, viewPhotographyPackage, viewPhotographiesPackageDetails, viewPhotographyPackageDetails, viewSoundAndLightPackage, viewSoundAndLightsPackageDetails, viewSoundAndLightPackageDetails, viewStageRentalPackage, viewStageRentalsPackageDetails, viewStageRentalPackageDetails, addPhotographyPackToCompare, getComparePhotographyPackage, getCompareCateringPackage, addCateringPackToCompare, addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,addCateringPackageToCompareTable,addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent } 

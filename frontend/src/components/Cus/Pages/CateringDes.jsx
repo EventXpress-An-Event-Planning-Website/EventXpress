@@ -16,7 +16,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-
+import { toast } from "react-toastify";
 import burger1 from '../../../assets/images/burger1.jpg';
 import burger2 from '../../../assets/images/burger2.jpg';
 import burger3 from '../../../assets/images/burger3.jpg';
@@ -49,6 +49,35 @@ const CateringDes = () => {
     const closeModal = () => {
         setShowModal(false);
     };
+    const HandleAddToEvent=()=>{
+        const eventData = {
+          event_id: event_id,
+          package_id: cateringPackage[0].package_id,
+          service:'Catering' // Modify this to match your data structure
+          // ... Add other necessary data for your POST request
+        };
+    
+        axios.post("/api/customer/addCakePackToEvent", eventData)
+              .then((response) => {
+                const packCount = response.data;
+                console.log(packCount);
+    
+                if(packCount===false){
+                  toast.error("You Doesn't Can Update Selected Package. Your Request Already Accept.")
+                  navigate(`/customer/eventdetails?id=${event_id}`);
+                }else{
+                  toast.success("Package Added Successfully And Please Select Other Packages And Send Notification.")
+                  navigate(`/customer/eventdetails?id=${event_id}`);
+                }
+                // console.log(packCount);
+                // Perform navigation after successful POST
+                
+              })
+              .catch((error) => {
+                console.error("Error adding event:", error);
+                // Handle error if needed
+              });
+      }
     const HandleAddCompare = () => {
         let pack = Number(comparePackages);
         // console.log(pack);
@@ -65,7 +94,7 @@ const CateringDes = () => {
                 .post("/api/customer/addCateringPackToCompareTable", eventData)
                 .then((response) => {
                     const packCount = response.data;
-                    // console.log(packCount);
+                    console.log(packCount);
                     // Perform navigation after successful POST
                     navigate(`/customer/event/CateringCompare?event_id=${event_id}`);
                 })
@@ -278,7 +307,7 @@ const CateringDes = () => {
 
                                                         <Button
                                                             variant="primary"
-
+                                                            onClick={HandleAddToEvent}
                                                         >
                                                             Add to Event
                                                         </Button>
@@ -306,7 +335,7 @@ const CateringDes = () => {
                                                         <Button
                                                             variant="primary"
                                                             className="compare-btns"
-                                                        //   onClick={handleAddToEvent}
+                                                          onClick={HandleAddToEvent}
                                                         >
                                                             Add to Event
                                                         </Button>
