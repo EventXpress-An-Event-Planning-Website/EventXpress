@@ -1,12 +1,15 @@
 import asyncHandler from 'express-async-handler'
 import path from 'path'
-import { viewVenuePackagesModel, viewVenuePackageDetailsUserId } from '../../models/venuePackageModel.js'
-import { getNoOfComparepackages, insertPackageToCompare, getComparePack, getComparePackCount } from '../../models/compareServicesModel.js'
-import { viewCakePackagesModel, viewCakePackageDetails } from '../../models/cakePackageModel.js'
+import {viewVenuePackagesModel,viewVenuePackageDetailsUserId} from '../../models/venuePackageModel.js'
+import { getNoOfComparepackages,insertPackageToCompare,getComparePack,getComparePackCount,updatePackageToCompare } from '../../models/compareServicesModel.js'
+import { viewCakePackagesModel,viewCakePackageDetails } from '../../models/cakePackageModel.js'
+import { viewDecorationPackagesModel, viewDecorationPackageDetails } from '../../models/decorationPackageModel.js'
 import { viewCateringPackagesModel, viewCateringPackageDetails } from '../../models/cateringPackageModel.js'
 import { viewPhotographyPackagesModel, viewPhotographyPackageDetails } from '../../models/photographyPackageModel.js'
 import { viewSoundAndLightPackagesModel, viewSoundAndLightPackageDetails } from '../../models/soundAndLightPackageModel.js'
 import { viewStageRentalPackagesModel, viewStageRentalPackageDetails } from '../../models/stageRentalPackageModel.js'
+import { isSelectedPackage,addPackageToEvent } from '../../models/todoListModel.js'
+import { getNotificationByEventAndPackage,deleteNotificationByEventAndPackage } from '../../models/customer_notificationModel.js'
 
 // import Venue from '../../../frontend/src/components/Cus/Pages/Venue.jsx'
 
@@ -88,8 +91,9 @@ const addPackageToCompareTable = asyncHandler(async (req, res) => {
     if (count === 0) {
         const pack = await insertPackageToCompare(event_id, service, package_id, column_id)
         res.json(pack.rows[0].column_id)
-    } else {
-
+    }else{
+        const pack = await updatePackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
     }
 
 
@@ -220,6 +224,102 @@ const getCompareCakePackage = asyncHandler(async (req, res) => {
     res.json(packages)
 })
 
+const addCakePackageToCompareTable = asyncHandler(async(req,res)=>{
+    const pack=req.body
+    const event_id=pack.event_id
+    const package_id=pack.package_id
+    const column_id = pack.column_id
+    const service = 'Cake'
+    console.log(pack);
+    
+    const count = await getComparePackCount(event_id,column_id,service)
+    console.log(count);
+    if (count===0) {
+        const pack = await insertPackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }else{
+        const pack = await updatePackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }
+
+
+    
+
+
+})
+
+const viewdecoPackage = asyncHandler(async(req, res)=>{
+    const pack = await viewDecorationPackagesModel()
+    // console.log(pack.rows)
+
+    // const array = [{id:1}, {id:2}]
+    res.json(pack.rows)
+}
+)
+const viewDecoPackageDetails=asyncHandler(async(req,res)=>{
+  
+    // console.log(req);
+    const package_id=req.query.pac;
+ 
+
+   
+    const pack = await viewDecorationPackageDetails(package_id)
+    console.log(pack.rows);
+    res.json(pack.rows)
+
+})
+
+const addDecoPackToCompare = asyncHandler(async(req,res)=>{
+    const pack=req.body
+    const event_id=pack.event_id
+    const package_id=pack.package_id
+    const service = 'Decoration'
+
+    const noOfPack = await getNoOfComparepackages(event_id,service)
+    const rowCount=noOfPack.rowCount;
+    const column_id=rowCount+1
+    const addCopmarePackage = await insertPackageToCompare(event_id,service,package_id,column_id)
+    console.log(addCopmarePackage.rows[0].column_id);
+    res.json(addCopmarePackage.rows[0].column_id)
+
+
+})
+
+const addDecoPackageToCompareTable = asyncHandler(async(req,res)=>{
+    const pack=req.body
+    const event_id=pack.event_id
+    const package_id=pack.package_id
+    const column_id = pack.column_id
+    const service = 'Decoration'
+    console.log(pack);
+    
+    const count = await getComparePackCount(event_id,column_id,service)
+    console.log(count);
+    if (count===0) {
+        const pack = await insertPackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }else{
+        const pack = await updatePackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }
+
+
+    
+
+
+})
+
+const getCompareDecoPackage = asyncHandler(async(req,res)=>{
+    const event_id=Number(req.query.event_id);
+    const service ='decoration'
+    const service1 = 'Decoration'
+
+    const packages= await getComparePack(event_id,service,service1)
+    console.log(packages);
+    res.json(packages)
+})
+
+ 
 const addPhotographyPackToCompare = asyncHandler(async (req, res) => {
     const pack = req.body
     const event_id = pack.event_id
@@ -316,4 +416,128 @@ const getCompareStageRentalPackage = asyncHandler(async (req, res) => {
     res.json(packages)
 })
 
-export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare, getCompareCakePackage, viewCateringPackage, viewCateringsPackageDetails, viewPhotographyPackage, viewPhotographiesPackageDetails, viewPhotographyPackageDetails, viewSoundAndLightPackage, viewSoundAndLightsPackageDetails, viewSoundAndLightPackageDetails, viewStageRentalPackage, viewStageRentalsPackageDetails, viewStageRentalPackageDetails, addPhotographyPackToCompare, getComparePhotographyPackage, getCompareCateringPackage, addCateringPackToCompare, addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage } 
+
+const addCateringPackageToCompareTable = asyncHandler(async(req,res)=>{
+    const pack=req.body
+    const event_id=pack.event_id
+    const package_id=pack.package_id
+    const column_id = pack.column_id
+    const service = 'Catering'
+    console.log(pack);
+    
+    const count = await getComparePackCount(event_id,column_id,service)
+    console.log(count);
+    if (count===0) {
+        const pack = await insertPackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }else{
+        const pack = await updatePackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }
+
+
+    
+
+
+})
+
+const addPhotographyPackageToCompareTable = asyncHandler(async(req,res)=>{
+    const pack=req.body
+    const event_id=pack.event_id
+    const package_id=pack.package_id
+    const column_id = pack.column_id
+    const service = 'Photography'
+    console.log(pack);
+    
+    const count = await getComparePackCount(event_id,column_id,service)
+    console.log(count);
+    if (count===0) {
+        const pack = await insertPackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }else{
+        const pack = await updatePackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }
+
+
+    
+
+
+})
+
+const addSoundAndLightPackageToCompareTable = asyncHandler(async(req,res)=>{
+    const pack=req.body
+    const event_id=pack.event_id
+    const package_id=pack.package_id
+    const column_id = pack.column_id
+    const service = 'SoundAndLight'
+    console.log(pack);
+    
+    const count = await getComparePackCount(event_id,column_id,service)
+    console.log(count);
+    if (count===0) {
+        const pack = await insertPackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }else{
+        const pack = await updatePackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }
+
+
+    
+
+
+})
+
+const addStageRentalPackageToCompareTable = asyncHandler(async(req,res)=>{
+    const pack=req.body
+    const event_id=pack.event_id
+    const package_id=pack.package_id
+    const column_id = pack.column_id
+    const service = 'StageRental'
+    console.log(pack);
+    
+    const count = await getComparePackCount(event_id,column_id,service)
+    console.log(count);
+    if (count===0) {
+        const pack = await insertPackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }else{
+        const pack = await updatePackageToCompare(event_id,service,package_id,column_id)
+        res.json(pack.rows[0].column_id)
+    }
+
+
+    
+
+
+})
+
+const addPackToEvent = asyncHandler(async(req,res)=>{
+    const package_id=req.body.package_id
+    const event_id= req.body.event_id
+    const service= req.body.service
+    console.log(package_id);
+    console.log(event_id);
+    console.log(service);
+    const isSelected = await isSelectedPackage(event_id,package_id,service)
+    console.log(isSelected);
+    if (isSelected==='false') {
+        const update = await addPackageToEvent(event_id,package_id,service)
+        res.json('true')
+    }else{
+        
+        const notification=await getNotificationByEventAndPackage(service,event_id)
+        if (notification.status==='Accept') {
+            res.json('false')
+        }else{
+            const deleted = await deleteNotificationByEventAndPackage(service,event_id);
+            const update = await addPackageToEvent(event_id,package_id,service)
+            res.json('true')
+
+        }
+    }
+
+})
+
+export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare,addCakePackageToCompareTable, getCompareCakePackage, viewCateringPackage,viewdecoPackage,viewDecoPackageDetails,addDecoPackToCompare,addDecoPackageToCompareTable, getCompareDecoPackage , viewCateringsPackageDetails, viewPhotographyPackage, viewPhotographiesPackageDetails, viewPhotographyPackageDetails, viewSoundAndLightPackage, viewSoundAndLightsPackageDetails, viewSoundAndLightPackageDetails, viewStageRentalPackage, viewStageRentalsPackageDetails, viewStageRentalPackageDetails, addPhotographyPackToCompare, getComparePhotographyPackage, getCompareCateringPackage, addCateringPackToCompare, addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,addCateringPackageToCompareTable,addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent } 

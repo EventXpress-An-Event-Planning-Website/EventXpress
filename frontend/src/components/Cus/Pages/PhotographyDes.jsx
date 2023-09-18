@@ -16,7 +16,7 @@ import { useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import { toast } from "react-toastify";
 import photo9 from '../../../assets/images/photo9.png';
 import photo10 from '../../../assets/images/photo10.png';
 import photo11 from '../../../assets/images/photo11.png';
@@ -48,6 +48,35 @@ const PhotographyDes = () => {
     const closeModal = () => {
         setShowModal(false);
     };
+    const HandleAddToEvent=()=>{
+        const eventData = {
+          event_id: event_id,
+          package_id: photographyPackage[0].package_id,
+          service:'Photography' // Modify this to match your data structure
+          // ... Add other necessary data for your POST request
+        };
+    
+        axios.post("/api/customer/addCakePackToEvent", eventData)
+              .then((response) => {
+                const packCount = response.data;
+                console.log(packCount);
+    
+                if(packCount===false){
+                  toast.error("You Doesn't Can Update Selected Package. Your Request Already Accept.")
+                  navigate(`/customer/eventdetails?id=${event_id}`);
+                }else{
+                  toast.success("Package Added Successfully And Please Select Other Packages And Send Notification.")
+                  navigate(`/customer/eventdetails?id=${event_id}`);
+                }
+                // console.log(packCount);
+                // Perform navigation after successful POST
+                
+              })
+              .catch((error) => {
+                console.error("Error adding event:", error);
+                // Handle error if needed
+              });
+      }
     const HandleAddCompare = () => {
         let pack = Number(comparePackages);
         //   console.log(pack);
@@ -66,7 +95,7 @@ const PhotographyDes = () => {
                     const packCount = response.data;
                     //   console.log(packCount);
                     // Perform navigation after successful POST
-                    navigate(`/Photography?event_id=${event_id}&packageCount=${packCount}`);
+                    navigate(`/customer/event/PhotographyCompare?event_id=${event_id}`);
                 })
                 .catch((error) => {
                     console.error("Error adding event:", error);
@@ -267,7 +296,7 @@ const PhotographyDes = () => {
 
                                                         <Button
                                                             variant="primary"
-
+                                                            onClick={HandleAddToEvent}
                                                         >
                                                             Add to Event
                                                         </Button>
@@ -295,7 +324,7 @@ const PhotographyDes = () => {
                                                         <Button
                                                             variant="primary"
                                                             className="compare-btns"
-                                                        //   onClick={handleAddToEvent}
+                                                            onClick={HandleAddToEvent}
                                                         >
                                                             Add to Event
                                                         </Button>

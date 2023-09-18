@@ -36,7 +36,7 @@ const createEvent = asyncHandler(
         createUser.rows[0].event_id,
         'Venue',
         'Catering',
-        'Cake',
+        'Cakes',
         'Photography',
         'Decoration',
         'SoundAndLight'

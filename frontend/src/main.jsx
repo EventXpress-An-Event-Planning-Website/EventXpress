@@ -82,6 +82,7 @@ import CompareStageRentalPackages from './screens/Customer/CompareStageRentalPac
 
 import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
 import PackageRequest from './components/Admin/PackageRequest.jsx'
+import CompareDecoPackages from './screens/Customer/CompareDecoPackages.jsx'
 
 
 const router = createBrowserRouter(
@@ -144,7 +145,12 @@ const router = createBrowserRouter(
         <Route path="/customer/event/Photography" element={<Photography />} />
         <Route path="/customer/event/PhotographyDes" element={<PhotographyDes />} />
         <Route path="/customer/event/SoundAndLight" element={<SoundAndLight />} />
-        <Route path="/customer/event/SoundAndLightDes" element={<SoundAndLightDes />} />        <Route path="/customer/PredefinePackage/ServiceProvider-profile" element={<ProfileScreen />} />
+        <Route path="/customer/event/SoundAndLightDes" element={<SoundAndLightDes />} />
+        <Route path="/customer/PredefinePackage/ServiceProvider-profile" element={<ProfileScreen />} />
+        <Route path="/customer/event/CakeCompare" element={<CompareCakePackages/>}/>
+        <Route path="/customer/event/DecoCompare" element={<CompareDecoPackages/>}/>
+        <Route path="/customer/event/SoundAndLightDes" element={<SoundAndLightDes />} />        
+        <Route path="/customer/PredefinePackage/ServiceProvider-profile" element={<ProfileScreen />} />
         <Route path="/customer/event/CakeCompare" element={<CompareCakePackages />} />
         <Route path="/customer/event/PhotographyCompare" element={<ComparePhotographyPackages />} />
         <Route path="/customer/event/CateringCompare" element={<CompareCateringPackages />} />

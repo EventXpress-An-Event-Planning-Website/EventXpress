@@ -194,3 +194,17 @@ CREATE TABLE public.compareservices
     column_id integer,
     PRIMARY KEY (compare_id)
 );
+
+
+CREATE TABLE public.customer_notification
+(
+    notify_id serial,
+    event_id integer,
+    user_id integer,
+    package_id VARCHAR(255),
+    send_user_id integer,
+    message text,
+    status text,
+    service text,
+    PRIMARY KEY (notify_id)
+);
