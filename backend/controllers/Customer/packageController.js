@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import path from 'path'
-import {viewVenuePackagesModel,viewVenuePackageDetailsUserId} from '../../models/venuePackageModel.js'
+import {viewVenuePackagesModel,viewVenuePackageDetailsUserId,viewVenuPackageDetails} from '../../models/venuePackageModel.js'
 import { getNoOfComparepackages,insertPackageToCompare,getComparePack,getComparePackCount,updatePackageToCompare } from '../../models/compareServicesModel.js'
 import { viewCakePackagesModel,viewCakePackageDetails } from '../../models/cakePackageModel.js'
 import { viewDecorationPackagesModel, viewDecorationPackageDetails } from '../../models/decorationPackageModel.js'
@@ -10,6 +10,7 @@ import { viewSoundAndLightPackagesModel, viewSoundAndLightPackageDetails } from 
 import { viewStageRentalPackagesModel, viewStageRentalPackageDetails } from '../../models/stageRentalPackageModel.js'
 import { isSelectedPackage,addPackageToEvent } from '../../models/todoListModel.js'
 import { getNotificationByEventAndPackage,deleteNotificationByEventAndPackage } from '../../models/customer_notificationModel.js'
+import { getPreDefinedPackage,getPreDefinedPackageDetails,getPreDefinedPackageInfo } from '../../models/preDefinedPackageModel.js'
 
 // import Venue from '../../../frontend/src/components/Cus/Pages/Venue.jsx'
 
@@ -540,4 +541,60 @@ const addPackToEvent = asyncHandler(async(req,res)=>{
 
 })
 
-export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare,addCakePackageToCompareTable, getCompareCakePackage, viewCateringPackage,viewdecoPackage,viewDecoPackageDetails,addDecoPackToCompare,addDecoPackageToCompareTable, getCompareDecoPackage , viewCateringsPackageDetails, viewPhotographyPackage, viewPhotographiesPackageDetails, viewPhotographyPackageDetails, viewSoundAndLightPackage, viewSoundAndLightsPackageDetails, viewSoundAndLightPackageDetails, viewStageRentalPackage, viewStageRentalsPackageDetails, viewStageRentalPackageDetails, addPhotographyPackToCompare, getComparePhotographyPackage, getCompareCateringPackage, addCateringPackToCompare, addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,addCateringPackageToCompareTable,addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent } 
+const viewBirthdayPackage = asyncHandler(async(req,res)=>{
+    const event_type = req.query.event_type;
+
+    const getPreDefinedPackageDetails = await getPreDefinedPackage(event_type);
+    // console.log(getPreDefinedPackageDetails);
+    res.json(getPreDefinedPackageDetails)
+
+
+})
+
+const viewBirthdayPackageDetails = asyncHandler(async(req,res)=>{
+    const package_id = req.query.package_id;
+
+    const getPreDefinedPackageDetail = await getPreDefinedPackageDetails(package_id) 
+    // console.log(getPreDefinedPackageDetail);
+    const venue_id = getPreDefinedPackageDetail[0].venue_id
+    const catering_id = getPreDefinedPackageDetail[0].catering_id
+    const cake_id = getPreDefinedPackageDetail[0].cake_id
+    const photography_id = getPreDefinedPackageDetail[0].photography_id
+    const stageRental_id = getPreDefinedPackageDetail[0].stagerental_id
+    const deco_id = getPreDefinedPackageDetail[0].deco_id
+    const soundAndLight_id = getPreDefinedPackageDetail[0].soundandlight_id
+
+    const venueDetails = await viewVenuPackageDetails(venue_id)
+    const cateringDetails = await viewCateringPackageDetails(catering_id)
+    const cakeDetails = await viewCakePackageDetails(cake_id)
+    const photographyDetails = await viewPhotographyPackageDetails(photography_id)
+    const stagerRentalDetails = await viewStageRentalPackageDetails(stageRental_id)
+    const decorationDetails = await viewDecorationPackageDetails(deco_id)
+    const soundAndLightDetails = await viewSoundAndLightPackageDetails(soundAndLight_id)
+    console.log();
+    const array=[]
+    array.push(venueDetails.rows);
+    array.push(cateringDetails.rows);
+    array.push(cakeDetails.rows);
+    array.push(photographyDetails.rows);
+    array.push(stagerRentalDetails.rows);
+    array.push(decorationDetails.rows);
+    array.push(soundAndLightDetails.rows);
+    res.json(array)
+
+})
+
+const viewPreBirthdayPackageDetails = asyncHandler(async(req,res)=>{
+    const package_id = req.query.package_id;
+
+    const getPreDefinedPackageDetail = await getPreDefinedPackageInfo(package_id) 
+})
+
+export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, 
+    addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare,addCakePackageToCompareTable, getCompareCakePackage, 
+    viewCateringPackage,viewdecoPackage,viewDecoPackageDetails,addDecoPackToCompare,addDecoPackageToCompareTable, getCompareDecoPackage , 
+    viewCateringsPackageDetails, viewPhotographyPackage, viewPhotographiesPackageDetails, viewPhotographyPackageDetails, viewSoundAndLightPackage, 
+    viewSoundAndLightsPackageDetails, viewSoundAndLightPackageDetails, viewStageRentalPackage, viewStageRentalsPackageDetails, 
+    viewStageRentalPackageDetails, addPhotographyPackToCompare, getComparePhotographyPackage, getCompareCateringPackage, addCateringPackToCompare, 
+    addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,addCateringPackageToCompareTable,
+    addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent,viewBirthdayPackage,viewBirthdayPackageDetails,viewPreBirthdayPackageDetails } 
