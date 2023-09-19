@@ -4,7 +4,15 @@ const router = express.Router()
 
 import { createevent,getEvent, getEventDetails,addEventToDo, viewEventToDo } from '../controllers/Customer/createEventController.js'
 import {protect}  from '../middleware/authMiddleware.js'
-import { viewVenuePackage,viewVenuePackageDetails,addVenuePack,addVenuePackToCompare,getPackageCount,getComparePackage,addPackageToCompareTable,viewCakePackage,viewCakesPackageDetails,addCakePackToCompare,getCompareCakePackage,addCakePackageToCompareTable,viewdecoPackage,viewDecoPackageDetails,addDecoPackToCompare,addDecoPackageToCompareTable,getCompareDecoPackage, viewCateringPackage, viewCateringsPackageDetails, viewPhotographyPackage, viewSoundAndLightPackage, viewSoundAndLightPackageDetails, viewStageRentalPackage, viewStageRentalsPackageDetails, addPhotographyPackToCompare, getComparePhotographyPackage, viewPhotographiesPackageDetails, getCompareCateringPackage, addCateringPackToCompare, viewSoundAndLightsPackageDetails, addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,addCateringPackageToCompareTable,addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent } from '../controllers/Customer/packageController.js'
+import { viewVenuePackage,viewVenuePackageDetails,addVenuePack,addVenuePackToCompare,
+    getPackageCount,getComparePackage,addPackageToCompareTable,viewCakePackage,viewCakesPackageDetails,
+    addCakePackToCompare,getCompareCakePackage,addCakePackageToCompareTable,viewdecoPackage,viewDecoPackageDetails,
+    addDecoPackToCompare,addDecoPackageToCompareTable,getCompareDecoPackage, viewCateringPackage, viewCateringsPackageDetails, 
+    viewPhotographyPackage, viewSoundAndLightPackage, viewSoundAndLightPackageDetails, viewStageRentalPackage, viewStageRentalsPackageDetails, 
+    addPhotographyPackToCompare, getComparePhotographyPackage, viewPhotographiesPackageDetails, getCompareCateringPackage, addCateringPackToCompare, 
+    viewSoundAndLightsPackageDetails, addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,
+    addCateringPackageToCompareTable,addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent,
+    viewBirthdayPackage,viewBirthdayPackageDetails, viewPreBirthdayPackageDetails} from '../controllers/Customer/packageController.js'
 
 // import { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare, getCompareCakePackage} from '../controllers/Customer/packageController.js'
 
@@ -63,5 +71,8 @@ router.get('/CompareStageRental', getCompareStageRentalPackage)
 router.post('/addStageRentalPackToCompareTable', addStageRentalPackageToCompareTable )
 
 router.post('/addCakePackToEvent', addPackToEvent )
+router.get('/viewBirthdayPackage', viewBirthdayPackage)
+router.get('/viewBirthdayPackageDetails', viewBirthdayPackageDetails)
+router.get('/viewPreBirthdayPackageDetails', viewPreBirthdayPackageDetails)
 
 export default router

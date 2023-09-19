@@ -113,6 +113,8 @@ CREATE TABLE todolist
     PRIMARY KEY (todo_id)
 );
 
+ALTER Table todolist add column selected_package_id varchar(255);
+
 CREATE TABLE cakepackage (
     userid INTEGER, 
     package_id VARCHAR(255),
@@ -207,4 +209,23 @@ CREATE TABLE public.customer_notification
     status text,
     service text,
     PRIMARY KEY (notify_id)
+);
+
+CREATE TABLE public.predefinedpackage
+(
+    userid integer NOT NULL,
+    predefined_id character varying(255) NOT NULL,
+    venue_id character varying(255),
+    catering_id character varying(255),
+    cake_id character varying(255),
+    deco_id character varying(255),
+    stagerental_id character varying(255),
+    soundandlight_id character varying(255),
+    photography_id character varying(255),
+    pckg_img text,
+    prepackage_type varchar(255),
+    prepackage_title varchar(255),
+    prepackage_description varchar(255),
+    prepackage_discount integer,
+    PRIMARY KEY (predefined_id)
 );
