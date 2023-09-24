@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../../Cus/PrePackages/Sidebar";
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
@@ -14,46 +14,104 @@ import cake4 from '../../../assets/images/cake4.jpg';
 import venue5 from '../../../assets/images/venue5.jpg';
 import cake9 from '../../../assets/images/cake9.png';
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import axios from "axios"; // making HTTP requests
 
 const BirthdayDes = () => {
 
-    const birthdayDesData = [
-        {
-            id: 1,
-            image: cake9,
-            pckgName: 'Black Forest Cake',
-            title: 'by Cake Talent',
-            link: '/CakeDes'
-        },
-        {
-            id: 2,
-            image: deco9,
-            pckgName: '21st Birthday Package',
-            title: 'by Party House Decor',
-            link: '/DecorationDes'
-        },
-        {
-            id: 3,
-            image: sound5,
-            pckgName: 'DJ package',
-            title: 'by Pure AV',
-            link: '/SoundAndLightDes'
-        },
-        {
-            id: 4,
-            image: photo4,
-            pckgName: 'Silver Package',
-            title: 'by Capturra',
-            link: '/PhotographyDes'
-        },
-        {
-            id: 5,
-            image: catering4,
-            pckgName: 'Birthday Package',
-            title: 'by Classics catering',
-            link: '/CateringDes'
+    const location = useLocation() // access current location in the browser's url
+    const queryParams = new URLSearchParams(location.search);
+    const package_id = queryParams.get('package_id')
+    const event_id = queryParams.get('event_id')
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState("")
+    const [birthdayDesData, setBirthdayDesData] = useState([])
+    useEffect(() => {
+
+        const fetchedData = (async () => {
+
+            axios.get(`/api/customer/viewPreBirthdayPackageDetails?package_id=${package_id}`)
+                .then(response => {
+                    setBirthdayDesData(response.data)
+                    setLoading(false);
+                    // console.log(cakePackage);
+
+
+                })
+                .catch(error => {
+                    setError(error);
+                    setLoading(false);
+                });
+
+
+
+        })
+        const fetchedpackData = (async () => {
+
+            axios.get(`/api/customer/viewBirthdayPackageDetails?package_id=${package_id}`)
+                .then(response => {
+                    setBirthdayDesData(response.data)
+                    setLoading(false);
+                    // console.log(cakePackage);
+
+
+                })
+                .catch(error => {
+                    setError(error);
+                    setLoading(false);
+                });
+
+
+
+        })
+
+        if (event_id === null) {
+            fetchedData()
+            fetchedpackData()
+
+        } else {
+            fetchedData()
+            fetchedpackData()
         }
-    ];
+    }, [loading]);
+    console.log(birthdayDesData);
+    // const birthdayDesData = [
+    //     {
+    //         id: 1,
+    //         image: cake9,
+    //         pckgName: 'Black Forest Cake',
+    //         title: 'by Cake Talent',
+    //         link: '/CakeDes'
+    //     },
+    //     {
+    //         id: 2,
+    //         image: deco9,
+    //         pckgName: '21st Birthday Package',
+    //         title: 'by Party House Decor',
+    //         link: '/DecorationDes'
+    //     },
+    //     {
+    //         id: 3,
+    //         image: sound5,
+    //         pckgName: 'DJ package',
+    //         title: 'by Pure AV',
+    //         link: '/SoundAndLightDes'
+    //     },
+    //     {
+    //         id: 4,
+    //         image: photo4,
+    //         pckgName: 'Silver Package',
+    //         title: 'by Capturra',
+    //         link: '/PhotographyDes'
+    //     },
+    //     {
+    //         id: 5,
+    //         image: catering4,
+    //         pckgName: 'Birthday Package',
+    //         title: 'by Classics catering',
+    //         link: '/CateringDes'
+    //     }
+    // ];
     const navigate = useNavigate()
 
     const handleViewServiceProvider=()=>{
@@ -72,19 +130,21 @@ const BirthdayDes = () => {
                         {/* <Container> */}
                         <Row>
                             {birthdayDesData.map((birthdayDes) => (
+                                birthdayDes[0] ===undefined ? null:(
                                 <Col sm={2} className="b-pcg-img">
                                     <Card style={{ width: '15rem' }} className="mb-2" >
                                         <Card.Header className="pckg-header">{birthdayDes.pckgName}</Card.Header>
                                         <Card.Body>
+                                            
                                             <Link to={birthdayDes.link}>
-                                                <Card.Img className="s-img" variant="top" src={birthdayDes.image} />
+                                                <Card.Img className="s-img" variant="top" src={`../../src/assets/images/uploads/${birthdayDes[0].sp_images}`} />
                                             </Link>
                                             <Card.Text className="s-text">{birthdayDes.title}</Card.Text>
 
                                         </Card.Body>
                                     </Card>
 
-                                </Col>
+                                </Col>)
                             ))}
                         </Row>
                         <Row className="b-description">

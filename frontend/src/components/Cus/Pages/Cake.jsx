@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../Sidebar";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -17,73 +17,73 @@ import cake8 from '../../../assets/images/cake8.jpg';
 import cake9 from '../../../assets/images/cake9.png';
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
+import axios from "axios"; // making HTTP requests
 
 
 const Cake = () => {
 
-    const location = useLocation()
+    const location = useLocation() // access current location in the browser's url
     const queryParams = new URLSearchParams(location.search);
-    const package_Count= Number(queryParams.get('packageCount'))
-    const event_id= queryParams.get('event_id')
-    const column_id =Number(queryParams.get('column'))
-    const [selectedCount,setSelectedCount]=useState(package_Count)
-    const [loading,setLoading]=useState(true)
-    const [cakePackage,setCakePackage]=useState([])
-    const [cakesData,setCakesData]=useState([])
-    const [error,setError]=useState("")
+    const package_Count = Number(queryParams.get('packageCount'))
+    const event_id = queryParams.get('event_id')
+    const column_id = Number(queryParams.get('column'))
+    const [selectedCount, setSelectedCount] = useState(package_Count)
+    const [loading, setLoading] = useState(true)
+    const [cakePackage, setCakePackage] = useState([])
+    const [cakesData, setCakesData] = useState([])
+    const [error, setError] = useState("")
 
     useEffect(() => {
 
-        const fetchedData=(async()=>{
+        const fetchedData = (async () => {
 
             axios.get(`/api/customer/viewCakePackage`)
                 .then(response => {
                     setCakePackage(response.data)
                     setLoading(false);
-                    console.log(cakePackage);
-                    
-                
+                    // console.log(cakePackage);
+
+
                 })
                 .catch(error => {
                     setError(error);
                     setLoading(false);
                 });
-            
-            
-            
+
+
+
         })
 
-        const fetchedPackCount=(async()=>{
-            const service ='Cake'
+        const fetchedPackCount = (async () => {
+            const service = 'Cake'
             axios.get(`/api/customer/getPackageCount?event_id=${event_id}&service=${service}`)
                 .then(response => {
                     setSelectedCount(response.data)
                     setLoading(false);
-                  
-                    
-                
+
+
+
                 })
                 .catch(error => {
                     setError(error);
                     setLoading(false);
                 });
-            
-            
-            
+
+
+
         })
-        if(event_id===null){
+        if (event_id === null) {
             fetchedData()
             setCakesData(cakePackage)
-            
-        }else{
+
+        } else {
             fetchedData()
             setCakesData(cakePackage)
             fetchedPackCount()
         }
-      }, [loading]);
+    }, [loading]);
 
-
+      
     // const cakesData = [
     //     {
     //         id: 1,
@@ -145,54 +145,56 @@ const Cake = () => {
 
     return (
         <>
-        {event_id ===null ?
-            <div style={{ "display": "flex" }}>
-                <Sidebar />
-                <div className="row custom-row">
-                <FilterPackages/>
-                    <h1 className="pckg-name">Cake Packages</h1>
+            {event_id === null ?
+                <div style={{ "display": "flex" }}>
+                    <Sidebar />
+                    <div className="row custom-row">
+                        <FilterPackages />
+                        <h1 className="pckg-name">Cake Packages</h1>
 
-                    {cakesData.map((cake) => (
-                        <div className="col-md-3 custom-col" key={cake.package_id}>
+                        {cakesData.map((cake) => (
+                            <div className="col-md-3 custom-col" key={cake.package_id}>
 
-                            <Card className="s-card" style={{ width: '18rem' }}>
-                                <Card.Img className="s-img" variant="top" src={`../../src/assets/images/uploads/${cake.sp_images}`} />
-                                <Card.Body>
-                                    <Card.Title className="s-main-title">{cake.package_title}</Card.Title>
-                                    <Card.Text className="s-main-title-pckg">{cake.package_busname}</Card.Text>
-                                    <Card.Text className="s-text">{cake.package_description}</Card.Text>
-                                    <Link to={`/CakeDes?pac=${cake.package_id}`}>
-                                        <Button className="s-btn" variant="primary">Read More</Button>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    ))}
-                </div>
-            </div>:<div style={{ "display": "flex" }}>
-               
-                <div className="row custom-row" style={{marginLeft:'3%'}}>
-                <FilterPackages/>
-                    <h1 className="pckg-name">Cake Packages</h1>
+                                <Card className="s-card" style={{ width: '18rem' }}>
+                                    <Card.Img className="s-img" variant="top" src={`../../src/assets/images/uploads/${cake.sp_images}`} />
+                                    <Card.Body>
+                                        <Card.Title className="s-main-title">{cake.package_title}</Card.Title>
+                                        <Card.Text className="s-main-title-pckg">by {cake.package_busname}</Card.Text>
+                                        <Card.Text className="s-main-title-pckg-price">LKR {cake.package_price}.00</Card.Text>
+                                        <Card.Text className="s-text">{cake.package_description}</Card.Text>
+                                        <Link to={`/CakeDes?pac=${cake.package_id}`}>
+                                            <Button className="s-btn" variant="primary">Read More</Button>
+                                        </Link>
+                                    </Card.Body>
+                                </Card>
+                            </div>
+                        ))}
+                    </div>
+                </div> : <div style={{ "display": "flex" }}>
 
-                    {cakesData.map((cake) => (
-                        <div className="col-md-3 custom-col" key={cake.package_id}>
+                    <div className="row custom-row" style={{ marginLeft: '3%' }}>
+                        <FilterPackages />
+                        <h1 className="pckg-name">Cake Packages</h1>
 
-                            <Card className="s-card" style={{ width: '18rem' }}>
-                                <Card.Img className="s-img" variant="top" src={cake.sp_images} />
-                                <Card.Body>
-                                    <Card.Title className="s-main-title">{cake.package_title}</Card.Title>
-                                    <Card.Text className="s-main-title-pckg">{cake.package_busname}</Card.Text>
-                                    <Card.Text className="s-text">{cake.package_description}</Card.Text>
-                                    <Link to={`/customer/event/CakeDes?event_id=${event_id}&packageCount=${selectedCount}&column=${column_id}&pac=${cake.package_id}`}>
-                                        <Button className="s-btn" variant="primary">Read More</Button>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    ))}
-                </div>
-            </div>}
+                        {cakesData.map((cake) => (
+                            <div className="col-md-3 custom-col" key={cake.package_id}>
+
+                                <Card className="s-card" style={{ width: '18rem' }}>
+                                    <Card.Img className="s-img" variant="top" src={`../../src/assets/images/uploads/${cake.sp_images}`} />
+                                    <Card.Body>
+                                        <Card.Title className="s-main-title">{cake.package_title}</Card.Title>
+                                        <Card.Text className="s-main-title-pckg">by {cake.package_busname}</Card.Text>
+                                        <Card.Text className="s-main-title-pckg-price">LKR {cake.package_price}.00</Card.Text>
+                                        <Card.Text className="s-text">{cake.package_description}</Card.Text>
+                                        <Link to={`/customer/event/CakeDes?event_id=${event_id}&packageCount=${selectedCount}&column=${column_id}&pac=${cake.package_id}`}>
+                                            <Button className="s-btn" variant="primary">Read More</Button>
+                                        </Link>
+                                    </Card.Body>
+                                </Card>
+                            </div>
+                        ))}
+                    </div>
+                </div>}
         </>
     );
 };

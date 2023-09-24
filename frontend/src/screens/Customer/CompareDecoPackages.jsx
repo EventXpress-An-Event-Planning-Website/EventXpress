@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-const CompareCakePackages = () => {
+const CompareDecoPackages = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const event_id = queryParams.get("event_id");
@@ -15,7 +15,7 @@ const CompareCakePackages = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/customer/CompareCake?event_id=${event_id}`)
+      .get(`/api/customer/CompareDeco?event_id=${event_id}`)
       .then((response) => {
         setData(response.data);
         setLoading(false);
@@ -25,7 +25,7 @@ const CompareCakePackages = () => {
         setLoading(false);
       });
   }, []);
-  // console.log(data);
+  console.log(data);
   const package1 = [{ id: 1, imag: "birthday1.jpg", location: "Galle" }];
   const navigate = useNavigate();
 
@@ -41,37 +41,37 @@ const CompareCakePackages = () => {
         <div>
           {/* <ViewPackagesCarrousal /> */}
           <h2 className="compare-title">
-            <b>Comparing Selected Cake Packages</b>
+            <b>Comparing Selected Decorations</b>
           </h2>
         </div>
         <div>
           <table className="compare-table">
             <tr className="compare-table-row">
-              <th className="compare-table-header"></th>
+              <th className="compare-table-header">Package</th>
               <td className="compare-table-data">
                 <Link
-                  to={`/customer/event/Cakes?event_id=${event_id}&packageCount=2&column=1`}
+                  to={`/customer/event/Decoration?event_id=${event_id}&packageCount=2&column=1`}
                 >
                   <Button>Add Package To Compare</Button>
                 </Link>
               </td>
               <td className="compare-table-data">
                 <Link
-                  to={`/customer/event/Cakes?event_id=${event_id}&packageCount=2&column=2`}
+                  to={`/customer/event/Decoration?event_id=${event_id}&packageCount=2&column=2`}
                 >
                   <Button>Add Package To Compare</Button>
                 </Link>
               </td>
               <td className="compare-table-data">
                 <Link
-                  to={`/customer/event/Cakes?event_id=${event_id}&packageCount=2&column=3`}
+                  to={`/customer/event/Decoration?event_id=${event_id}&packageCount=2&column=3`}
                 >
                   <Button>Add Package To Compare</Button>
                 </Link>
               </td>
             </tr>
             <tr className="compare-table-row">
-              <th className="compare-table-header">Package Name</th>
+              <th className="compare-table-header">Name</th>
 
               <td className="compare-table-data">{data[0].package_title}</td>
               <td className="compare-table-data">{data[1].package_title}</td>
@@ -82,7 +82,7 @@ const CompareCakePackages = () => {
               )}
             </tr>
             <tr className="compare-table-row">
-              <th className="compare-table-header"></th>
+              <th className="compare-table-header">Image</th>
               <td className="compare-table-data">
                 <Image
                   src={`../../src/assets/images/uploads/${data[0].sp_images}`}
@@ -114,12 +114,12 @@ const CompareCakePackages = () => {
               </td>
             </tr>
             <tr className="compare-table-row">
-              <th className="compare-table-header">Service Provider</th>
-              <td className="compare-table-data">{data[0].package_busname}</td>
-              <td className="compare-table-data">{data[1].package_busname}</td>
+              <th className="compare-table-header">Package Name</th>
+              <td className="compare-table-data">{data[0].package_title}</td>
+              <td className="compare-table-data">{data[1].package_title}</td>
               {data[2] !== undefined ? (
                 <td className="compare-table-data">
-                  {data[2].package_busname}
+                  {data[2].package_title}
                 </td>
               ) : (
                 <td className="compare-table-data"></td>
@@ -210,4 +210,4 @@ const CompareCakePackages = () => {
   }
 };
 
-export default CompareCakePackages;
+export default CompareDecoPackages;
