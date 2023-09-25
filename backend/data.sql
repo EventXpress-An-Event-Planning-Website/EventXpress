@@ -229,3 +229,9 @@ CREATE TABLE public.predefinedpackage
     prepackage_discount integer,
     PRIMARY KEY (predefined_id)
 );
+
+
+-- service provider table add column for admin verification
+ALTER TABLE serviceProvider
+ADD COLUMN isVerifiedByAdmin BOOLEAN DEFAULT FALSE;
+

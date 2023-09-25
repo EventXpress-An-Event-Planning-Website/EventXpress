@@ -12,7 +12,6 @@ import { useEffect } from "react";
 
 function UsersMain() {
   const [key, setKey] = useState("tab1");
-  const [data, setData] = useState([]);
   const [serviceProviders, setServiceProviders] = useState([]);
   const [customer, setCustomer] = useState([]);
   
@@ -36,9 +35,44 @@ function UsersMain() {
   };
 
 
+  const fetchServiceProvidersData = () => {
+    axios
+      .get(`/api/admin/getAllServiceProviders`)
+      .then((response) => {
+        setServiceProviders(response.data.serviceProviders);
+        
+        // console.log(data);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  };
+
+  const fetchPendingServiceProvidersData = () => {
+    const [pendingServiceProvidersData, setPendingServiceProvidersData] = useState([]);
+
+    useEffect(() => {
+    axios
+      .get(`/api/admin/getPendingServiceProviders`)
+      .then((response) => {
+        setServiceProviders(response.data.serviceProviders);
+        
+        // console.log(data);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+  };
+
+
   const handleTabChange = (selectedKey) => {
     setKey(selectedKey);
-    if (selectedKey === "tab3") {
+    if (selectedKey === "tab2") {
+      fetchServiceProvidersData();
+    } else if (selectedKey === "tab3") {
       fetchCustomerData();
     }
   };
@@ -142,14 +176,25 @@ function UsersMain() {
               </table>
             </div>
           </Tab>
+
+
+
+          {console.log(serviceProviders)}
+
           <Tab eventKey="tab2" title="Service Providers">
             <div className="userRequestsBox">
-              <table className="admin-table">
-                <tr className="tableRow">
+
+            {customer.length === 0 ? (
+                <p>Loading...</p>
+              ) : (
+                
+                <table className="admin-table">
+                  {serviceProviders.map((serviceProviders) => (
+                  <tr className="tableRow">
                   <td className="userTableContent"></td>
                   <td className="userTableContent"></td>
                   <td className="userTableContent">
-                    Sandun Jayawikrama
+                    {serviceProviders.name}
                     <br />
                     <span style={{ fontSize: "8px" }}>Photographer</span>
                   </td>
@@ -162,65 +207,14 @@ function UsersMain() {
                       View Profile
                     </Button>
                   </td>
+
+                  
                 </tr>
 
-                <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    Kasun Weerasinghe
-                    <br />
-                    <span style={{ fontSize: "8px" }}>Photographer</span>
-                  </td>
-                  <td>
-                    <Button
-                      variant="primary"
-                      className="viewButton"
-                      style={{ width: "100px" }}
-                    >
-                      View Profile
-                    </Button>
-                  </td>
-                </tr>
+                  ))}
+                </table>
+              )}
 
-                <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    Sandaru Jayasooriya
-                    <br />
-                    <span style={{ fontSize: "8px" }}>Photographer</span>
-                  </td>
-                  <td>
-                    <Button
-                      variant="primary"
-                      className="viewButton"
-                      style={{ width: "100px" }}
-                    >
-                      View Profile
-                    </Button>
-                  </td>
-                </tr>
-
-                <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    Achini Perera
-                    <br />
-                    <span style={{ fontSize: "8px" }}>Photographer</span>
-                  </td>
-                  <td>
-                    <Button
-                      variant="primary"
-                      className="viewButton"
-                      style={{ width: "100px" }}
-                    >
-                      View Profile
-                    </Button>
-                  </td>
-                </tr>
-              </table>
             </div>
           </Tab>
 
