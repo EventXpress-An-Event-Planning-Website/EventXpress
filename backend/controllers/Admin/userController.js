@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler'
-import { getCustomers, getPendingServiceProviders, getServiceProviders } from '../../models/adminModel.js'
+import { getCustomers, getPendingServiceProviders, getServiceProviders,getCountOfCustomers } from '../../models/adminModel.js'
 
 const getAllCustomersByAdmin = asyncHandler(async (req, res) => {
     const customers = await getCustomers()
@@ -37,6 +37,18 @@ const getPendingServiceProvidersByAdmin = asyncHandler(async (req, res) => {
     }
 })
 
+const getAllCustomerCount = asyncHandler(async (req, res) => {
+  const customerCount = await getCountOfCustomers()
+  if (customerCount) {
+      res.status(200).json({customerCount
+      })
+    } else {
+      res.status(400).json({
+        message: 'Invalid verification token or token expired',
+      })
+    }
+})
+
 export {
-    getAllCustomersByAdmin, getAllServiceProvidersByAdmin , getPendingServiceProvidersByAdmin
+    getAllCustomersByAdmin, getAllServiceProvidersByAdmin , getPendingServiceProvidersByAdmin, getAllCustomerCount
 }

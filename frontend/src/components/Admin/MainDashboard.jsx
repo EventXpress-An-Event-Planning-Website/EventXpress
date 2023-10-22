@@ -6,6 +6,7 @@ import { FaRegUser } from "react-icons/fa";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
 import { PureComponent } from "react";
 import {
   BarChart,
@@ -18,6 +19,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import card from "@material-tailwind/react/theme/components/card";
 
 const MainDashboard = () => {
   const data = [
@@ -68,68 +70,77 @@ const MainDashboard = () => {
     <div className="main">
       <h2 className="title">Hello Pabodi !</h2>
       <div className="top">
+        {/* Revenue chart start here */}
         <div className="topRightChart">
-          <div className="chartTopic">
-            <h4 style={{ fontWeight: "bold", color: "#6D004F" }}>Revenue</h4>
-          </div>
-          <ResponsiveContainer width="80%" height="80%">
-            <BarChart
-              width={400}
-              height={300}
-              data={data}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
+          <Card>
+            <Card.Header
+              as="h5"
+              style={{ fontWeight: "bold", color: "#6D004F" }}
             >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="Income" fill="#6D004F" />
-            </BarChart>
-          </ResponsiveContainer>
-          <Link to="/Revenue">
-            <Button variant="primary" className="ticketButton" size="sm">
-              View
-            </Button>
-          </Link>
+              Revenue
+            </Card.Header>
+            <Card.Body>
+              <ResponsiveContainer width="80%" height="80%">
+                <BarChart
+                  width={400}
+                  height={300}
+                  data={data}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="Income" fill="#6D004F" />
+                </BarChart>
+              </ResponsiveContainer>
+              <Link to="/Revenue">
+                <Button variant="primary">Revenue</Button>
+              </Link>
+            </Card.Body>
+          </Card>
         </div>
+        {/* Revenue chart end here */}
+
+        {/* complains and support tab start here */}
         <div className="topLeftTickets">
           <div className="ticketsTopic">
             <h3 style={{ fontWeight: "bold" }}>Complains & Support</h3>
           </div>
-          <Link to='/AdminSupportView'>
-          <div className="ticketChat">
-            <img className="dp" src={dp} />
-            <div className="message">
-              {" "}
-              need help to do the payment for adding packaged. can you...
+          <Link to="/AdminSupportView">
+            <div className="ticketChat">
+              <img className="dp" src={dp} />
+              <div className="message">
+                {" "}
+                need help to do the payment for adding packaged. can you...
+              </div>
             </div>
-          </div>
           </Link>
-          <Link to='/AdminSupportView'>
-          <div className="ticketChat">
-            <img className="dp" src={dp} />
-            <div className="message">
-              {" "}
-              need help to do the payment for adding packaged. can you...
+          <Link to="/AdminSupportView">
+            <div className="ticketChat">
+              <img className="dp" src={dp} />
+              <div className="message">
+                {" "}
+                need help to do the payment for adding packaged. can you...
+              </div>
             </div>
-          </div>
           </Link>
-          <Link to='/AdminSupportView'>
-          <div className="ticketChat">
-            <img className="dp" src={dp} />
-            <div className="message">
-              {" "}
-              need help to do the payment for adding packaged. can you...
+          <Link to="/AdminSupportView">
+            <div className="ticketChat">
+              <img className="dp" src={dp} />
+              <div className="message">
+                {" "}
+                need help to do the payment for adding packaged. can you...
+              </div>
             </div>
-          </div>
           </Link>
-          
+
           <Link to="/TicketSupports">
             <Button varient="primary" className="ticketButton">
               View More
@@ -138,31 +149,31 @@ const MainDashboard = () => {
         </div>
       </div>
 
-      <Link to='/AdminEvents'>
-      <div className="middle">
-        <table className="admin-table">
-          <tr>
-            <th className="tableTopic">Event Name</th>
-            <th className="tableTopic">No. Of Tickets(sold)</th>
-            <th className="tableTopic">Income</th>
-          </tr>
-          <tr className="tableRow">
-            <td className="tableContent">Bron to shine</td>
-            <td className="tableContent">501</td>
-            <td className="tableContent">8,890,200</td>
-          </tr>
-          <tr className="tableRow">
-            <td className="tableContent">Bawaal</td>
-            <td className="tableContent">222</td>
-            <td className="tableContent">345,190</td>
-          </tr>
-          <tr className="tableRow">
-            <td className="tableContent">Black Pink</td>
-            <td className="tableContent">450</td>
-            <td className="tableContent">445,521</td>
-          </tr>
-        </table>
-      </div>
+      <Link to="/AdminEvents">
+        <div className="middle">
+          <table className="admin-table">
+            <tr>
+              <th className="tableTopic">Event Name</th>
+              <th className="tableTopic">No. Of Tickets(sold)</th>
+              <th className="tableTopic">Income</th>
+            </tr>
+            <tr className="tableRow">
+              <td className="tableContent">Bron to shine</td>
+              <td className="tableContent">501</td>
+              <td className="tableContent">8,890,200</td>
+            </tr>
+            <tr className="tableRow">
+              <td className="tableContent">Bawaal</td>
+              <td className="tableContent">222</td>
+              <td className="tableContent">345,190</td>
+            </tr>
+            <tr className="tableRow">
+              <td className="tableContent">Black Pink</td>
+              <td className="tableContent">450</td>
+              <td className="tableContent">445,521</td>
+            </tr>
+          </table>
+        </div>
       </Link>
       <div className="bottom">
         <div className="bottomcolom">
