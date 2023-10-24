@@ -15,7 +15,7 @@ import { viewVenuePackage,viewVenuePackageDetails,addVenuePack,addVenuePackToCom
     viewBirthdayPackage,viewBirthdayPackageDetails, viewPreBirthdayPackageDetails} from '../controllers/Customer/packageController.js'
 
 // import { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare, getCompareCakePackage} from '../controllers/Customer/packageController.js'
-
+import { sendRequest } from '../controllers/Customer/customerController.js'
 
 router.post('/createEvent', createevent)
 router.get('/viewVenuePackage', viewVenuePackage)
@@ -74,5 +74,9 @@ router.post('/addCakePackToEvent', addPackToEvent )
 router.get('/viewBirthdayPackage', viewBirthdayPackage)
 router.get('/viewBirthdayPackageDetails', viewBirthdayPackageDetails)
 router.get('/viewPreBirthdayPackageDetails', viewPreBirthdayPackageDetails)
+
+
+router.post('/sendRequest', sendRequest)
+
 
 export default router

@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const Todo = ({
   success,
@@ -71,7 +72,7 @@ const Todo = ({
   };
 
   const sendRequest = ()=>{
-    const user=localStorage.getItem("userInfo")
+    const user=JSON.parse(localStorage.getItem("userInfo"))
     console.log(user);
     const notificationdata ={
       event_id:event_id,
@@ -81,15 +82,26 @@ const Todo = ({
       service:selectedPackage.location
       
     }
-    console.log(todos);
+    console.log(notificationdata);
    
-    if(todos[0].selected!=undefined&&todos[1].selected!=undefined&&todos[2].selected!=undefined&&todos[3].selected!=undefined&&todos[4].selected!=undefined&&todos[5].selected!=undefined){
+    if(todos.some(item => item.selected === undefined || item.selected === null)){
+      toast.error("Before send a Request Please Select All Services or Delete Unwanted Details");
+      setShowModal(false);
       console.log('Weranga');
     }else{
-      console.log('Kalana')
-       toast.error("Before the send a Request Please Select All Services");
-       navigate(`/customer/eventdetails?id=${event_id}`);
-       setShowModal(false);
+      axios
+          .post("/api/customer/sendRequest", notificationdata)
+          .then((response) => {
+            const packCount = response.data;
+            console.log(packCount);
+            // Perform navigation after successful POST
+            navigate(`/customer/event/CakeCompare?event_id=${event_id}`);
+          })
+          .catch((error) => {
+            console.error("Error adding event:", error);
+            // Handle error if needed
+          });
+       
     }
   }
 
