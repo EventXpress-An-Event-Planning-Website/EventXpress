@@ -11,6 +11,7 @@ import celebrationImage from "../../../assets/images/celebration.jpg";
 import { Link } from "react-router-dom";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 const Todo = ({
   success,
@@ -21,6 +22,9 @@ const Todo = ({
   updateTodo,
 }) => {
   const [showModal, setShowModal] = useState(false);
+  const [spName,setSpName] = useState('');
+  const [selectedPackage,setSelectedPackage]= useState([])
+  
   const [edit, setEdit] = useState({
     id: null,
     value: "",
@@ -39,12 +43,16 @@ const Todo = ({
   const toggleDetails = (id) => {
     setShowDetailsId((prevId) => (prevId === id ? null : id));
   };
-
+  
   if (edit.id) {
     return <TodoForm edit={edit} onSubmit={submitUpdate} />;
   }
 
-  const openModal = () => {
+  const openModal = (serviceProvider) => {
+    console.log(serviceProvider);
+    setSpName(serviceProvider.selected.package_busname)
+    setSelectedPackage(serviceProvider)
+    
     console.log(showModal);
     setShowModal(true);
     console.log(showModal);
@@ -61,6 +69,29 @@ const Todo = ({
     handleSubmit(event_id); // Pass the event_id to the handleSubmit function
     closeModal(); // Close the modal after submitting the form
   };
+
+  const sendRequest = ()=>{
+    const user=localStorage.getItem("userInfo")
+    console.log(user);
+    const notificationdata ={
+      event_id:event_id,
+      user_id:user.id,
+      package_id:selectedPackage.selected.package_id,
+      send_id:selectedPackage.selected.userid,
+      service:selectedPackage.location
+      
+    }
+    console.log(todos);
+   
+    if(todos[0].selected!=undefined&&todos[1].selected!=undefined&&todos[2].selected!=undefined&&todos[3].selected!=undefined&&todos[4].selected!=undefined&&todos[5].selected!=undefined){
+      console.log('Weranga');
+    }else{
+      console.log('Kalana')
+       toast.error("Before the send a Request Please Select All Services");
+       navigate(`/customer/eventdetails?id=${event_id}`);
+       setShowModal(false);
+    }
+  }
 
   return todos.map((todo, index) => (
     <>
@@ -130,7 +161,7 @@ const Todo = ({
                 {success === "Accept" ? (
                   <span style={{ marginLeft: "20%" }}>Accept</span>
                 ) : (
-                  <Button style={{ width: "100px" }} onClick={openModal}>
+                  <Button style={{ width: "100px" }} onClick={() => openModal(todo)}>
                     Send Request
                   </Button>
                 )}
@@ -144,27 +175,15 @@ const Todo = ({
           <Modal.Title>EventXpress</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p> Create An Appointment For Physical Meeting</p>
-          <Form onSubmit={handleFormSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Name</Form.Label>
-              <Form.Control type="email" placeholder="Enter Name" />
-              {/* <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text> */}
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="eventDate">
-              <Form.Label>Date For Appointment:</Form.Label>
-              <Form.Control
-                type="date"
-                min={new Date().toISOString().split("T")[0]} // Set the min attribute to the current date
-              />
-            </Form.Group>
-            <Button variant="primary" onClick={handleFormSubmit}>
-              Submit
-            </Button>
-          </Form>
-        </Modal.Body>
+       
+          <div>
+            <p>Send a Request For a {spName}</p>
+            
+          </div>
+
+          <Button onClick={sendRequest}>Confirm</Button>
+      
+      </Modal.Body>
         <Modal.Footer>
           {/* <Button variant="secondary" onClick={closeModal}>
             Close

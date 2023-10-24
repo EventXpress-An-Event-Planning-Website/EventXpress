@@ -205,7 +205,6 @@ CREATE TABLE public.customer_notification
     user_id integer,
     package_id VARCHAR(255),
     send_user_id integer,
-    message text,
     status text,
     service text,
     PRIMARY KEY (notify_id)
