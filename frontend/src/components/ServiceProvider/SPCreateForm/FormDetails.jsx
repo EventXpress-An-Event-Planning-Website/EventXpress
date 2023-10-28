@@ -1,11 +1,7 @@
-//import React from 'react'
 import { useState } from "react";
-// import { useRef } from "react"
 import { Form, FormControl, FormGroup, Button } from "react-bootstrap";
 import FormContainer from "../../FormContainer";
-// import upload from '../../../assets/images/upload.svg'
 import { useNavigate } from "react-router-dom";
-// import { useDispatch } from "react-redux"
 import { useCreatePackageMutation } from "../../../slices/packageSlice";
 import { useUploadSingleMutation } from "../../../slices/uploadApiSlice";
 import { toast } from 'react-toastify';
@@ -26,10 +22,27 @@ const FormDetails = () => {
   const [packageOparea, setpackageOparea] = useState("");
   const [packageOpType, setpackageOpType] = useState("");
 
+  const [packageServingSize, setpackageServingSize] = useState("");
+  const [packageCakeShape, setpackageCakeShape] = useState("");
+  const [packageAllergy, setpackageAllergy] = useState("");
+
+  const [packageMenu, setpackageMenu] = useState("");
+
+  const [packageDecoElements, setpackageDecoElements] = useState("");
+
+  const [packageStageType, setpackageStageType] = useState("");
+  const [packageStageHeight, setpackageStageHeight] = useState("");
+  const [packageStageSize, setpackageStageSize] = useState("");
+
+  const [packageTools, setpackageTools] = useState("");
+  const [packageFormat, setpackageFormat] = useState("");
+
+  const [packageSoundSource, setpackageSoundSource] = useState("");
+  const [packageLights, setpackageLights] = useState("");
+
   const [uploadSingle] = useUploadSingleMutation();
 
-  const [createPackage, { isLoading: packageLoading }] =
-    useCreatePackageMutation();
+  const [createPackage] = useCreatePackageMutation();
   const navigate = useNavigate();
 
   const userInfo = localStorage.getItem("userInfo");
@@ -65,7 +78,7 @@ const FormDetails = () => {
       console.log("uploadimagesp", spImageFilename);
 
       if (packageType === "Venue") {
-        const optionResponse = await createPackage({
+        await createPackage({
           userId,
           packageBusName,
           packageTitle,
@@ -81,8 +94,8 @@ const FormDetails = () => {
           packageImage: spImageFilename,
           packageType,
         }).unwrap();
-      } else {
-        const res = await createPackage({
+      } else if (packageType === "Cake") {
+        await createPackage({
           userId,
           packageBusName,
           packageTitle,
@@ -92,8 +105,78 @@ const FormDetails = () => {
           packagePrice,
           packageImage: spImageFilename,
           packageType,
-          // packageOpTitle,
-          // packageOpDescription
+          packageServingSize,
+          packageCakeShape,
+          packageAllergy,
+        }).unwrap();
+      } else if (packageType === "Catering") {
+        await createPackage({
+          userId,
+          packageBusName,
+          packageTitle,
+          packageAddress,
+          packageContact,
+          packageDescription,
+          packagePrice,
+          packageImage: spImageFilename,
+          packageType,
+          packageMenu,
+        }).unwrap();
+      } else if (packageType === "Stage") {
+        await createPackage({
+          userId,
+          packageBusName,
+          packageTitle,
+          packageAddress,
+          packageContact,
+          packageDescription,
+          packagePrice,
+          packageImage: spImageFilename,
+          packageType,
+          packageStageType,
+          packageStageSize,
+          packageStageHeight,
+        }).unwrap();
+      } else if (packageType === "Photography") {
+        await createPackage({
+          userId,
+          packageBusName,
+          packageTitle,
+          packageAddress,
+          packageContact,
+          packageDescription,
+          packagePrice,
+          packageImage: spImageFilename,
+          packageType,
+          packageTools,
+          packageFormat,
+        }).unwrap();
+      } else if (packageType === "LightsANDSounds") {
+        await createPackage({
+          userId,
+          packageBusName,
+          packageTitle,
+          packageAddress,
+          packageContact,
+          packageDescription,
+          packagePrice,
+          packageImage: spImageFilename,
+          packageType,
+          packageSoundSource,
+          packageLights,
+        }).unwrap();
+      } else if (packageType === "Decoration"){
+        await createPackage({
+          userId,
+          packageBusName,
+          packageTitle,
+          packageAddress,
+          packageContact,
+          packageDescription,
+          packagePrice,
+          packageImage: spImageFilename,
+          packageType,
+          packageDecoElements,
         }).unwrap();
       }
       toast.success("Package Created Successfully")
@@ -117,10 +200,10 @@ const FormDetails = () => {
           <Form method="post" onSubmit={handleSubmit} className="form">
 
             <FormGroup className="input">
-              <Form.Label htmlFor="location">Business Name</Form.Label>
+              <Form.Label htmlFor="businessname">Business Name</Form.Label>
               <FormControl
                 type="text"
-                name="packageLocation"
+                name="packageBusName"
                 placeholder="Enter your business name"
                 onChange={(e) => setpackageBusName(e.target.value)}
                 value={packageBusName}
@@ -206,6 +289,7 @@ const FormDetails = () => {
                 <option>Catering</option>
                 <option>Cake</option>
                 <option>LightsANDSounds</option>
+                <option>Stage</option>
               </Form.Select>
             </FormGroup>
 
@@ -252,6 +336,7 @@ const FormDetails = () => {
                 </Form.Group>
               </React.Fragment>
             )} */}
+
 
             {/* option part for venue type */}
             {packageType === "Venue" && (
@@ -324,15 +409,231 @@ const FormDetails = () => {
                       <option>Outdoor</option>
                     </Form.Select>
                   </FormGroup>
+
                 </div>
               </FormContainer>
             )}
+
+            {/* option part for cake package */}
+            {packageType === "Cake" && (
+              <FormContainer className="SPPackageForm">
+                <h3 className="packformh3">Options</h3>
+                <div className="option">
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="serving_size">
+                      Serving Size
+                    </Form.Label>
+                    <FormControl
+                      type="number"
+                      name="serving_size"
+                      placeholder="Enter the serving size"
+                      onChange={(e) => setpackageServingSize(e.target.value)}
+                      value={packageServingSize}
+                      required
+                    />
+                  </FormGroup>
+
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="cake_shape">Cake Shape</Form.Label>
+                    <FormControl
+                      type="text"
+                      name="cake_shape"
+                      placeholder="Enter cake shape"
+                      onChange={(e) => setpackageCakeShape(e.target.value)}
+                      value={packageCakeShape}
+                      required
+                    />
+                  </FormGroup>
+
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="allergy">Allergy Information</Form.Label>
+                    <FormControl
+                      type="text"
+                      name="allergy"
+                      placeholder="Enter allergy information (nuts, milk, gluten free)"
+                      onChange={(e) => setpackageAllergy(e.target.value)}
+                      value={packageAllergy}
+                      required
+                    />
+                  </FormGroup>
+
+                </div>
+              </FormContainer>
+            )}
+
+            {/* option part for catering package */}
+            {packageType === "Catering" && (
+              <FormContainer className="SPPackageForm">
+                <h3 className="packformh3">Options</h3>
+                <div className="option">
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="menu">
+                      Menu
+                    </Form.Label>
+                    <FormControl
+                      type="text"
+                      name="menu"
+                      placeholder="Enter the Menu"
+                      onChange={(e) => setpackageMenu(e.target.value)}
+                      value={packageMenu}
+                      required
+                    />
+                  </FormGroup>
+
+                </div>
+              </FormContainer>
+            )}
+
+            {/* option part for decoration package */}
+            {packageType === "Decoration" && (
+              <FormContainer className="SPPackageForm">
+                <h3 className="packformh3">Options</h3>
+                <div className="option">
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="deco_elements">
+                      Decoration Elements
+                    </Form.Label>
+                    <FormControl
+                      type="text"
+                      name="deco_elements"
+                      placeholder="Enter the decoration elements"
+                      onChange={(e) => setpackageDecoElements(e.target.value)}
+                      value={packageDecoElements}
+                      required
+                    />
+                  </FormGroup>
+
+                </div>
+              </FormContainer>
+            )}
+
+            {/* option part for stage package */}
+            {packageType === "Stage" && (
+              <FormContainer className="SPPackageForm">
+                <h3 className="packformh3">Options</h3>
+                <div className="option">
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="stage_type">
+                      Stage Type
+                    </Form.Label>
+                    <FormControl
+                      type="text"
+                      name="stage_type"
+                      placeholder="Enter stage type"
+                      onChange={(e) => setpackageStageType(e.target.value)}
+                      value={packageStageType}
+                      required
+                    />
+                  </FormGroup>
+
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="stage_height">Stage Height</Form.Label>
+                    <FormControl
+                      type="number"
+                      name="stage_height"
+                      placeholder="Enter stage height (feet)"
+                      onChange={(e) => setpackageStageHeight(e.target.value)}
+                      value={packageStageHeight}
+                      min="1"
+                      max="4"
+                      required
+                    />
+                  </FormGroup>
+
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="stage_size">Stage size and dimention</Form.Label>
+                    <FormControl
+                      type="text"
+                      name="stage_size"
+                      placeholder="Enter stage size"
+                      onChange={(e) => setpackageStageSize(e.target.value)}
+                      value={packageStageSize}
+                      required
+                    />
+                  </FormGroup>
+
+                </div>
+              </FormContainer>
+            )}
+
+            {/* option part for stage package */}
+            {packageType === "Photography" && (
+              <FormContainer className="SPPackageForm">
+                <h3 className="packformh3">Options</h3>
+                <div className="option">
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="tools">
+                      Photography Equipment
+                    </Form.Label>
+                    <FormControl
+                      type="text"
+                      name="tools"
+                      placeholder="Enter tools"
+                      onChange={(e) => setpackageTools(e.target.value)}
+                      value={packageTools}
+                      required
+                    />
+                  </FormGroup>
+
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="delivery_format">Photo delivery format</Form.Label>
+                    <FormControl
+                      type="text"
+                      name="delivery_format"
+                      placeholder="Enter delivery format"
+                      onChange={(e) => setpackageFormat(e.target.value)}
+                      value={packageFormat}
+                      required
+                    />
+                  </FormGroup>
+
+                </div>
+              </FormContainer>
+            )}
+
+            {/* option part for stage package */}
+            {packageType === "LightsANDSounds" && (
+              <FormContainer className="SPPackageForm">
+                <h3 className="packformh3">Options</h3>
+                <div className="option">
+          
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="sound_source">Sound Source</Form.Label>
+                    <Form.Select
+                      size=""
+                      value={packageSoundSource}
+                      onChange={(e) => setpackageSoundSource(e.target.value)}
+                      required
+                    >
+                      <option></option>
+                      <option>DJ</option>
+                      <option>Pre recorded music</option>
+                    </Form.Select>
+                  </FormGroup>
+
+                  <FormGroup className="input">
+                    <Form.Label htmlFor="lights">Lightning Fixtures</Form.Label>
+                    <FormControl
+                      type="text"
+                      name="lights"
+                      placeholder="Enter lightning fixtures"
+                      onChange={(e) => setpackageLights(e.target.value)}
+                      value={packageLights}
+                      required
+                    />
+                  </FormGroup>
+
+                </div>
+              </FormContainer>
+            )}
+
 
             <div className="btn_container">
               <Button type="submit" className="submitBtn">
                 Submit
               </Button>
             </div>
+
           </Form>
         </div>
       </FormContainer>

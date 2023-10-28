@@ -23,7 +23,7 @@ const venuePackage = asyncHandler(
         packageOpDescription,
         packageOpMaxCount,
         packageOparea,
-        packageOpType
+        packageOpType,
         
     )=>{
         // const packageid //random id concat with the type
@@ -57,7 +57,7 @@ const venuePackage = asyncHandler(
 
 })
 
-const otherPackage = asyncHandler(
+const photographyPackage = asyncHandler(
     async(
         userId,
         packageBusName,
@@ -68,11 +68,12 @@ const otherPackage = asyncHandler(
         packagePrice,
         packageImage,
         createdate,
-        packageType,
+        packageTools,
+        packageFormat,
 
     )=>{
-    const packageId = generateRandomId(packageType);
-    const createUserQuery = `INSERT INTO ${packageType}package(userid, package_id, package_busname, package_title, package_address, package_contact, package_description, package_price, sp_images, createdate) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING userid`
+    const packageId = generateRandomId("Photography");
+    const createUserQuery = `INSERT INTO photographypackage(userid, package_id, package_busname, package_title, package_address, package_contact, package_description, package_price, sp_images, createdate, package_tools, package_format) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING userid`
     const createUser = await query(createUserQuery, [
       userId,
       packageId,
@@ -83,7 +84,9 @@ const otherPackage = asyncHandler(
       packageDescription,
       packagePrice,
       packageImage,
-      createdate
+      createdate,
+      packageTools,
+      packageFormat,
      
     ])
     
@@ -97,5 +100,225 @@ const otherPackage = asyncHandler(
 
 })
 
+const decorationPackage = asyncHandler(
+  async(
+      userId,
+      packageBusName,
+      packageTitle,
+      packageAddress,
+      packageContact,
+      packageDescription,
+      packagePrice,
+      packageImage,
+      createdate,
+      packageDecoElements,
 
-export {venuePackage, otherPackage}
+  )=>{
+  const packageId = generateRandomId("Decoration");
+  const createUserQuery = `INSERT INTO decorationpackage(userid, package_id, package_busname, package_title, package_address, package_contact, package_description, package_price, sp_images, createdate, package_decoelements) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING userid`
+  const createUser = await query(createUserQuery, [
+    userId,
+    packageId,
+    packageBusName,
+    packageTitle,
+    packageAddress,
+    packageContact,
+    packageDescription,
+    packagePrice,
+    packageImage,
+    createdate,
+    packageDecoElements,
+   
+  ])
+  
+  if(createUser.rowCount>0){
+    console.log('package model',createUser);
+    return createUser.rows
+  }
+  else{
+    throw new Error('Internal Error')
+  }
+
+})
+
+const cateringPackage = asyncHandler(
+  async(
+      userId,
+      packageBusName,
+      packageTitle,
+      packageAddress,
+      packageContact,
+      packageDescription,
+      packagePrice,
+      packageImage,
+      createdate,
+      packageMenu,
+
+  )=>{
+  const packageId = generateRandomId("Catering");
+  const createUserQuery = `INSERT INTO cateringpackage(userid, package_id, package_busname, package_title, package_address, package_contact, package_description, package_price, sp_images, createdate, package_menu) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING userid`
+  const createUser = await query(createUserQuery, [
+    userId,
+    packageId,
+    packageBusName,
+    packageTitle,
+    packageAddress,
+    packageContact,
+    packageDescription,
+    packagePrice,
+    packageImage,
+    createdate,
+    packageMenu,
+   
+  ])
+  
+  if(createUser.rowCount>0){
+    console.log('package model',createUser);
+    return createUser.rows
+  }
+  else{
+    throw new Error('Internal Error')
+  }
+
+})
+
+const cakePackage = asyncHandler(
+  async(
+      userId,
+      packageBusName,
+      packageTitle,
+      packageAddress,
+      packageContact,
+      packageDescription,
+      packagePrice,
+      packageImage,
+      createdate,
+      packageServingSize,
+      packageCakeShape,
+      packageAllergy,
+
+  )=>{
+  const packageId = generateRandomId("Cake");
+  const createUserQuery = `INSERT INTO cakepackage(userid, package_id, package_busname, package_title, package_address, package_contact, package_description, package_price, sp_images, createdate, serving_size, cake_shape, allergy) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING userid`
+  const createUser = await query(createUserQuery, [
+    userId,
+    packageId,
+    packageBusName,
+    packageTitle,
+    packageAddress,
+    packageContact,
+    packageDescription,
+    packagePrice,
+    packageImage,
+    createdate,
+    packageServingSize,
+    packageCakeShape,
+    packageAllergy,
+
+  ])
+  
+  if(createUser.rowCount>0){
+    console.log('package model',createUser);
+    return createUser.rows
+  }
+  else{
+    throw new Error('Internal Error')
+  }
+
+})
+
+const lightsSoundPackage = asyncHandler(
+  async(
+      userId,
+      packageBusName,
+      packageTitle,
+      packageAddress,
+      packageContact,
+      packageDescription,
+      packagePrice,
+      packageImage,
+      createdate,
+      packageSoundSource,
+      packageLights,
+
+  )=>{
+  const packageId = generateRandomId("LightsANDSounds");
+  const createUserQuery = `INSERT INTO lightsandsoundspackage(userid, package_id, package_busname, package_title, package_address, package_contact, package_description, package_price, sp_images, createdate, sound_source, package_lights) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING userid`
+  const createUser = await query(createUserQuery, [
+    userId,
+    packageId,
+    packageBusName,
+    packageTitle,
+    packageAddress,
+    packageContact,
+    packageDescription,
+    packagePrice,
+    packageImage,
+    createdate,
+    packageSoundSource,
+    packageLights,
+   
+  ])
+  
+  if(createUser.rowCount>0){
+    console.log('package model',createUser);
+    return createUser.rows
+  }
+  else{
+    throw new Error('Internal Error')
+  }
+})
+
+const stagePackage = asyncHandler(
+  async(
+      userId,
+      packageBusName,
+      packageTitle,
+      packageAddress,
+      packageContact,
+      packageDescription,
+      packagePrice,
+      packageImage,
+      createdate,
+      packageStageType,
+      packageStageSize,
+      packageStageHeight,
+
+  )=>{
+  const packageId = generateRandomId("Stage");
+  const createUserQuery = `INSERT INTO stagepackage(userid, package_id, package_busname, package_title, package_address, package_contact, package_description, package_price, sp_images, createdate, stage_type, stage_size, stage_height) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING userid`
+  const createUser = await query(createUserQuery, [
+    userId,
+    packageId,
+    packageBusName,
+    packageTitle,
+    packageAddress,
+    packageContact,
+    packageDescription,
+    packagePrice,
+    packageImage,
+    createdate,
+    packageStageType,
+    packageStageSize,
+    packageStageHeight,
+   
+  ])
+  
+  if(createUser.rowCount>0){
+    console.log('package model',createUser);
+    return createUser.rows
+  }
+  else{
+    throw new Error('Internal Error')
+  }
+
+})
+
+export {venuePackage, 
+  photographyPackage, 
+  decorationPackage,
+  cateringPackage,
+  cakePackage,
+  lightsSoundPackage,
+  stagePackage
+}

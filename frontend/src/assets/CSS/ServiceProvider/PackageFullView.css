@@ -1,5 +1,13 @@
+.all_details{
+    border: 1px solid;
+    margin: 50px;
+    border-radius: 5px;
+    padding-bottom: 80px;
+}
+
 .main_contentinfo{
-    background: #c4a9c4;
+    border-radius: 10px;
+    background: #E8E8E8;
     padding: 3% 0;
     margin: 3% 10%;
 }
@@ -19,9 +27,11 @@
 /* option details */
 
 .option_contentinfo{
-    background: #c4a9c4;
+    border-radius: 10px;
+    background: #E8E8E8;
     margin: 3% 10%;
-    padding-top: 50px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .optionimg{
@@ -40,10 +50,6 @@
     height: 30px;
 }
 
-.hourprice{
-    margin-top: 30px;
-}
-
 .optiondelete, .optionedit{
     border: none;
     border-radius: 20px;
@@ -52,6 +58,10 @@
     float: right;
     margin-right: 20px;
     margin-bottom: 10px;
+}
+
+.optionedit{
+    margin-right: 150px;
 }
 
 .optiondelete:focus:active, .optionedit:focus:active{

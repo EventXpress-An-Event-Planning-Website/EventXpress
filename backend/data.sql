@@ -86,7 +86,8 @@ CREATE TABLE venuepackage (
     package_op_des VARCHAR(255), 
     package_op_count INTEGER, 
     package_op_area FLOAT, 
-    package_op_type VARCHAR(255)
+    package_op_type VARCHAR(255),
+    createdate timestamp without time zone
 )
 
 CREATE TABLE decorationpackage (
@@ -98,7 +99,8 @@ CREATE TABLE decorationpackage (
     package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
-    sp_images VARCHAR(255)
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
 )
 CREATE TABLE public.todolist
 (
@@ -117,7 +119,8 @@ CREATE TABLE cakepackage (
     package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
-    sp_images VARCHAR(255)
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
 )
 
 CREATE TABLE cateringpackage (
@@ -129,7 +132,8 @@ CREATE TABLE cateringpackage (
     package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
-    sp_images VARCHAR(255)
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
 )
 
 CREATE TABLE lightsandsoundspackage (
@@ -141,8 +145,23 @@ CREATE TABLE lightsandsoundspackage (
     package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
-    sp_images VARCHAR(255)
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
 )
+
+CREATE TABLE stagepackage (
+    userid INTEGER, 
+    package_id VARCHAR(255) PRIMARY KEY,
+    package_busname VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
+)
+
 
 CREATE TABLE photographypackage (
     userid INTEGER, 
@@ -153,7 +172,8 @@ CREATE TABLE photographypackage (
     package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
-    sp_images VARCHAR(255)
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
 )
 
 CREATE TABLE ticket (
@@ -179,10 +199,36 @@ ALTER TABLE lightsandsoundspackage ADD FOREIGN KEY (userid) REFERENCES servicepr
 ALTER TABLE cateringpackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
 ALTER TABLE photographypackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
 ALTER TABLE decorationpackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE stagepackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
 
+ALTER TABLE photographypackage 
+    ADD COLUMN package_tools VARCHAR(255),
+    ADD COLUMN package_format VARCHAR(255);
+
+ALTER TABLE decorationpackage
+    ADD COLUMN package_decoelements VARCHAR(255);
+
+ALTER TABLE cateringpackage
+    ADD COLUMN package_menu VARCHAR(255);
+
+ALTER TABLE cakepackage
+    ADD COLUMN serving_size INTEGER,
+    ADD COLUMN cake_shape VARCHAR(255),
+    ADD COLUMN allergy VARCHAR(255);
+
+ALTER TABLE lightsandsoundspackage
+    ADD COLUMN sound_source VARCHAR(255),
+    ADD COLUMN package_lights VARCHAR(255);
+
+ALTER TABLE stagepackage
+    ADD COLUMN stage_type VARCHAR(255),
+    ADD COLUMN stage_size VARCHAR(255),
+    ADD COLUMN stage_height INTEGER;
+   
 CREATE TABLE blocklist (
     blockpref_id SERIAL PRIMARY KEY,
     my_id INTEGER,
     block_id INTEGER,
-    block_status CHAR(1)
+    block_status CHAR(1),
+    FOREIGN KEY (my_id) REFERENCES serviceprovider(id)
 );

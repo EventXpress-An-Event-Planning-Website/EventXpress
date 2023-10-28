@@ -4,23 +4,25 @@ import {
   getSPPackDetails,
   getPackageDetails,
   getAllSPNames, 
-  addSPToBlockPrefList 
+  addSPToBlockPrefList,
+  getpreferenceList,
+  getblockList,
+  removeList,
+  getSpBlockPrefList
 } from "../../models/spModel.js";
 
 
 //add service providers to block/preference list
 const createBlockPrefSPList = asyncHandler(async(req,res)=>{
-  let blockPrefList = ''
+  let blockPrefList = ''  //initialize the variable as empty string
 
   const {
-    blockPrefId,
     userId, 
     blockId,
     blockStatus
   }=req.body
 
   blockPrefList = await addSPToBlockPrefList(
-    blockPrefId,
     userId, 
     blockId,
     blockStatus
@@ -94,11 +96,36 @@ const getPacAllkDetails = asyncHandler(async (req, res) => {
 const getSPNames = asyncHandler(async (req, res) => {
   const userId  = req.query.id;
   const PNames = await getAllSPNames(userId);
+  const blockPreflist = await getSpBlockPrefList(userId)
+  // console.log(PNames);
+  var SPNames=[] 
   
   if (PNames) {
-    res.status(200).json({
-      PNames,
-    });
+    
+    if (blockPreflist.length!==0) {
+      
+      for (const pname of PNames) {
+        let isBlocked = false;
+        for (const list of blockPreflist) {
+          
+          if (list.block_id===pname.id) {
+            
+            isBlocked = true;
+            break;
+          }
+        }
+        if (!isBlocked) {
+          SPNames.push(pname);
+        }
+      }
+      
+      res.status(200).json(SPNames);
+    }else{
+      
+      res.status(200).json(
+        PNames,
+      );
+    }
   } else {
     res.status(404);
     throw new Error("User not found");
@@ -106,12 +133,62 @@ const getSPNames = asyncHandler(async (req, res) => {
 
 });
 
+//get preference service providers names
+const getPreferenceSPNames = asyncHandler(async (req, res) => {
+  const userId  = req.query.id;
+  const block_status = '1';
+  const PNames = await getpreferenceList(userId, block_status);
+  
+  if (PNames) {
+    res.status(200).json(
+      PNames,
+    );
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
 
+});
+
+//get block service providers names
+const getBlockSPNames = asyncHandler(async (req, res) => {
+  const userId  = req.query.id;
+  const block_status = '0';
+  const PNames = await getblockList(userId, block_status);
+  
+  if (PNames) {
+    res.status(200).json(
+      PNames,
+    );
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+});
+
+const removeBlockPrefSPList = asyncHandler(async (req, res) => {
+  const userId  = req.body.id;
+
+  const PNames = await removeList(userId);
+  
+  if (PNames) {
+    res.status(200).json(
+      PNames,
+    );
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
 
 export { 
   getSPprofile,
   getAllPack,
   getPacAllkDetails,
   getSPNames,
-  createBlockPrefSPList 
+  createBlockPrefSPList,
+  removeBlockPrefSPList,
+  getPreferenceSPNames,
+  getBlockSPNames
 };
