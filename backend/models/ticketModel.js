@@ -33,7 +33,8 @@ const addNewTicket = asyncHandler(
             branchName,
             accountNumber,
             bankPassbookImage) 
-          VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`
+          VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) 
+          RETURNING id`
     const addTicket = await query(addTicketQuery, [
       selectedCategory,
       eventTitle,
@@ -49,7 +50,37 @@ const addNewTicket = asyncHandler(
       accountNumber,
       bankPassbookImage,
     ])
-    if (addTicket.rowCount > 0) {
+    console.log(addTicket);
+    if (addTicket.rows.length === 1) {
+      return addTicket.rows[0].id
+    } else {
+      throw new Error('Internal Error')
+    }
+  }
+)
+
+// add ticket status
+const addTicketStatus = asyncHandler(
+  async (ticketId, userId, type, price, quantity) => {
+    const addTicketStatusQuery=`
+      INSERT INTO 
+        ticketStatus(
+            ticketId,
+            customerId,
+            type,
+            price,
+            totalQuantity,
+            currentQuantity)
+          VALUES($1,$2,$3,$4,$5,$6)`
+    const ticketStatus = await query(addTicketStatusQuery, [
+      ticketId,
+      userId,
+      type,
+      price,
+      quantity,
+      quantity
+    ])
+    if (ticketStatus.rowCount > 0) {
       return true
     } else {
       throw new Error('Internal Error')
@@ -79,4 +110,4 @@ const getTicket = asyncHandler(async (id) => {
   }
 })
 
-export { addNewTicket, getAllTickets, getTicket }
+export { addNewTicket, getAllTickets, getTicket, addTicketStatus }

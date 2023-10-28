@@ -32,6 +32,10 @@ const SellTicketForm = () => {
 
   const today = new Date().toISOString().split('T')[0];
 
+  const userInfo = localStorage.getItem("userInfo");
+  const parsedUserInfo = JSON.parse(userInfo);
+  const userId = parsedUserInfo.id;
+
   const uploadImage = async (img) => {
     try {
       if (img) {
@@ -71,6 +75,7 @@ const SellTicketForm = () => {
       branchName,
       accountNumber,
       bankPassbookImage: bankPassbookImageFilename,
+      userId,
     };
     axios
       .post('/api/tickets/addTicket', formData)

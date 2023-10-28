@@ -1,5 +1,10 @@
 import asyncHandler from 'express-async-handler'
-import { addNewTicket, getAllTickets, getTicket } from '../models/ticketModel.js'
+import {
+  addNewTicket,
+  getAllTickets,
+  getTicket,
+  addTicketStatus,
+} from '../models/ticketModel.js'
 
 const addTicket = asyncHandler(async (req, res) => {
   const {
@@ -16,6 +21,7 @@ const addTicket = asyncHandler(async (req, res) => {
     branchName,
     accountNumber,
     bankPassbookImage,
+    userId,
   } = req.body
 
   const ticketItemsString = JSON.stringify(ticketItems)
@@ -35,6 +41,26 @@ const addTicket = asyncHandler(async (req, res) => {
     accountNumber,
     bankPassbookImage
   )
+
+  console.log(addTicketResponse);
+  const ticketId = addTicketResponse;
+
+  for (const item of ticketItems) {
+    const { type, price, quantity } = item
+
+    const ticketStatusResponse = await addTicketStatus(
+      ticketId,
+      userId,
+      type,
+      price,
+      quantity
+    )
+    if (!ticketStatusResponse) {
+      console.error('Error adding ticket status')
+    } else {
+      console.log(`Ticket status added`)
+    }
+  }
 
   if (addTicketResponse) {
     res.status(200).json({

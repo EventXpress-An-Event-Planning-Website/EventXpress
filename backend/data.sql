@@ -166,3 +166,13 @@ CREATE TABLE ticket (
     accountNumber VARCHAR(255),
     bankPassbookImage VARCHAR(255)
 );
+
+CREATE TABLE ticketStatus (
+  ticketStatus_id SERIAL PRIMARY KEY,
+  ticketId INT,
+  customerId INT,
+  type VARCHAR(255),
+  price DECIMAL(10, 2),
+  totalQuantity INT,
+  currentQuantity INT
+)
