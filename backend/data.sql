@@ -176,3 +176,14 @@ CREATE TABLE ticketStatus (
   totalQuantity INT,
   currentQuantity INT
 )
+
+CREATE TABLE ticketBookings (
+    id SERIAL PRIMARY KEY,
+    buyerId INT NOT NULL,
+    ticketId INT NOT NULL,
+    pid TEXT NOT NULL,
+    ticketType VARCHAR(255) NOT NULL,
+    noOfTickets INT NOT NULL,
+    amount NUMERIC(10, 2) NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
