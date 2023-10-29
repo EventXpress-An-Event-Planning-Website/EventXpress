@@ -50,7 +50,7 @@ const addNewTicket = asyncHandler(
       accountNumber,
       bankPassbookImage,
     ])
-    console.log(addTicket);
+    // console.log(addTicket);
     if (addTicket.rows.length === 1) {
       return addTicket.rows[0].id
     } else {
@@ -62,7 +62,7 @@ const addNewTicket = asyncHandler(
 // add ticket status
 const addTicketStatus = asyncHandler(
   async (ticketId, userId, type, price, quantity) => {
-    const addTicketStatusQuery=`
+    const addTicketStatusQuery = `
       INSERT INTO 
         ticketStatus(
             ticketId,
@@ -78,7 +78,7 @@ const addTicketStatus = asyncHandler(
       type,
       price,
       quantity,
-      quantity
+      quantity,
     ])
     if (ticketStatus.rowCount > 0) {
       return true
@@ -101,13 +101,68 @@ const getAllTickets = asyncHandler(async () => {
 
 // get all tickets
 const getTicket = asyncHandler(async (id) => {
-  const getTicketQuery = `SELECT * FROM ticket where id = $1`
+  const getTicketQuery = `SELECT *
+  FROM ticket
+  JOIN ticketStatus ON ticket.id = ticketStatus.ticketId
+  WHERE ticket.id = $1`
   const getTicket = await query(getTicketQuery, [id])
+  // console.log("Ticket info",getTicket);
   if (getTicket) {
-    return getTicket.rows[0]
+    return getTicket.rows
   } else {
     throw new Error('Internal Error')
   }
 })
 
-export { addNewTicket, getAllTickets, getTicket, addTicketStatus }
+// ticket booking
+const ticketBooking = asyncHandler(
+  async (
+    ticketId,
+    buyerId,
+    pid,
+    ticketType,
+    noOfTickets,
+    amount
+  ) => {
+    try {
+      // add the booking record to the database
+      const addBookingQuery = `
+        INSERT INTO ticketBookings (buyerId, ticketId, pid, ticketType, noOfTickets, amount)
+        VALUES ($1, $2, $3, $4, $5, $6)
+      `;
+      const addBookingResult = await query(addBookingQuery, [
+        buyerId,
+        ticketId,
+        pid,
+        ticketType,
+        noOfTickets,
+        amount,
+      ]);
+
+      // update the ticket quantity in the ticket database
+      const updateTicketQuery = `
+        UPDATE ticketStatus
+        SET currentQuantity = currentQuantity - $1
+        WHERE ticketId = $2 AND type = $3
+      `;
+      const updateTicketResult = await query(updateTicketQuery, [
+        noOfTickets,
+        ticketId,
+        ticketType,
+      ]);
+
+      return true;
+    } catch (error) {
+      console.error('Error during ticket booking:', error);
+      throw new Error('Failed to complete the booking.');
+    }
+  }
+)
+
+export {
+  addNewTicket,
+  getAllTickets,
+  getTicket,
+  addTicketStatus,
+  ticketBooking,
+}
