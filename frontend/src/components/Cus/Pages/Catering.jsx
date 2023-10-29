@@ -56,6 +56,26 @@ const Catering = () => {
 
         })
 
+        const fetchedCateringData = (async () => {
+
+            axios.get(`/api/customer/viewCatering?event_id=${event_id}`)
+                .then(response => {
+                    setCateringPackage(response.data)
+                    setLoading(false);
+                    // console.log(cateringPackage);
+
+
+                })
+                .catch(error => {
+                    setError(error);
+                    setLoading(false);
+                });
+
+
+
+        })
+        
+
         const fetchedPackCount = (async () => {
             const service = 'Catering'
             axios.get(`/api/customer/getPackageCount?event_id=${event_id}&service=${service}`)
@@ -79,7 +99,7 @@ const Catering = () => {
             setCateringsData(cateringPackage)
 
         } else {
-            fetchedData()
+            fetchedCateringData()
             setCateringsData(cateringPackage)
             fetchedPackCount()
         }

@@ -57,8 +57,19 @@ const getpackage=asyncHandler(async(package_id)=>{
     }
 })
 
+const getVenueByEvent = asyncHandler(
+    async(
+        event_id
+    )=>{
+        const service='Venue'
+        const getBlockListQuery=`SELECT * FROM todolist INNER JOIN venuepackage ON todolist.selected_package_id = venuepackage.package_id WHERE todolist.event_id = $1 AND todolist.todo_service = $2;`
+        const venuepack = await query(getBlockListQuery,[event_id,service])
+        return venuepack.rows
+    }
+)
 
 
 
 
-export {isSelectedPackage,addPackageToEvent,getpackage}
+
+export {isSelectedPackage,addPackageToEvent,getpackage,getVenueByEvent}

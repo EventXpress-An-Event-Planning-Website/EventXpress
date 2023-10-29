@@ -2,7 +2,7 @@ import moment from 'moment';
 import asyncHandler from 'express-async-handler'
 import path from 'path'
 import {viewVenuePackagesModel,viewVenuePackageDetailsUserId,viewVenuPackageDetails} from '../../models/venuePackageModel.js'
-import { getNoOfComparepackages,insertPackageToCompare,getComparePack,getComparePackCount,updatePackageToCompare,getCompareCakes } from '../../models/compareServicesModel.js'
+import { getNoOfComparepackages,insertPackageToCompare,getComparePack,getComparePackCount,updatePackageToCompare,getCompareCakes,getCompareCatering } from '../../models/compareServicesModel.js'
 import { viewCakePackagesModel,viewCakePackageDetails } from '../../models/cakePackageModel.js'
 import { viewDecorationPackagesModel, viewDecorationPackageDetails } from '../../models/decorationPackageModel.js'
 import { viewCateringPackagesModel, viewCateringPackageDetails } from '../../models/cateringPackageModel.js'
@@ -15,6 +15,8 @@ import { getPreDefinedPackage,getPreDefinedPackageDetails,getPreDefinedPackageIn
 import { getBusyUser } from '../../models/busy_dateModel.js'
 // import Venue from '../../../frontend/src/components/Cus/Pages/Venue.jsx'
 import { getEventdetails } from '../../models/eventModel.js'
+import { getVenueByEvent } from '../../models/todoListModel.js';
+import { getBlocklistOfOneUser } from '../../models/blocklistModel.js';
 
 const viewVenuePackage = asyncHandler(async (req, res) => {
     const pack = await viewVenuePackagesModel()
@@ -625,6 +627,54 @@ const viewCakePack = asyncHandler(async (req, res) => {
 }
 )
 
+const viewCateringPack = asyncHandler(async (req, res) => {
+    const event_id=req.query.event_id
+    const pack = await viewCateringPackagesModel()
+    let catering=pack.rows
+    const event=await getEventdetails(event_id)
+    const date=moment(event[0].event_date).format('YYYY-MM-DD');
+    const busy= (await getBusyUser(date)).rows
+    // // const array = [{id:1}, {id:2}]
+    // Extract the user_ids from the busy array
+    const busyUserIds = busy.map(busyItem => busyItem.user_id);
+
+    // Filter out cakes where userid matches a user_id in busyUserIds
+    catering = catering.filter(cater => {
+        return !busyUserIds.includes(cater.userid);
+    });
+
+    const compareCatering = await getCompareCatering(event_id)
+    const comparePackageIds = compareCatering.map(busyItem => busyItem.package_id);
+    
+    catering = catering.filter(cater => {
+        return !comparePackageIds.includes(cater.package_id);
+    });
+
+    const selectedVenue= await getVenueByEvent(event_id)
+    if (selectedVenue.length!=0) {
+        const selectedVenueUser = selectedVenue[0].userid
+        console.log(selectedVenueUser);
+        const list = await getBlocklistOfOneUser(selectedVenueUser)
+        const blockUserIds = list.map(blockItem => blockItem.block_id);
+        console.log(blockUserIds);
+        if (blockUserIds.length !==0) {
+            catering = catering.filter(cater => {
+                return !blockUserIds.includes(cater.userid);
+            });
+        }
+        else{
+
+        }
+        
+    }else{
+
+    }
+
+   
+    res.json(catering)
+}
+)
+
 export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, 
     addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare,addCakePackageToCompareTable, getCompareCakePackage, 
     viewCateringPackage,viewdecoPackage,viewDecoPackageDetails,addDecoPackToCompare,addDecoPackageToCompareTable, getCompareDecoPackage , 
@@ -632,4 +682,4 @@ export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackTo
     viewSoundAndLightsPackageDetails, viewSoundAndLightPackageDetails, viewStageRentalPackage, viewStageRentalsPackageDetails, 
     viewStageRentalPackageDetails, addPhotographyPackToCompare, getComparePhotographyPackage, getCompareCateringPackage, addCateringPackToCompare, 
     addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,addCateringPackageToCompareTable,
-    addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent,viewBirthdayPackage,viewBirthdayPackageDetails,viewPreBirthdayPackageDetails,viewCakePack } 
+    addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent,viewBirthdayPackage,viewBirthdayPackageDetails,viewPreBirthdayPackageDetails,viewCakePack,viewCateringPack } 
