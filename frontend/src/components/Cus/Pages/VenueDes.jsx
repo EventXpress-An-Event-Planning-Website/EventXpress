@@ -29,6 +29,8 @@ const VenueDes = () => {
   const queryParams = new URLSearchParams(location.search);
   const packageCount = queryParams.get("packageCount");
   const uid = queryParams.get("euid");
+  const pac_id = queryParams.get("id");
+  console.log(pac_id);
   console.log(uid);
   const event_id = queryParams.get("event_id");
   const column_id = Number(queryParams.get("column"));
@@ -40,6 +42,8 @@ const VenueDes = () => {
   const [venuePackage, setVenuePackage] = useState("");
   const [loading, setLoading] = useState(false);
   const [halls, setHalls] = useState([]);
+  const [loading1, setLoading1] = useState(false);
+  
   useEffect(() => {
     axios
       .get(`/api/customer/viewVenuePackageDetails?uid=${uid}`)
@@ -59,6 +63,7 @@ const VenueDes = () => {
           sp_images:venue.sp_images
         }));
         setHalls(services);
+      
         setLoading(false);
       })
       .catch((error) => {
@@ -66,8 +71,47 @@ const VenueDes = () => {
         setError(error);
         setLoading(false);
       });
-  }, []);
-  console.log(halls);
+
+      // const selectedHall = halls.find((hall) => hall.pack_id === pac_id);
+      // setSelectedHall(selectedHall);
+      // console.log(selectedHall);
+  }, [loading]);
+
+  
+  useEffect(()=>{
+
+    axios
+      .get(`/api/customer/viewVenuePackDetails?pack_id=${pac_id}`)
+      .then((response) => {
+        console.log(response.data);
+        // setVenuePackage(response.data)
+        console.log(response.data);
+        const service = response.data.map((venue) => ({
+          title: venue.package_title,
+          pack_id: venue.package_id,
+          user_id: venue.userid,
+          name: venue.package_op_title,
+          location: venue.package_address,
+          price: venue.package_price,
+          guestCount: venue.package_op_count,
+          area: venue.package_op_area,
+          type: venue.package_op_type,
+          sp_images:venue.sp_images
+        }));
+        ;
+        console.log(service);
+        setSelectedHall(service[0]);
+      
+        setLoading1(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        // setError(error);
+        setLoading1(false);
+      });
+
+  },[loading1])
+  // console.log(halls);
 
   // const halls = [
   //     { name: "Hall Phoenix", location: "No:49, Canel Rd, Colombo", price: "LKR 24,500", guestCount: 200, area: "1200sqft", type: "Indoor" },
@@ -77,9 +121,11 @@ const VenueDes = () => {
 
   const [selectedHall, setSelectedHall] = useState(null);
 
+  
+
   const handleHallSelection = (hall) => {
     setSelectedHall(hall);
-    console.log(selectedHall.sp_images);
+    // console.log(selectedHall.sp_images);
   };
 
   const [showForm, setShowForm] = useState(false);

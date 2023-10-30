@@ -24,7 +24,7 @@ const TodoList=({event,success})=> {
           text: todo.todo_service,
           location: todo.todo_service,
           selected: todo[0],
-          request:todo[1]
+          request:todo.notifications
         }));
   
         setTodos(services);

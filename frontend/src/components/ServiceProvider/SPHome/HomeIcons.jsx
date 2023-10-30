@@ -1,6 +1,9 @@
 // import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap';
 import { FaPlus, FaCalendarAlt, FaListAlt, FaTicketAlt } from 'react-icons/fa';
+import { BiSolidMessageAltDetail } from 'react-icons/bi';
+// import { FaPlus } from 'react-icons/fa';
+
 
 const HomeIcons = () => {
   return (
@@ -24,6 +27,12 @@ const HomeIcons = () => {
         <Col>
           <a href="/serviceProvider/availability" className='icon'><FaCalendarAlt /></a>
           <h4>Calendar</h4>
+        </Col>
+
+
+        <Col>
+          <a href="/ServiceProvider/massege" className='icon'><BiSolidMessageAltDetail /></a>
+          <h4>Requests</h4>
         </Col>
         
       </Row>

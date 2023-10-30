@@ -187,6 +187,26 @@ CREATE TABLE ticket (
     bankPassbookImage VARCHAR(255)
 );
 
+CREATE TABLE ticketStatus (
+  ticketStatus_id SERIAL PRIMARY KEY,
+  ticketId INT,
+  customerId INT,
+  type VARCHAR(255),
+  price DECIMAL(10, 2),
+  totalQuantity INT,
+  currentQuantity INT
+)
+
+CREATE TABLE ticketBookings (
+    id SERIAL PRIMARY KEY,
+    buyerId INT NOT NULL,
+    ticketId INT NOT NULL,
+    pid TEXT NOT NULL,
+    ticketType VARCHAR(255) NOT NULL,
+    noOfTickets INT NOT NULL,
+    amount NUMERIC(10, 2) NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
 CREATE TABLE public.compareservices
 (
     compare_id serial,
@@ -227,4 +247,12 @@ CREATE TABLE public.predefinedpackage
     prepackage_description varchar(255),
     prepackage_discount integer,
     PRIMARY KEY (predefined_id)
+);
+
+CREATE TABLE public.busy_dates
+(
+    busy_id serial,
+    user_id integer,
+    busy_date date,
+    PRIMARY KEY (busy_id)
 );

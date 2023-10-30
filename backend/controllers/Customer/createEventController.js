@@ -82,13 +82,16 @@ const viewEventToDo = asyncHandler(async (req, res) => {
           // console.log(package_detail);
           const service = todos[i].selected_package_id.split('_')
           // console.log(service);
+          
           const not = await getNotificationByEventAndPackage(service[0],event_id);
-          // console.log(not);
+          console.log(not);
           let mergeObject={...todos[i],...package_detail}
 
           
-          if (not !== null) {
-            mergeObject={...mergeObject,...not}
+          if (not.length > 0) {
+            // console.log(mergeObject);
+            mergeObject.notifications = not
+            // console.log(mergeObject);
           }
         
        

@@ -3,6 +3,7 @@ import Carousel from 'react-multi-carousel';
 import CustomerEventCard from './CustomerEventCard';
 import { Button } from 'react-bootstrap';
 import { useEffect } from 'react';
+import moment from 'moment';
 
 
 const CusPendingEvent = ({eventData}) => {
@@ -52,7 +53,7 @@ const CusPendingEvent = ({eventData}) => {
             eventName: event.event_name,
             eventDescription: event.event_description,
             img: event.event_img,
-            date: new Date(event.event_date).toISOString().split('T')[0]
+            date:moment(event.event_date).format('YYYY-MM-DD')
           }));
     
           const publicEvents = filteredPublicEvents.map((event) => ({

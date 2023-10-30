@@ -12,7 +12,7 @@ import { viewVenuePackage,viewVenuePackageDetails,addVenuePack,addVenuePackToCom
     addPhotographyPackToCompare, getComparePhotographyPackage, viewPhotographiesPackageDetails, getCompareCateringPackage, addCateringPackToCompare, 
     viewSoundAndLightsPackageDetails, addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,
     addCateringPackageToCompareTable,addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent,
-    viewBirthdayPackage,viewBirthdayPackageDetails, viewPreBirthdayPackageDetails} from '../controllers/Customer/packageController.js'
+    viewBirthdayPackage,viewBirthdayPackageDetails, viewPreBirthdayPackageDetails,viewCakePack,viewCateringPack,viewVenuePack} from '../controllers/Customer/packageController.js'
 
 // import { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare, getCompareCakePackage} from '../controllers/Customer/packageController.js'
 import { sendRequest } from '../controllers/Customer/customerController.js'
@@ -77,6 +77,10 @@ router.get('/viewPreBirthdayPackageDetails', viewPreBirthdayPackageDetails)
 
 
 router.post('/sendRequest', sendRequest)
+
+router.get('/viewCakes', viewCakePack)
+router.get('/viewCatering', viewCateringPack)
+router.get('/viewVenuePackDetails', viewVenuePack)
 
 
 export default router

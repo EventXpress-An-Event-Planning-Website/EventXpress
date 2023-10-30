@@ -26,6 +26,8 @@ const Todo = ({
   const [spName,setSpName] = useState('');
   const [selectedPackage,setSelectedPackage]= useState([])
   
+console.log(todos);
+  
   const [edit, setEdit] = useState({
     id: null,
     value: "",
@@ -82,12 +84,12 @@ const Todo = ({
       service:selectedPackage.location
       
     }
-    console.log(notificationdata);
+    // console.log(notificationdata);
    
     if(todos.some(item => item.selected === undefined || item.selected === null)){
       toast.error("Before send a Request Please Select All Services or Delete Unwanted Details");
       setShowModal(false);
-      console.log('Weranga');
+      
     }else{
       axios
           .post("/api/customer/sendRequest", notificationdata)
@@ -95,7 +97,8 @@ const Todo = ({
             const packCount = response.data;
             console.log(packCount);
             // Perform navigation after successful POST
-            navigate(`/customer/event/CakeCompare?event_id=${event_id}`);
+            navigate(`/customer/eventdetails?id=${event_id}`);
+            setShowModal(false);
           })
           .catch((error) => {
             console.error("Error adding event:", error);
@@ -170,13 +173,19 @@ const Todo = ({
                   flexDirection: "column",
                 }}
               >
-                {success === "Accept" ? (
-                  <span style={{ marginLeft: "20%" }}>Accept</span>
-                ) : (
-                  <Button style={{ width: "100px" }} onClick={() => openModal(todo)}>
-                    Send Request
-                  </Button>
-                )}
+                {todo.request === undefined ?(<Button style={{ width: "100px" }} onClick={() => openModal(todo)}>
+                      Send Request
+                    </Button>
+                    ) :todo.request[0].status === "Accept" ? (
+                    <span style={{ marginLeft: "20%" }}>Accept</span>
+                  ) : todo.request[0].status === "Pending" ? (
+                    <span style={{ marginLeft: "20%" }}>Pending</span>
+                  ) : (
+                    <Button style={{ width: "100px" }} onClick={() => openModal(todo)}>
+                      Send Request
+                    </Button>
+                  )
+                }
               </div>
             </div>
           )}

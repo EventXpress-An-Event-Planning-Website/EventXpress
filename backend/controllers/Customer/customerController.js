@@ -1,11 +1,11 @@
 import asyncHandler from 'express-async-handler'
 import path from 'path'
+import { insertNotification } from '../../models/customer_notificationModel.js';
 
 
 const sendRequest = asyncHandler(async(req,res)=>{
-    console.log(req.body);
-    
-
+    const requ= await insertNotification(req.body)
+    res.json(requ);
 })
 
 
