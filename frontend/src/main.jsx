@@ -74,6 +74,8 @@ import AdminEventDetails from './components/Admin/AdminEventDetails.jsx'
 
 import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
 
+import Massege from './screens/ServiceProvider/Massege.jsx'
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -159,6 +161,7 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/preferences" element={<PredefinedPrefList />} />
       <Route path="/ServiceProvider/typePack" element={<PredefOneType />} />
       <Route path="/ServiceProvider/typePacklist" element={<AddtoPre />} />
+      <Route path="/ServiceProvider/massege" element={<Massege />} />
 
     </Route>
   )
