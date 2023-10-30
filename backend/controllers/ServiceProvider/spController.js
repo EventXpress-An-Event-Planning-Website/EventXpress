@@ -9,6 +9,7 @@ import {
   getblockList,
   removeList,
   getSpBlockPrefList,
+  preferencePredefineList
   // removePack
 } from "../../models/spModel.js";
 
@@ -184,6 +185,23 @@ const removeBlockPrefSPList = asyncHandler(async (req, res) => {
 });
 
 
+//view preference list for each packages
+const getPrefPredefine = asyncHandler(async (req, res) => {
+  const userId  = req.query.id;
+  const block_status = '1';
+  const PNames = await getpreferenceList(userId, block_status);
+  
+  if (PNames) {
+    res.status(200).json(
+      PNames,
+    );
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
+
 //delete packages
 // const removePackages = asyncHandler(async (req, res) => {
 //   const package_id = req.query.package_id;
@@ -211,5 +229,6 @@ export {
   removeBlockPrefSPList,
   getPreferenceSPNames,
   getBlockSPNames,
+  getPrefPredefine
   // removePackages
 };

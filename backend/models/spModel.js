@@ -171,6 +171,16 @@ const removeList = asyncHandler(
   }
 )
 
+//view preference list for each packages
+const preferencePredefineList = asyncHandler(
+  async(userId, block_status)=>{
+    const viewPrefNames = `SELECT * FROM venuepackage
+    JOIN blocklist ON venuepackage.userid = blocklist.block_id
+    WHERE blocklist.block_status = 1; `
+    const prefNames = await query(viewPrefNames,[userId, block_status])
+  }
+)
+
 //delete packages
 // const removePack = asyncHandler(
 //   async(package_id,service)=>{
@@ -197,5 +207,6 @@ export {
   getblockList,
   removeList,
   getSpBlockPrefList,
+  preferencePredefineList
   // removePack
 }
