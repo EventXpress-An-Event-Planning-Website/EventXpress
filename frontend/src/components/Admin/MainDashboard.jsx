@@ -31,6 +31,7 @@ const MainDashboard = () => {
   const [customerCount, setCustomerCount] = useState([]);
   const [totalCount, setTotalCount] = useState([]);
   const [newRequests, setNewRequests] = useState([]);
+  const [eventData, setEventData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -45,6 +46,20 @@ const MainDashboard = () => {
         setLoading(false);
       });
   }, [loading]); // passing an empty dependency array to make it run only once
+  
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getEventData`)
+      .then((response) => {
+        setEventData(response.data);  
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [loading]); // passing an empty dependency array to make it run only once
+
+  const firstThreeEvents = eventData.slice(0, 3);
   
   
   useEffect(() => {
@@ -228,21 +243,12 @@ const MainDashboard = () => {
               <th className="tableTopic">No. Of Tickets(sold)</th>
               <th className="tableTopic">Income</th>
             </tr>
+            {firstThreeEvents.map((event) => (
             <tr className="tableRow">
-              <td className="tableContent">Bron to shine</td>
-              <td className="tableContent">501</td>
-              <td className="tableContent">8,890,200</td>
-            </tr>
-            <tr className="tableRow">
-              <td className="tableContent">Bawaal</td>
-              <td className="tableContent">222</td>
-              <td className="tableContent">345,190</td>
-            </tr>
-            <tr className="tableRow">
-              <td className="tableContent">Black Pink</td>
-              <td className="tableContent">450</td>
-              <td className="tableContent">445,521</td>
-            </tr>
+              <td className="tableContent">{event.eventtitle}</td>
+              <td className="tableContent">{event.soldtickets}</td>
+              <td className="tableContent">{event.revenue}</td>
+            </tr> ))}
           </table>
         </div>
       </Link>
@@ -257,13 +263,7 @@ const MainDashboard = () => {
         </div>
         <div className="bottomcolom">
           <FaRegUser size={25} /> Service Providers <br />{" "}
-        
-
           <span className="bottomNumbers">  {serviceProviderscount} </span> 
-          {/* {serviceProviderscount != undefined ?
-          <span className="bottomNumbers">  {serviceProviderscount[0].count} </span> :null} */}
-        
-        
         </div>
         <div className="bottomcolom">
           <HiOutlineUserGroup size={25} /> Customers <br />{" "}

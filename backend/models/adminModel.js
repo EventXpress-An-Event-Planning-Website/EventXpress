@@ -1,3 +1,4 @@
+import { assign } from 'nodemailer/lib/shared/index.js'
 import { query } from '../config/db.js'
 
 
@@ -16,14 +17,13 @@ const getCustomers = async () => {
   }
 }
 
-
 // get all service providers from database that are verified by admin
 const getServiceProviders = async () => {
   try {
     const serviceProvidersExistsQuery = `
     SELECT * FROM serviceprovider where isVerifiedByAdmin = true`
     const serviceProvidersExists = await query(serviceProvidersExistsQuery, [])
-    console.log(serviceProvidersExists);
+    // console.log(serviceProvidersExists);
 
     return serviceProvidersExists.rowCount > 0 ? serviceProvidersExists.rows : false
   } catch (error) {
@@ -39,7 +39,7 @@ const getPendingServiceProviders = async () => {
     const PendingServiceProvidersExistsQuery = `
     SELECT * FROM serviceprovider where isVerifiedByAdmin = false`
     const PendingServiceProvidersExists = await query(PendingServiceProvidersExistsQuery, [])
-    console.log(serviceProvidersExists);
+    // console.log(PendingServiceProvidersExists);
 
     return PendingServiceProvidersExists.rowCount > 0 ? PendingServiceProvidersExists.rows : false
   } catch (error) {
@@ -47,7 +47,6 @@ const getPendingServiceProviders = async () => {
     throw new Error(`Internal Error`)
   }
 }
-
 
 //get count of customers from database
 const getCountOfCustomers = async () => {
@@ -95,23 +94,131 @@ const getCountOfNewRequests = async () => {
   }
 }
 
-
 //get total users count from database
 const totalUsersCount = async () => {
-  try{
-    var totalUsers=parseInt(await(getCountOfCustomers()))+ parseInt(await(getCountOfServiceProviders()));
+  try {
+    var totalUsers = parseInt(await (getCountOfCustomers())) + parseInt(await (getCountOfServiceProviders()));
     return totalUsers;
   }
-  catch(error){
+  catch (error) {
     console.error(`Internal Error: ${error.message}`)
     throw new Error(`Internal Error`)
 
   }
 }
 
+// get total ticket quantity when give ID of ticket
+const getTotalTicketsQuantity = async (ticket_Id) => {
+  try {
+    const eventDetailsQuery = ` SELECT ticketId, SUM(totalQuantity) AS totalQuantitySum
+    FROM ticketStatus
+    WHERE ticketId = $1
+    GROUP BY ticketId;`
 
+    const eventDetails = await query(eventDetailsQuery, [ticket_Id])
+    return eventDetails.rows[0].totalquantitysum
 
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
 
+// get current ticket quantity when give ID of ticket
+const getCurrentTicketsQuantity = async (ticket_Id) => {
+  try {
+    const eventDetailsQuery = ` SELECT ticketId, SUM(currentQuantity) AS currentQuantitySum
+    FROM ticketStatus
+    WHERE ticketId = $1
+    GROUP BY ticketId;`
 
+    const eventDetails = await query(eventDetailsQuery, [ticket_Id])
 
-export { getCustomers, getServiceProviders, getPendingServiceProviders, getCountOfCustomers,getCountOfServiceProviders,totalUsersCount,getCountOfNewRequests };
+    return eventDetails.rows[0].currentquantitysum
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+// get remaining ticket quantity when give ID of ticket
+const getSoldTicketsQuantity = async (ticket_Id) => {
+  try {
+    let totalTickets = parseInt(await (getTotalTicketsQuantity(ticket_Id)));
+    let currentTickets = parseInt(await (getCurrentTicketsQuantity(ticket_Id)));
+    let soldTickets = totalTickets - currentTickets;
+
+    return soldTickets;
+  } catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+// total revenue when give ID of ticket
+const getTicketRevenue = async (ticket_Id) => {
+  try {
+    const ticketRevQuery = ` SELECT ticketId, SUM(amount) AS totalAmount
+    FROM ticketBookings
+    WHERE ticketId = $1
+    GROUP BY ticketId;
+    `
+    const eventDetails = await query(ticketRevQuery, [ticket_Id])
+    return eventDetails.rows[0].totalamount
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+// get all event Names and Ticket IDs
+const totalEvents = async () => {
+  try {
+    const totalEventsQuery = `
+    SELECT id,eventTitle FROM ticket`
+    const totalEvents = await query(totalEventsQuery, [])
+    console.log(totalEvents);
+
+    return totalEvents.rowCount > 0 ? totalEvents.rows : false
+  } catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+// assign event data for object
+const combineEventData = async () => {
+  try {
+    const totEvents = await totalEvents(); // Assuming totalEvents is an asynchronous function to get all event names and IDs
+
+    const combinedEventDetails = [];
+
+    for (const event of totEvents) {
+      const getTicketRevenues = await getTicketRevenue(parseInt(event.id));
+      const remainingTickets = await getSoldTicketsQuantity(parseInt(event.id));
+
+      const newEvent = {
+        "eventtitle": `${event.eventtitle}`,
+        "ticketid": `${event.id}`,
+        "revenue": `${getTicketRevenues}`,
+        "soldtickets": `${remainingTickets}`
+      };
+
+      combinedEventDetails.push(newEvent);
+    }
+
+    return combinedEventDetails;
+  } catch (error) {
+    console.error(`Internal Error: ${error.message}`);
+    throw new Error(`Internal Error: ${error.message}`);
+  }
+};
+
+export {
+  getCustomers, getServiceProviders, getPendingServiceProviders, getCountOfCustomers,
+  getCountOfServiceProviders, totalUsersCount, getCountOfNewRequests,
+  combineEventData
+};

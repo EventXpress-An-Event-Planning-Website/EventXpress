@@ -18,9 +18,7 @@ function UsersMain() {
   const [customerCount, setCustomerCount] = useState([]);
   const [totalCount, setTotalCount] = useState([]);
   const [newRequests, setNewRequests] = useState([]);
-  
-
- 
+  const [pendingServiceProviders, setPendingServiceProviders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -29,7 +27,7 @@ function UsersMain() {
       .get(`/api/admin/getAllCustomers`)
       .then((response) => {
         setCustomer(response.data.customers);
-        
+
         // console.log(data);
       })
       .catch((error) => {
@@ -37,14 +35,13 @@ function UsersMain() {
         setLoading(false);
       });
   };
-
 
   const fetchServiceProvidersData = () => {
     axios
       .get(`/api/admin/getAllServiceProviders`)
       .then((response) => {
         setServiceProviders(response.data.serviceProviders);
-        
+
         // console.log(data);
       })
       .catch((error) => {
@@ -53,15 +50,12 @@ function UsersMain() {
       });
   };
 
-  const fetchPendingServiceProvidersData = () => {
-    const [pendingServiceProvidersData, setPendingServiceProvidersData] = useState([]);
-
-    useEffect(() => {
+  useEffect(() => {
     axios
       .get(`/api/admin/getPendingServiceProviders`)
       .then((response) => {
-        setServiceProviders(response.data.serviceProviders);
-        
+        setPendingServiceProviders(response.data.pendingServiceProviders);
+
         // console.log(data);
       })
       .catch((error) => {
@@ -69,8 +63,6 @@ function UsersMain() {
         setLoading(false);
       });
   }, []);
-  };
-
 
   const handleTabChange = (selectedKey) => {
     setKey(selectedKey);
@@ -81,54 +73,49 @@ function UsersMain() {
     }
   };
 
-
   //get count starts
 
   useEffect(() => {
     axios
       .get(`/api/admin/getAllServiceProvidersCount`)
       .then((response) => {
-        setServiceProviderscount(response.data);  
+        setServiceProviderscount(response.data);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
       });
   }, [loading]); // passing an empty dependency array to make it run only once
-  
-  
+
   useEffect(() => {
     axios
       .get(`/api/admin/getAllCustomerCount`)
       .then((response) => {
-        setCustomerCount(response.data);  
+        setCustomerCount(response.data);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
       });
   }, [loading]); // passing an empty dependency array to make it run only once
-  
-  
-  
+
   useEffect(() => {
     axios
       .get(`/api/admin/getAllUserCount`)
       .then((response) => {
-        setTotalCount(response.data);  
+        setTotalCount(response.data);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
       });
   }, [loading]); // passing an empty dependency array to make it run only once
-  
-  
+
   useEffect(() => {
     axios
       .get(`/api/admin/getAllNewRequestCount`)
       .then((response) => {
-        setNewRequests(response.data);  
+        setNewRequests(response.data);
       })
       .catch((error) => {
         setError(error);
@@ -136,8 +123,7 @@ function UsersMain() {
       });
   }, [loading]); // passing an empty dependency array to make it run only once
 
-  //get counts ends 
-
+  //get counts ends
 
   return (
     <div className="mainUsers ">
@@ -164,7 +150,12 @@ function UsersMain() {
         <Tabs activeKey={key} onSelect={handleTabChange}>
           <Tab eventKey="tab1" title="New Requests">
             <div className="userRequestsBox">
+              
+            {pendingServiceProviders.length === 0 ? (
+                <p>Loading...</p>
+              ) : (
               <table className="admin-table">
+                {pendingServiceProviders.map((pendingServiceProvider) => (
                 <tr className="tableRow">
                   <td className="userTableContent">
                     <GoPersonAdd
@@ -174,8 +165,9 @@ function UsersMain() {
                   </td>
                   <td className="userTableContent"></td>
                   <td className="userTableContent">
-                    MR. Naveen Rajan , Hotel De Plaza has requested for
-                    registration
+                    {/* MR. Naveen Rajan , Hotel De Plaza has requested for
+                    registration */}
+                    {pendingServiceProvider.name} 
                   </td>
                   <td>
                     <Link to="/UsersDetails">
@@ -187,121 +179,66 @@ function UsersMain() {
                       Reject
                     </Button>
                   </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent">
-                    <GoPersonAdd
-                      size={25}
-                      style={{ backgroundColor: "F4F1EF", color: "#6D004F" }}
-                    />
-                  </td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    MR. Avishka Induwara , Pilaozz has requested for
-                    registration
-                  </td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary" className="viewButton">
-                        View
-                      </Button>
-                    </Link>
-                    <Button variant="primary" className="viewButton">
-                      Reject
-                    </Button>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent">
-                    <GoPersonAdd
-                      size={25}
-                      style={{ backgroundColor: "F4F1EF", color: "#6D004F" }}
-                    />
-                  </td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    MRs. Kaveesha Jayawickrama , Kavi DJ has requested for
-                    registration
-                  </td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary" className="viewButton">
-                        View
-                      </Button>
-                    </Link>
-                    <Button variant="primary" className="viewButton">
-                      Reject
-                    </Button>
-                  </td>
-                </tr>
-              </table>
+                </tr> ))}
+              </table> )}
             </div>
           </Tab>
-
-
 
           {console.log(serviceProviders)}
 
           <Tab eventKey="tab2" title="Service Providers">
             <div className="userRequestsBox">
-
-            {customer.length === 0 ? (
+              {customer.length === 0 ? (
                 <p>Loading...</p>
               ) : (
-                
                 <table className="admin-table">
                   {serviceProviders.map((serviceProviders) => (
-                  <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    {serviceProviders.name}
-                    <br />
-                    <span style={{ fontSize: "8px" }}>Photographer</span>
-                  </td>
-                  <td>
-                    <Button
-                      variant="primary"
-                      className="viewButton"
-                      style={{ width: "100px" }}
-                    >
-                      View Profile
-                    </Button>
-                  </td>
-
-                  
-                </tr>
-
+                    <tr className="tableRow">
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent">
+                        {serviceProviders.name}
+                        <br />
+                        <span style={{ fontSize: "8px" }}>Photographer</span>
+                      </td>
+                      <td>
+                        <Button
+                          variant="primary"
+                          className="viewButton"
+                          style={{ width: "100px" }}
+                        >
+                          View Profile
+                        </Button>
+                      </td>
+                    </tr>
                   ))}
                 </table>
               )}
-
             </div>
           </Tab>
 
           {/* Customers satrts */}
-          <Tab eventKey="tab3"  title="Customers">
+          <Tab eventKey="tab3" title="Customers">
             <div className="userRequestsBox">
               {customer.length === 0 ? (
                 <p>Loading...</p>
               ) : (
-                
                 <table className="admin-table">
                   {customer.map((customer) => (
-                  <tr className="tableRow">
-                    <td className="userTableContent"></td>
-                    <td className="userTableContent"></td>
-                    <td className="userTableContent">{customer.name}</td>
-                    <td>
-                      <Button
-                        variant="primary"
-                        className="viewButton"
-                        style={{ width: "80px", fontSize: "10px" }}
-                      >
-                        View Profile
-                      </Button>{" "}
-                    </td>
-                  </tr>
+                    <tr className="tableRow">
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent"></td>
+                      <td className="userTableContent">{customer.name}</td>
+                      <td>
+                        <Button
+                          variant="primary"
+                          className="viewButton"
+                          style={{ width: "80px", fontSize: "10px" }}
+                        >
+                          View Profile
+                        </Button>{" "}
+                      </td>
+                    </tr>
                   ))}
                 </table>
               )}
