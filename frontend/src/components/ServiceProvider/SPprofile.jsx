@@ -2,10 +2,6 @@ import {useState, useEffect} from 'react'
 import { Row,Col, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 import profile from '../../assets/images/default_profile.webp'
-// import hot1 from '../../assets/images/hot1.jpg'
-// import hot2 from '../../assets/images/hot2.webp'
-// import hot3 from '../../assets/images/hot3.jpg'
-// import hot4 from '../../assets/images/hot4.jpg'
 import SPSidebar from "../ServiceProvider/SPSidebar";
 import { useSelector } from 'react-redux'
 import axios from 'axios';

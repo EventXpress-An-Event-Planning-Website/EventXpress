@@ -10,7 +10,7 @@ const viewVenuePackagesModel = asyncHandler(
     )=> {
         const viewPackageQuery = `SELECT * FROM public.venuepackage`
         const packageDetail = await query(viewPackageQuery, [])
-        console.log(packageDetail)
+        // console.log(packageDetail)
         return packageDetail
 
     }
@@ -21,8 +21,8 @@ const viewVenuPackageDetails =asyncHandler(
         package_id
     )=>{
         try {
-            const viewPackageQuery = `SELECT * FROM public.venuepackage WHERE package_id=${package_id}`
-            const packageDetail = await query(viewPackageQuery, [])
+            const viewPackageQuery = `SELECT * FROM public.venuepackage WHERE package_id=$1`
+            const packageDetail = await query(viewPackageQuery, [package_id])
             console.log(packageDetail)
             return packageDetail
             
@@ -32,5 +32,21 @@ const viewVenuPackageDetails =asyncHandler(
     }
 )
 
+const viewVenuePackageDetailsUserId =asyncHandler(
+    async(
+        user_id
+    )=>{
+        try {
+            const viewPackageQuery = `SELECT * FROM public.venuepackage WHERE userid=$1`
+            const packageDetail = await query(viewPackageQuery, [user_id])
+            // console.log(packageDetail)
+            return packageDetail
+            
+        } catch (error) {
+            throw new Error(error)
+        }
 
-export {viewVenuePackagesModel}
+})
+
+
+export {viewVenuePackagesModel,viewVenuPackageDetails,viewVenuePackageDetailsUserId}

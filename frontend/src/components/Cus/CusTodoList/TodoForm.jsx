@@ -71,7 +71,7 @@ const TodoForm=(props) =>{
           </button>
 
           <button style={{marginLeft:'5%'}} onClick={HandleNavigate} className='todo-button'>
-            Select Predefine Package
+            Select Pre-defined Package
           </button>
         </>
       )}

@@ -15,45 +15,39 @@ const Works = () => {
     const worksData = [
         {
             id: 1,
-            link: 'https://www.google.com',
             image: img1,
-            title: 'The perfect design',
-            subtitle: 'Web design',
+            title: 'Anniversary Celebration',
+            subtitle: 'of Ryan and Roshell',
         },
         {
             id: 2,
-            link: 'https://www.google.com',
             image: img2,
-            title: 'The perfect design',
-            subtitle: 'Web design',
+            title: 'DJ party',
+            subtitle: 'at Fiestra',
         },
         {
             id: 3,
-            link: 'https://www.google.com',
             image: img3,
-            title: 'The perfect design',
-            subtitle: 'Web design',
+            title: 'Anniversary Celebration',
+            subtitle: 'of Buddika and Senali',
         },
         {
             id: 4,
-            link: 'https://www.google.com',
             image: img4,
-            title: 'The perfect design',
-            subtitle: 'Web design',
+            title: 'Birthday Celebration',
+            subtitle: 'of Diana Michell',
         },
         {
             id: 5,
-            link: 'https://www.google.com',
             image: img5,
-            title: 'The perfect design',
-            subtitle: 'Web design',
+            title: 'Farewell',
+            subtitle: 'of Mr.perera',
         },
         {
             id: 6,
-            link: 'https://www.google.com',
             image: img6,
-            title: 'The perfect design',
-            subtitle: 'Web design',
+            title: 'DJ Night',
+            subtitle: 'in Orchestraz',
         }
     ]
 

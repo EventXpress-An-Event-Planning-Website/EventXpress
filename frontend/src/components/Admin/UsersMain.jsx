@@ -49,19 +49,19 @@ function UsersMain() {
     <div className="mainUsers ">
       <div className="userTop">
         <div className="bottomcolom">
-          <GoPersonAdd size={45} /> New Requests <br />{" "}
+          <GoPersonAdd size={25} /> New Requests <br />{" "}
           <span className="bottomNumbers">010</span>
         </div>
         <div className="bottomcolom">
-          <FaRegUser size={45} /> Total Users <br />{" "}
+          <FaRegUser size={25} /> Total Users <br />{" "}
           <span className="bottomNumbers">1782</span>{" "}
         </div>
         <div className="bottomcolom">
-          <FaRegUser size={45} /> Service Providers <br />{" "}
+          <FaRegUser size={25} /> Service Providers <br />{" "}
           <span className="bottomNumbers">534</span>{" "}
         </div>
         <div className="bottomcolom">
-          <HiOutlineUserGroup size={45} /> Customers <br />{" "}
+          <HiOutlineUserGroup size={25} /> Customers <br />{" "}
           <span className="bottomNumbers">764</span>{" "}
         </div>
       </div>
@@ -74,145 +74,7 @@ function UsersMain() {
                 <tr className="tableRow">
                   <td className="userTableContent">
                     <GoPersonAdd
-                      size={45}
-                      style={{ backgroundColor: "F4F1EF", color: "#6D004F" }}
-                    />
-                  </td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    MR. Naveen Rajan , Hotel De Plaza has requested for
-                    registration
-                  </td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary" className="viewButton">
-                        View
-                      </Button>
-                    </Link>
-                    <Button variant="primary" className="viewButton">
-                      Cancel
-                    </Button>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent">
-                    <GoPersonAdd
-                      size={45}
-                      style={{ backgroundColor: "F4F1EF", color: "#6D004F" }}
-                    />
-                  </td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    MR. Naveen Rajan , Hotel De Plaza has requested for
-                    registration
-                  </td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary" className="viewButton">
-                        View
-                      </Button>
-                    </Link>
-                    <Button variant="primary" className="viewButton">
-                      Cancel
-                    </Button>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent">
-                    <GoPersonAdd
-                      size={45}
-                      style={{ backgroundColor: "F4F1EF", color: "#6D004F" }}
-                    />
-                  </td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    MR. Naveen Rajan , Hotel De Plaza has requested for
-                    registration
-                  </td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary" className="viewButton">
-                        View
-                      </Button>
-                    </Link>
-                    <Button variant="primary" className="viewButton">
-                      Cancel
-                    </Button>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent">
-                    <GoPersonAdd
-                      size={45}
-                      style={{ backgroundColor: "F4F1EF", color: "#6D004F" }}
-                    />
-                  </td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    MR. Naveen Rajan , Hotel De Plaza has requested for
-                    registration
-                  </td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary" className="viewButton">
-                        View
-                      </Button>
-                    </Link>
-                    <Button variant="primary" className="viewButton">
-                      Cancel
-                    </Button>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent">
-                    <GoPersonAdd
-                      size={45}
-                      style={{ backgroundColor: "F4F1EF", color: "#6D004F" }}
-                    />
-                  </td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    MR. Naveen Rajan , Hotel De Plaza has requested for
-                    registration
-                  </td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary" className="viewButton">
-                        View
-                      </Button>
-                    </Link>
-                    <Button variant="primary" className="viewButton">
-                      Cancel
-                    </Button>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent">
-                    <GoPersonAdd
-                      size={45}
-                      style={{ backgroundColor: "F4F1EF", color: "#6D004F" }}
-                    />
-                  </td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">
-                    MR. Naveen Rajan , Hotel De Plaza has requested for
-                    registration
-                  </td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary" className="viewButton">
-                        View
-                      </Button>
-                    </Link>
-                    <Button variant="primary" className="viewButton">
-                      Cancel
-                    </Button>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent">
-                    <GoPersonAdd
-                      size={45}
+                      size={25}
                       style={{ backgroundColor: "F4F1EF", color: "#6D004F" }}
                     />
                   </td>
@@ -238,96 +100,18 @@ function UsersMain() {
           <Tab eventKey="tab2" title="Service Providers">
             <div className="userRequestsBox">
               <table className="admin-table">
+               
                 <tr className="tableRow">
                   <td className="userTableContent"></td>
                   <td className="userTableContent"></td>
                   <td className="userTableContent">Sandun Jayawikrama</td>
                   <td>
                     <Link to="/UsersDetails">
-                      <Button variant="primary">View Profile</Button>
+                      <Button variant="primary" className="viewButton" style={{width:'100px'}}>View Profile</Button>
                     </Link>
                   </td>
                 </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">Sandun Jayawikrama</td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary">View Profile</Button>
-                    </Link>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">Sandun Jayawikrama</td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary">View Profile</Button>
-                    </Link>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">Sandun Jayawikrama</td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary">View Profile</Button>
-                    </Link>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">Sandun Jayawikrama</td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary">View Profile</Button>
-                    </Link>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">Sandun Jayawikrama</td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary">View Profile</Button>
-                    </Link>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">Sandun Jayawikrama</td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary">View Profile</Button>
-                    </Link>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">Sandun Jayawikrama</td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary">View Profile</Button>
-                    </Link>
-                  </td>
-                </tr>
-                <tr className="tableRow">
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent"></td>
-                  <td className="userTableContent">Sandun Jayawikrama</td>
-                  <td>
-                    <Link to="/UsersDetails">
-                      <Button variant="primary">View Profile</Button>
-                    </Link>
-                  </td>
-                </tr>
+               
               </table>
             </div>
           </Tab>
@@ -344,40 +128,11 @@ function UsersMain() {
                       <td className="userTableContent">Kalana Weranga</td>
                       <td>
                         <Link to="/UsersDetails">
-                          <Button variant="primary">View Profile</Button>
+                          <Button variant="primary" className="viewButton" style={{width:'100px'}}>View Profile</Button>
                         </Link>
                       </td>
                     </tr>
-                    <tr className="tableRow" >
-                      <td className="userTableContent"></td>
-                      <td className="userTableContent"></td>
-                      <td className="userTableContent">Kalana Weranga</td>
-                      <td>
-                        <Link to="/UsersDetails">
-                          <Button variant="primary">View Profile</Button>
-                        </Link>
-                      </td>
-                    </tr>
-                    <tr className="tableRow" >
-                      <td className="userTableContent"></td>
-                      <td className="userTableContent"></td>
-                      <td className="userTableContent">Kalana Weranga</td>
-                      <td>
-                        <Link to="/UsersDetails">
-                          <Button variant="primary">View Profile</Button>
-                        </Link>
-                      </td>
-                    </tr>
-                    <tr className="tableRow" >
-                      <td className="userTableContent"></td>
-                      <td className="userTableContent"></td>
-                      <td className="userTableContent">Kalana Weranga</td>
-                      <td>
-                        <Link to="/UsersDetails">
-                          <Button variant="primary">View Profile</Button>
-                        </Link>
-                      </td>
-                    </tr>
+                   
                  
                 </table>
               )}

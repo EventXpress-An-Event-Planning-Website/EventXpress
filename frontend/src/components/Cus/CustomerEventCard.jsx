@@ -28,7 +28,7 @@ const CustomerEventCard = ({event}) => {
     <>
         
         <Card style={{ width: '18rem'}} className='customerEventCardcon'>
-        <Card.Img variant="top" src={`../../src/assets/images/${event.img}`} className='event-card-image'/>
+        <Card.Img variant="top" src={`../../src/assets/images/uploads/${event.img}`} className='event-card-image'/>
         <Card.Body>
             <Card.Title>
               {event.eventName} <br />

@@ -9,8 +9,8 @@ const createpackage = asyncHandler(async(req,res)=>{
     let packages=''
     const {
         userId,
+        packageBusName,
         packageTitle,
-        // packageLocation,
         packageAddress,
         packageDescription,
         packagePrice,
@@ -28,8 +28,8 @@ const createpackage = asyncHandler(async(req,res)=>{
 
         packages= await venuePackage(
             userId,
+            packageBusName,
             packageTitle,
-            // packageLocation,
             packageAddress,
             packageDescription,
             packagePrice,
@@ -53,8 +53,8 @@ const createpackage = asyncHandler(async(req,res)=>{
     } else {
         packages= await otherPackage(
             userId,
+            packageBusName,
             packageTitle,
-            // packageLocation,
             packageAddress,
             packageDescription,
             packagePrice,
