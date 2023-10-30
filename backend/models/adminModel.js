@@ -48,29 +48,47 @@ const getPendingServiceProviders = async () => {
   }
 }
 
+
+//get count of customers from database
 const getCountOfCustomers = async () => {
   try {
     const customerCountQuery = `
     SELECT COUNT(*) FROM customer;`
     const customerCount = await query(customerCountQuery, [])
-    console.log(customerCount);
 
-    return customerCount
+    return customerCount.rows[0].count
   } catch (error) {
     console.error(`Internal Error: ${error.message}`)
     throw new Error(`Internal Error`)
   }
 }
 
-
+// get count of service providers approve by admin from database
 const getCountOfServiceProviders = async () => {
   try {
-    const customerCountQuery = `
-    SELECT COUNT(*) FROM customer;`
-    const customerCount = await query(customerCountQuery, [])
-    console.log(customerCount);
+    const serviceProviderCountQuery = `
+    SELECT COUNT(*) FROM serviceprovider WHERE isverifiedbyadmin = 'true';`
+    const serviceProviderCount = await query(serviceProviderCountQuery, [])
 
-    return customerCount
+    // console.log("here",serviceProviderCount.rows[0].count);
+
+    return serviceProviderCount.rows[0].count
+  } catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+// get count of service providers request from database
+const getCountOfNewRequests = async () => {
+  try {
+    const requsetCountQuery = `
+    SELECT COUNT(*) FROM serviceprovider WHERE isverifiedbyadmin = 'false';`
+    const newRequestsCount = await query(requsetCountQuery, [])
+
+    // console.log("here",serviceProviderCount.rows[0].count);
+
+    return newRequestsCount.rows[0].count
   } catch (error) {
     console.error(`Internal Error: ${error.message}`)
     throw new Error(`Internal Error`)
@@ -78,7 +96,22 @@ const getCountOfServiceProviders = async () => {
 }
 
 
+//get total users count from database
+const totalUsersCount = async () => {
+  try{
+    var totalUsers=parseInt(await(getCountOfCustomers()))+ parseInt(await(getCountOfServiceProviders()));
+    return totalUsers;
+  }
+  catch(error){
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+
+  }
+}
 
 
 
-export { getCustomers, getServiceProviders, getPendingServiceProviders, getCountOfCustomers };
+
+
+
+export { getCustomers, getServiceProviders, getPendingServiceProviders, getCountOfCustomers,getCountOfServiceProviders,totalUsersCount,getCountOfNewRequests };

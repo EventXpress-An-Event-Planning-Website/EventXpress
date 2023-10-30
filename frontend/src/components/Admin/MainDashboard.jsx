@@ -21,7 +21,78 @@ import {
 } from "recharts";
 import card from "@material-tailwind/react/theme/components/card";
 
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
+
 const MainDashboard = () => {
+
+  const [serviceProviderscount, setServiceProviderscount] = useState([]);
+  const [customerCount, setCustomerCount] = useState([]);
+  const [totalCount, setTotalCount] = useState([]);
+  const [newRequests, setNewRequests] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getAllServiceProvidersCount`)
+      .then((response) => {
+        setServiceProviderscount(response.data);  
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [loading]); // passing an empty dependency array to make it run only once
+  
+  
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getAllCustomerCount`)
+      .then((response) => {
+        setCustomerCount(response.data);  
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [loading]); // passing an empty dependency array to make it run only once
+  
+  
+  
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getAllUserCount`)
+      .then((response) => {
+        setTotalCount(response.data);  
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [loading]); // passing an empty dependency array to make it run only once
+  
+  
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getAllNewRequestCount`)
+      .then((response) => {
+        setNewRequests(response.data);  
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [loading]); // passing an empty dependency array to make it run only once
+  
+  
+
+
+//  ////////////////////////////////////////////////////////////////////////
+
+
+
   const data = [
     {
       name: "January",
@@ -178,19 +249,25 @@ const MainDashboard = () => {
       <div className="bottom">
         <div className="bottomcolom">
           <GoPersonAdd size={25} /> New Requests <br />{" "}
-          <span className="bottomNumbers">04</span>
+          <span className="bottomNumbers">{newRequests}</span>
         </div>
         <div className="bottomcolom">
           <FaRegUser size={25} /> Total Users <br />{" "}
-          <span className="bottomNumbers">013</span>{" "}
+          <span className="bottomNumbers">{totalCount}</span>{" "}
         </div>
         <div className="bottomcolom">
           <FaRegUser size={25} /> Service Providers <br />{" "}
-          <span className="bottomNumbers">06</span>{" "}
+        
+
+          <span className="bottomNumbers">  {serviceProviderscount} </span> 
+          {/* {serviceProviderscount != undefined ?
+          <span className="bottomNumbers">  {serviceProviderscount[0].count} </span> :null} */}
+        
+        
         </div>
         <div className="bottomcolom">
           <HiOutlineUserGroup size={25} /> Customers <br />{" "}
-          <span className="bottomNumbers">07</span>{" "}
+          <span className="bottomNumbers">{customerCount}</span>{" "}
         </div>
       </div>
     </div>

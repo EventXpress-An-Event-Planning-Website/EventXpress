@@ -14,6 +14,10 @@ function UsersMain() {
   const [key, setKey] = useState("tab1");
   const [serviceProviders, setServiceProviders] = useState([]);
   const [customer, setCustomer] = useState([]);
+  const [serviceProviderscount, setServiceProviderscount] = useState([]);
+  const [customerCount, setCustomerCount] = useState([]);
+  const [totalCount, setTotalCount] = useState([]);
+  const [newRequests, setNewRequests] = useState([]);
   
 
  
@@ -78,24 +82,81 @@ function UsersMain() {
   };
 
 
+  //get count starts
+
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getAllServiceProvidersCount`)
+      .then((response) => {
+        setServiceProviderscount(response.data);  
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [loading]); // passing an empty dependency array to make it run only once
+  
+  
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getAllCustomerCount`)
+      .then((response) => {
+        setCustomerCount(response.data);  
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [loading]); // passing an empty dependency array to make it run only once
+  
+  
+  
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getAllUserCount`)
+      .then((response) => {
+        setTotalCount(response.data);  
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [loading]); // passing an empty dependency array to make it run only once
+  
+  
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getAllNewRequestCount`)
+      .then((response) => {
+        setNewRequests(response.data);  
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [loading]); // passing an empty dependency array to make it run only once
+
+  //get counts ends 
+
+
   return (
     <div className="mainUsers ">
       <div className="userTop">
         <div className="bottomcolom">
           <GoPersonAdd size={25} /> New Requests <br />{" "}
-          <span className="bottomNumbers">03</span>
+          <span className="bottomNumbers">{newRequests}</span>
         </div>
         <div className="bottomcolom">
           <FaRegUser size={25} /> Total Users <br />{" "}
-          <span className="bottomNumbers">12</span>{" "}
+          <span className="bottomNumbers">{totalCount}</span>{" "}
         </div>
         <div className="bottomcolom">
           <FaRegUser size={25} /> Service Providers <br />{" "}
-          <span className="bottomNumbers">06</span>{" "}
+          <span className="bottomNumbers">{serviceProviderscount}</span>{" "}
         </div>
         <div className="bottomcolom">
           <HiOutlineUserGroup size={25} /> Customers <br />{" "}
-          <span className="bottomNumbers">07</span>{" "}
+          <span className="bottomNumbers">{customerCount}</span>{" "}
         </div>
       </div>
 
