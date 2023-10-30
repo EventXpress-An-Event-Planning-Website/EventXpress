@@ -10,7 +10,7 @@ import {
   updateEmailVerification,
   updateUser,
 } from '../models/userModel.js'
-import sendVerificationEmail from '../utils/emailUtils.js'
+import { sendVerificationEmail } from '../utils/emailUtils.js'
 import generateVerificationToken from '../utils/tokenUtils.js'
 
 // @desc    Auth user/set token
@@ -18,10 +18,9 @@ import generateVerificationToken from '../utils/tokenUtils.js'
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
-  
-  const user = await loginUser(email, password)
-  console.log(user);
 
+  const user = await loginUser(email, password)
+  console.log(user)
 
   if (user) {
     generateToken(res, user.id)
@@ -44,8 +43,8 @@ const verifyEmail = asyncHandler(async (req, res) => {
   const email = req.query.email
   const verificationToken = req.query.verificationToken
   const role = req.query.role
-  
-  const response = await updateEmailVerification(email,verificationToken,role)
+
+  const response = await updateEmailVerification(email, verificationToken, role)
 
   if (response) {
     res.status(200).json({
@@ -112,7 +111,7 @@ const registerUser = asyncHandler(async (req, res) => {
       contactNo,
       password,
       verificationToken,
-      role,
+      role
     )
   } else if (role === 'serviceProvider') {
     user = await regServiceProvider(
@@ -129,7 +128,7 @@ const registerUser = asyncHandler(async (req, res) => {
       instagramLink,
       twitterLink,
       verificationToken,
-      role,
+      role
     )
   }
 
