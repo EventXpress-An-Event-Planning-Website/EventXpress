@@ -69,13 +69,13 @@ const getPackageCount = asyncHandler(async (req, res) => {
 
 })
 
-const getComparePackage = asyncHandler(async (req, res) => {
-    const event_id = Number(req.query.event_id);
+const getComparePackage = asyncHandler(async (req, res) => { //asyncHandler-handle asynchronous operations
+    const event_id = Number(req.query.event_id); //extract the event_id query parameter from the request object 
     const service = 'venue'
     const service1 = 'Venue'
 
     const packages = await getComparePack(event_id, service, service1)
-    console.log(packages);
+    // console.log(packages);
     res.json(packages)
 })
 
