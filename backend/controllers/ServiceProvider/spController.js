@@ -8,7 +8,8 @@ import {
   getpreferenceList,
   getblockList,
   removeList,
-  getSpBlockPrefList
+  getSpBlockPrefList,
+  // removePack
 } from "../../models/spModel.js";
 
 
@@ -182,6 +183,25 @@ const removeBlockPrefSPList = asyncHandler(async (req, res) => {
   }
 });
 
+
+//delete packages
+// const removePackages = asyncHandler(async (req, res) => {
+//   const package_id = req.query.package_id;
+//   const service = req.query.service;
+//   const PackageDetails = await removePack(package_id,service);
+  
+//   if (PackageDetails) {
+//     res.status(200).json({
+//       PackageDetails,
+//     });
+//   } else {
+//     res.status(404);
+//     throw new Error("Package not found");
+//   }
+  
+// });
+
+
 export { 
   getSPprofile,
   getAllPack,
@@ -190,5 +210,6 @@ export {
   createBlockPrefSPList,
   removeBlockPrefSPList,
   getPreferenceSPNames,
-  getBlockSPNames
+  getBlockSPNames,
+  // removePackages
 };

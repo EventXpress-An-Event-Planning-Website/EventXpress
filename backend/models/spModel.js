@@ -171,6 +171,22 @@ const removeList = asyncHandler(
   }
 )
 
+//delete packages
+// const removePack = asyncHandler(
+//   async(package_id,service)=>{
+//     const viewCakePackage = `DELETE * FROM ${service}package WHERE package_id=$1`
+//     const CakePackData = await query(viewCakePackage,[package_id])
+    
+//     //console.log(CakePackData);
+//     if (CakePackData.rowCount > 0) {
+//       return CakePackData.rows
+//     } else {
+//       throw new Error('Internal Error')
+//     }
+    
+//   }
+// )
+
 export { 
   getSPprofileDetails,
   getSPPackDetails,
@@ -180,5 +196,6 @@ export {
   getpreferenceList,
   getblockList,
   removeList,
-  getSpBlockPrefList
+  getSpBlockPrefList,
+  // removePack
 }
