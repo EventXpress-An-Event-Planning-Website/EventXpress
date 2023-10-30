@@ -59,6 +59,10 @@ ALTER TABLE serviceProvider
 ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
 ADD COLUMN verificationToken VARCHAR(255);
 
+ALTER TABLE customer
+ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
+ADD COLUMN verificationToken VARCHAR(255);
+
 CREATE TABLE event (
     event_id SERIAL PRIMARY KEY,
     userId INTEGER,
@@ -71,6 +75,8 @@ CREATE TABLE event (
     event_type VARCHAR(255),
     created_at TIMESTAMP
 );
+
+Alter Table event ADD COLUMN event_img text;
 
 CREATE TABLE venuepackage (
     userid INTEGER, 
@@ -98,13 +104,16 @@ CREATE TABLE decorationpackage (
     package_price FLOAT, 
     sp_images VARCHAR(255)
 )
-CREATE TABLE public.todolist
+
+CREATE TABLE todolist
 (
     todo_id SERIAL,
     event_id integer,
     todo_service text,
     PRIMARY KEY (todo_id)
 );
+
+ALTER Table todolist add column selected_package_id varchar(255);
 
 CREATE TABLE cakepackage (
     userid INTEGER, 
@@ -115,7 +124,7 @@ CREATE TABLE cakepackage (
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
 
 CREATE TABLE cateringpackage (
     userid INTEGER, 
@@ -126,7 +135,7 @@ CREATE TABLE cateringpackage (
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
 
 CREATE TABLE lightsandsoundspackage (
     userid INTEGER, 
@@ -137,7 +146,7 @@ CREATE TABLE lightsandsoundspackage (
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
 
 CREATE TABLE photographypackage (
     userid INTEGER, 
@@ -148,7 +157,18 @@ CREATE TABLE photographypackage (
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
+
+CREATE TABLE stagerentalpackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_busname VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+);
 
 CREATE TABLE ticket (
     id SERIAL PRIMARY KEY,
@@ -186,4 +206,45 @@ CREATE TABLE ticketBookings (
     noOfTickets INT NOT NULL,
     amount NUMERIC(10, 2) NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE TABLE public.compareservices
+(
+    compare_id serial,
+    event_id integer,
+    service text,
+    package_id text,
+    column_id integer,
+    PRIMARY KEY (compare_id)
+);
+
+
+CREATE TABLE public.customer_notification
+(
+    notify_id serial,
+    event_id integer,
+    user_id integer,
+    package_id VARCHAR(255),
+    send_user_id integer,
+    status text,
+    service text,
+    PRIMARY KEY (notify_id)
+);
+
+CREATE TABLE public.predefinedpackage
+(
+    userid integer NOT NULL,
+    predefined_id character varying(255) NOT NULL,
+    venue_id character varying(255),
+    catering_id character varying(255),
+    cake_id character varying(255),
+    deco_id character varying(255),
+    stagerental_id character varying(255),
+    soundandlight_id character varying(255),
+    photography_id character varying(255),
+    pckg_img text,
+    prepackage_type varchar(255),
+    prepackage_title varchar(255),
+    prepackage_description varchar(255),
+    prepackage_discount integer,
+    PRIMARY KEY (predefined_id)
 );

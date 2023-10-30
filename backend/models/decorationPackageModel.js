@@ -4,11 +4,11 @@ import asyncHandler from 'express-async-handler'
 
 
 
-const viewVenuePackagesModel = asyncHandler(
+const viewDecorationPackagesModel = asyncHandler(
     async(
 
     )=> {
-        const viewPackageQuery = `SELECT * FROM public.venuepackage`
+        const viewPackageQuery = `SELECT * FROM public.decorationpackage`
         const packageDetail = await query(viewPackageQuery, [])
         // console.log(packageDetail)
         return packageDetail
@@ -16,13 +16,13 @@ const viewVenuePackagesModel = asyncHandler(
     }
 )
 
-const viewVenuPackageDetails =asyncHandler(
+const viewDecorationPackageDetails =asyncHandler(
     async(
         package_id
     )=>{
         try {
-            const viewPackageQuery = `SELECT * FROM public.venuepackage WHERE package_id=${package_id}`
-            const packageDetail = await query(viewPackageQuery, [])
+            const viewPackageQuery = `SELECT * FROM public.decorationpackage WHERE package_id=$1`
+            const packageDetail = await query(viewPackageQuery, [package_id])
             console.log(packageDetail)
             return packageDetail
             
@@ -32,7 +32,7 @@ const viewVenuPackageDetails =asyncHandler(
     }
 )
 
-const viewVenuePackageDetailsUserId =asyncHandler(
+const viewDecorationPackageDetailsUserId =asyncHandler(
     async(
         user_id
     )=>{
@@ -49,4 +49,4 @@ const viewVenuePackageDetailsUserId =asyncHandler(
 })
 
 
-export {viewVenuePackagesModel,viewVenuPackageDetails,viewVenuePackageDetailsUserId}
+export {viewDecorationPackagesModel,viewDecorationPackageDetails,viewDecorationPackageDetailsUserId}

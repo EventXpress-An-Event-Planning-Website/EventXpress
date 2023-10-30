@@ -42,7 +42,7 @@ import Cake from "../src/components/Cus/Pages/Cake.jsx";
 import SoundAndLight from "../src/components/Cus/Pages/SoundAndLight.jsx";
 import Photography from "../src/components/Cus/Pages/Photography.jsx";
 // import Entertainment from "../src/components/Cus/Pages/Entertainment.jsx";
-import StageRentals from "../src/components/Cus/Pages/StageRentals.jsx";
+import StageRental from "./components/Cus/Pages/StageRental.jsx";
 import Sidebar from './components/Cus/Sidebar.jsx'
 import VenueDes from './components/Cus/Pages/VenueDes.jsx'
 import Birthday from './components/Cus/PrePackages/Birthday.jsx'
@@ -67,16 +67,22 @@ import CateringDes from './components/Cus/Pages/CateringDes.jsx'
 import CakeDes from './components/Cus/Pages/CakeDes.jsx'
 import SoundAndLightDes from './components/Cus/Pages/SoundAndLightDes.jsx'
 import PhotographyDes from './components/Cus/Pages/PhotographyDes.jsx'
-import StageRentalsDes from './components/Cus/Pages/StageRentalsDes.jsx'
+import StageRentalDes from './components/Cus/Pages/StageRentalDes.jsx'
 import UsersDetails from './components/Admin/UsersDetails.jsx'
 import TicketSupports from './components/Admin/TicketSupports.jsx'
 import AdminSupportView from './components/Admin/AdminSupportView.jsx'
 import Revenue from './components/Admin/Revenue.jsx'
 import AdminEvents from './components/Admin/AdminEvents.jsx'
 import AdminEventDetails from './components/Admin/AdminEventDetails.jsx'
+import CompareCakePackages from './screens/Customer/CompareCakePackages.jsx'
+import ComparePhotographyPackages from './screens/Customer/ComparePhotographyPackages.jsx'
+import CompareCateringPackages from './screens/Customer/CompareCateringPackages.jsx'
+import CompareSoundAndLightPackages from './screens/Customer/CompareSoundAndLightPackages.jsx'
+import CompareStageRentalPackages from './screens/Customer/CompareStageRentalPackages.jsx'
 
 import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
 import PackageRequest from './components/Admin/PackageRequest.jsx'
+import CompareDecoPackages from './screens/Customer/CompareDecoPackages.jsx'
 
 
 const router = createBrowserRouter(
@@ -110,37 +116,50 @@ const router = createBrowserRouter(
         <Route path="/Cake" element={<Cake />} />
         <Route path="/SoundAndLight" element={<SoundAndLight />} />
         <Route path="/Photography" element={<Photography />} />
-        {/* <Route path="/Entertainment" element={<Entertainment />} /> */}
-        <Route path="/StageRentals" element={<StageRentals />} />
+        <Route path="/StageRental" element={<StageRental />} />
+
         <Route path="/VenueDes" element={<VenueDes />} />
         <Route path="/DecorationDes" element={<DecorationDes />} />
         <Route path="/CateringDes" element={<CateringDes />} />
         <Route path="/CakeDes" element={<CakeDes />} />
         <Route path="/SoundAndLightDes" element={<SoundAndLightDes />} />
         <Route path="/PhotographyDes" element={<PhotographyDes />} />
-        <Route path="/StageRentalsDes" element={<StageRentalsDes />} />
+        <Route path="/StageRentalDes" element={<StageRentalDes />} />
 
-        <Route path="/Birthday" element={<Birthday/>}/>
-        <Route path="/BirthdayDes" element={<BirthdayDes/>}/>
-        <Route path="/BrideToBe" element={<BrideToBe/>}/>
-        <Route path="/Anniversary" element={<Anniversary/>}/>
-        <Route path="/Social" element={<Social/>}/>
-        <Route path="/ChatSidebar" element={<ChatSidebar/>}/>
-        <Route path="/ChatDes" element={<ChatDes/>}/>
-        <Route path="/customer/event/VenueCompare" element={<CompareVenuePackages/>}/>
+        <Route path="/Birthday" element={<Birthday />} />
+        <Route path="/BirthdayDes" element={<BirthdayDes />} />
+        <Route path="/BrideToBe" element={<BrideToBe />} />
+        <Route path="/Anniversary" element={<Anniversary />} />
+        <Route path="/Social" element={<Social />} />
+        <Route path="/ChatSidebar" element={<ChatSidebar />} />
+        <Route path="/ChatDes" element={<ChatDes />} />
+        <Route path="/customer/event/VenueCompare" element={<CompareVenuePackages />} />
         <Route path="/customer/event/Venue" element={<Venue />} />
         <Route path="/customer/event/VenueDes" element={<VenueDes />} />
         <Route path="/customer/event/Catering" element={<Catering />} />
         <Route path="/customer/event/CateringDes" element={<CateringDes />} />
-        <Route path="/customer/event/Cake" element={<Cake />} />
-        <Route path="/customer/event/CakesDes" element={<CakeDes />} />
+        <Route path="/customer/event/Cakes" element={<Cake />} />
+        <Route path="/customer/event/CakeDes" element={<CakeDes />} />
         <Route path="/customer/event/Decoration" element={<Decoration />} />
-        <Route path="/customer/event/DecorationDes" element={<DecorationDes/>} />
+        <Route path="/customer/event/DecorationDes" element={<DecorationDes />} />
         <Route path="/customer/event/Photography" element={<Photography />} />
         <Route path="/customer/event/PhotographyDes" element={<PhotographyDes />} />
         <Route path="/customer/event/SoundAndLight" element={<SoundAndLight />} />
         <Route path="/customer/event/SoundAndLightDes" element={<SoundAndLightDes />} />
         <Route path="/customer/PredefinePackage/ServiceProvider-profile" element={<ProfileScreen />} />
+        <Route path="/customer/event/CakeCompare" element={<CompareCakePackages/>}/>
+        <Route path="/customer/event/DecoCompare" element={<CompareDecoPackages/>}/>
+        <Route path="/customer/event/SoundAndLightDes" element={<SoundAndLightDes />} />        
+        <Route path="/customer/PredefinePackage/ServiceProvider-profile" element={<ProfileScreen />} />
+        <Route path="/customer/event/CakeCompare" element={<CompareCakePackages />} />
+        <Route path="/customer/event/PhotographyCompare" element={<ComparePhotographyPackages />} />
+        <Route path="/customer/event/CateringCompare" element={<CompareCateringPackages />} />
+        <Route path="/customer/event/SoundAndLightCompare" element={<CompareSoundAndLightPackages />} />
+        <Route path="/customer/event/StageRental" element={<StageRental />} />
+        <Route path="/customer/event/StageRentalDes" element={<StageRentalDes />} />
+        <Route path="/customer/event/StageRentalCompare" element={<CompareStageRentalPackages />} />
+
+
       </Route>
 
       <Route path="/ServiceProvider/home" element={<Home />} />
@@ -149,8 +168,8 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/packageFullDetails" element={<PackageFullDetails />} />
       <Route path="/ServiceProvider/Requests" element={<ServiceProviderRequests />} />
       <Route path="/serviceProvider/availability" element={<ServiceProviderAvailability />} />
-      
-      
+
+
       {/* <Route path="/ServiceProvider/myEventhome" element={<MyEventHome />} /> */}
       {/* admin rout  */}
       <Route path="/adminDashboard" element={<AdminScreen />} />

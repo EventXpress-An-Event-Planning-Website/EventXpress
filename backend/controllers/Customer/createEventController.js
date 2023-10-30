@@ -7,6 +7,8 @@ import {
   addToDo,
   viewToDo,
 } from "../../models/eventModel.js";
+import { getpackage } from "../../models/todoListModel.js";
+import { getNotificationByEventAndPackage } from "../../models/customer_notificationModel.js";
 
 const createevent = asyncHandler(async (req, res) => {
   let event = "";
@@ -61,11 +63,46 @@ const addEventToDo = asyncHandler(async (req, res) => {
 
 const viewEventToDo = asyncHandler(async (req, res) => {
   const event_id = req.query.id;
-  console.log(event_id);
+  // console.log(event_id);
   let todo = "";
   todo = await viewToDo(event_id);
+  const todos=todo.rows
 
-  res.json(todo.rows);
+  let todo_details=[]
+
+  for (let i = 0; i < todos.length; i++) {
+   
+      if (todos[i].selected_package_id===null) {
+          todo_details.push(todos[i])
+          
+      }else{
+
+        try {
+          const package_detail=await getpackage(todos[i].selected_package_id)
+          // console.log(package_detail);
+          const service = todos[i].selected_package_id.split('_')
+          // console.log(service);
+          const not = await getNotificationByEventAndPackage(service[0],event_id);
+          // console.log(not);
+          let mergeObject={...todos[i],...package_detail}
+
+          
+          if (not !== null) {
+            mergeObject={...mergeObject,...not}
+          }
+        
+       
+          todo_details.push(mergeObject);
+        } catch (error) {
+           console.log(error);
+        }
+          
+      }
+    
+  }
+// console.log(todo_details);
+
+  res.json(todo_details);
 });
 
 const getEvent = asyncHandler(async (req, res) => {

@@ -5,14 +5,27 @@ import { TiEdit } from "react-icons/ti";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-regular-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import celebrationImage from "../../../assets/images/celebration.jpg";
 import { Link } from "react-router-dom";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
-const Todo = ({ success,event_id, todos, completeTodo, removeTodo, updateTodo }) => {
+const Todo = ({
+  success,
+  event_id,
+  todos,
+  completeTodo,
+  removeTodo,
+  updateTodo,
+}) => {
   const [showModal, setShowModal] = useState(false);
+  const [spName,setSpName] = useState('');
+  const [selectedPackage,setSelectedPackage]= useState([])
+  
   const [edit, setEdit] = useState({
     id: null,
     value: "",
@@ -31,12 +44,16 @@ const Todo = ({ success,event_id, todos, completeTodo, removeTodo, updateTodo })
   const toggleDetails = (id) => {
     setShowDetailsId((prevId) => (prevId === id ? null : id));
   };
-
+  
   if (edit.id) {
     return <TodoForm edit={edit} onSubmit={submitUpdate} />;
   }
 
-  const openModal = () => {
+  const openModal = (serviceProvider) => {
+    console.log(serviceProvider);
+    setSpName(serviceProvider.selected.package_busname)
+    setSelectedPackage(serviceProvider)
+    
     console.log(showModal);
     setShowModal(true);
     console.log(showModal);
@@ -46,13 +63,47 @@ const Todo = ({ success,event_id, todos, completeTodo, removeTodo, updateTodo })
     setShowModal(false);
   };
 
-  const handleSubmit=(id)=>{
-    navigate(`/customer/eventdetails?id=${id}&success=1`)
-  }
+  const handleSubmit = (id) => {
+    navigate(`/customer/eventdetails?id=${id}&success=1`);
+  };
   const handleFormSubmit = () => {
     handleSubmit(event_id); // Pass the event_id to the handleSubmit function
     closeModal(); // Close the modal after submitting the form
   };
+
+  const sendRequest = ()=>{
+    const user=JSON.parse(localStorage.getItem("userInfo"))
+    console.log(user);
+    const notificationdata ={
+      event_id:event_id,
+      user_id:user.id,
+      package_id:selectedPackage.selected.package_id,
+      send_id:selectedPackage.selected.userid,
+      service:selectedPackage.location
+      
+    }
+    console.log(notificationdata);
+   
+    if(todos.some(item => item.selected === undefined || item.selected === null)){
+      toast.error("Before send a Request Please Select All Services or Delete Unwanted Details");
+      setShowModal(false);
+      console.log('Weranga');
+    }else{
+      axios
+          .post("/api/customer/sendRequest", notificationdata)
+          .then((response) => {
+            const packCount = response.data;
+            console.log(packCount);
+            // Perform navigation after successful POST
+            navigate(`/customer/event/CakeCompare?event_id=${event_id}`);
+          })
+          .catch((error) => {
+            console.error("Error adding event:", error);
+            // Handle error if needed
+          });
+       
+    }
+  }
 
   return todos.map((todo, index) => (
     <>
@@ -64,11 +115,23 @@ const Todo = ({ success,event_id, todos, completeTodo, removeTodo, updateTodo })
           {todo.text}
         </div>
         <div className="icons">
-          <Link
-            to={`/customer/event/${todo.location}?event_id=${event_id}&packageCount=0`}
-          >
-            <FontAwesomeIcon icon={faEye} style={{ color: "#6D004F" }} />
-          </Link>
+          {todo.selected === undefined ? (
+            <Link
+              to={`/customer/event/${todo.location}?event_id=${event_id}&packageCount=0`}
+            >
+              <FontAwesomeIcon icon={faEye} style={{ color: "#6D004F" }} />
+            </Link>
+          ) :todo.request!== undefined && todo.request.status === "Accept" ? null : (
+            <Link
+              to={`/customer/event/${todo.location}?event_id=${event_id}&packageCount=0`}
+            >
+              <FontAwesomeIcon
+                icon={faPenToSquare}
+                style={{ color: "#6D004F" }}
+              />
+            </Link>
+          )}
+
           <RiCloseCircleLine
             onClick={() => removeTodo(todo.id)}
             className="delete-icon"
@@ -86,27 +149,37 @@ const Todo = ({ success,event_id, todos, completeTodo, removeTodo, updateTodo })
       </div>
       {showDetailsId === todo.id && (
         <div className="selected-service-package-details ">
-          <div className="selected-service-package-details-container">
-            <div className="selected-service-package-img">
-              <img src={`../../src/assets/images/${todo.img}`} />
+          {todo.selected === undefined ? (
+            <div className="selected-service-package-details-container">
+              <h2>Still Not Selected</h2>
             </div>
-            {todo.selected}
-            <div
-              style={{
-                color: "green",
-                marginLeft: "20%",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              {success==='1'?
-              <span style={{ marginLeft: "20%" }}>pending</span>:
-              
-              <Button style={{ width: "100px" }} onClick={openModal}>
-                Create Appoinment
-              </Button>}
+          ) : (
+            <div className="selected-service-package-details-container">
+              <div className="selected-service-package-img">
+                <img
+                  src={`../../src/assets/images/uploads/${todo.selected.sp_images}`}
+                />
+              </div>
+
+              {todo.selected.package_title}
+              <div
+                style={{
+                  color: "green",
+                  marginLeft: "20%",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                {success === "Accept" ? (
+                  <span style={{ marginLeft: "20%" }}>Accept</span>
+                ) : (
+                  <Button style={{ width: "100px" }} onClick={() => openModal(todo)}>
+                    Send Request
+                  </Button>
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
       <Modal show={showModal} onHide={closeModal}>
@@ -114,27 +187,15 @@ const Todo = ({ success,event_id, todos, completeTodo, removeTodo, updateTodo })
           <Modal.Title>EventXpress</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p> Create An Appointment For Physical Meeting</p>
-          <Form onSubmit={handleFormSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Name</Form.Label>
-              <Form.Control type="email" placeholder="Enter Name" />
-              {/* <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text> */}
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="eventDate">
-              <Form.Label>Date For Appointment:</Form.Label>
-              <Form.Control
-                type="date"
-                min={new Date().toISOString().split("T")[0]} // Set the min attribute to the current date
-              />
-            </Form.Group>
-            <Button variant="primary" onClick={handleFormSubmit}>
-              Submit
-            </Button>
-          </Form>
-        </Modal.Body>
+       
+          <div>
+            <p>Send a Request For a {spName}</p>
+            
+          </div>
+
+          <Button onClick={sendRequest}>Confirm</Button>
+      
+      </Modal.Body>
         <Modal.Footer>
           {/* <Button variant="secondary" onClick={closeModal}>
             Close
