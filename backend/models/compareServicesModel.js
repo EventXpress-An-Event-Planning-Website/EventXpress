@@ -128,6 +128,57 @@ const getCompareCatering = asyncHandler(
     }
 )
 
+const getCompareDecos = asyncHandler(
+    async(
+        event_id
+    )=>{
+        try {
+            const service='Decoration'
+            const getCakeQuery = `SELECT * FROM compareservices WHERE event_id=$1 AND service=$2`
+            const compareCakes= await query(getCakeQuery,[event_id,service])
+            return compareCakes.rows
+            
+        } catch (error) {
+            console.error(`Error checking contact number existence: ${error.message}`)
+            throw new Error(`Internal Error`)
+        }
+    }
+)
+
+const getComparePhotography = asyncHandler(
+    async(
+        event_id
+    )=>{
+        try {
+            const service='Photography'
+            const getCakeQuery = `SELECT * FROM compareservices WHERE event_id=$1 AND service=$2`
+            const compareCakes= await query(getCakeQuery,[event_id,service])
+            return compareCakes.rows
+            
+        } catch (error) {
+            console.error(`Error checking contact number existence: ${error.message}`)
+            throw new Error(`Internal Error`)
+        }
+    }
+)
+
+const getCompareSound = asyncHandler(
+    async(
+        event_id
+    )=>{
+        try {
+            const service='Photography'
+            const getCakeQuery = `SELECT * FROM compareservices WHERE event_id=$1 AND service=$2`
+            const compareCakes= await query(getCakeQuery,[event_id,service])
+            return compareCakes.rows
+            
+        } catch (error) {
+            console.error(`Error checking contact number existence: ${error.message}`)
+            throw new Error(`Internal Error`)
+        }
+    }
+)
 
 
-export {getNoOfComparepackages,insertPackageToCompare,getComparePack,getComparePackCount,updatePackageToCompare,getCompareCakes,getCompareCatering}
+
+export {getNoOfComparepackages,insertPackageToCompare,getComparePack,getComparePackCount,updatePackageToCompare,getCompareCakes,getCompareCatering,getCompareDecos,getComparePhotography, getCompareSound}
