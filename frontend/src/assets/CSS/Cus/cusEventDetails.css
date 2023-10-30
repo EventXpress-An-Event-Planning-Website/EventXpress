@@ -51,3 +51,9 @@
     margin-left: 10%;
     padding-top: 20px;
 }
+
+.todo-sell-ticket{
+    background-color: rgb(173, 166, 166);
+    color: black;
+    cursor: pointer;
+}

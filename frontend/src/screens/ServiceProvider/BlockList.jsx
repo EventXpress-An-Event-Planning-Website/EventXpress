@@ -17,7 +17,7 @@ const BlockList = () => {
   return (
     <div style={{ "display": "flex" }}>
       <div><SPSidebar /></div>
-      <div style={{ "width": "80%" }}>
+      <div style={{ "width": "80%", "marginLeft": "9%" }}>
         <PrefBlock rows={rows}/>
         <AllList rows={rows}/>
       </div>

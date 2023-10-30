@@ -5,7 +5,7 @@ import { useAddToDoMutation, useViewToDoQuery } from '../../../slices/eventSlice
 import { useEffect } from 'react';
 import axios from 'axios';
 
-const TodoList=({event})=> {
+const TodoList=({event,success})=> {
   // console.log(event.event_id);
   // const {data:viewToDo,error,isLoading}=useViewToDoQuery()
   const [data, setData] = useState([]);
@@ -17,13 +17,14 @@ const TodoList=({event})=> {
       .then(response => {
         const fetchedData = response.data;
         setData(fetchedData);
-  
+        console.log(fetchedData);
         const services = fetchedData.map(todo => ({
+          
           id: todo.todo_id,
           text: todo.todo_service,
           location: todo.todo_service,
-          selected: 'Araliya Beach Resort',
-          img: 'venue5.jpg'
+          selected: todo[0],
+          request:todo[1]
         }));
   
         setTodos(services);
@@ -102,6 +103,7 @@ const TodoList=({event})=> {
      
       <TodoForm onSubmit={addTodo} event={event} />
       <Todo
+        success={success}
         event_id={event.event_id}
         todos={todos}
         completeTodo={completeTodo}

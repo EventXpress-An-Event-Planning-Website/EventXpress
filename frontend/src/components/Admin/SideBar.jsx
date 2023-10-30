@@ -30,7 +30,7 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <a href="#contact">
+            <a href="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
@@ -53,16 +53,8 @@ function SideBar(props) {
                 <BiHomeAlt2 size={25} />
               </span>
               Events
-            </Link>
-            <div className="logOut">
-              <a href="#contact">
-                <span className="iconSize">
-                  <IoIosLogOut size={25} />
-                </span>
-                Log out
-              </a>
+            </Link>          
             </div>
-          </div>
         </div>
       );
 
@@ -82,7 +74,7 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <a href="#contact">
+            <a href="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
@@ -134,7 +126,7 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <a href="#contact" className="active">
+            <a href="/PackageRequest" className="active">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
@@ -186,7 +178,7 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <a href="#contact">
+            <a href="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
@@ -238,7 +230,7 @@ function SideBar(props) {
                 </span>
                 Users
               </Link>
-              <a href="#contact">
+              <a href="/PackageRequest">
                 <span className="iconSize">
                   <BiPackage size={25} />
                 </span>
@@ -290,7 +282,7 @@ function SideBar(props) {
                   </span>
                   Users
                 </Link>
-                <a href="#contact">
+                <a href="/PackageRequest">
                   <span className="iconSize">
                     <BiPackage size={25} />
                   </span>
@@ -342,7 +334,7 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <a href="#contact">
+            <a href="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>

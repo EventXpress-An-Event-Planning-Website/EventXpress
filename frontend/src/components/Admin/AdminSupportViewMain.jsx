@@ -30,7 +30,7 @@ function AdminSupportViewMain() {
     <div className="main">
       <h3 className="title">From Kasun Perera</h3>
 
-      <div className="message" style={{ marginLeft: "950px",height:'250px' }}>
+      <div className="messageDetails" style={{ marginLeft: "55%",height:'25%' }}>
         <div className="sender">Kasun Perera</div>I have been encountering
         persistent difficulties while navigating your website over the past
         week. Specifically, when I try to access the "My Account" section and

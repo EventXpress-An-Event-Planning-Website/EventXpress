@@ -12,7 +12,7 @@ const PrefBlock = ({rows}) => {
                         // capitalize the status first letter
                         // const statusText = row.status.charAt(0).toUppserCase() + row.status.slice(1);
                         return <tr key={idx}>
-                            <td>{row.busName} - {row.busAddress}</td>
+                            <td >{row.busName} - {row.busAddress}</td>
                             <td className='minus_icon'><FaMinusCircle /></td>
                         </tr>
                     })

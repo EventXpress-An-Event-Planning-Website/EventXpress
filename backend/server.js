@@ -9,8 +9,9 @@ import userRoute from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 import customerRoutes from './routes/customerRoutes.js'
 import serviceProviderRoutes from './routes/serviceProviderRoutes.js'
+import ticketRoutes from './routes/ticketRoutes.js'
 import adminRoutes from './routes/adminRoutes.js'
-
+import paymentRoutes from './routes/paymentRoutes.js'
 
 // start database connection
 connectDB()
@@ -34,11 +35,17 @@ app.use('/api/upload', uploadRoutes)
 //customer routes
 app.use('/api/customer',customerRoutes)
 
-//serivice provider routes
+//service provider routes
 app.use('/api/serviceProvider', serviceProviderRoutes)
+
+//Tickets routes
+app.use('/api/tickets', ticketRoutes)
 
 //admin routes
 app.use('/api/admin', adminRoutes)
+
+//Payment routes
+app.use('/api/payment', paymentRoutes)
 
 
 // Handle errors
@@ -53,4 +60,3 @@ app
     console.error(`Server error: ${err}`)
   })
 
- 

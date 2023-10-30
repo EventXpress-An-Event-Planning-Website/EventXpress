@@ -59,9 +59,6 @@ const Header = () => {
                     <LinkContainer to="/customer/buyTickets">
                       <Nav.Link>Buy Tickets</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to="/customer/sellTickets">
-                      <Nav.Link>Sell Tickets</Nav.Link>
-                    </LinkContainer>
                     <LinkContainer to="/customer/notification">
                       <Navbar.Brand></Navbar.Brand>
                     </LinkContainer>
@@ -89,12 +86,20 @@ const Header = () => {
                         <NavDropdown.Item>Predefined Package</NavDropdown.Item>
                       </LinkContainer>
                     </NavDropdown>
-                    <LinkContainer to="/ServiceProvider/packagesView">
-                      <Nav.Link>My Packages</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/customer/buyTickets">
+                    <NavDropdown title="My Packages">
+                      <LinkContainer to="/ServiceProvider/packagesView">
+                        <NavDropdown.Item>Normal Package</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/Birthday">
+                        <NavDropdown.Item>Predefined Package</NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
+                    {/* <LinkContainer to="/customer/buyTickets">
                       <Nav.Link>Buy Tickets</Nav.Link>
                     </LinkContainer>
+                    <LinkContainer to="/ServiceProvider/Requests">
+                      <Nav.Link>Requests</Nav.Link>
+                    </LinkContainer> */}
                     <LinkContainer to="/customer/notification">
                       <Navbar.Brand></Navbar.Brand>
                     </LinkContainer>
@@ -111,7 +116,7 @@ const Header = () => {
                   </>
                 ) : userInfo.role === "admin" ? (
                   <>
-                    <LinkContainer to="/adminDashboard">
+                    <LinkContainer to="/adminDashboard" >
                       <Nav.Link> Home &nbsp;&nbsp;</Nav.Link>
                     </LinkContainer>
                     <LinkContainer to="/customerHome">

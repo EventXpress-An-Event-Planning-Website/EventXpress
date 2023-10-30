@@ -4,14 +4,15 @@
     margin: 2% 5%;
 }
 
-.compare-table-header, .compare-table-data{
-    padding: 8px;
+.compare-table-header,
+.compare-table-data {
+    padding: 5px;
     text-align: left;
     border-bottom: 1px solid #ddd;
     text-align: center;
 }
 
-.compare-table-data{
+.compare-table-data {
     color: black;
     font-weight: 300;
     background-color: #b8a8b7;
@@ -21,11 +22,11 @@
     background-color: #f2f2f2;
 }
 
-.compare-title{
+.compare-title {
     text-align: center;
     padding: 10px;
 }
 
-.compare-addEvent-btn{
+.compare-addEvent-btn {
     background-color: rgb(62, 165, 140);
 }

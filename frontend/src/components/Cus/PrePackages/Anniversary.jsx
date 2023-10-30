@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import Stack from 'react-bootstrap/Stack';
 import Pagination from 'react-bootstrap/Pagination';
+import FilterPackages from "../Pages/FilterPackages";
 
 import Anniversary1 from '../../../assets/images/Anniversary1.jpg';
 import Anniversary2 from '../../../assets/images/Anniversary2.jpg';
@@ -81,7 +82,7 @@ const Anniversary = () => {
                 <div>
 
                 <div className="row">
-
+                <FilterPackages/>
                     {AnniversaryData.map((Anniversary) => (
                         <div className="col-md-3" key={Anniversary.id}>
 

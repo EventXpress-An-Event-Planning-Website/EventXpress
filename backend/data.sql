@@ -59,6 +59,10 @@ ALTER TABLE serviceProvider
 ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
 ADD COLUMN verificationToken VARCHAR(255);
 
+ALTER TABLE customer
+ADD COLUMN isVerified BOOLEAN DEFAULT FALSE,
+ADD COLUMN verificationToken VARCHAR(255);
+
 CREATE TABLE event (
     event_id SERIAL PRIMARY KEY,
     userId INTEGER,
@@ -72,11 +76,13 @@ CREATE TABLE event (
     created_at TIMESTAMP
 );
 
+Alter Table event ADD COLUMN event_img text;
+
 CREATE TABLE venuepackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
@@ -91,14 +97,15 @@ CREATE TABLE venuepackage (
 CREATE TABLE decorationpackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
 )
-CREATE TABLE public.todolist
+
+CREATE TABLE todolist
 (
     todo_id SERIAL,
     event_id integer,
@@ -106,46 +113,138 @@ CREATE TABLE public.todolist
     PRIMARY KEY (todo_id)
 );
 
+ALTER Table todolist add column selected_package_id varchar(255);
+
 CREATE TABLE cakepackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
 
 CREATE TABLE cateringpackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
 
 CREATE TABLE lightsandsoundspackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
 
 CREATE TABLE photographypackage (
     userid INTEGER, 
     package_id VARCHAR(255),
+    package_busname VARCHAR(255),
     package_title VARCHAR(255), 
-    package_location VARCHAR(255), 
     package_address VARCHAR(255), 
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
+);
+
+CREATE TABLE stagerentalpackage (
+    userid INTEGER, 
+    package_id VARCHAR(255),
+    package_busname VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255)
+);
+
+CREATE TABLE ticket (
+    id SERIAL PRIMARY KEY,
+    selectedCategory VARCHAR(255),
+    eventTitle VARCHAR(255),
+    eventDate DATE,
+    eventTime TIME,
+    eventVenue VARCHAR(255),
+    eventDescription TEXT,
+    eventPoster VARCHAR(255),
+    ticketItems VARCHAR(255),
+    accountHolderName VARCHAR(255),
+    bankName VARCHAR(255),
+    branchName VARCHAR(255),
+    accountNumber VARCHAR(255),
+    bankPassbookImage VARCHAR(255)
+);
+
+CREATE TABLE ticketStatus (
+  ticketStatus_id SERIAL PRIMARY KEY,
+  ticketId INT,
+  customerId INT,
+  type VARCHAR(255),
+  price DECIMAL(10, 2),
+  totalQuantity INT,
+  currentQuantity INT
 )
+
+CREATE TABLE ticketBookings (
+    id SERIAL PRIMARY KEY,
+    buyerId INT NOT NULL,
+    ticketId INT NOT NULL,
+    pid TEXT NOT NULL,
+    ticketType VARCHAR(255) NOT NULL,
+    noOfTickets INT NOT NULL,
+    amount NUMERIC(10, 2) NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE TABLE public.compareservices
+(
+    compare_id serial,
+    event_id integer,
+    service text,
+    package_id text,
+    column_id integer,
+    PRIMARY KEY (compare_id)
+);
+
+
+CREATE TABLE public.customer_notification
+(
+    notify_id serial,
+    event_id integer,
+    user_id integer,
+    package_id VARCHAR(255),
+    send_user_id integer,
+    status text,
+    service text,
+    PRIMARY KEY (notify_id)
+);
+
+CREATE TABLE public.predefinedpackage
+(
+    userid integer NOT NULL,
+    predefined_id character varying(255) NOT NULL,
+    venue_id character varying(255),
+    catering_id character varying(255),
+    cake_id character varying(255),
+    deco_id character varying(255),
+    stagerental_id character varying(255),
+    soundandlight_id character varying(255),
+    photography_id character varying(255),
+    pckg_img text,
+    prepackage_type varchar(255),
+    prepackage_title varchar(255),
+    prepackage_description varchar(255),
+    prepackage_discount integer,
+    PRIMARY KEY (predefined_id)
+);
