@@ -2,7 +2,7 @@ import express from 'express'
 const router = express.Router()
 
 
-import { createevent,getEvent, getEventDetails,addEventToDo, viewEventToDo } from '../controllers/Customer/createEventController.js'
+import { createevent,getEvent, getEventDetails,addEventToDo, viewEventToDo, deleteTodoItem } from '../controllers/Customer/createEventController.js'
 import {protect}  from '../middleware/authMiddleware.js'
 import { viewVenuePackage,viewVenuePackageDetails,addVenuePack,addVenuePackToCompare,
     getPackageCount,getComparePackage,addPackageToCompareTable,viewCakePackage,viewCakesPackageDetails,
@@ -13,7 +13,6 @@ import { viewVenuePackage,viewVenuePackageDetails,addVenuePack,addVenuePackToCom
     viewSoundAndLightsPackageDetails, addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,
     addCateringPackageToCompareTable,addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent,
     viewBirthdayPackage,viewBirthdayPackageDetails, viewPreBirthdayPackageDetails,viewCakePack,viewCateringPack,viewVenuePack} from '../controllers/Customer/packageController.js'
-
 // import { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare, getCompareCakePackage} from '../controllers/Customer/packageController.js'
 import { sendRequest } from '../controllers/Customer/customerController.js'
 
@@ -82,5 +81,6 @@ router.get('/viewCakes', viewCakePack)
 router.get('/viewCatering', viewCateringPack)
 router.get('/viewVenuePackDetails', viewVenuePack)
 
+router.delete('/deleteTodo', deleteTodoItem)
 
 export default router
