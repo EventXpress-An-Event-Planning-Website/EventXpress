@@ -7,7 +7,7 @@ import {
   addToDo,
   viewToDo,
 } from "../../models/eventModel.js";
-import { getpackage } from "../../models/todoListModel.js";
+import { getpackage,deleteItems } from "../../models/todoListModel.js";
 import { getNotificationByEventAndPackage } from "../../models/customer_notificationModel.js";
 
 const createevent = asyncHandler(async (req, res) => {
@@ -126,4 +126,11 @@ const getEventDetails = asyncHandler(async (req, res) => {
   res.json(event_data);
 });
 
-export { createevent, addEventToDo, viewEventToDo, getEvent, getEventDetails };
+const deleteTodoItem = asyncHandler(async(req, res) => {
+  const todo_id = req.query.todo_id;
+  // console.log(todo_id);
+  const deleteItem = await deleteItems(todo_id);
+  res.json(deleteItem);
+})
+
+export { createevent, addEventToDo, viewEventToDo, getEvent, getEventDetails,deleteTodoItem };

@@ -68,8 +68,15 @@ const getVenueByEvent = asyncHandler(
     }
 )
 
+const deleteItems = asyncHandler(async(todo_id) => {
+    try {
+        const deleteQuery = `DELETE FROM todolist WHERE todo_id=$1`;
+        const executeDeletion = await query(deleteQuery,[todo_id])
+        return true
+    } catch (error) {
+        throw new Error(error)
+    }
+})
 
 
-
-
-export {isSelectedPackage,addPackageToEvent,getpackage,getVenueByEvent}
+export {isSelectedPackage,addPackageToEvent,getpackage,getVenueByEvent, deleteItems}
