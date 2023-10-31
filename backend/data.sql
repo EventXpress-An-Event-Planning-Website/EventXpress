@@ -304,6 +304,13 @@ CREATE TABLE public.predefinedpackage
     PRIMARY KEY (predefined_id)
 );
 
+<<<<<<< HEAD
+
+-- service provider table add column for admin verification
+ALTER TABLE serviceProvider
+ADD COLUMN isVerifiedByAdmin BOOLEAN DEFAULT FALSE;
+
+=======
 CREATE TABLE public.busy_dates
 (
     busy_id serial,
@@ -311,3 +318,4 @@ CREATE TABLE public.busy_dates
     busy_date date,
     PRIMARY KEY (busy_id)
 );
+>>>>>>> dbd164c8eed26c9b51c74332343a4921fd2c6742

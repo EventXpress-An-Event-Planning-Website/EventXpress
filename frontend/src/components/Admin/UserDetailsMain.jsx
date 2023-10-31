@@ -4,15 +4,60 @@ import Certification from "../../assets/images/cetificate.png";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function UsersMain() {
+
   const [show, setShow] = useState(false);
   const [Cancel, setCancel] = useState(false);
-
+  const [spData, setSpData] = useState([]);
   const handleCancelClose = () => setCancel(false);
   const handleCancel = () => setCancel(true);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const navigate = useNavigate();
+
+
+  const location = useLocation() // access current location in the browser's url
+    const queryParams = new URLSearchParams(location.search);
+    const serviceProviderId = Number(queryParams.get('id'))
+
+    useEffect(() => {
+      axios
+        .get(`/api/admin/getServiceProviderDetail?id=${serviceProviderId}`)
+        .then((response) => {
+          // console.log(response.data.serviceProviders);
+          setSpData(response.data.serviceProviders);
+          
+        })
+        .catch((error) => {
+          // console.log(error);
+          setError(error);
+          setLoading(false);
+        });
+    }, []);
+
+    const nicImg = spData.nicimage;
+    const updatedSrc = `../../src/assets/images/uploads/${nicImg}`
+  
+    const acceptFunction = (id) => {
+      axios
+        .put(`/api/admin/acceptServiceProvider?id=${id}`)
+        // console.log(response);
+        .then((response) => {
+          navigate("/Users");
+          console.log("Accepted");
+        })
+        .catch((error) => {
+          setError(error); 
+          setLoading(false);
+        });
+
+    };
+
 
   return (
     <div className="mainUsers ">
@@ -26,36 +71,26 @@ function UsersMain() {
           }}
         >
           {" "}
-          Mr. Naveen Rajan{" "}
+          {spData.name}{" "}
         </span>
 
         <div className="DetailsInfo">
           <div className="DetailsLeft">
             <div className="DetailsLeftIcon">
               <h3>Personal Details</h3>
-              Full Name: Naveen Rajan
+              Full Name: {spData.name}
               <br />
-              Email: naveen@gmail.com
+              Email: {spData.email}
               <br />
-              NIC:991029102v
+              NIC:{spData.nic}
               <br />
-              Contact Number: +94771234567
+              Contact Number: {spData.contactno}
             </div>
-            <div className="DetailsLeftIcon">
-              <h3>Business Details</h3>
-              Business Name: Navis Photography
-              <br />
-              Business Email:photography.navi@gmail.com
-              <br />
-              Business registration number:2002/South/123
-              <br />
-              Business Type: Photography
-              <br />
-              Business Address: No. 123, Galle Road, Colombo 03
-            </div>
+            
           </div>
           <div className="DetailsRight">
-            <img src={Certification} style={{ marginLeft: "20%" }} />
+
+            <img src={updatedSrc} style={{ marginLeft: "20%", width:'300px', height:'350px' }} />
             <Button
               variant="primary"
               onClick={handleShow}
@@ -71,6 +106,8 @@ function UsersMain() {
               Reject
             </Button>
           </div>
+
+
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>Accept Service Provider</Modal.Title>
@@ -80,11 +117,14 @@ function UsersMain() {
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
-              <Button variant="primary" onClick={handleClose}>
+              <Button variant="primary" onClick={()=>acceptFunction(spData.id)}>
                 Confirm
               </Button>
             </Modal.Footer>
           </Modal>
+
+
+
 
           <Modal show={Cancel} onHide={handleCancelClose}>
             <Modal.Header closeButton>
