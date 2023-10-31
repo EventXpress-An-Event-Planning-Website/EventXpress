@@ -2,7 +2,8 @@ import express from 'express'
 const router = express.Router();
 import {
     getAllCustomersByAdmin, getAllServiceProvidersByAdmin, getPendingServiceProvidersByAdmin, getAllCustomerCount,
-    getAllServiceProvidersCount, getAllUserCount, getAllNewRequestCount,getEventData,getServiceProviderDetail,acceptServiceProvider
+    getAllServiceProvidersCount, getAllUserCount, getAllNewRequestCount,getEventData,getServiceProviderDetail,acceptServiceProvider,
+    getEventDataForEventsPage
 } from '../controllers/Admin/userController.js'
 
 router.get('/getAllCustomers', getAllCustomersByAdmin);
@@ -15,5 +16,6 @@ router.get('/getAllNewRequestCount', getAllNewRequestCount);
 router.get('/getEventData', getEventData);
 router.get('/getServiceProviderDetail', getServiceProviderDetail);
 router.put('/acceptServiceProvider', acceptServiceProvider);
+router.get('/getEventDataForEventsPage', getEventDataForEventsPage);
 
 export default router

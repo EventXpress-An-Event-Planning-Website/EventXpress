@@ -143,7 +143,7 @@ const getCurrentTicketsQuantity = async (ticket_Id) => {
   }
 }
 
-// get remaining ticket quantity when give ID of ticket
+// get sold ticket quantity when give ID of ticket
 const getSoldTicketsQuantity = async (ticket_Id) => {
   try {
     let totalTickets = parseInt(await (getTotalTicketsQuantity(ticket_Id)));
@@ -217,6 +217,54 @@ const combineEventData = async () => {
   }
 };
 
+// get event date when give Name of event
+const getEventNameDate = async (id) => {
+  
+  try {
+    const totalEventsQuery = `
+    SELECT eventdate FROM ticket WHERE id = $1`
+
+    const eventName = await query(totalEventsQuery, [id])
+    return eventName.rows[0].eventdate
+
+  } catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+// assign event data for displya in event page
+const combinesEventData = async () => {
+  try {
+    const totEvents = await totalEvents(); // Assuming totalEvents is an asynchronous function to get all event names and IDs
+
+    const combinedEventDetails = [];
+
+    for (const event of totEvents) {
+      const getTicketRevenues = await getTicketRevenue(parseInt(event.id));
+      const soldTickets = await getSoldTicketsQuantity(parseInt(event.id));
+      const eventDate = await getEventNameDate(event.id);
+      const totalTickets = await getTotalTicketsQuantity(parseInt(event.id));
+
+      const newEvent = {
+        "eventtitle": `${event.eventtitle}`,
+        "eventdate": `${eventDate}`,
+        "ticketid": `${event.id}`,
+        "revenue": `${getTicketRevenues}`,
+        "soldtickets": `${soldTickets}`,
+        "totaltickets": `${totalTickets}`
+      };
+
+      combinedEventDetails.push(newEvent);
+    }
+
+    return combinedEventDetails;
+  } catch (error) {
+    console.error(`Internal Error: ${error.message}`);
+    throw new Error(`Internal Error: ${error.message}`);
+  }
+};
+
 
 //get service provider details from database when give ID of service provider
 
@@ -254,5 +302,5 @@ const serviceproviderAcceptFunction = async (serviceProvider_Id) => {
 export {
   getCustomers, getServiceProviders, getPendingServiceProviders, getCountOfCustomers,
   getCountOfServiceProviders, totalUsersCount, getCountOfNewRequests,
-  combineEventData,getServiceProviderDetails,serviceproviderAcceptFunction
+  combineEventData,getServiceProviderDetails,serviceproviderAcceptFunction,combinesEventData
 };
