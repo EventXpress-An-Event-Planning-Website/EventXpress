@@ -187,6 +187,26 @@ CREATE TABLE ticket (
     bankPassbookImage VARCHAR(255)
 );
 
+CREATE TABLE ticketStatus (
+  ticketStatus_id SERIAL PRIMARY KEY,
+  ticketId INT,
+  customerId INT,
+  type VARCHAR(255),
+  price DECIMAL(10, 2),
+  totalQuantity INT,
+  currentQuantity INT
+)
+
+CREATE TABLE ticketBookings (
+    id SERIAL PRIMARY KEY,
+    buyerId INT NOT NULL,
+    ticketId INT NOT NULL,
+    pid TEXT NOT NULL,
+    ticketType VARCHAR(255) NOT NULL,
+    noOfTickets INT NOT NULL,
+    amount NUMERIC(10, 2) NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
 CREATE TABLE public.compareservices
 (
     compare_id serial,
@@ -205,7 +225,6 @@ CREATE TABLE public.customer_notification
     user_id integer,
     package_id VARCHAR(255),
     send_user_id integer,
-    message text,
     status text,
     service text,
     PRIMARY KEY (notify_id)
@@ -230,8 +249,18 @@ CREATE TABLE public.predefinedpackage
     PRIMARY KEY (predefined_id)
 );
 
+<<<<<<< HEAD
 
 -- service provider table add column for admin verification
 ALTER TABLE serviceProvider
 ADD COLUMN isVerifiedByAdmin BOOLEAN DEFAULT FALSE;
 
+=======
+CREATE TABLE public.busy_dates
+(
+    busy_id serial,
+    user_id integer,
+    busy_date date,
+    PRIMARY KEY (busy_id)
+);
+>>>>>>> dbd164c8eed26c9b51c74332343a4921fd2c6742

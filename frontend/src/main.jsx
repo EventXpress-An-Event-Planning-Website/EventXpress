@@ -188,7 +188,9 @@ const router = createBrowserRouter(
       <Route path="/ServiceProvider/preferences" element={<PredefinedPrefList />} />
       <Route path="/ServiceProvider/typePack" element={<PredefOneType />} />
       <Route path="/ServiceProvider/typePacklist" element={<AddtoPre />} />
+      <Route path="/ServiceProvider/massege" element={<Massege />} />
       <Route path="/PackageRequest" element={<PackageRequest />} />
+
 
     </Route>
   )
