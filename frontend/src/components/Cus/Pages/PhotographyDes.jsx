@@ -55,20 +55,31 @@ const PhotographyDes = () => {
           service:'Photography' // Modify this to match your data structure
           // ... Add other necessary data for your POST request
         };
-    
-        axios.post(`/api/customer/addPhotographyEvent?pack_id=${package_id}&event_id=${event_id}`)
+        axios.get(`/api/customer/checkPhotoStatus?event_id=${event_id}`)
         .then((response)=>{
-            const result= response.data
-            if (result===true) {
-                toast.success("Package Added Successfully")
-            }else{
-                toast.error('Please Add Package again')
+            if (response.data === true) {
+                axios.post(`/api/customer/addPhotographyEvent?pack_id=${package_id}&event_id=${event_id}`)
+                .then((response)=>{
+                    const result= response.data
+                    if (result===true) {
+                        toast.success("Package Added Successfully")
+                    }else{
+                        toast.error('Please Add Package again')
+                    }
+                    navigate(`/customer/eventdetails?id=${event_id}`)
+                })
+                .catch((error)=>{
+            
+                })
+                
             }
-            navigate(`/customer/eventdetails?id=${event_id}`)
-        })
-        .catch((error)=>{
+      else{
+        toast.error('Your request is already accepted. You cannot add another package')
+        navigate(`/customer/eventdetails?id=${event_id}`)
+      }
+    })
     
-        })
+        
       }
     const HandleAddCompare = () => {
         let pack = Number(comparePackages);

@@ -54,19 +54,31 @@ const SoundAndLightDes = () => {
     };
 
     const handleAddtoEvent = ()=>{
-        axios.post(`/api/customer/addSoundAndLighttoEvent?pack_id=${soundAndLightPackage[0].package_id}&event_id=${event_id}`)
+
+        axios.get(`/api/customer/checkSoundAndLightStatus?event_id=${event_id}`)
         .then((response)=>{
-            const result= response.data
-            if (result===true) {
-                toast.success("Package Added Successfully")
-            }else{
-                toast.error('Please Add Package again')
+            if (response.data === true) {
+                axios.post(`/api/customer/addSoundAndLighttoEvent?pack_id=${soundAndLightPackage[0].package_id}&event_id=${event_id}`)
+                .then((response)=>{
+                    const result= response.data
+                    if (result===true) {
+                        toast.success("Package Added Successfully")
+                    }else{
+                        toast.error('Please Add Package again')
+                    }
+                    navigate(`/customer/eventdetails?id=${event_id}`)
+                })
+                .catch((error)=>{
+            
+                })
+                
             }
-            navigate(`/customer/eventdetails?id=${event_id}`)
-        })
-        .catch((error)=>{
-    
-        })
+      else{
+        toast.error('Your request is already accepted. You cannot add another package')
+        navigate(`/customer/eventdetails?id=${event_id}`)
+      }
+    })
+        
     
       }
     const HandleAddCompare = () => {

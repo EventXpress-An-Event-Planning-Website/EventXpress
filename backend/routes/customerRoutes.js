@@ -16,7 +16,7 @@ import { viewVenuePackage,viewVenuePackageDetails,addVenuePack,addVenuePackToCom
     addVenuePackagesToEvent,addCateringPackagesToEvent,addPhotoPackagesToEvent,addDecoPackagesToEvent,addSoundAndLightPackagesToEvent} from '../controllers/Customer/packageController.js'
 
 // import { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare, getCompareCakePackage} from '../controllers/Customer/packageController.js'
-import { sendRequest,checkVenueStatus } from '../controllers/Customer/customerController.js'
+import { sendRequest,checkVenueStatus,checkCakeStatus,checkCateringStatus,checkDecoStatus,checkSoundAndLightStatus } from '../controllers/Customer/customerController.js'
 
 router.post('/createEvent', createevent)
 router.get('/viewVenuePackage', viewVenuePackage)
@@ -90,7 +90,11 @@ router.post('/addPhotographyEvent',addPhotoPackagesToEvent)
 router.post('/addDecotoEvent', addDecoPackagesToEvent)
 router.post('/addSoundAndLighttoEvent',addSoundAndLightPackagesToEvent)
 router.get('/checkVenueStatus', checkVenueStatus)
-
+router.get('/checkCakeStatus', checkCakeStatus)
+router.get('/checkPhotoStatus', checkCakeStatus)
+router.get('/checkDecoStatus', checkDecoStatus)
+router.get('/checkCateringStatus', checkCateringStatus)
+router.get('/checkSoundAndLightStatus', checkSoundAndLightStatus)
 
 
 

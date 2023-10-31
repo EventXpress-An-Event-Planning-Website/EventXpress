@@ -72,19 +72,31 @@ const DecorationDes = () => {
       // ... Add other necessary data for your POST request
     };
 
-    axios.post(`/api/customer/addDecotoEvent?pack_id=${package_id}&event_id=${event_id}`)
-    .then((response)=>{
-        const result= response.data
-        if (result===true) {
-            toast.success("Package Added Successfully")
-        }else{
-            toast.error('Please Add Package again')
-        }
+    axios.get(`/api/customer/checkDecoStatus?event_id=${event_id}`)
+        .then((response)=>{
+            if (response.data === true) {
+              axios.post(`/api/customer/addDecotoEvent?pack_id=${package_id}&event_id=${event_id}`)
+              .then((response)=>{
+                  const result= response.data
+                  if (result===true) {
+                      toast.success("Package Added Successfully")
+                  }else{
+                      toast.error('Please Add Package again')
+                  }
+                  navigate(`/customer/eventdetails?id=${event_id}`)
+              })
+              .catch((error)=>{
+          
+              })
+                
+            }
+      else{
+        toast.error('Your request is already accepted. You cannot add another package')
         navigate(`/customer/eventdetails?id=${event_id}`)
+      }
     })
-    .catch((error)=>{
 
-    })
+    
   }
   const HandleAddCompare = () => {
     let pack = Number(comparePackages);

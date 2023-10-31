@@ -90,6 +90,7 @@ const Cake = () => {
 
 
         })
+        console.log(event_id);
 
         if (event_id === null) {
             fetchedData()
