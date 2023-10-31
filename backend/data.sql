@@ -303,3 +303,11 @@ CREATE TABLE public.predefinedpackage
     prepackage_discount integer,
     PRIMARY KEY (predefined_id)
 );
+
+CREATE TABLE public.busy_dates
+(
+    busy_id serial,
+    user_id integer,
+    busy_date date,
+    PRIMARY KEY (busy_id)
+);

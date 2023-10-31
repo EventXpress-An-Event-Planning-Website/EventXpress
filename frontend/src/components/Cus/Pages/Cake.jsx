@@ -72,12 +72,31 @@ const Cake = () => {
 
 
         })
+        const fetchedCakeData = (async () => {
+
+            axios.get(`/api/customer/viewCakes?event_id=${event_id}`)
+                .then(response => {
+                    setCakePackage(response.data)
+                    setLoading(false);
+                    // console.log(cakePackage);
+
+
+                })
+                .catch(error => {
+                    setError(error);
+                    setLoading(false);
+                });
+
+
+
+        })
+
         if (event_id === null) {
             fetchedData()
             setCakesData(cakePackage)
 
         } else {
-            fetchedData()
+            fetchedCakeData()
             setCakesData(cakePackage)
             fetchedPackCount()
         }

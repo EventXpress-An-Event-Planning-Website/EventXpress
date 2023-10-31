@@ -7,7 +7,7 @@ import {
   addToDo,
   viewToDo,
 } from "../../models/eventModel.js";
-import { getpackage } from "../../models/todoListModel.js";
+import { getpackage,deleteItems } from "../../models/todoListModel.js";
 import { getNotificationByEventAndPackage } from "../../models/customer_notificationModel.js";
 
 const createevent = asyncHandler(async (req, res) => {
@@ -82,13 +82,16 @@ const viewEventToDo = asyncHandler(async (req, res) => {
           // console.log(package_detail);
           const service = todos[i].selected_package_id.split('_')
           // console.log(service);
+          
           const not = await getNotificationByEventAndPackage(service[0],event_id);
-          // console.log(not);
+          console.log(not);
           let mergeObject={...todos[i],...package_detail}
 
           
-          if (not !== null) {
-            mergeObject={...mergeObject,...not}
+          if (not.length > 0) {
+            // console.log(mergeObject);
+            mergeObject.notifications = not
+            // console.log(mergeObject);
           }
         
        
@@ -123,4 +126,11 @@ const getEventDetails = asyncHandler(async (req, res) => {
   res.json(event_data);
 });
 
-export { createevent, addEventToDo, viewEventToDo, getEvent, getEventDetails };
+const deleteTodoItem = asyncHandler(async(req, res) => {
+  const todo_id = req.query.todo_id;
+  // console.log(todo_id);
+  const deleteItem = await deleteItems(todo_id);
+  res.json(deleteItem);
+})
+
+export { createevent, addEventToDo, viewEventToDo, getEvent, getEventDetails,deleteTodoItem };

@@ -333,7 +333,7 @@ const Venue = () => {
                                         <Link to={`/VenueDes`}>
                                             <Button className="s-btn" variant="primary">View More</Button>
                                         </Link>:
-                                        <Link to={`/customer/event/VenueDes?event_id=${event_id}&packageCount=${selectedCount}&euid=${venue.userid}&column=${column_id}`}>
+                                        <Link to={`/customer/event/VenueDes?event_id=${event_id}&packageCount=${selectedCount}&euid=${venue.userid}&column=${column_id}&id=${venue.package_id}`}>
                                         <Button className="s-btn" variant="primary">View More</Button>
                                         </Link>}
 

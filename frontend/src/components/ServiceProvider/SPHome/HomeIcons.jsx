@@ -1,6 +1,10 @@
 // import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap';
 import { FaPlus, FaCalendarAlt, FaListAlt, FaTicketAlt, FaBell } from 'react-icons/fa';
+// import { FaPlus, FaCalendarAlt, FaListAlt, FaTicketAlt } from 'react-icons/fa';
+// import { BiSolidMessageAltDetail } from 'react-icons/bi';
+// import { FaPlus } from 'react-icons/fa';
+
 
 const HomeIcons = () => {
   return (

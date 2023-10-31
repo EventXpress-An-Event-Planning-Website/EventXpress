@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { button } from '@material-tailwind/react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 const CustomerEventDetails = () => {
     const [event,setEvent]=useState([])
@@ -61,7 +62,7 @@ const CustomerEventDetails = () => {
                         <label>Name: {event[0].event_name}  </label>
                     </div>
                     <div className='event-name-container'>
-                        <label>Date: {event[0].event_date}  </label>
+                        <label>Date: {moment(event[0].event_date).format('YYYY-MM-DD')}  </label>
                     </div>
                 </div>
                 <div className='event-description-container'>
