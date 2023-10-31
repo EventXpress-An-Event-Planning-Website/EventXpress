@@ -109,7 +109,7 @@ const MainDashboard = () => {
 //  ////////////////////////////////////////////////////////////////////////
 
 
-
+// data for charts
   const data = [
     {
       name: "January",
@@ -231,7 +231,7 @@ const MainDashboard = () => {
 
           <Link to="/TicketSupports">
             <Button varient="primary" className="ticketButton">
-              View More
+              View  More
             </Button>
           </Link>
         </div>
