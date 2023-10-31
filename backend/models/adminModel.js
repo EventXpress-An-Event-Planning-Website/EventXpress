@@ -217,8 +217,42 @@ const combineEventData = async () => {
   }
 };
 
+
+//get service provider details from database when give ID of service provider
+
+const getServiceProviderDetails = async (serviceProvider_Id) => {
+
+  try {
+    const getServiceProviderDetailsQuery = ` SELECT * FROM serviceprovider WHERE id = $1;`
+
+    const getServiceProviderDetails = await query(getServiceProviderDetailsQuery, [serviceProvider_Id])
+
+    return getServiceProviderDetails.rows[0]
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+
+//acceptFunction
+const serviceproviderAcceptFunction = async (serviceProvider_Id) => {
+  try {
+    const acceptQuery = `UPDATE serviceprovider SET isverifiedbyadmin = true WHERE id = $1;`
+
+    const accept = await query(acceptQuery, [serviceProvider_Id])
+
+    return (accept ? true : false)
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
 export {
   getCustomers, getServiceProviders, getPendingServiceProviders, getCountOfCustomers,
   getCountOfServiceProviders, totalUsersCount, getCountOfNewRequests,
-  combineEventData
+  combineEventData,getServiceProviderDetails,serviceproviderAcceptFunction
 };

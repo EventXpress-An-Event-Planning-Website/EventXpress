@@ -1,8 +1,9 @@
 import asyncHandler from 'express-async-handler'
 import {
   getCustomers, getPendingServiceProviders, getServiceProviders, getCountOfCustomers, getCountOfServiceProviders,
-  totalUsersCount, getCountOfNewRequests,combineEventData
+  totalUsersCount, getCountOfNewRequests,combineEventData,getServiceProviderDetails,serviceproviderAcceptFunction
 } from '../../models/adminModel.js'
+import { request } from 'express'
 
 const getAllCustomersByAdmin = asyncHandler(async (req, res) => {
   const customers = await getCustomers()
@@ -41,6 +42,36 @@ const getPendingServiceProvidersByAdmin = asyncHandler(async (req, res) => {
       message: 'Invalid verification token or token expired',
     })
   }
+})
+
+const getServiceProviderDetail = asyncHandler(async (req, res) => {
+  const spId = req.query.id;
+
+  const serviceProviders = await getServiceProviderDetails(spId)
+  if (serviceProviders) {
+    res.status(200).json({
+      serviceProviders
+    })
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
+const acceptServiceProvider = asyncHandler(async (req, res) => {
+  const spId = req.query.id;
+  const serviceProviders = await serviceproviderAcceptFunction(spId)
+  if (serviceProviders) {
+    res.status(200).json({
+      serviceProviders
+    })
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+
 })
 
 const getAllCustomerCount = asyncHandler(async (req, res) => {
@@ -112,5 +143,5 @@ const getEventData = asyncHandler(async (req, res) => {
 
 export {
   getAllCustomersByAdmin, getAllServiceProvidersByAdmin, getPendingServiceProvidersByAdmin, getAllCustomerCount,
-  getAllServiceProvidersCount, getAllUserCount, getAllNewRequestCount,getEventData
+  getAllServiceProvidersCount, getAllUserCount, getAllNewRequestCount,getEventData,getServiceProviderDetail,acceptServiceProvider
 }

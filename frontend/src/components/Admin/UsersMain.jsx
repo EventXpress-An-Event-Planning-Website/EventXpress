@@ -12,13 +12,13 @@ import { useEffect } from "react";
 
 function UsersMain() {
   const [key, setKey] = useState("tab1");
-  const [serviceProviders, setServiceProviders] = useState([]);
+  const [serviceProviders, setServiceProviders] = useState();
   const [customer, setCustomer] = useState([]);
   const [serviceProviderscount, setServiceProviderscount] = useState([]);
   const [customerCount, setCustomerCount] = useState([]);
   const [totalCount, setTotalCount] = useState([]);
   const [newRequests, setNewRequests] = useState([]);
-  const [pendingServiceProviders, setPendingServiceProviders] = useState([]);
+  const [pendingServiceProviders, setPendingServiceProviders] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -42,7 +42,7 @@ function UsersMain() {
       .then((response) => {
         setServiceProviders(response.data.serviceProviders);
 
-        // console.log(data);
+        console.log(response.data.serviceProviders);
       })
       .catch((error) => {
         setError(error);
@@ -54,9 +54,10 @@ function UsersMain() {
     axios
       .get(`/api/admin/getPendingServiceProviders`)
       .then((response) => {
-        setPendingServiceProviders(response.data.pendingServiceProviders);
+        console.log(response.data.serviceProviders);
+        setPendingServiceProviders(response.data.serviceProviders);
 
-        // console.log(data);
+        
       })
       .catch((error) => {
         setError(error);
@@ -151,11 +152,10 @@ function UsersMain() {
           <Tab eventKey="tab1" title="New Requests">
             <div className="userRequestsBox">
               
-            {pendingServiceProviders.length === 0 ? (
-                <p>Loading...</p>
-              ) : (
+            
               <table className="admin-table">
-                {pendingServiceProviders.map((pendingServiceProvider) => (
+                {pendingServiceProviders && pendingServiceProviders.map((pendingServiceProvider) => (
+                 
                 <tr className="tableRow">
                   <td className="userTableContent">
                     <GoPersonAdd
@@ -170,17 +170,18 @@ function UsersMain() {
                     {pendingServiceProvider.name} 
                   </td>
                   <td>
-                    <Link to="/UsersDetails">
+                    <Link to={`/UsersDetails?id=${pendingServiceProvider.id}`}>
                       <Button variant="primary" className="viewButton">
                         View
                       </Button>
                     </Link>
-                    <Button variant="primary" className="viewButton">
+                    {/* <Button variant="primary" className="viewButton">
                       Reject
-                    </Button>
+                    </Button> */}
                   </td>
-                </tr> ))}
-              </table> )}
+                </tr> 
+                ))}
+              </table>
             </div>
           </Tab>
 
@@ -188,11 +189,11 @@ function UsersMain() {
 
           <Tab eventKey="tab2" title="Service Providers">
             <div className="userRequestsBox">
-              {customer.length === 0 ? (
+              {!serviceProviders ? (
                 <p>Loading...</p>
               ) : (
                 <table className="admin-table">
-                  {serviceProviders.map((serviceProviders) => (
+                  {serviceProviders && serviceProviders.map((serviceProviders) => (
                     <tr className="tableRow">
                       <td className="userTableContent"></td>
                       <td className="userTableContent"></td>
