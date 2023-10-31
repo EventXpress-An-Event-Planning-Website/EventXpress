@@ -53,7 +53,7 @@ const TicketCard = ({
         </div>
         <div className="d-flex justify-content-center mt-3">
         <Link
-            to={`/customer/buyTickets/info?id=${id}&src=${src}&title=${title}&date=${date}&time=${time}&venue=${venue}&price=${price}&description=${description}`}
+            to={`/customer/buyTickets/info?id=${id}`}
             className="btn btn-primary w-100"
           >
             Buy Tickets

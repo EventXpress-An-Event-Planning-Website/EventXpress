@@ -17,13 +17,14 @@ const TodoList=({event,success})=> {
       .then(response => {
         const fetchedData = response.data;
         setData(fetchedData);
-  
+        console.log(fetchedData);
         const services = fetchedData.map(todo => ({
+          
           id: todo.todo_id,
           text: todo.todo_service,
           location: todo.todo_service,
-          selected: 'Araliya Beach Resort',
-          img: 'venue5.jpg'
+          selected: todo[0],
+          request:todo[1]
         }));
   
         setTodos(services);

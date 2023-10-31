@@ -171,31 +171,31 @@ const removeList = asyncHandler(
   }
 )
 
-//view preference list for each packages
-const preferencePredefineList = asyncHandler(
-  async(userId, block_status)=>{
-    const viewPrefNames = `SELECT * FROM venuepackage
-    JOIN blocklist ON venuepackage.userid = blocklist.block_id
-    WHERE blocklist.block_status = 1; `
-    const prefNames = await query(viewPrefNames,[userId, block_status])
-  }
-)
-
-//delete packages
-// const removePack = asyncHandler(
-//   async(package_id,service)=>{
-//     const viewCakePackage = `DELETE * FROM ${service}package WHERE package_id=$1`
-//     const CakePackData = await query(viewCakePackage,[package_id])
-    
-//     //console.log(CakePackData);
-//     if (CakePackData.rowCount > 0) {
-//       return CakePackData.rows
-//     } else {
-//       throw new Error('Internal Error')
-//     }
-    
+//update service provider details
+// const editSPDetails = asyncHandler(
+//   async(
+//     spfacebook,
+//     spinstagram,
+//     sptwitter,
+//   )=>{
+//   const editDetails = `UPDATE serviceprovider SET (profileimage, facebooklink, instagramlink, twitterlink) VALUES($1, $2, $3, $4) RETURNING userid `
+//   const editUser = await query(editDetails, [
+//     spfacebook,
+//     spinstagram,
+//     sptwitter,
+//   ])
+  
+//   if(editUser.rowCount>0){
+//     console.log('package model',editUser);
+//     return editUser.rows
 //   }
-// )
+//   else{
+//     throw new Error('Internal Error')
+//   }
+
+// })
+
+
 
 export { 
   getSPprofileDetails,
@@ -207,6 +207,5 @@ export {
   getblockList,
   removeList,
   getSpBlockPrefList,
-  preferencePredefineList
-  // removePack
+  // editSPDetails
 }

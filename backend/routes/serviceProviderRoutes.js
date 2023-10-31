@@ -8,7 +8,8 @@ import {
     createBlockPrefSPList,
     removeBlockPrefSPList,
     getPreferenceSPNames,
-    getBlockSPNames
+    getBlockSPNames,
+    // updateSPDetails
 } from '../controllers/ServiceProvider/spController.js'
 
 
@@ -23,5 +24,7 @@ router.get('/getFullPackDetails', getPacAllkDetails)
 router.get('/getAllSProviders', getSPNames)
 router.get('/getPreferenceSProviders', getPreferenceSPNames)
 router.get('/getBlockSProviders', getBlockSPNames)
+// router.get('/updateServiceProviderDetails', updateSPDetails)
+
 
 export default router

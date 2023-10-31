@@ -9,8 +9,7 @@ import {
   getblockList,
   removeList,
   getSpBlockPrefList,
-  preferencePredefineList
-  // removePack
+  // editSPDetails
 } from "../../models/spModel.js";
 
 
@@ -169,6 +168,8 @@ const getBlockSPNames = asyncHandler(async (req, res) => {
 
 });
 
+
+//remove from block list
 const removeBlockPrefSPList = asyncHandler(async (req, res) => {
   const userId  = req.body.id;
 
@@ -185,38 +186,21 @@ const removeBlockPrefSPList = asyncHandler(async (req, res) => {
 });
 
 
-//view preference list for each packages
-const getPrefPredefine = asyncHandler(async (req, res) => {
-  const userId  = req.query.id;
-  const block_status = '1';
-  const PNames = await getpreferenceList(userId, block_status);
-  
-  if (PNames) {
-    res.status(200).json(
-      PNames,
-    );
-  } else {
-    res.status(404);
-    throw new Error("User not found");
-  }
-});
+//update service provider details
+// const updateSPDetails = asyncHandler(async (req, res) => {
+//   const userId = req.query.id;
+//   const { spfacebook, spinstagram, sptwitter } = req.body;
 
+//   const SPDetails = await editSPDetails(userId, spfacebook, spinstagram, sptwitter);
 
-//delete packages
-// const removePackages = asyncHandler(async (req, res) => {
-//   const package_id = req.query.package_id;
-//   const service = req.query.service;
-//   const PackageDetails = await removePack(package_id,service);
-  
-//   if (PackageDetails) {
+//   if (SPDetails) {
 //     res.status(200).json({
-//       PackageDetails,
+//       data: SPDetails,
 //     });
 //   } else {
 //     res.status(404);
-//     throw new Error("Package not found");
+//     throw new Error("User not found");
 //   }
-  
 // });
 
 
@@ -229,6 +213,5 @@ export {
   removeBlockPrefSPList,
   getPreferenceSPNames,
   getBlockSPNames,
-  getPrefPredefine
-  // removePackages
+  // updateSPDetails
 };

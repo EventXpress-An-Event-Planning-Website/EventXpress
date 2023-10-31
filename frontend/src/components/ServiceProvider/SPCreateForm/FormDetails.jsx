@@ -75,7 +75,7 @@ const FormDetails = () => {
 
     try {
       const spImageFilename = await uploadImage(packageImage);
-      console.log("uploadimagesp", spImageFilename);
+      
 
       if (packageType === "Venue") {
         await createPackage({

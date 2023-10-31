@@ -1,5 +1,5 @@
 // import React from 'react'
-import { Container, Col, Row, Button } from 'react-bootstrap'
+import { Container, Col, Row } from 'react-bootstrap'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 // import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -138,8 +138,8 @@ const PackageFullView = () => {
                         </Row>
                     </Container>
                 </div>
-                <Button className='optionedit'>Edit</Button>
-                <Button className='optiondelete'>Delete</Button>
+                {/* <Button className='optionedit'>Edit</Button>
+                <Button className='optiondelete'>Delete</Button> */}
             </div>
         )
     }
