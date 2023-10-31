@@ -1,5 +1,7 @@
 import React from "react";
-import dp from "../../assets/images/Dp.jpeg";
+import dp1 from "../../assets/images/adp1.jpg";
+import dp2 from "../../assets/images/adp2.jpeg";
+import dp3 from "../../assets/images/adp3.jpg";
 // import chart from "../../assets/images/chart.png";
 import { GoPersonAdd } from "react-icons/go";
 import { FaRegUser } from "react-icons/fa";
@@ -104,7 +106,7 @@ const MainDashboard = () => {
           </div>
           <Link to='/AdminSupportView'>
           <div className="ticketChat">
-            <img className="dp" src={dp} />
+            <img className="dp" src={dp1} />
             <div className="message">
               {" "}
               need help to do the payment for adding packaged. can you...
@@ -113,7 +115,7 @@ const MainDashboard = () => {
           </Link>
           <Link to='/AdminSupportView'>
           <div className="ticketChat">
-            <img className="dp" src={dp} />
+            <img className="dp" src={dp2} />
             <div className="message">
               {" "}
               need help to do the payment for adding packaged. can you...
@@ -122,7 +124,7 @@ const MainDashboard = () => {
           </Link>
           <Link to='/AdminSupportView'>
           <div className="ticketChat">
-            <img className="dp" src={dp} />
+            <img className="dp" src={dp3} />
             <div className="message">
               {" "}
               need help to do the payment for adding packaged. can you...

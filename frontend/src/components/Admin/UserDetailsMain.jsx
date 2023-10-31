@@ -68,7 +68,7 @@ function UsersMain() {
               onClick={handleCancel}
               style={{ position: "absolute", bottom: "10%", right: "10%", backgroundColor:"#C31B07"   }}
             >
-              Rejecte
+              Reject
             </Button>
           </div>
           <Modal show={show} onHide={handleClose}>

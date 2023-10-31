@@ -1,8 +1,12 @@
 import asyncHandler from 'express-async-handler'
 import path from 'path'
 import { venuePackage } from '../../models/createPackageModel.js'
-import { otherPackage } from '../../models/createPackageModel.js'
-
+import { photographyPackage } from '../../models/createPackageModel.js'
+import { decorationPackage } from '../../models/createPackageModel.js'
+import { cateringPackage } from '../../models/createPackageModel.js'
+import { cakePackage } from '../../models/createPackageModel.js'
+import { lightsSoundPackage } from '../../models/createPackageModel.js'
+import { stagePackage } from '../../models/createPackageModel.js'
 
 const createpackage = asyncHandler(async(req,res)=>{
 
@@ -12,6 +16,7 @@ const createpackage = asyncHandler(async(req,res)=>{
         packageBusName,
         packageTitle,
         packageAddress,
+        packageContact,
         packageDescription,
         packagePrice,
         packageType,
@@ -20,9 +25,23 @@ const createpackage = asyncHandler(async(req,res)=>{
         packageOpDescription,
         packageOpMaxCount,
         packageOparea,
-        packageOpType
+        packageOpType,
+        packageTools,
+        packageFormat,
+        packageDecoElements,
+        packageMenu,
+        packageSoundSource,
+        packageLights,
+        packageStageType,
+        packageStageSize,
+        packageStageHeight,
+        packageServingSize,
+        packageCakeShape,
+        packageAllergy,
 
     }=req.body
+
+    const createdate = new Date();
 
     if (packageType==="Venue") {
 
@@ -31,9 +50,11 @@ const createpackage = asyncHandler(async(req,res)=>{
             packageBusName,
             packageTitle,
             packageAddress,
+            packageContact,
             packageDescription,
             packagePrice,
             packageImage,
+            createdate,
             packageOpTitle,
             packageOpDescription,
             packageOpMaxCount,
@@ -41,25 +62,29 @@ const createpackage = asyncHandler(async(req,res)=>{
             packageOpType
         )
         if (packages) {
-            res.status(201).json({
-              id: packages.id
-            })
-          } else {
-            res.status(400)
-            throw new Error('Invalid user data')
-          }
+          res.status(201).json({
+            id: packages.id
+          })
+        } else {
+          res.status(400)
+          throw new Error('Invalid user data')
+        }
         
         
-    } else {
-        packages= await otherPackage(
+    } else if (packageType==="Photography") {
+        packages= await photographyPackage(
             userId,
             packageBusName,
             packageTitle,
             packageAddress,
+            packageContact,
             packageDescription,
             packagePrice,
             packageImage,
-            packageType
+            createdate,
+
+            packageTools,
+            packageFormat,
         )
         if (packages) {
             res.status(201).json({
@@ -70,9 +95,120 @@ const createpackage = asyncHandler(async(req,res)=>{
             throw new Error('Invalid user data')
           }
 
+    } else if (packageType==="Decoration") {
+      packages= await decorationPackage(
+          userId,
+          packageBusName,
+          packageTitle,
+          packageAddress,
+          packageContact,
+          packageDescription,
+          packagePrice,
+          packageImage,
+          createdate,
+          packageDecoElements
+      )
+      if (packages) {
+          res.status(201).json({
+            id: packages.id
+          })
+      } else {
+          res.status(400)
+          throw new Error('Invalid user data')
+      }
+    } else if (packageType==="Catering") {
+      packages= await cateringPackage(
+          userId,
+          packageBusName,
+          packageTitle,
+          packageAddress,
+          packageContact,
+          packageDescription,
+          packagePrice,
+          packageImage,
+          createdate,
+          packageMenu,
+      )
+      if (packages) {
+          res.status(201).json({
+            id: packages.id
+          })
+      } else {
+          res.status(400)
+          throw new Error('Invalid user data')
+      }
+
+    } else if (packageType==="Cake") {
+      packages= await cakePackage(
+          userId,
+          packageBusName,
+          packageTitle,
+          packageAddress,
+          packageContact,
+          packageDescription,
+          packagePrice,
+          packageImage,
+          createdate,
+          packageServingSize,
+          packageCakeShape,
+          packageAllergy,
+      )
+      if (packages) {
+          res.status(201).json({
+            id: packages.id
+          })
+      } else {
+          res.status(400)
+          throw new Error('Invalid user data')
+      }
+    } else if (packageType==="LightsANDSounds") {
+      packages= await lightsSoundPackage(
+          userId,
+          packageBusName,
+          packageTitle,
+          packageAddress,
+          packageContact,
+          packageDescription,
+          packagePrice,
+          packageImage,
+          createdate,
+          packageSoundSource,
+          packageLights,
+      )
+      if (packages) {
+          res.status(201).json({
+            id: packages.id
+          })
+      } else {
+          res.status(400)
+          throw new Error('Invalid user data')
+      }
+
+    } else if (packageType==="Stage") {
+      packages= await stagePackage(
+          userId,
+          packageBusName,
+          packageTitle,
+          packageAddress,
+          packageContact,
+          packageDescription,
+          packagePrice,
+          packageImage,
+          createdate,
+          packageStageType,
+          packageStageSize,
+          packageStageHeight,
+      )
+      if (packages) {
+          res.status(201).json({
+            id: packages.id
+          })
+      } else {
+          res.status(400)
+          throw new Error('Invalid user data')
+      }
+
     }
-    
-    //console.log(packageType);
     
 })
 

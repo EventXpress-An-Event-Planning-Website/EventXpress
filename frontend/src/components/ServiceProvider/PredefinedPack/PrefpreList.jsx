@@ -124,6 +124,24 @@ const PrefpreList = ({ rows }) => {
                 </tbody>
               </table>
             </div>
+
+            <div className="stage_preference">
+              <h3>Stage</h3>
+              <table className="prefTable">
+                <tbody className="allPrefSPList">
+                  {rows.map((row, idx) => {
+                    return (
+                      <tr key={idx}>
+                        <td>
+                          {row.busName} - {row.busAddress}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
       </div>
