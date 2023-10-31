@@ -1,5 +1,7 @@
 import React from "react";
-import dp from "../../assets/images/Dp.jpeg";
+import dp1 from "../../assets/images/adp1.jpg";
+import dp2 from "../../assets/images/adp2.jpeg";
+import dp3 from "../../assets/images/adp3.jpg";
 // import chart from "../../assets/images/chart.png";
 import { GoPersonAdd } from "react-icons/go";
 import { FaRegUser } from "react-icons/fa";
