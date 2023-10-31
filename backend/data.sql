@@ -92,7 +92,7 @@ CREATE TABLE venuepackage (
     package_op_count INTEGER, 
     package_op_area FLOAT, 
     package_op_type VARCHAR(255)
-)
+);
 
 CREATE TABLE decorationpackage (
     userid INTEGER, 
@@ -103,7 +103,7 @@ CREATE TABLE decorationpackage (
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255)
-)
+);
 
 CREATE TABLE todolist
 (
@@ -195,7 +195,7 @@ CREATE TABLE ticketStatus (
   price DECIMAL(10, 2),
   totalQuantity INT,
   currentQuantity INT
-)
+);
 
 CREATE TABLE ticketBookings (
     id SERIAL PRIMARY KEY,
