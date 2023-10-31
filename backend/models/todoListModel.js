@@ -68,8 +68,30 @@ const getVenueByEvent = asyncHandler(
     }
 )
 
+const getCateringByEvent = asyncHandler(
+    async(
+        event_id
+    )=>{
+        const service='Catering'
+        const getBlockListQuery=`SELECT * FROM todolist INNER JOIN cateringpackage ON todolist.selected_package_id = cateringpackage.package_id WHERE todolist.event_id = $1 AND todolist.todo_service = $2;`
+        const venuepack = await query(getBlockListQuery,[event_id,service])
+        return venuepack.rows
+    }
+)
+
+
+const addpack = asyncHandler(async(package_id,event_id,service)=>{
+
+    try {
+        const addPackageQuery = `UPDATE todolist SET selected_package_id=$1 WHERE event_id=$2 AND todo_service=$3`
+        const executeQuery = await query(addPackageQuery,[package_id,event_id,service])
+        return true
+    } catch (error) {
+        
+    }
+})
 
 
 
 
-export {isSelectedPackage,addPackageToEvent,getpackage,getVenueByEvent}
+export {isSelectedPackage,addPackageToEvent,getpackage,getVenueByEvent,getCateringByEvent,addpack}

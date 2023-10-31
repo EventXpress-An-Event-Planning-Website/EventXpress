@@ -84,8 +84,9 @@ const TodoList=({event,success})=> {
 
   const removeTodo = id => {
     const removedArr = [...todos].filter(todo => todo.id !== id);
-
     setTodos(removedArr);
+  
+
   };
 
   const completeTodo = id => {
@@ -109,6 +110,7 @@ const TodoList=({event,success})=> {
         completeTodo={completeTodo}
         removeTodo={removeTodo}
         updateTodo={updateTodo}
+        event_date={event.event_date}
       />
     </>
   );

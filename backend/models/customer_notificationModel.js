@@ -44,6 +44,20 @@ const insertNotification=asyncHandler(async(body)=>{
 
 })
 
+const CheckStatus=asyncHandler(async(event_id,service)=>{
+    
+    try {
+        
+        const insertNotificationQuery = `SELECT * FROM customer_notification WHERE event_id=$1 And service=$2`
+        const notification = await query(insertNotificationQuery,[event_id,service])
+        return notification.rows
+        
+    } catch (error) {
+        throw new Error(error)
+    }
 
-export {getNotificationByEventAndPackage,deleteNotificationByEventAndPackage,insertNotification}
+})
+
+
+export {getNotificationByEventAndPackage,deleteNotificationByEventAndPackage,insertNotification,CheckStatus}
 
