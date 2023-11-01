@@ -192,6 +192,7 @@ const FormDetails = () => {
     setpackageImage(file);
   };
 
+
   return (
     <div className="SPPackageForm">
       <FormContainer>
@@ -243,6 +244,8 @@ const FormDetails = () => {
                 placeholder="Enter your business contact number"
                 onChange={(e) => setpackageContact(e.target.value)}
                 value={packageContact}
+                min="10"
+                max="10"
                 required
               />
             </FormGroup>

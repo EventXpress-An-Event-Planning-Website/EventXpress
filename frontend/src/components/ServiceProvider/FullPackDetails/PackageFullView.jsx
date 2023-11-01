@@ -1,6 +1,6 @@
 // import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
-import { FaMapMarkerAlt } from 'react-icons/fa'
+// import { FaMapMarkerAlt } from 'react-icons/fa'
 // import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -51,8 +51,7 @@ const PackageFullView = () => {
                                 <h3>{packageFullData.PackageDetails[0].package_title}</h3>
                                 <h4>{packageFullData.PackageDetails[0].package_address}</h4>
                                 <p>{packageFullData.PackageDetails[0].package_description}</p>
-                                <p><FaMapMarkerAlt/><span> {packageFullData.PackageDetails[0].package_address}</span>
-                                    <a className='showmap' > (Show map)</a></p>
+                                <p>Location: {packageFullData.PackageDetails[0].package_address}</p>
                                 <p>Contact no: <span>{packageFullData.PackageDetails[0].package_contact}</span></p>
                                 <p>Established Date: <span>{new Date(packageFullData.PackageDetails[0].createdate).toLocaleString()}</span></p>
 
