@@ -160,6 +160,7 @@ const router = createBrowserRouter(
         <Route path="/customer/event/StageRentalCompare" element={<CompareStageRentalPackages />} />
         <Route path="/BrideDes" element={<BirthdayDes />} />
         <Route path="/AnniversaryDes" element={<BirthdayDes />} />
+        <Route path="/SocialDes" element={<BirthdayDes />} />
         
 
       </Route>

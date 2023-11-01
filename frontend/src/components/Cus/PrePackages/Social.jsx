@@ -100,14 +100,14 @@ const Social = () => {
                 <div className="row">
                 <FilterPackages/>
                     {socialData.map((Social) => (
-                        <div className="col-md-3" key={Social.id}>
+                        <div className="col-md-3" key={Social.predefined_id}>
 
                             <Card className="s-card" >
-                                <Card.Img className="s-img" variant="top" src={Social.image} />
+                                <Card.Img className="s-img" variant="top" src={`../../src/assets/images/uploads/${Social.pckg_img}`} />
                                 <Card.Body>
-                                    <Card.Title className="s-main-title">{Social.title}</Card.Title>
-                                    <Card.Text className="s-text">{Social.text}</Card.Text>
-                                    <Link to={`/SocialDes`}>
+                                    <Card.Title className="s-main-title">{Social.prepackage_title}</Card.Title>
+                                    <Card.Text className="s-text">{Social.prepackage_description}</Card.Text>
+                                    <Link to={`/SocialDes?package_id=${Social.predefined_id}&event_id=${event_id}`}>
                                         <Button className="s-btn" variant="primary">Select</Button>
                                     </Link>
                                 </Card.Body>
