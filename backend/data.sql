@@ -105,9 +105,14 @@ CREATE TABLE decorationpackage (
     package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
+<<<<<<< HEAD
+    sp_images VARCHAR(255)
+);
+=======
     sp_images VARCHAR(255),
     createdate timestamp without time zone
 )
+>>>>>>> 6bcf6aa082e45d759ef0b7e12e57c31da55fd722
 
 CREATE TABLE todolist
 (
@@ -250,7 +255,7 @@ CREATE TABLE ticketStatus (
   price DECIMAL(10, 2),
   totalQuantity INT,
   currentQuantity INT
-)
+);
 
 CREATE TABLE ticketBookings (
     id SERIAL PRIMARY KEY,

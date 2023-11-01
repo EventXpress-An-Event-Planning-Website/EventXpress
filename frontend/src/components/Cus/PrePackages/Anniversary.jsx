@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 import Stack from 'react-bootstrap/Stack';
 import Pagination from 'react-bootstrap/Pagination';
 import FilterPackages from "../Pages/FilterPackages";
+import { useLocation } from "react-router-dom";
+import { useEffect,useState } from "react";
+import axios from "axios";
+
 
 import Anniversary1 from '../../../assets/images/Anniversary1.jpg';
 import Anniversary2 from '../../../assets/images/Anniversary2.jpg';
@@ -18,56 +22,72 @@ import Anniversary8 from '../../../assets/images/Anniversary8.jpg';
 
 const Anniversary = () => {
 
-    const AnniversaryData = [
-        {
-            id: 1,
-            image: Anniversary1,
-            title: 'The Grand Affair',
-            text: ' Some quick example text to build on the card title'
-        },
-        {
-            id: 2,
-            image: Anniversary2,
-            title: 'Blue Sapphire',
-            text: ' Some quick example text to build on the card title'
-        },
-        {
-            id: 3,
-            image: Anniversary8,
-            title: 'Love All Around',
-            text: ' Some quick example text to build on the card title'
-        },
-        {
-            id: 4,
-            image: Anniversary7,
-            title: 'The Pink Pearl',
-            text: ' Some quick example text to build on the card title'
-        },
-        {
-            id: 5,
-            image: Anniversary5,
-            title: 'Whispers of Love',
-            text: ' Some quick example text to build on the card title'
-        },
-        {
-            id: 6,
-            image: Anniversary3,
-            title: 'Warm Heart',
-            text: ' Some quick example text to build on the card title'
-        },
-        {
-            id: 7,
-            image: Anniversary6,
-            title: 'Garden of Eden',
-            text: ' Some quick example text to build on the card title'
-        },
-        {
-            id: 8,
-            image: Anniversary4,
-            title: 'Blooming Florist',
-            text: ' Some quick example text to build on the card title'
+    const location = useLocation() // access current location in the browser's url
+    const queryParams = new URLSearchParams(location.search);
+    const event_id = queryParams.get('event_id')
+    // const event_type = queryParams.get('event_type')
+    const event_type='Anniversary'
+    const [loading, setLoading] = useState(true)
+    const [anniversaryData, setAnniversaryData] = useState([])
+    const [error, setError] = useState("")
+    const user = JSON.parse(localStorage.getItem('userInfo'))
+    const user_type = user.role
+    const user_id = user.id
+
+    useEffect(() => {
+
+        const fetchedData = (async () => {
+
+            axios.get(`/api/customer/viewBirthdayPackage?event_type=${event_type}`)
+                .then(response => {
+                    console.log(response.data);
+                    setAnniversaryData(response.data)
+                    setLoading(false);
+                    console.log(anniversaryData);
+                 
+
+
+                })
+                .catch(error => {
+                    setError(error);
+                    setLoading(false);
+                });
+
+
+
+        })
+
+        const fetchPrePackage = (async()=>{
+            axios.get(`/api/serviceProvider/viewBirthdayPackageByUser?event_type=${event_type}&&user_id=${user_id}`)
+                .then(response => {
+                    console.log(response.data);
+                    setAnniversaryData(response.data)
+                    setLoading(false);
+                    console.log(anniversaryData);
+                    
+
+
+                })
+                .catch(error => {
+                    setError(error);
+                    setLoading(false);
+            });
+        })
+
+        if (event_id === null) {
+            if (user_type==='serviceProvider') {
+                fetchPrePackage()
+                
+            }else{
+                fetchedData()
+            }  
+
+        } else {
+            fetchedData()
         }
-    ];
+    }, [loading]);
+
+   
 
     return (
         <>
@@ -83,15 +103,15 @@ const Anniversary = () => {
 
                 <div className="row">
                 <FilterPackages/>
-                    {AnniversaryData.map((Anniversary) => (
-                        <div className="col-md-3" key={Anniversary.id}>
+                    {anniversaryData.map((Anniversary) => (
+                        <div className="col-md-3" key={Anniversary.predefined_id}>
 
                             <Card className="s-card" >
-                                <Card.Img className="s-img" variant="top" src={Anniversary.image} />
+                                <Card.Img className="s-img" variant="top" src={`../../src/assets/images/uploads/${Anniversary.pckg_img}`} />
                                 <Card.Body>
-                                    <Card.Title className="s-main-title">{Anniversary.title}</Card.Title>
-                                    <Card.Text className="s-text">{Anniversary.text}</Card.Text>
-                                    <Link to={`/AnniversaryDes`}>
+                                    <Card.Title className="s-main-title">{Anniversary.prepackage_title}</Card.Title>
+                                    <Card.Text className="s-text">{Anniversary.prepackage_description}</Card.Text>
+                                    <Link to={`/AnniversaryDes?package_id=${Anniversary.predefined_id}&event_id=${event_id}`}>
                                         <Button className="s-btn" variant="primary">Select</Button>
                                     </Link>
                                 </Card.Body>
