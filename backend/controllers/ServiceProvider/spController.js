@@ -9,6 +9,11 @@ import {
   getblockList,
   removeList,
   getSpBlockPrefList,
+  getAllNotification,
+  acceptedNotification,
+  declinedNotification,
+  getAllBusyDates,
+  setAllBusyDates
   // editSPDetails
 } from "../../models/spModel.js";
 
@@ -86,6 +91,21 @@ const getPacAllkDetails = asyncHandler(async (req, res) => {
       PackageDetails,
     });
   } else {
+    res.status(500);
+    throw new Error("Notification failed");
+  }
+
+  //console.log(packageType);
+});
+
+const getAllNotifications = asyncHandler(async (req, res) => {
+  const getNotifications = await getAllNotification();
+  
+  if (getNotifications) {
+    res.status(200).json({
+      getNotifications
+    });
+  } else {
     res.status(404);
     throw new Error("Package not found");
   }
@@ -134,6 +154,20 @@ const getSPNames = asyncHandler(async (req, res) => {
 
 });
 
+const acceptNotification = asyncHandler(async (req, res) => {
+  const notifyId = parseInt(req.params.notify_id);
+  // console.log(notifyId);
+   const response = await acceptedNotification(notifyId);
+  
+  if (response) {
+    res.status(200).json({
+      response
+    });
+  } else {
+    res.status(500);
+    throw new Error("Internal error");
+  }
+})
 //get preference service providers names
 const getPreferenceSPNames = asyncHandler(async (req, res) => {
   const userId  = req.query.id;
@@ -150,6 +184,21 @@ const getPreferenceSPNames = asyncHandler(async (req, res) => {
   }
 
 });
+
+const declineNotification = asyncHandler(async (req, res) => {
+  const notifyId = parseInt(req.params.notify_id);
+  // console.log(notifyId);
+   const response = await declinedNotification(notifyId);
+  
+  if (response) {
+    res.status(200).json({
+      response
+    });
+  } else {
+    res.status(500);
+    throw new Error("Internal error");
+  }
+})
 
 //get block service providers names
 const getBlockSPNames = asyncHandler(async (req, res) => {
@@ -168,6 +217,38 @@ const getBlockSPNames = asyncHandler(async (req, res) => {
 
 });
 
+const getBusyDates = asyncHandler(async (req, res) => {
+  const userId = parseInt(req.params.id);
+  // console.log(userId);
+   const response = await getAllBusyDates(userId);
+  // console.log(response);
+  if (response) {
+    res.status(200).json({
+      response
+    });
+  } else {
+    res.status(500);
+    throw new Error("Internal error");
+  }
+
+});
+
+const setBusyDates = asyncHandler(async (req, res) => {
+  const userId = parseInt(req.params.id);
+  const {date} = req.body;
+  
+   const response = await setAllBusyDates(userId,date);
+  // console.log(response);
+  if (response) {
+    res.status(200).json({
+      response
+    });
+  } else {
+    res.status(500);
+    throw new Error("Internal error");
+  }
+
+});
 
 //remove from block list
 const removeBlockPrefSPList = asyncHandler(async (req, res) => {
@@ -213,5 +294,10 @@ export {
   removeBlockPrefSPList,
   getPreferenceSPNames,
   getBlockSPNames,
+  getAllNotifications, 
+  acceptNotification, 
+  declineNotification, 
+  getBusyDates, 
+  setBusyDates
   // updateSPDetails
 };
