@@ -95,7 +95,7 @@ router.get('/checkPhotoStatus', checkCakeStatus)
 router.get('/checkDecoStatus', checkDecoStatus)
 router.get('/checkCateringStatus', checkCateringStatus)
 router.get('/checkSoundAndLightStatus', checkSoundAndLightStatus)
-
+router.get('/viewBirthdayPrePackageDetails', )
 
 
 router.delete('/deleteTodo', deleteTodoItem)

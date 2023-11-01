@@ -593,6 +593,8 @@ const viewPreBirthdayPackageDetails = asyncHandler(async(req,res)=>{
     const package_id = req.query.package_id;
 
     const getPreDefinedPackageDetail = await getPreDefinedPackageInfo(package_id) 
+    
+    res.json(getPreDefinedPackageDetail)
 })
 
 
@@ -941,6 +943,12 @@ const prePackagesByUser = asyncHandler(async(req,res)=>{
     res.json(prePackages)
 
 })
+
+// const getPrePackageBy = asyncHandler(async(req,res)=>{
+//     const package_id=req.query.package_id
+//     const 
+
+// })
 
 
 
