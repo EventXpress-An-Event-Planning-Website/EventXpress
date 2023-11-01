@@ -167,6 +167,8 @@ const acceptNotification = asyncHandler(async (req, res) => {
   } else {
     res.status(500);
     throw new Error("Internal error");
+  }
+})
 //get preference service providers names
 const getPreferenceSPNames = asyncHandler(async (req, res) => {
   const userId  = req.query.id;
@@ -196,6 +198,8 @@ const declineNotification = asyncHandler(async (req, res) => {
   } else {
     res.status(500);
     throw new Error("Internal error");
+  })
+  
 //get block service providers names
 const getBlockSPNames = asyncHandler(async (req, res) => {
   const userId  = req.query.id;
