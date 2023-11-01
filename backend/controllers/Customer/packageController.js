@@ -1,7 +1,8 @@
+import moment from 'moment';
 import asyncHandler from 'express-async-handler'
 import path from 'path'
 import {viewVenuePackagesModel,viewVenuePackageDetailsUserId,viewVenuPackageDetails} from '../../models/venuePackageModel.js'
-import { getNoOfComparepackages,insertPackageToCompare,getComparePack,getComparePackCount,updatePackageToCompare } from '../../models/compareServicesModel.js'
+import { getNoOfComparepackages,insertPackageToCompare,getComparePack,getComparePackCount,updatePackageToCompare,getCompareCakes,getCompareCatering,getCompareDecos,getComparePhotography,getVenue, } from '../../models/compareServicesModel.js'
 import { viewCakePackagesModel,viewCakePackageDetails } from '../../models/cakePackageModel.js'
 import { viewDecorationPackagesModel, viewDecorationPackageDetails } from '../../models/decorationPackageModel.js'
 import { viewCateringPackagesModel, viewCateringPackageDetails } from '../../models/cateringPackageModel.js'
@@ -11,8 +12,12 @@ import { viewStageRentalPackagesModel, viewStageRentalPackageDetails } from '../
 import { isSelectedPackage,addPackageToEvent } from '../../models/todoListModel.js'
 import { getNotificationByEventAndPackage,deleteNotificationByEventAndPackage } from '../../models/customer_notificationModel.js'
 import { getPreDefinedPackage,getPreDefinedPackageDetails,getPreDefinedPackageInfo } from '../../models/preDefinedPackageModel.js'
-
+import { getBusyUser } from '../../models/busy_dateModel.js'
 // import Venue from '../../../frontend/src/components/Cus/Pages/Venue.jsx'
+import { getEventdetails } from '../../models/eventModel.js'
+import { getVenueByEvent,getCateringByEvent,addpack } from '../../models/todoListModel.js';
+import { getBlocklistOfOneUser } from '../../models/blocklistModel.js';
+import { query } from 'express';
 
 const viewVenuePackage = asyncHandler(async (req, res) => {
     const pack = await viewVenuePackagesModel()
@@ -69,13 +74,13 @@ const getPackageCount = asyncHandler(async (req, res) => {
 
 })
 
-const getComparePackage = asyncHandler(async (req, res) => {
-    const event_id = Number(req.query.event_id);
+const getComparePackage = asyncHandler(async (req, res) => { //asyncHandler-handle asynchronous operations
+    const event_id = Number(req.query.event_id); //extract the event_id query parameter from the request object 
     const service = 'venue'
     const service1 = 'Venue'
 
     const packages = await getComparePack(event_id, service, service1)
-    console.log(packages);
+    // console.log(packages);
     res.json(packages)
 })
 
@@ -590,6 +595,344 @@ const viewPreBirthdayPackageDetails = asyncHandler(async(req,res)=>{
     const getPreDefinedPackageDetail = await getPreDefinedPackageInfo(package_id) 
 })
 
+
+
+const viewCakePack = asyncHandler(async (req, res) => {
+    const event_id=req.query.event_id
+    console.log(event_id);
+    const pack = await viewCakePackagesModel()
+    let cakes=pack.rows
+    const event=await getEventdetails(event_id)
+    const date=moment(event[0].event_date).format('YYYY-MM-DD');
+    const busy= (await getBusyUser(date)).rows
+    console.log(busy);
+    // // const array = [{id:1}, {id:2}]
+    // Extract the user_ids from the busy array
+    const busyUserIds = busy.map(busyItem => busyItem.user_id);
+    console.log(busyUserIds);
+
+    // Filter out cakes where userid matches a user_id in busyUserIds
+    cakes = cakes.filter(cake => {
+        return !busyUserIds.includes(cake.userid);
+    });
+
+    const compareCake = await getCompareCakes(event_id)
+    const comparePackageIds = compareCake.map(busyItem => busyItem.package_id);
+    
+    cakes = cakes.filter(cake => {
+        return !comparePackageIds.includes(cake.package_id);
+    });
+
+    console.log(cakes);
+    res.json(cakes)
+}
+)
+
+const viewCateringPack = asyncHandler(async (req, res) => {
+    const event_id=req.query.event_id
+    const pack = await viewCateringPackagesModel()
+    let catering=pack.rows
+    const event=await getEventdetails(event_id)
+    const date=moment(event[0].event_date).format('YYYY-MM-DD');
+    const busy= (await getBusyUser(date)).rows
+    // // const array = [{id:1}, {id:2}]
+    // Extract the user_ids from the busy array
+    const busyUserIds = busy.map(busyItem => busyItem.user_id);
+
+    // Filter out cakes where userid matches a user_id in busyUserIds
+    catering = catering.filter(cater => {
+        return !busyUserIds.includes(cater.userid);
+    });
+
+    const compareCatering = await getCompareCatering(event_id)
+    const comparePackageIds = compareCatering.map(busyItem => busyItem.package_id);
+    
+    catering = catering.filter(cater => {
+        return !comparePackageIds.includes(cater.package_id);
+    });
+
+    const selectedVenue= await getVenueByEvent(event_id)
+    if (selectedVenue.length!=0) {
+        const selectedVenueUser = selectedVenue[0].userid
+        console.log(selectedVenueUser);
+        const list = await getBlocklistOfOneUser(selectedVenueUser)
+        const blockUserIds = list.map(blockItem => blockItem.block_id);
+        console.log(blockUserIds);
+        if (blockUserIds.length !==0) {
+            catering = catering.filter(cater => {
+                return !blockUserIds.includes(cater.userid);
+            });
+        }
+        else{
+
+        }
+        
+    }else{
+
+    }
+
+   
+    res.json(catering)
+}
+)
+
+
+const viewDecorationPack = asyncHandler(async (req, res) => {
+    const event_id=req.query.event_id
+    const pack = await viewDecorationPackagesModel()
+    let decos=pack.rows
+    const event=await getEventdetails(event_id)
+    const date=moment(event[0].event_date).format('YYYY-MM-DD');
+    const busy= (await getBusyUser(date)).rows
+    // // const array = [{id:1}, {id:2}]
+    // Extract the user_ids from the busy array
+    const busyUserIds = busy.map(busyItem => busyItem.user_id);
+
+    // Filter out cakes where userid matches a user_id in busyUserIds
+    decos = decos.filter(deco => {
+        return !busyUserIds.includes(deco.userid);
+    });
+
+    const compareCatering = await getCompareDecos(event_id)
+    const comparePackageIds = compareCatering.map(busyItem => busyItem.package_id);
+    
+    decos = decos.filter(cater => {
+        return !comparePackageIds.includes(cater.package_id);
+    });
+
+    const selectedVenue= await getVenueByEvent(event_id)
+    if (selectedVenue.length!=0) {
+        const selectedVenueUser = selectedVenue[0].userid
+        console.log(selectedVenueUser);
+        const list = await getBlocklistOfOneUser(selectedVenueUser)
+        const blockUserIds = list.map(blockItem => blockItem.block_id);
+        console.log(blockUserIds);
+        if (blockUserIds.length !==0) {
+            decos = decos.filter(cater => {
+                return !blockUserIds.includes(cater.userid);
+            });
+        }
+        else{
+
+        }
+        
+    }else{
+
+    }
+
+   
+    res.json(decos)
+}
+)
+
+
+
+const viewPhotographyPack = asyncHandler(async (req, res) => {
+    const event_id=req.query.event_id
+    console.log(event_id);
+    const pack = await viewPhotographyPackagesModel()
+    let photography=pack.rows
+    const event=await getEventdetails(event_id)
+    const date=moment(event[0].event_date).format('YYYY-MM-DD');
+    const busy= (await getBusyUser(date)).rows
+    console.log(busy);
+    // // const array = [{id:1}, {id:2}]
+    // Extract the user_ids from the busy array
+    const busyUserIds = busy.map(busyItem => busyItem.user_id);
+    console.log(busyUserIds);
+
+    // Filter out cakes where userid matches a user_id in busyUserIds
+    photography = photography.filter(photo => {
+        return !busyUserIds.includes(photo.userid);
+    });
+
+    const comparePhotography = await getComparePhotography(event_id)
+    const comparePackageIds = comparePhotography.map(busyItem => busyItem.package_id);
+    
+    photography = photography.filter(photo => {
+        return !comparePackageIds.includes(photo.package_id);
+    });
+
+    console.log(photography);
+    res.json(photography)
+}
+)
+
+
+const viewSoundLightPack = asyncHandler(async (req, res) => {
+    const event_id=req.query.event_id
+    const pack = await viewSoundAndLightPackagesModel()
+    let sound=pack.rows
+    const event=await getEventdetails(event_id)
+    const date=moment(event[0].event_date).format('YYYY-MM-DD');
+    const busy= (await getBusyUser(date)).rows
+    // // const array = [{id:1}, {id:2}]
+    // Extract the user_ids from the busy array
+    const busyUserIds = busy.map(busyItem => busyItem.user_id);
+
+    // Filter out cakes where userid matches a user_id in busyUserIds
+    sound = sound.filter(sound => {
+        return !busyUserIds.includes(sound.userid);
+    });
+
+    const compareSound = await getCompareDecos(event_id)
+    const comparePackageIds = compareSound.map(busyItem => busyItem.package_id);
+    
+    sound = sound.filter(cater => {
+        return !comparePackageIds.includes(cater.package_id);
+    });
+
+    const selectedVenue= await getVenueByEvent(event_id)
+    if (selectedVenue.length!=0) {
+        const selectedVenueUser = selectedVenue[0].userid
+        console.log(selectedVenueUser);
+        const list = await getBlocklistOfOneUser(selectedVenueUser)
+        const blockUserIds = list.map(blockItem => blockItem.block_id);
+        console.log(blockUserIds);
+        if (blockUserIds.length !==0) {
+            sound = sound.filter(cater => {
+                return !blockUserIds.includes(cater.userid);
+            });
+        }
+        else{
+
+        }
+        
+    }else{
+
+    }
+
+   
+    res.json(sound)
+}
+)
+
+const viewVenuePackages = asyncHandler(async (req, res) => {
+    const event_id=req.query.event_id
+    const pack = await viewVenuePackagesModel()
+    let venue=pack.rows
+    // console.log(venue);
+    const event=await getEventdetails(event_id)
+    
+    const date=moment(event[0].event_date).format('YYYY-MM-DD');
+    const busy= (await getBusyUser(date)).rows
+    
+    // // const array = [{id:1}, {id:2}]
+    // Extract the user_ids from the busy array
+    const busyUserIds = busy.map(busyItem => busyItem.user_id);
+   
+    // Filter out cakes where userid matches a user_id in busyUserIds
+    if (busyUserIds.length !=0 ) {
+        console.log(venue);
+        venue = venue.filter(venu => {
+            return !busyUserIds.includes(venu.userid);
+        });
+    }
+    
+    // console.log(venue);
+    
+
+    const compareVenue = await getVenue(event_id)
+    const comparePackageIds = compareVenue.map(busyItem => busyItem.package_id);
+    if (comparePackageIds.length!=0) {
+        venue = venue.filter(cater => {
+            return !comparePackageIds.includes(cater.package_id);
+        }); 
+    }
+    const selected= await getCateringByEvent(event_id)
+    console.log(selected);
+    if (selected.length!=0) {
+        const selectedVenueUser = selected[0].userid
+        console.log(selectedVenueUser);
+        const list = await getBlocklistOfOneUser(selectedVenueUser)
+        const blockUserIds = list.map(blockItem => blockItem.block_id);
+        console.log(blockUserIds);
+        if (blockUserIds.length !==0) {
+            venue = venue.filter(cater => {
+                return !blockUserIds.includes(cater.userid);
+            });
+        }
+        else{
+
+        }
+        
+    }else{
+
+    }
+
+
+   
+    res.json(venue)
+}
+)
+
+
+const viewVenuePack = asyncHandler(async(req,res)=>{
+   
+    const package_id=req.query.pack_id
+   
+    const venue = await viewVenuPackageDetails(package_id)
+    res.json(venue.rows)
+
+
+})
+
+const addCakePackagesToEvent = asyncHandler(async(req,res)=>{
+    const package_id=req.query.pack_id
+    const event_id= req.query.event_id
+    const service='Cakes'
+    const add=await addpack(package_id,event_id,service)
+    res.json(add)
+
+})
+
+const addVenuePackagesToEvent = asyncHandler(async(req,res)=>{
+    const package_id=req.query.pack_id
+    const event_id= req.query.event_id
+    const service='Venue'
+    const add=await addpack(package_id,event_id,service)
+    res.json(add)
+
+})
+
+const addCateringPackagesToEvent = asyncHandler(async(req,res)=>{
+    const package_id=req.query.pack_id
+    const event_id= req.query.event_id
+    const service='Catering'
+    const add=await addpack(package_id,event_id,service)
+    res.json(add)
+
+})
+
+const addPhotoPackagesToEvent = asyncHandler(async(req,res)=>{
+    const package_id=req.query.pack_id
+    const event_id= req.query.event_id
+    const service='Photography'
+    const add=await addpack(package_id,event_id,service)
+    res.json(add)
+
+})
+
+const addDecoPackagesToEvent = asyncHandler(async(req,res)=>{
+    const package_id=req.query.pack_id
+    const event_id= req.query.event_id
+    const service='Decoration'
+    const add=await addpack(package_id,event_id,service)
+    res.json(add)
+
+})
+
+const addSoundAndLightPackagesToEvent = asyncHandler(async(req,res)=>{
+    const package_id=req.query.pack_id
+    const event_id= req.query.event_id
+    const service='SoundAndLight'
+    const add=await addpack(package_id,event_id,service)
+    res.json(add)
+
+})
+
+
+
 export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, 
     addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare,addCakePackageToCompareTable, getCompareCakePackage, 
     viewCateringPackage,viewdecoPackage,viewDecoPackageDetails,addDecoPackToCompare,addDecoPackageToCompareTable, getCompareDecoPackage , 
@@ -597,4 +940,5 @@ export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackTo
     viewSoundAndLightsPackageDetails, viewSoundAndLightPackageDetails, viewStageRentalPackage, viewStageRentalsPackageDetails, 
     viewStageRentalPackageDetails, addPhotographyPackToCompare, getComparePhotographyPackage, getCompareCateringPackage, addCateringPackToCompare, 
     addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,addCateringPackageToCompareTable,
-    addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent,viewBirthdayPackage,viewBirthdayPackageDetails,viewPreBirthdayPackageDetails } 
+    addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent,viewBirthdayPackage,viewBirthdayPackageDetails,viewPreBirthdayPackageDetails,
+    viewCakePack,viewCateringPack,viewDecorationPack,viewPhotographyPack,viewVenuePack,viewVenuePackages,addCakePackagesToEvent,addVenuePackagesToEvent,addCateringPackagesToEvent,addPhotoPackagesToEvent,addDecoPackagesToEvent,addSoundAndLightPackagesToEvent  } 

@@ -55,27 +55,31 @@ const PhotographyDes = () => {
           service:'Photography' // Modify this to match your data structure
           // ... Add other necessary data for your POST request
         };
-    
-        axios.post("/api/customer/addCakePackToEvent", eventData)
-              .then((response) => {
-                const packCount = response.data;
-                console.log(packCount);
-    
-                if(packCount===false){
-                  toast.error("You Doesn't Can Update Selected Package. Your Request Already Accept.")
-                  navigate(`/customer/eventdetails?id=${event_id}`);
-                }else{
-                  toast.success("Package Added Successfully And Please Select Other Packages And Send Notification.")
-                  navigate(`/customer/eventdetails?id=${event_id}`);
-                }
-                // console.log(packCount);
-                // Perform navigation after successful POST
+        axios.get(`/api/customer/checkPhotoStatus?event_id=${event_id}`)
+        .then((response)=>{
+            if (response.data === true) {
+                axios.post(`/api/customer/addPhotographyEvent?pack_id=${package_id}&event_id=${event_id}`)
+                .then((response)=>{
+                    const result= response.data
+                    if (result===true) {
+                        toast.success("Package Added Successfully")
+                    }else{
+                        toast.error('Please Add Package again')
+                    }
+                    navigate(`/customer/eventdetails?id=${event_id}`)
+                })
+                .catch((error)=>{
+            
+                })
                 
-              })
-              .catch((error) => {
-                console.error("Error adding event:", error);
-                // Handle error if needed
-              });
+            }
+      else{
+        toast.error('Your request is already accepted. You cannot add another package')
+        navigate(`/customer/eventdetails?id=${event_id}`)
+      }
+    })
+    
+        
       }
     const HandleAddCompare = () => {
         let pack = Number(comparePackages);

@@ -13,11 +13,12 @@
 
 .prefContainer .title_container{
     width: 85%;
-    margin-left: 10%;
+    margin-left: 15%;
 }
 
 .top_pref{
     display: flex;
+    margin-left: 10%;
 }
 
 .bottom_pref{
@@ -32,7 +33,7 @@ a:hover{
     color: #6D004F;
 }
 
-.venue_preference, .catering_preference, .cake_preference, .photography_preference, .decoration_preference, .lightsandsounds_preference{
+.venue_preference, .catering_preference, .cake_preference, .photography_preference, .decoration_preference, .lightsandsounds_preference, .stage_preference{
     display: flex;
     flex-direction: column;
     align-items: center;

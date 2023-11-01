@@ -23,12 +23,15 @@ import { Modal } from "react-bootstrap";
 import StarRating from "./Ratings";
 import axios from "axios";
 import { useEffect } from "react";
+
 const VenueDes = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const packageCount = queryParams.get("packageCount");
   const uid = queryParams.get("euid");
+  const pac_id = queryParams.get("id");
+  console.log(pac_id);
   console.log(uid);
   const event_id = queryParams.get("event_id");
   const column_id = Number(queryParams.get("column"));
@@ -40,6 +43,8 @@ const VenueDes = () => {
   const [venuePackage, setVenuePackage] = useState("");
   const [loading, setLoading] = useState(false);
   const [halls, setHalls] = useState([]);
+  const [loading1, setLoading1] = useState(false);
+  
   useEffect(() => {
     axios
       .get(`/api/customer/viewVenuePackageDetails?uid=${uid}`)
@@ -59,6 +64,7 @@ const VenueDes = () => {
           sp_images:venue.sp_images
         }));
         setHalls(services);
+      
         setLoading(false);
       })
       .catch((error) => {
@@ -66,8 +72,47 @@ const VenueDes = () => {
         setError(error);
         setLoading(false);
       });
-  }, []);
-  console.log(halls);
+
+      // const selectedHall = halls.find((hall) => hall.pack_id === pac_id);
+      // setSelectedHall(selectedHall);
+      // console.log(selectedHall);
+  }, [loading]);
+
+  
+  useEffect(()=>{
+
+    axios
+      .get(`/api/customer/viewVenuePackDetails?pack_id=${pac_id}`)
+      .then((response) => {
+        console.log(response.data);
+        // setVenuePackage(response.data)
+        console.log(response.data);
+        const service = response.data.map((venue) => ({
+          title: venue.package_title,
+          pack_id: venue.package_id,
+          user_id: venue.userid,
+          name: venue.package_op_title,
+          location: venue.package_address,
+          price: venue.package_price,
+          guestCount: venue.package_op_count,
+          area: venue.package_op_area,
+          type: venue.package_op_type,
+          sp_images:venue.sp_images
+        }));
+        ;
+        console.log(service);
+        setSelectedHall(service[0]);
+      
+        setLoading1(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        // setError(error);
+        setLoading1(false);
+      });
+
+  },[loading1])
+  // console.log(halls);
 
   // const halls = [
   //     { name: "Hall Phoenix", location: "No:49, Canel Rd, Colombo", price: "LKR 24,500", guestCount: 200, area: "1200sqft", type: "Indoor" },
@@ -77,9 +122,11 @@ const VenueDes = () => {
 
   const [selectedHall, setSelectedHall] = useState(null);
 
+  
+
   const handleHallSelection = (hall) => {
     setSelectedHall(hall);
-    console.log(selectedHall.sp_images);
+    // console.log(selectedHall.sp_images);
   };
 
   const [showForm, setShowForm] = useState(false);
@@ -94,27 +141,31 @@ const VenueDes = () => {
       service:'Venue' // Modify this to match your data structure
       // ... Add other necessary data for your POST request
     };
-
-    axios.post("/api/customer/addCakePackToEvent", eventData)
-          .then((response) => {
-            const packCount = response.data;
-            console.log(packCount);
-
-            if(packCount===false){
-              toast.error("You Doesn't Can Update Selected Package. Your Request Already Accept.")
-              navigate(`/customer/eventdetails?id=${event_id}`);
+    axios.get(`/api/customer/checkVenueStatus?event_id=${event_id}`)
+    .then((response)=>{
+      if (response.data === true) {
+        axios.post(`/api/customer/addVenuetoEvent?pack_id=${selectedHall.pack_id}&event_id=${event_id}`)
+        .then((response)=>{
+            const result= response.data
+            if (result===true) {
+                toast.success("Package Added Successfully")
             }else{
-              toast.success("Package Added Successfully And Please Select Other Packages And Send Notification.")
-              navigate(`/customer/eventdetails?id=${event_id}`);
+                toast.error('Please Add Package again')
             }
-            // console.log(packCount);
-            // Perform navigation after successful POST
-            
-          })
-          .catch((error) => {
-            console.error("Error adding event:", error);
-            // Handle error if needed
-          });
+            navigate(`/customer/eventdetails?id=${event_id}`)
+        })
+        .catch((error)=>{
+    
+        })
+        
+      }
+      else{
+        toast.error('Your request is already accepted. You cannot add another package')
+        navigate(`/customer/eventdetails?id=${event_id}`)
+      }
+    })
+
+    
   }
   const HandleAddCompare = () => {
     let pack = Number(comparePackages);

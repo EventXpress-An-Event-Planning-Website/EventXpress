@@ -13,6 +13,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import moment from "moment";
 
 const Todo = ({
   success,
@@ -21,11 +22,14 @@ const Todo = ({
   completeTodo,
   removeTodo,
   updateTodo,
+  event_date
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [spName,setSpName] = useState('');
   const [selectedPackage,setSelectedPackage]= useState([])
-  
+  const eventDate= moment(event_date).format('YYYY-MM-DD')
+  const currentDate = new Date();
+  const isEventDatePassed = moment(event_date).isBefore(currentDate, 'day')
   const [edit, setEdit] = useState({
     id: null,
     value: "",
@@ -82,12 +86,12 @@ const Todo = ({
       service:selectedPackage.location
       
     }
-    console.log(notificationdata);
+    // console.log(notificationdata);
    
     if(todos.some(item => item.selected === undefined || item.selected === null)){
       toast.error("Before send a Request Please Select All Services or Delete Unwanted Details");
       setShowModal(false);
-      console.log('Weranga');
+      
     }else{
       axios
           .post("/api/customer/sendRequest", notificationdata)
@@ -95,7 +99,8 @@ const Todo = ({
             const packCount = response.data;
             console.log(packCount);
             // Perform navigation after successful POST
-            navigate(`/customer/event/CakeCompare?event_id=${event_id}`);
+            navigate(`/customer/eventdetails?id=${event_id}`);
+            setShowModal(false);
           })
           .catch((error) => {
             console.error("Error adding event:", error);
@@ -115,7 +120,8 @@ const Todo = ({
           {todo.text}
         </div>
         <div className="icons">
-          {todo.selected === undefined ? (
+        {isEventDatePassed ? null : (
+          todo.selected === undefined ? ( 
             <Link
               to={`/customer/event/${todo.location}?event_id=${event_id}&packageCount=0`}
             >
@@ -130,13 +136,16 @@ const Todo = ({
                 style={{ color: "#6D004F" }}
               />
             </Link>
+          )
           )}
 
-          <RiCloseCircleLine
-            onClick={() => removeTodo(todo.id)}
-            className="delete-icon"
-            style={{ color: "#6D004F" }}
-          />
+          {!isEventDatePassed && (
+            <RiCloseCircleLine
+              onClick={() => removeTodo(todo.id)}
+              className="delete-icon"
+              style={{ color: "#6D004F" }}
+            />
+          )}
           {/* <TiEdit
             onClick={() => setEdit({ id: todo.id, value: todo.text })}
             className='edit-icon'
@@ -170,13 +179,19 @@ const Todo = ({
                   flexDirection: "column",
                 }}
               >
-                {success === "Accept" ? (
-                  <span style={{ marginLeft: "20%" }}>Accept</span>
-                ) : (
-                  <Button style={{ width: "100px" }} onClick={() => openModal(todo)}>
-                    Send Request
-                  </Button>
-                )}
+                {todo.request === undefined ?(<Button style={{ width: "100px" }} onClick={() => openModal(todo)}>
+                      Send Request
+                    </Button>
+                    ) :todo.request[0].status === "Accept" ? (
+                    <span style={{ marginLeft: "20%" }}>Accept</span>
+                  ) : todo.request[0].status === "Pending" ? (
+                    <span style={{ marginLeft: "20%" }}>Pending</span>
+                  ) : (
+                    <Button style={{ width: "100px" }} onClick={() => openModal(todo)}>
+                      Send Request
+                    </Button>
+                  )
+                }
               </div>
             </div>
           )}

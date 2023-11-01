@@ -72,12 +72,32 @@ const Cake = () => {
 
 
         })
+        const fetchedCakeData = (async () => {
+
+            axios.get(`/api/customer/viewCakes?event_id=${event_id}`)
+                .then(response => {
+                    setCakePackage(response.data)
+                    setLoading(false);
+                    // console.log(cakePackage);
+
+
+                })
+                .catch(error => {
+                    setError(error);
+                    setLoading(false);
+                });
+
+
+
+        })
+        console.log(event_id);
+
         if (event_id === null) {
             fetchedData()
             setCakesData(cakePackage)
 
         } else {
-            fetchedData()
+            fetchedCakeData()
             setCakesData(cakePackage)
             fetchedPackCount()
         }
@@ -150,7 +170,10 @@ const Cake = () => {
                     <Sidebar />
                     <div className="row custom-row">
                         <FilterPackages />
+                        {/* {selectedCount ===2 || selectedCount===3 ?
+                        <Button className="s-btn" variant="primary">Compare Table</Button>:null} */}
                         <h1 className="pckg-name">Cake Packages</h1>
+                        
 
                         {cakesData.map((cake) => (
                             <div className="col-md-3 custom-col" key={cake.package_id}>

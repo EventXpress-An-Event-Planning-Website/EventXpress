@@ -44,6 +44,61 @@ function AdminTicketSupport() {
         >
           <Tab eventKey="tab1" title="Unread">
             <table className="admin-table">
+              
+              <tr className="tableRow">
+                <td className="userTableContent">
+                  <GrNotification size={25} style={{ color: "#6D004F" }} />
+                </td>
+                <td className="userTableContent"></td>
+                <td className="userTableContent">
+                  need help to do the payment for adding packaged. can you send
+                  me the explanation...
+                </td>
+                <td>
+                  <Link to="/AdminSupportView">
+                    <Button variant="primary" className="viewButton">
+                      View
+                    </Button>
+                  </Link>
+                </td>
+              </tr>
+              
+              <tr className="tableRow">
+                <td className="userTableContent">
+                  <GrNotification size={25} style={{ color: "#6D004F" }} />
+                </td>
+                <td className="userTableContent"></td>
+                <td className="userTableContent">
+                  need help to do the payment for adding packaged. can you send
+                  me the explanation...
+                </td>
+                <td>
+                  <Link to="/AdminSupportView">
+                    <Button variant="primary" className="viewButton">
+                      View
+                    </Button>
+                  </Link>
+                </td>
+              </tr>
+              
+              <tr className="tableRow">
+                <td className="userTableContent">
+                  <GrNotification size={25} style={{ color: "#6D004F" }} />
+                </td>
+                <td className="userTableContent"></td>
+                <td className="userTableContent">
+                  need help to do the payment for adding packaged. can you send
+                  me the explanation...
+                </td>
+                <td>
+                  <Link to="/AdminSupportView">
+                    <Button variant="primary" className="viewButton">
+                      View
+                    </Button>
+                  </Link>
+                </td>
+              </tr>
+              
               <tr className="tableRow">
                 <td className="userTableContent">
                   <GrNotification size={25} style={{ color: "#6D004F" }} />
@@ -65,6 +120,73 @@ function AdminTicketSupport() {
           </Tab>
           <Tab eventKey="tab2" title="Responded">
             <table className="admin-table">
+              
+              <tr className="tableRow">
+                <td className="userTableContent">
+                  <GrNotification size={25} style={{ color: "#6D004F" }} />
+                </td>
+                <td className="userTableContent"></td>
+                <td className="userTableContent">
+                  need help to do the payment for adding packaged. can you send
+                  me the explanation...
+                </td>
+                <td>
+                  <Link to="/AdminSupportView">
+                    <Button
+                      variant="primary"
+                      className="viewButton"
+                      style={{ backgroundColor: "white", color: "black" }}
+                    >
+                      View
+                    </Button>
+                  </Link>
+                </td>
+              </tr>
+
+              <tr className="tableRow">
+                <td className="userTableContent">
+                  <GrNotification size={25} style={{ color: "#6D004F" }} />
+                </td>
+                <td className="userTableContent"></td>
+                <td className="userTableContent">
+                  need help to do the payment for adding packaged. can you send
+                  me the explanation...
+                </td>
+                <td>
+                  <Link to="/AdminSupportView">
+                    <Button
+                      variant="primary"
+                      className="viewButton"
+                      style={{ backgroundColor: "white", color: "black" }}
+                    >
+                      View
+                    </Button>
+                  </Link>
+                </td>
+              </tr>
+
+              <tr className="tableRow">
+                <td className="userTableContent">
+                  <GrNotification size={25} style={{ color: "#6D004F" }} />
+                </td>
+                <td className="userTableContent"></td>
+                <td className="userTableContent">
+                  need help to do the payment for adding packaged. can you send
+                  me the explanation...
+                </td>
+                <td>
+                  <Link to="/AdminSupportView">
+                    <Button
+                      variant="primary"
+                      className="viewButton"
+                      style={{ backgroundColor: "white", color: "black" }}
+                    >
+                      View
+                    </Button>
+                  </Link>
+                </td>
+              </tr>
+
               <tr className="tableRow">
                 <td className="userTableContent">
                   <GrNotification size={25} style={{ color: "#6D004F" }} />

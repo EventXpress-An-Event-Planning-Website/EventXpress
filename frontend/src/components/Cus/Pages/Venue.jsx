@@ -98,12 +98,30 @@ const Venue = () => {
             
             
         })
+        const fetchedVenueData=(async()=>{
+
+            axios.get(`/api/customer/viewVenuePackages?event_id=${event_id}`)
+                .then(response => {
+                    setVenuePackage(response.data)
+                    setLoading(false);
+                    console.log(venuePackage);
+                    
+                
+                })
+                .catch(error => {
+                    setError(error);
+                    setLoading(false);
+                });
+            
+            
+            
+        })
         if(event_id===null){
             fetchedData()
             setVenuesData(venuePackage)
             
         }else{
-            fetchedData()
+            fetchedVenueData()
             setVenuesData(venuePackage)
             fetchedPackCount()
         }
@@ -333,7 +351,7 @@ const Venue = () => {
                                         <Link to={`/VenueDes`}>
                                             <Button className="s-btn" variant="primary">View More</Button>
                                         </Link>:
-                                        <Link to={`/customer/event/VenueDes?event_id=${event_id}&packageCount=${selectedCount}&euid=${venue.userid}&column=${column_id}`}>
+                                        <Link to={`/customer/event/VenueDes?event_id=${event_id}&packageCount=${selectedCount}&euid=${venue.userid}&column=${column_id}&id=${venue.package_id}`}>
                                         <Button className="s-btn" variant="primary">View More</Button>
                                         </Link>}
 

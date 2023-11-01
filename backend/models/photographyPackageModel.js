@@ -33,21 +33,21 @@ const viewPhotographyPackageDetails = asyncHandler(
     }
 )
 
-// const viewVenuePackageDetailsUserId =asyncHandler(
-//     async(
-//         user_id
-//     )=>{
-//         try {
-//             const viewPackageQuery = `SELECT * FROM public.venuepackage WHERE userid=$1`
-//             const packageDetail = await query(viewPackageQuery, [user_id])
-//             // console.log(packageDetail)
-//             return packageDetail
+const viewPhotoPackageDetailsUserId =asyncHandler(
+    async(
+        user_id
+    )=>{
+        try {
+            const viewPackageQuery = `SELECT * FROM public.photographypackage WHERE userid=$1`
+            const packageDetail = await query(viewPackageQuery, [user_id])
+            // console.log(packageDetail)
+            return packageDetail
 
-//         } catch (error) {
-//             throw new Error(error)
-//         }
+        } catch (error) {
+            throw new Error(error)
+        }
 
-// })
+})
 
 
-export { viewPhotographyPackagesModel, viewPhotographyPackageDetails }
+export { viewPhotographyPackagesModel, viewPhotographyPackageDetails,viewPhotoPackageDetailsUserId }

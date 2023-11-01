@@ -24,7 +24,7 @@ const TodoList=({event,success})=> {
           text: todo.todo_service,
           location: todo.todo_service,
           selected: todo[0],
-          request:todo[1]
+          request:todo.notifications
         }));
   
         setTodos(services);
@@ -83,9 +83,16 @@ const TodoList=({event,success})=> {
   };
 
   const removeTodo = id => {
+    // console.log(id);
     const removedArr = [...todos].filter(todo => todo.id !== id);
-
     setTodos(removedArr);
+    axios.delete(`/api/customer/deleteTodo?todo_id=${id}`)
+    .then((response)=> {
+    console.log('Deleted successfully:', response.data);
+  })
+    .catch((error) =>{
+    console.error('An error occurred:', error);
+  });
   };
 
   const completeTodo = id => {
@@ -109,6 +116,7 @@ const TodoList=({event,success})=> {
         completeTodo={completeTodo}
         removeTodo={removeTodo}
         updateTodo={updateTodo}
+        event_date={event.event_date}
       />
     </>
   );

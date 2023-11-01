@@ -3,11 +3,17 @@ import Accordion from "react-bootstrap/Accordion";
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from "react-bootstrap/Button";
+import { useLocation } from "react-router-dom";
+
 
 function AdminEventsDetailsMain() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const location = useLocation() // access current location in the browser's url
+    const queryParams = new URLSearchParams(location.search);
+    const ticketId = Number(queryParams.get('ticketId'))
+    
   
   return (
     <div className="main">
@@ -47,10 +53,10 @@ function AdminEventsDetailsMain() {
                 <Accordion.Header>Bank Details</Accordion.Header>
                 <Accordion.Body>
                 <span  style={{ fontSize: "12px" }}>
-                  Bank name <br />
-                  Branch Name <br />
-                  Account Number <br />
-                  Account holders name <br />
+                  Sampath Bank <br />
+                  Delkanda <br />
+                  132427891882939 <br />
+                  Luqman Fazal <br />
                   </span>
                 </Accordion.Body>
               </Accordion.Item>
