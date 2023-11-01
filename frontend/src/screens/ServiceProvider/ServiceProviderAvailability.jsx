@@ -87,29 +87,32 @@ const ServiceProviderAvailability = () => {
       <div>
         <SPSidebar />
       </div>
-      <div>
+      <div className="calender_body">
         <h3>Select your busy days here</h3>
-        <Calendar
-          value={selectedDate}
-          onChange={setSelectedDate}
-          tileContent={({ date }) => {
-            if (isDateBusy(date.toISOString().split("T")[0])) {
-              return <div className="busy-date"></div>;
+        <div className="calender_inside">
+          <Calendar
+            value={selectedDate}
+            onChange={setSelectedDate}
+            tileContent={({ date }) => {
+              if (isDateBusy(date.toISOString().split("T")[0])) {
+                return <div className="busy-date"></div>;
+              }
+            }}
+            tileDisabled={({ date }) => isDateBusy(date.toISOString().split("T")[0])}
+            formatShortWeekday={(locale, date) =>
+              date.toLocaleDateString(locale, { weekday: "short" })
             }
-          }}
-          tileDisabled={({ date }) => isDateBusy(date.toISOString().split("T")[0])}
-          formatShortWeekday={(locale, date) =>
-            date.toLocaleDateString(locale, { weekday: "short" })
-          }
-          formatMonth={(locale, date) =>
-            date.toLocaleDateString(locale, { month: "short" })
-          }
-          tileClassName={({ date }) =>
-            isDateBusy(date.toISOString().split("T")[0]) ? "busy" : ""
-          }
-          onClickDay={handleDateClick}
-          formatDay={(locale, date) => renderCustomDate({ date })}
-        />
+            formatMonth={(locale, date) =>
+              date.toLocaleDateString(locale, { month: "short" })
+            }
+            tileClassName={({ date }) =>
+              isDateBusy(date.toISOString().split("T")[0]) ? "busy" : ""
+            }
+            onClickDay={handleDateClick}
+            formatDay={(locale, date) => renderCustomDate({ date })}
+          />
+        </div>
+        
       </div>
     </div>
   );
