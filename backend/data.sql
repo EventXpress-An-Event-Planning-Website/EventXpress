@@ -158,7 +158,7 @@ CREATE TABLE lightsandsoundspackage (
     createdate timestamp without time zone
 )
 
-CREATE TABLE stagepackage (
+CREATE TABLE stagerentalpackage (
     userid INTEGER, 
     package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
@@ -208,7 +208,7 @@ ALTER TABLE lightsandsoundspackage ADD FOREIGN KEY (userid) REFERENCES servicepr
 ALTER TABLE cateringpackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
 ALTER TABLE photographypackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
 ALTER TABLE decorationpackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
-ALTER TABLE stagepackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE stagerentalpackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
 
 ALTER TABLE photographypackage 
     ADD COLUMN package_tools VARCHAR(255),
@@ -229,7 +229,7 @@ ALTER TABLE lightsandsoundspackage
     ADD COLUMN sound_source VARCHAR(255),
     ADD COLUMN package_lights VARCHAR(255);
 
-ALTER TABLE stagepackage
+ALTER TABLE stagerentalpackage
     ADD COLUMN stage_type VARCHAR(255),
     ADD COLUMN stage_size VARCHAR(255),
     ADD COLUMN stage_height INTEGER;

@@ -34,7 +34,7 @@ const BirthdayDes = () => {
                 .then(response => {
                     setBirthdayDesData(response.data)
                     setLoading(false);
-                    // console.log(cakePackage);
+                    console.log(birthdayDesData);
 
 
                 })

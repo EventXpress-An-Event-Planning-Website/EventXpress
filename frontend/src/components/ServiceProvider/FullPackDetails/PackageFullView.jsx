@@ -81,7 +81,7 @@ const PackageFullView = () => {
                                 {   packType === 'Photography' ? (
                                     <>
                                         <h5>Photography Equipment: <p>{packageFullData.PackageDetails[0].package_tools}</p></h5>
-                                        <h5>Description: <p>{packageFullData.PackageDetails[0].package_format}</p></h5>
+                                        <h5>Photo Delivery Format: <p>{packageFullData.PackageDetails[0].package_format}</p></h5>
                                     </>
                                 ) : packType === 'Decoration' ? (
                                     <>
@@ -99,7 +99,7 @@ const PackageFullView = () => {
                                         <h5>Cake shape: {packageFullData.PackageDetails[0].cake_shape}</h5>
                                         <h5>Allergy Information: {packageFullData.PackageDetails[0].allergy}</h5>
                                     </>
-                                ) : packType === 'Stage' ? (
+                                ) : packType === 'StageRental' ? (
                                     <>
                                         <h5>Stage Type: {packageFullData.PackageDetails[0].stage_type}</h5>
                                         <h5>Stage Height(feet): {packageFullData.PackageDetails[0].stage_height}</h5>
@@ -107,9 +107,8 @@ const PackageFullView = () => {
                                     </>
                                 ) : packType === 'LightsANDSounds' ? (
                                     <>
-                                        <h5>Stage Type: {packageFullData.PackageDetails[0].stage_type}</h5>
-                                        <h5>Stage Height(feet): {packageFullData.PackageDetails[0].stage_height}</h5>
-                                        <h5>Stage Size and Dimension: {packageFullData.PackageDetails[0].stage_size}</h5>
+                                        <h5>Sound Source: {packageFullData.PackageDetails[0].sound_source}</h5>
+                                        <h5>Lightning Fixtures: {packageFullData.PackageDetails[0].package_lights}</h5>
                                     </>
                                 ) : (
                                     <>

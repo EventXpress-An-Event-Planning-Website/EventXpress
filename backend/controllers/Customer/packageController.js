@@ -591,6 +591,7 @@ const viewBirthdayPackageDetails = asyncHandler(async(req,res)=>{
 
 const viewPreBirthdayPackageDetails = asyncHandler(async(req,res)=>{
     const package_id = req.query.package_id;
+    console.log(package_id);
 
     const getPreDefinedPackageDetail = await getPreDefinedPackageInfo(package_id) 
 })

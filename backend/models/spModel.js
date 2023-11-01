@@ -51,7 +51,7 @@ const getSPPackDetails = asyncHandler(
     const viewServiceProviderLSoundsDetails = `SELECT * FROM lightsandsoundspackage WHERE userid=$1`
     const viewServiceProviderCateringDetails = `SELECT * FROM cateringpackage WHERE userid=$1`
     const viewServiceProviderPhotoDetails = `SELECT * FROM photographypackage WHERE userid=$1`
-    const viewServiceProviderStageDetails = `SELECT * FROM stagepackage WHERE userid=$1`
+    const viewServiceProviderStageDetails = `SELECT * FROM stagerentalpackage WHERE userid=$1`
 
     const SPCakeData = await query(viewServiceProviderCakeDetails,[userId])
     const SPVenueData = await query(viewServiceProviderVenueDetails,[userId])

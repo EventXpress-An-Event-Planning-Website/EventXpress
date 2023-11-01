@@ -39,7 +39,8 @@ const createPredefinePackage = asyncHandler(async(body)=>{
 
     try {
         console.log(body);
-        const img='1.jpg'
+        
+        const img= body.prespImageFilename
         const user_id=body.user_id
         const package_name=body.packageName
         const Packagedes =body.packageDescription

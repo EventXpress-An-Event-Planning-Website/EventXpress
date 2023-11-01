@@ -191,7 +191,7 @@ const createpackage = asyncHandler(async(req,res)=>{
           throw new Error('Invalid user data')
       }
 
-    } else if (packageType==="Stage") {
+    } else if (packageType==="StageRental") {
       packages= await stagePackage(
           userId,
           packageBusName,

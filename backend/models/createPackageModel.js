@@ -285,8 +285,8 @@ const stagePackage = asyncHandler(
       packageStageHeight,
 
   )=>{
-  const packageId = generateRandomId("Stage");
-  const createUserQuery = `INSERT INTO stagepackage(userid, package_id, package_busname, package_title, package_address, package_contact, package_description, package_price, sp_images, createdate, stage_type, stage_size, stage_height) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING userid`
+  const packageId = generateRandomId("StageRental");
+  const createUserQuery = `INSERT INTO stagerentalpackage(userid, package_id, package_busname, package_title, package_address, package_contact, package_description, package_price, sp_images, createdate, stage_type, stage_size, stage_height) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING userid`
   const createUser = await query(createUserQuery, [
     userId,
     packageId,

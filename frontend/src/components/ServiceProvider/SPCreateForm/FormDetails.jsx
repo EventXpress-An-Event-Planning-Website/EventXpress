@@ -122,7 +122,7 @@ const FormDetails = () => {
           packageType,
           packageMenu,
         }).unwrap();
-      } else if (packageType === "Stage") {
+      } else if (packageType === "StageRental") {
         await createPackage({
           userId,
           packageBusName,
@@ -245,7 +245,6 @@ const FormDetails = () => {
                 onChange={(e) => setpackageContact(e.target.value)}
                 value={packageContact}
                 min="10"
-                max="10"
                 required
               />
             </FormGroup>
@@ -255,7 +254,7 @@ const FormDetails = () => {
                 Description about package
               </Form.Label>
               <FormControl
-                type="text"
+                as="textarea"
                 name="packageDescription"
                 placeholder="Enter business description"
                 onChange={(e) => setpackageDescription(e.target.value)}
@@ -292,7 +291,7 @@ const FormDetails = () => {
                 <option>Catering</option>
                 <option>Cake</option>
                 <option>LightsANDSounds</option>
-                <option>Stage</option>
+                <option>StageRental</option>
               </Form.Select>
             </FormGroup>
 
@@ -511,7 +510,7 @@ const FormDetails = () => {
             )}
 
             {/* option part for stage package */}
-            {packageType === "Stage" && (
+            {packageType === "StageRental" && (
               <FormContainer className="SPPackageForm">
                 <h3 className="packformh3">Options</h3>
                 <div className="option">
