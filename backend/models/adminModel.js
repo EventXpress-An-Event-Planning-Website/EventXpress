@@ -566,6 +566,7 @@ const getAllComplains = async()=>{
   }
 }
 
+// make as read complain
 const makeAsReadComplain = async (complainId)=>{
   try{
     const makeAsReadQuery = `UPDATE customercomplaints SET ishandled = true WHERE complaintid = $1;`
@@ -579,6 +580,21 @@ const makeAsReadComplain = async (complainId)=>{
 
 }
 
+//desable service provider
+const desableServiceProvider = async (serviceProvider_Id) => {
+  try {
+    const desableQuery = `UPDATE serviceprovider SET isverifiedbyadmin = false WHERE id = $1;`
+
+    const desable = await query(desableQuery, [serviceProvider_Id])
+
+    return (desable ? true : false)
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
 
 
 
@@ -586,5 +602,6 @@ export {
   getCustomers, getServiceProviders, getPendingServiceProviders, getCountOfCustomers,
   getCountOfServiceProviders, totalUsersCount, getCountOfNewRequests,
   combineEventData, getServiceProviderDetails, serviceproviderAcceptFunction, combinesEventData, 
-  eventDetailsFunction, getAllComplains,customerDetailsFunction,makeAsReadComplain
+  eventDetailsFunction, getAllComplains,customerDetailsFunction,makeAsReadComplain,
+  desableServiceProvider
 };

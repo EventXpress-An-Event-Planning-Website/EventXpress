@@ -203,6 +203,7 @@ function UsersMain() {
                         {/* <span style={{ fontSize: "8px" }}>Photographer</span> */}
                       </td>
                       <td>
+                        <Link to={`/AdminProfileForServiceProvider?spId=${serviceProviders.id}`}>
                         <Button
                           variant="primary"
                           className="viewButton"
@@ -210,6 +211,7 @@ function UsersMain() {
                         >
                           View Profile
                         </Button>
+                        </Link>
                       </td>
                     </tr>
                   ))}
@@ -231,13 +233,15 @@ function UsersMain() {
                       <td className="userTableContent"></td>
                       <td className="userTableContent">{customer.name}</td>
                       <td>
+                      <Link to={`/AdminProfileForCustomer?cusId=${customer.id}`}>
                         <Button
                           variant="primary"
                           className="viewButton"
-                          style={{ width: "80px", fontSize: "10px" }}
+                          style={{ width: "100px" }}
                         >
                           View Profile
-                        </Button>{" "}
+                        </Button>
+                        </Link>
                       </td>
                     </tr>
                   ))}

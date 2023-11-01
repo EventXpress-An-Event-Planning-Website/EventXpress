@@ -132,15 +132,6 @@ function UsersMain() {
                 Reject Service Provider
               </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label>Give the reason</Form.Label>
-                <Form.Control as="textarea" rows={3} />
-              </Form.Group>
-            </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleCancelClose}>
                 Close

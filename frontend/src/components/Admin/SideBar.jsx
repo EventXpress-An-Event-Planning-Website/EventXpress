@@ -30,12 +30,12 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <Link to="/PackageRequest">
+            {/* <Link to="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
               Package Request
-            </Link>
+            </Link> */}
             <Link to="/TicketSupports">
               <span className="iconSize">
                 <GoStack size={25} />
@@ -74,12 +74,12 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <Link to="/PackageRequest">
+            {/* <Link to="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
               Package Request
-            </Link>
+            </Link> */}
             <Link to="/TicketSupports">
               <span className="iconSize">
                 <GoStack size={25} />
@@ -126,12 +126,12 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <Link to="/PackageRequest" className="active">
+            {/* <Link to="/PackageRequest" className="active">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
               Package Request
-            </Link>
+            </Link> */}
             <Link to="/TicketSupports">
               <span className="iconSize">
                 <GoStack size={25} />
@@ -178,12 +178,12 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <Link to="/PackageRequest">
+            {/* <Link to="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} />
               </span>
               Package Request
-            </Link>
+            </Link> */}
             <Link to="/TicketSupports" className="active">
               <span className="iconSize">
                 <GoStack size={25} />
@@ -230,12 +230,12 @@ function SideBar(props) {
                 </span>
                 Users
               </Link>
-              <Link to="/PackageRequest">
+              {/* <Link to="/PackageRequest">
                 <span className="iconSize">
                   <BiPackage size={25} />
                 </span>
                 Package Request
-              </Link>
+              </Link> */}
               <Link to="/TicketSupports">
                 <span className="iconSize">
                   <GoStack size={25} />
@@ -282,12 +282,12 @@ function SideBar(props) {
                   </span>
                   Users
                 </Link>
-                <Link to="/PackageRequest">
+                {/* <Link to="/PackageRequest">
                   <span className="iconSize">
                     <BiPackage size={25} />
                   </span>
                   Package Request
-                </Link>
+                </Link> */}
                 <Link to="/TicketSupports">
                   <span className="iconSize">
                     <GoStack size={25} />
@@ -334,12 +334,12 @@ function SideBar(props) {
               </span>
               Users
             </Link>
-            <Link to="/PackageRequest">
+            {/* <Link to="/PackageRequest">
               <span className="iconSize">
                 <BiPackage size={25} /> 
               </span>
               Package Request
-            </Link>
+            </Link> */}
             <Link to="/TicketSupports">
               <span className="iconSize">
                 <GoStack size={25} />

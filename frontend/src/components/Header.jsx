@@ -119,7 +119,7 @@ const Header = () => {
                     <LinkContainer to="/adminDashboard">
                       <Nav.Link> Home &nbsp;</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to="/">
+                    {/* <LinkContainer to="/">
                       <NavDropdown
                         title="Notification &nbsp;"
                         id="navbarScrollingDropdown"
@@ -134,7 +134,7 @@ const Header = () => {
                           Notification details are here the company has sent...
                         </NavDropdown.Item>
                       </NavDropdown>
-                    </LinkContainer>
+                    </LinkContainer> */}
                     <LinkContainer to="/customerHome">
                       <Nav.Link>View as Customer &nbsp;</Nav.Link>
                     </LinkContainer>

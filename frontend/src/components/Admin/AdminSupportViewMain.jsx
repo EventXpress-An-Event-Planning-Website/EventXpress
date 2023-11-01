@@ -70,7 +70,6 @@ function AdminSupportViewMain() {
       </div>
 
       <div className="chat-ui">
-        {console.log(typeof(handled))}
         {handled === 'false' ? (
           <div className="message-input">
             <Button
