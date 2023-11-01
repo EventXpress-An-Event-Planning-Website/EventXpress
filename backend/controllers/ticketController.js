@@ -4,6 +4,7 @@ import {
   getAllTickets,
   getTicket,
   addTicketStatus,
+  getAllTrendingTickets,
 } from '../models/ticketModel.js'
 
 const addTicket = asyncHandler(async (req, res) => {
@@ -99,4 +100,17 @@ const getTicketInfo = asyncHandler(async (req, res) => {
   }
 })
 
-export { addTicket, getAllTicket, getTicketInfo }
+const getTrendingTickets = asyncHandler(async (req, res) => {
+  const getTicketResponse = await getAllTrendingTickets()
+
+  if (getTicketResponse) {
+    res.status(200).json({
+      getTicketResponse,
+    })
+  } else {
+    res.status(404)
+    throw new Error('Fail to fetch ticket')
+  }
+})
+
+export { addTicket, getAllTicket, getTicketInfo, getTrendingTickets }
