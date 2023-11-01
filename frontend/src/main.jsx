@@ -83,9 +83,7 @@ import CompareStageRentalPackages from './screens/Customer/CompareStageRentalPac
 import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
 import PackageRequest from './components/Admin/PackageRequest.jsx'
 import CompareDecoPackages from './screens/Customer/CompareDecoPackages.jsx'
-
-import Massege from './screens/ServiceProvider/Massege.jsx'
-
+// import AdminProfileForCustomer from './components/Admin/AdminProfileForCustomer.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -182,13 +180,15 @@ const router = createBrowserRouter(
       <Route path="/Revenue" element={<Revenue />} />
       <Route path="/AdminEvents" element={<AdminEvents />} />
       <Route path="/AdminEventDetails" element={<AdminEventDetails />} />
+      {/* <Route path="/AdminProfileForCustomer" element={<AdminProfileForCustomer />} /> */}
+
       {/* admin routes ends */}
       <Route path="/ServiceProvider/profile" element={<ProfileScreen />} />
       <Route path="/ServiceProvider/blockList" element={<BlockList />} />
       <Route path="/ServiceProvider/preferences" element={<PredefinedPrefList />} />
       <Route path="/ServiceProvider/typePack" element={<PredefOneType />} />
       <Route path="/ServiceProvider/typePacklist" element={<AddtoPre />} />
-      <Route path="/ServiceProvider/massege" element={<Massege />} />
+      {/* <Route path="/ServiceProvider/massege" element={<Massege />} /> */}
       <Route path="/PackageRequest" element={<PackageRequest />} />
 
 

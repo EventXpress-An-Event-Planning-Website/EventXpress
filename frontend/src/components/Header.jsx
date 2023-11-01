@@ -116,19 +116,12 @@ const Header = () => {
                   </>
                 ) : userInfo.role === "admin" ? (
                   <>
-                    <LinkContainer to="/adminDashboard" >
-                      <Nav.Link> Home &nbsp;&nbsp;</Nav.Link>
+                    <LinkContainer to="/adminDashboard">
+                      <Nav.Link> Home &nbsp;</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to="/customerHome">
-                      <Nav.Link>Customer View &nbsp;&nbsp;</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/ServiceProvider/home">
-                      <Nav.Link>ServiceProvider View &nbsp;&nbsp;</Nav.Link>
-                    </LinkContainer>
-
                     <LinkContainer to="/">
                       <NavDropdown
-                        title="Notification &nbsp;&nbsp;"
+                        title="Notification &nbsp;"
                         id="navbarScrollingDropdown"
                       >
                         <NavDropdown.Item href="#action3">
@@ -142,7 +135,12 @@ const Header = () => {
                         </NavDropdown.Item>
                       </NavDropdown>
                     </LinkContainer>
-
+                    <LinkContainer to="/customerHome">
+                      <Nav.Link>View as Customer &nbsp;</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to="/ServiceProvider/home">
+                      <Nav.Link>View as ServiceProvider &nbsp;</Nav.Link>
+                    </LinkContainer>
                     <NavDropdown title={userInfo.name} id="username">
                       <LinkContainer to="/profile">
                         <NavDropdown.Item>Profile</NavDropdown.Item>
