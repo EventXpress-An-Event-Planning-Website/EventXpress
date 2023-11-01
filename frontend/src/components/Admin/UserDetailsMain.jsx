@@ -58,6 +58,23 @@ function UsersMain() {
 
     };
 
+    const rejectFunction = (id) => {
+      axios
+        .delete(`/api/admin/deleteServiceProviderByAdmin?spId=${id}`)
+        // console.log(response);
+        .then((response) => {
+          navigate("/Users");
+          console.log("Deleted");
+        })
+        .catch((error) => {
+          setError(error); 
+          setLoading(false);
+        });
+
+        console.log(id);
+
+    };
+
 
   return (
     <div className="mainUsers ">
@@ -138,7 +155,7 @@ function UsersMain() {
               </Button>
               <Button
                 variant="primary"
-                onClick={handleCancelClose}
+                onClick={()=>rejectFunction(spData.id)}
                 style={{ backgroundColor: "red" }}
               >
                 Confirm

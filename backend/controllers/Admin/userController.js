@@ -2,7 +2,8 @@ import asyncHandler from 'express-async-handler'
 import {
   getCustomers, getPendingServiceProviders, getServiceProviders, getCountOfCustomers, getCountOfServiceProviders,
   totalUsersCount, getCountOfNewRequests,combineEventData,getServiceProviderDetails,serviceproviderAcceptFunction,
-  combinesEventData, eventDetailsFunction, getAllComplains,customerDetailsFunction,makeAsReadComplain,desableServiceProvider
+  combinesEventData, eventDetailsFunction, getAllComplains,customerDetailsFunction,makeAsReadComplain,desableServiceProvider,
+  deleteServiceProvider
 } from '../../models/adminModel.js'
 import { request } from 'express'
 
@@ -223,11 +224,25 @@ const desableServiceProviderByAdmin = asyncHandler(async (req, res) => {
     }
 })
 
+const deleteServiceProviderByAdmin = asyncHandler(async (req, res) => {
+  const spId = req.query.spId;
+  const serviceProvider = await deleteServiceProvider(spId)
+
+  if (serviceProvider) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(serviceProvider)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
 
 
 
 export {
   getAllCustomersByAdmin, getAllServiceProvidersByAdmin, getPendingServiceProvidersByAdmin, getAllCustomerCount,
   getAllServiceProvidersCount, getAllUserCount, getAllNewRequestCount,getEventData,getServiceProviderDetail,acceptServiceProvider,
-  getEventDataForEventsPage, getEventDetail,getAllComplain,getCustomer,makeAsRead,desableServiceProviderByAdmin
+  getEventDataForEventsPage, getEventDetail,getAllComplain,getCustomer,makeAsRead,desableServiceProviderByAdmin,deleteServiceProviderByAdmin
 }

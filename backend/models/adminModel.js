@@ -595,6 +595,19 @@ const desableServiceProvider = async (serviceProvider_Id) => {
   }
 }
 
+// delelte service provider
+const deleteServiceProvider = async (serviceProvider_Id) => {
+  try {
+    const deleteQuery = `DELETE FROM serviceprovider WHERE id = $1;`
+    const deleteServiceProvider = await query(deleteQuery, [serviceProvider_Id])
+    return (deleteServiceProvider ? true : false)
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
 
 
 
@@ -602,6 +615,6 @@ export {
   getCustomers, getServiceProviders, getPendingServiceProviders, getCountOfCustomers,
   getCountOfServiceProviders, totalUsersCount, getCountOfNewRequests,
   combineEventData, getServiceProviderDetails, serviceproviderAcceptFunction, combinesEventData, 
-  eventDetailsFunction, getAllComplains,customerDetailsFunction,makeAsReadComplain,
+  eventDetailsFunction, getAllComplains,customerDetailsFunction,makeAsReadComplain,deleteServiceProvider,
   desableServiceProvider
 };

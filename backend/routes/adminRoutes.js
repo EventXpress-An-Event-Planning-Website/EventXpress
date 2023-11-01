@@ -3,7 +3,7 @@ const router = express.Router();
 import {
     getAllCustomersByAdmin, getAllServiceProvidersByAdmin, getPendingServiceProvidersByAdmin, getAllCustomerCount,
     getAllServiceProvidersCount, getAllUserCount, getAllNewRequestCount,getEventData,getServiceProviderDetail,acceptServiceProvider,
-    getEventDataForEventsPage, getEventDetail,getAllComplain, getCustomer,makeAsRead,desableServiceProviderByAdmin
+    getEventDataForEventsPage, getEventDetail,getAllComplain, getCustomer,makeAsRead,desableServiceProviderByAdmin,deleteServiceProviderByAdmin
 } from '../controllers/Admin/userController.js'
 
 router.get('/getAllCustomers', getAllCustomersByAdmin);
@@ -22,5 +22,6 @@ router.get('/getAllComplain', getAllComplain);
 router.get('/getCustomer', getCustomer);  
 router.put('/makeAsRead', makeAsRead);
 router.put('/desableServiceProviderByAdmin', desableServiceProviderByAdmin);
+router.delete('/deleteServiceProviderByAdmin', deleteServiceProviderByAdmin);
 
 export default router
