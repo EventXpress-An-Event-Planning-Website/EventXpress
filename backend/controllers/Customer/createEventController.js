@@ -133,4 +133,4 @@ const deleteTodoItem = asyncHandler(async(req, res) => {
   res.json(deleteItem);
 })
 
-export { createevent, addEventToDo, viewEventToDo, getEvent, getEventDetails,deleteTodoItem };
+export { createEvent, addEventToDo, viewEventToDo, getEvent, getEventDetails,deleteTodoItem };
