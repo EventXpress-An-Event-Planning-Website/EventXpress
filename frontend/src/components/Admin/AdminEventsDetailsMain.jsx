@@ -1,62 +1,88 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
-import { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
+import { useState } from "react";
+import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useLocation } from "react-router-dom";
-
+import { useEffect } from "react";
+import axios from "axios";
+import moment from "moment/moment";
 
 function AdminEventsDetailsMain() {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const location = useLocation() // access current location in the browser's url
-    const queryParams = new URLSearchParams(location.search);
-    const ticketId = Number(queryParams.get('ticketId'))
-    
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [eventData, setEventData] = useState([]);
   
+  const location = useLocation(); // access current location in the browser's url
+  const queryParams = new URLSearchParams(location.search);
+  const ticketId = Number(queryParams.get("ticketId"));
+
+  // console.log(ticketId);
+
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getEventDetail?ticketId=${ticketId}`)
+      .then((response) => {
+        // console.log(response.data.eventFullDetails.eventDetails.eventdescription);
+
+        setEventData(response.data.eventFullDetails);
+
+       
+        
+      })
+      .catch((error) => {
+        // console.log(error);
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+
+  // useEffect(()=> {
+  //   console.log(eventData.eventOrganizerDetails?.id);
+  // }, [eventData])
+
   return (
     <div className="main">
       <div className="EvDetailsBox">
         <div className="EvDetailsBoxTop">
           <div className="EvDetailsBoxLeft">
             <p style={{ fontSize: "20px", fontWeight: "bold" }}>
-              A Night at the Opera Tour
+            {eventData.eventDetails?.eventtitle}
             </p>
             <Accordion defaultActiveKey="0">
-              <Accordion.Item eventKey="0">
+              <Accordion.Item eventKey="0"> 
                 <Accordion.Header style={{ fontSize: "15px" }}>
                   About
                 </Accordion.Header>
                 <Accordion.Body>
-                  <span  style={{ fontSize: "12px" }}>
-                  Queen are a British rock band formed in London in 1970. Their
-                  They began their first tour of Japan in April 1975, where
-                  thousands of fans met them at Haneda Airport and they played
-                  two sold out shows at the Nippon Budokan, Tokyo. After a
-                  nine-month dispute, Queen were finally free of Trident and
-                  signed directly with EMI Records in the UK and Elektra Records
-                  in North America.</span>
+                  <span style={{ fontSize: "12px" }}>
+                    {eventData.eventDetails?.eventdescription}
+                  </span>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">
                 <Accordion.Header>Organizer</Accordion.Header>
                 <Accordion.Body>
-                <span  style={{ fontSize: "12px" }}>
-                  By Fazal Events <br />
-                  LuqmanFazal@gmail.com <br />
-                  90172890197v <br />
+                  <span style={{ fontSize: "12px" }}>
+                    <b>Name   :</b> {eventData.eventOrganizerDetails?.name}<br />
+                    <b>NIC    :</b>{eventData.eventOrganizerDetails?.email} <br />
+                    <b>Email  :</b>{eventData.eventOrganizerDetails?.nic} <br />
+                    <b>Location  :</b>{eventData.eventOrganizerDetails?.location} <br />
+                    <b>Contact No  :</b>{eventData.eventOrganizerDetails?.contactno} <br />
                   </span>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="2">
                 <Accordion.Header>Bank Details</Accordion.Header>
                 <Accordion.Body>
-                <span  style={{ fontSize: "12px" }}>
-                  Sampath Bank <br />
-                  Delkanda <br />
-                  132427891882939 <br />
-                  Luqman Fazal <br />
+                  <span style={{ fontSize: "12px" }}>
+                    {eventData.eventDetails?.accountholdername} <br />
+                    {eventData.eventDetails?.bankname} <br /> 
+                    {eventData.eventDetails?.branchname} <br />
+                    {eventData.eventDetails?.accountnumber} <br />
+                   
                   </span>
                 </Accordion.Body>
               </Accordion.Item>
@@ -70,7 +96,7 @@ function AdminEventsDetailsMain() {
                 width: "300px",
               }}
             >
-              Total Number of Tickets: 450
+              Total Number of Tickets: {eventData.TotalTicketsQuantity}
             </div>
             <div>
               <table className="tkDetailTable">
@@ -81,37 +107,27 @@ function AdminEventsDetailsMain() {
                   <th>Sold</th>
                   <th>Income</th>
                 </tr>
+
+                {eventData?.eventTicketDetails?.combinedEventTicketDetails.map((ticket) => (
                 <tr>
-                  <td>Silver</td>
-                  <td>1000</td>
-                  <td>250</td>
-                  <td>189</td>
-                  <td>189000</td>
+                  <td>{ticket.ticketType}</td>
+                  <td>{ticket.priceOfOne}</td>
+                  <td>{ticket.totalTypeOfTickets}</td>
+                  <td>{ticket.soldTicket}</td>
+                  <td>{ticket.currentIncomeInTicketType}</td>
                 </tr>
-                <tr>
-                  <td>Gold</td>
-                  <td>2000</td>
-                  <td>150</td>
-                  <td>70</td>
-                  <td>14000</td>
-                </tr>
-                <tr>
-                  <td>Platinum</td>
-                  <td>3000</td>
-                  <td>50</td>
-                  <td>30</td>
-                  <td>90000</td>
-                </tr>
+                ))}
+
               </table>
 
               <table className="tkDetailTableBottom" border={1}>
                 <tr>
-                  <td colSpan={2}>Expected Income : LKR 5000000 </td>
-                  <td colSpan={2}>Current Income</td>
+                  <td colSpan={2}>Expected Income : LKR {eventData?.eventTicketDetails?.newIncomeAndProfit?.expectedTotalIncome} </td>
+                  <td colSpan={2}>Current Income  : LKR  {eventData?.eventTicketDetails?.newIncomeAndProfit?.currentTotalIncome} </td>
                 </tr>
                 <tr>
-                  <td colSpan={2}>Expected Profit : LKR 45000 </td>
-                  <td colSpan={2}>Current Profit</td>
+                  <td colSpan={2}>Expected Profit : LKR {eventData?.eventTicketDetails?.newIncomeAndProfit?.expectedTotalProfit} </td>
+                  <td colSpan={2}>Current Profit  : LKR {eventData?.eventTicketDetails?.newIncomeAndProfit?.currentTotalProfit} </td>
                 </tr>
                 <tr>
                   <td colSpan={2} style={{ color: "green" }}>
@@ -123,7 +139,10 @@ function AdminEventsDetailsMain() {
           </div>
         </div>
         <div className="EvDetailsBoxBottom">
-          <table className="admin-table" style={{ width: "95%", marginLeft: "10px" }}>
+          <table
+            className="admin-table"
+            style={{ width: "95%", marginLeft: "10px" }}
+          >
             <tr>
               <th className="eventTableTh">Full Name</th>
               <th className="eventTableTh">NIC</th>
@@ -133,18 +152,18 @@ function AdminEventsDetailsMain() {
               <th className="eventTableTh">Date</th>
               <th></th>
             </tr>
+            {eventData?.buyerDetails?.map((buyer) => (
             <tr className="tableRow">
-              <td className="userTableContentTicket">Kavindu Kalhara</td>
-              <td className="userTableContentTicket"> 9826171389v </td>
-              <td className="userTableContentTicket">kavi.123@gmail.com</td>
-              <td className="userTableContentTicket">3</td>
-              <td className="userTableContentTicket">3000</td>
-              <td className="userTableContentTicket">05.08.2023</td>
-              
+              <td className="userTableContentTicket">{buyer.buyerName}</td>
+              <td className="userTableContentTicket"> {buyer.buyerNIC} </td>
+              <td className="userTableContentTicket">{buyer.buyerEmail}</td>
+              <td className="userTableContentTicket">{buyer.noOfTickets}</td>
+              <td className="userTableContentTicket">{buyer.Price}</td>
+              <td className="userTableContentTicket">{moment(buyer.Date).format('YYYY-MM-DD')}</td>
             </tr>
+            ))}
+
           </table>
-
-
         </div>
       </div>
     </div>

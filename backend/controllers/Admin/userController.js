@@ -2,7 +2,7 @@ import asyncHandler from 'express-async-handler'
 import {
   getCustomers, getPendingServiceProviders, getServiceProviders, getCountOfCustomers, getCountOfServiceProviders,
   totalUsersCount, getCountOfNewRequests,combineEventData,getServiceProviderDetails,serviceproviderAcceptFunction,
-  combinesEventData
+  combinesEventData, eventDetailsFunction
 } from '../../models/adminModel.js'
 import { request } from 'express'
 
@@ -72,7 +72,20 @@ const acceptServiceProvider = asyncHandler(async (req, res) => {
       message: 'Invalid verification token or token expired',
     })
   }
+})
 
+const getEventDetail = asyncHandler(async (req, res) => {
+  const ticketId = req.query.ticketId;
+  const eventFullDetails = await eventDetailsFunction(ticketId)
+  if (eventFullDetails) {
+    res.status(200).json({
+      eventFullDetails
+    })
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
 })
 
 const getAllCustomerCount = asyncHandler(async (req, res) => {
@@ -159,5 +172,5 @@ const getEventDataForEventsPage = asyncHandler(async (req, res) => {
 export {
   getAllCustomersByAdmin, getAllServiceProvidersByAdmin, getPendingServiceProvidersByAdmin, getAllCustomerCount,
   getAllServiceProvidersCount, getAllUserCount, getAllNewRequestCount,getEventData,getServiceProviderDetail,acceptServiceProvider,
-  getEventDataForEventsPage
+  getEventDataForEventsPage, getEventDetail
 }

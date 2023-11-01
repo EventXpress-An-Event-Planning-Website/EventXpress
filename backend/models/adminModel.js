@@ -219,7 +219,7 @@ const combineEventData = async () => {
 
 // get event date when give Name of event
 const getEventNameDate = async (id) => {
-  
+
   try {
     const totalEventsQuery = `
     SELECT eventdate FROM ticket WHERE id = $1`
@@ -299,8 +299,199 @@ const serviceproviderAcceptFunction = async (serviceProvider_Id) => {
   }
 }
 
+//Event Details Function
+const eventDetailsFunction = async (ticketId) => {
+  try {
+    const eventTicketDetails = await eventTicketDetailsFunction(ticketId);
+    const eventDetails = await ticketDetailsFunction(ticketId);
+    const buyerDetails = await buyerDetailsFunction(ticketId);
+    // const ticketBookingDetails = await ticketbookingsFunction(ticketId);
+    const eventOrganizerDetails = await serviceProviderDetailsFunction(eventDetails.accountholdername);
+    const TotalTicketsQuantity = await getTotalTicketsQuantity(ticketId);
+    const data = {
+      eventTicketDetails,
+      eventDetails,
+      buyerDetails,
+      eventOrganizerDetails,
+      TotalTicketsQuantity
+    };
+
+
+    return data
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+//get data from tickettable 
+const ticketDetailsFunction = async (ticketId) => {
+  try {
+    const ticketDetailsQuery = `SELECT *
+    FROM  ticket  WHERE id = $1;`
+    const ticketDetails = await query(ticketDetailsQuery, [ticketId])
+
+    return (ticketDetails ? ticketDetails.rows[0] : 'data not found')
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+//gate data from ticketstatus table
+const ticketStatusFunction = async (ticketId) => {
+  try {
+    const tickertStatusDetailsQuery = `SELECT *
+    FROM  ticketstatus  WHERE ticketid = $1;`
+    const tickertStatusDetails = await query(tickertStatusDetailsQuery, [ticketId])
+    return (tickertStatusDetails ? tickertStatusDetails.rows : 'data not found')
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+// get data from ticketbookings table
+const ticketbookingsFunction = async (ticketId) => {
+  try {
+    const ticketBookingDetailsQuery = `SELECT *
+    FROM  ticketbookings  WHERE ticketid = $1;`
+    const ticketBookingDetails = await query(ticketBookingDetailsQuery, [ticketId])
+    return (ticketBookingDetails ? ticketBookingDetails.rows : 'data not found')
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+//get customer details who buy tickets
+const buyerDetailsFunction = async (ticketId) => {
+  try {
+    const ticketbookingsDetails = await ticketbookingsFunction(ticketId);
+    const buyerDetails =[];
+
+    for (const ticketbookingsDetail of ticketbookingsDetails) {
+      
+      const customerDetails = await customerDetailsFunction (ticketbookingsDetail.buyerid);
+     
+
+      const buyerName = customerDetails.name;
+      const buyerNIC = customerDetails.nic;
+      const buyerEmail = customerDetails.email;
+      const noOfTickets = ticketbookingsDetail.nooftickets ;
+      const Price = ticketbookingsDetail.amount ;
+      const Date = ticketbookingsDetail.created_at ;
+
+      const newBuyer = {
+        "buyerName": `${buyerName}`,
+        "buyerNIC": `${buyerNIC}`,
+        "buyerEmail": `${buyerEmail}`,
+        "noOfTickets": `${noOfTickets}`,
+        "Price": `${Price}`,
+        "Date": `${Date}`,
+        
+
+      };
+      buyerDetails.push(newBuyer);
+    };
+
+return buyerDetails;
+  } 
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+// get service provider details from service provider table
+const serviceProviderDetailsFunction = async (spName) => {
+  try {
+    const serviceProviderDetailsQuery = `SELECT *
+    FROM  serviceprovider  WHERE name = $1;`
+    const serviceProviderDetails = await query(serviceProviderDetailsQuery, [spName])
+    return (serviceProviderDetails ? serviceProviderDetails.rows[0] : 'data not found')
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+// get customer details from customer table
+const customerDetailsFunction = async (cusId) => {
+  try {
+    const customerDetailsQuery = `SELECT *
+    FROM  customer  WHERE id = $1;`
+    const customerDetails = await query(customerDetailsQuery, [cusId])
+    return (customerDetails ? customerDetails.rows[0] : 'data not found')
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+//calculate event ticket details
+const eventTicketDetailsFunction = async (ticketId) => {
+
+  const totEvents = await ticketStatusFunction(ticketId);
+  const combinedEventTicketDetails = [];
+  let currentTotalIncome = 0;
+  let expectedTotalIncome = 0;
+  const incomeAndProfit = [];
+  try {
+
+    for (const eventTicketDetails of totEvents) {
+      const soldTicket = parseInt(eventTicketDetails.totalquantity) - parseInt(eventTicketDetails.currentquantity);
+      const currentIncomeInTicketType = parseInt(soldTicket) * parseInt(eventTicketDetails.price);
+      const expextedIncomeInTicketType = parseInt(eventTicketDetails.totalquantity) * parseInt(eventTicketDetails.price);
+      currentTotalIncome = currentTotalIncome + currentIncomeInTicketType;
+      expectedTotalIncome = expectedTotalIncome + expextedIncomeInTicketType;
+
+
+      const newEvent = {
+        "ticketid": `${eventTicketDetails.ticketid}`,
+        "ticketType": `${eventTicketDetails.type}`,
+        "priceOfOne": `${eventTicketDetails.price}`,
+        "soldTicket": `${soldTicket}`,
+        "currentIncomeInTicketType": `${currentIncomeInTicketType}`,
+        "totalTypeOfTickets": `${eventTicketDetails.totalquantity}`
+      };
+      combinedEventTicketDetails.push(newEvent);
+    };
+
+    let currentTotalProfit = parseInt(currentTotalIncome) * 0.1;
+    let expectedTotalProfit = parseInt(expectedTotalIncome) * 0.1;
+
+    const newIncomeAndProfit = {
+      "currentTotalProfit": `${currentTotalProfit}`,
+      "expectedTotalProfit": `${expectedTotalProfit}`,
+      "currentTotalIncome": `${currentTotalIncome}`,
+      "expectedTotalIncome": `${expectedTotalIncome}`
+    }
+    incomeAndProfit.push(newIncomeAndProfit);
+
+    const data = {
+      combinedEventTicketDetails,
+      newIncomeAndProfit
+    };
+
+    return (newIncomeAndProfit && combinedEventTicketDetails ? data : 'data not found')
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+
+
 export {
   getCustomers, getServiceProviders, getPendingServiceProviders, getCountOfCustomers,
   getCountOfServiceProviders, totalUsersCount, getCountOfNewRequests,
-  combineEventData,getServiceProviderDetails,serviceproviderAcceptFunction,combinesEventData
+  combineEventData, getServiceProviderDetails, serviceproviderAcceptFunction, combinesEventData, eventDetailsFunction
 };
