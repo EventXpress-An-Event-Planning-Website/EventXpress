@@ -182,24 +182,26 @@ const BirthdayDes = () => {
             </Row>
             <Row className="b-description">
               <Col sm>
-                <h5>
-                  <b>Normal Budget For This Package {price} </b>
-                  <br />
-                  {birthData[0] != undefined ? (
-                    <b>{birthData[0].prepackage_discount}% OFF</b>
-                  ) : null}
-                  <br />
-                  {birthData[0] != undefined ? (
-                    <b>
-                      All For Only :-{" "}
-                      {price - (price * birthData[0].prepackage_discount) / 100}
-                    </b>
-                  ) : null}
-                  <br />
-                  <br />
-                  Included services :
-                </h5>
-
+                <div className="discount_container_predefine"> 
+                  <h5>
+                    <b>Normal Budget For This Package {price} </b>
+                    <br />
+                    {birthData[0] != undefined ? (
+                      <b>{birthData[0].prepackage_discount}% OFF</b>
+                    ) : null}
+                    <br />
+                    {birthData[0] != undefined ? (
+                      <b>
+                        All For Only :-{" "}
+                        {price -
+                          (price * birthData[0].prepackage_discount) / 100}
+                      </b>
+                    ) : null}
+                    <br />
+                    <br />
+                    Included services :
+                  </h5>
+                </div>
                 <ListGroup as="ol">
                   {birthdayDesData[0] != undefined ? (
                     <ListGroup.Item as="li">
