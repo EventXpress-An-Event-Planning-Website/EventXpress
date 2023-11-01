@@ -48,5 +48,21 @@ const viewVenuePackageDetailsUserId =asyncHandler(
 
 })
 
+const viewCakePackageDetailsUserId =asyncHandler(
+    async(
+        user_id
+    )=>{
+        try {
+            const viewPackageQuery = `SELECT * FROM public.cakepackage WHERE userid=$1`
+            const packageDetail = await query(viewPackageQuery, [user_id])
+            // console.log(packageDetail)
+            return packageDetail
+            
+        } catch (error) {
+            throw new Error(error)
+        }
 
-export {viewCakePackagesModel,viewCakePackageDetails,viewVenuePackageDetailsUserId}
+})
+
+
+export {viewCakePackagesModel,viewCakePackageDetails,viewVenuePackageDetailsUserId,viewCakePackageDetailsUserId}

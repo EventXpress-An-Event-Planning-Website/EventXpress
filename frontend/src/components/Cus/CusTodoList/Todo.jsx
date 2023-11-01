@@ -13,6 +13,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import moment from "moment";
 
 const Todo = ({
   success,
@@ -21,13 +22,14 @@ const Todo = ({
   completeTodo,
   removeTodo,
   updateTodo,
+  event_date
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [spName,setSpName] = useState('');
   const [selectedPackage,setSelectedPackage]= useState([])
-  
-console.log(todos);
-  
+  const eventDate= moment(event_date).format('YYYY-MM-DD')
+  const currentDate = new Date();
+  const isEventDatePassed = moment(event_date).isBefore(currentDate, 'day')
   const [edit, setEdit] = useState({
     id: null,
     value: "",
@@ -118,7 +120,8 @@ console.log(todos);
           {todo.text}
         </div>
         <div className="icons">
-          {todo.selected === undefined ? (
+        {isEventDatePassed ? null : (
+          todo.selected === undefined ? ( 
             <Link
               to={`/customer/event/${todo.location}?event_id=${event_id}&packageCount=0`}
             >
@@ -133,13 +136,16 @@ console.log(todos);
                 style={{ color: "#6D004F" }}
               />
             </Link>
+          )
           )}
 
-          <RiCloseCircleLine
-            onClick={() => removeTodo(todo.id)}
-            className="delete-icon"
-            style={{ color: "#6D004F" }}
-          />
+          {!isEventDatePassed && (
+            <RiCloseCircleLine
+              onClick={() => removeTodo(todo.id)}
+              className="delete-icon"
+              style={{ color: "#6D004F" }}
+            />
+          )}
           {/* <TiEdit
             onClick={() => setEdit({ id: todo.id, value: todo.text })}
             className='edit-icon'

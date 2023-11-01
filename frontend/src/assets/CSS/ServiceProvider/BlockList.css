@@ -26,6 +26,10 @@
     background: rgb(240, 234, 234);
 }
 
+.minus_icon{
+    cursor: pointer;
+}
+
 /* all service provider list */
 
 .tableContainer{

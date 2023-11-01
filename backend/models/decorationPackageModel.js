@@ -37,7 +37,7 @@ const viewDecorationPackageDetailsUserId =asyncHandler(
         user_id
     )=>{
         try {
-            const viewPackageQuery = `SELECT * FROM public.venuepackage WHERE userid=$1`
+            const viewPackageQuery = `SELECT * FROM public.decorationpackage WHERE userid=$1`
             const packageDetail = await query(viewPackageQuery, [user_id])
             // console.log(packageDetail)
             return packageDetail
