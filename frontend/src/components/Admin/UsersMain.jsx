@@ -200,7 +200,7 @@ function UsersMain() {
                       <td className="userTableContent">
                         {serviceProviders.name}
                         <br />
-                        <span style={{ fontSize: "8px" }}>Photographer</span>
+                        {/* <span style={{ fontSize: "8px" }}>Photographer</span> */}
                       </td>
                       <td>
                         <Button

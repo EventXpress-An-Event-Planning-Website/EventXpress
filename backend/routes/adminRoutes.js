@@ -3,7 +3,7 @@ const router = express.Router();
 import {
     getAllCustomersByAdmin, getAllServiceProvidersByAdmin, getPendingServiceProvidersByAdmin, getAllCustomerCount,
     getAllServiceProvidersCount, getAllUserCount, getAllNewRequestCount,getEventData,getServiceProviderDetail,acceptServiceProvider,
-    getEventDataForEventsPage, getEventDetail
+    getEventDataForEventsPage, getEventDetail,getAllComplain, getCustomer,makeAsRead
 } from '../controllers/Admin/userController.js'
 
 router.get('/getAllCustomers', getAllCustomersByAdmin);
@@ -18,5 +18,8 @@ router.get('/getServiceProviderDetail', getServiceProviderDetail);
 router.put('/acceptServiceProvider', acceptServiceProvider);
 router.get('/getEventDataForEventsPage', getEventDataForEventsPage);
 router.get('/getEventDetail', getEventDetail);
+router.get('/getAllComplain', getAllComplain);
+router.get('/getCustomer', getCustomer);
+router.put('/makeAsRead', makeAsRead);
 
 export default router

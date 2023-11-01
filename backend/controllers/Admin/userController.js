@@ -2,7 +2,7 @@ import asyncHandler from 'express-async-handler'
 import {
   getCustomers, getPendingServiceProviders, getServiceProviders, getCountOfCustomers, getCountOfServiceProviders,
   totalUsersCount, getCountOfNewRequests,combineEventData,getServiceProviderDetails,serviceproviderAcceptFunction,
-  combinesEventData, eventDetailsFunction
+  combinesEventData, eventDetailsFunction, getAllComplains,customerDetailsFunction,makeAsReadComplain
 } from '../../models/adminModel.js'
 import { request } from 'express'
 
@@ -166,11 +166,54 @@ const getEventDataForEventsPage = asyncHandler(async (req, res) => {
   }
 })
 
+const getAllComplain = asyncHandler(async (req, res) => {
+  const eventData = await getAllComplains()
+
+  if (eventData) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(eventData)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
+const getCustomer = asyncHandler(async (req, res) => {
+  
+  const cusId = req.query.cusId;
+  const customer = await customerDetailsFunction(cusId)
+
+  if (customer) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(customer)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
+const makeAsRead = asyncHandler(async (req, res) => {
+  
+  const compalainId = req.query.compalainId;
+  const complain = await makeAsReadComplain(compalainId)
+
+  if (complain) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(complain)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
 
 
 
 export {
   getAllCustomersByAdmin, getAllServiceProvidersByAdmin, getPendingServiceProvidersByAdmin, getAllCustomerCount,
   getAllServiceProvidersCount, getAllUserCount, getAllNewRequestCount,getEventData,getServiceProviderDetail,acceptServiceProvider,
-  getEventDataForEventsPage, getEventDetail
+  getEventDataForEventsPage, getEventDetail,getAllComplain,getCustomer,makeAsRead
 }

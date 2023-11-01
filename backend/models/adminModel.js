@@ -488,10 +488,103 @@ const eventTicketDetailsFunction = async (ticketId) => {
   }
 }
 
+// get all complain  details didn't handle
+const getAllComplainDontHanle = async ()=>{
+  try{
+  const allComplainQuery = `SELECT * FROM customercomplaints WHERE ishandled = false ;`
+  const allComplain = await query(allComplainQuery,[]);
+  return (allComplain ? allComplain.rows : "No new Complains")
+}catch(error){
+  console.error(`Internal Error: ${error.message}`)
+  throw new Error(`Internal Error`)
+}
+}
+
+// get all complain details handle
+const getAllComplainHanle = async ()=>{
+  try{
+  const allComplainQuery = `SELECT * FROM customercomplaints WHERE ishandled = true ;`
+  const allComplain = await query(allComplainQuery,[]);
+  return (allComplain ? allComplain.rows : "No Complains")
+}catch(error){
+  console.error(`Internal Error: ${error.message}`)
+  throw new Error(`Internal Error`)
+}
+}
+
+//get All complains
+const getAllComplains = async()=>{
+  try{
+    const complainDidntHandle = await  getAllComplainDontHanle();
+    const complainHandle = await getAllComplainHanle();
+
+    const combinedComplainDidntHandleDetails = [];
+    const combinedComplainHandleDetails = [];
+
+    for (const complainDidnotHandle of complainDidntHandle) {
+      const customerName = await customerDetailsFunction(parseInt(complainDidnotHandle.customer_id));
+
+      // console.log(customerName.name);
+
+      const newComplain = {
+        "complain": `${complainDidnotHandle.complaint_text}`,
+        "complainId": `${complainDidnotHandle.complaintid }`,
+        "customerName": `${customerName.name}`,
+        "customerId": `${complainDidnotHandle.customer_id}`,
+        "handled": false 
+      };
+
+      combinedComplainDidntHandleDetails.push(newComplain);
+    }
+
+    for (const complainDidHandle of complainHandle) {
+      const customerName = await customerDetailsFunction(parseInt(complainDidHandle.customer_id));
+
+      // console.log(customerName.name);
+
+      const oldComplain = {
+        "complain": `${complainDidHandle.complaint_text}`,
+        "complainId": `${complainDidHandle.complaintid }`,
+        "customerName": `${customerName.name}`,
+        "customerId": `${complainDidHandle.customer_id}`,
+        "handled": true 
+      };
+
+      combinedComplainHandleDetails.push(oldComplain);
+    }
+
+    const data={
+      combinedComplainDidntHandleDetails,
+      combinedComplainHandleDetails
+    }
+    return (data);
+
+  }
+  catch(error){
+    console.error(`Internal Error: ${error.message}`)
+  throw new Error(`Internal Error`)
+  }
+}
+
+const makeAsReadComplain = async (complainId)=>{
+  try{
+    const makeAsReadQuery = `UPDATE customercomplaints SET ishandled = true WHERE complaintid = $1;`
+    const makeAsRead = await query(makeAsReadQuery,[complainId]);
+    return (makeAsRead ? true : false)
+  }
+  catch(error){
+    console.error(`Internal Error: ${error.message}`)
+  throw new Error(`Internal Error`)
+  }
+
+}
+
+
 
 
 export {
   getCustomers, getServiceProviders, getPendingServiceProviders, getCountOfCustomers,
   getCountOfServiceProviders, totalUsersCount, getCountOfNewRequests,
-  combineEventData, getServiceProviderDetails, serviceproviderAcceptFunction, combinesEventData, eventDetailsFunction
+  combineEventData, getServiceProviderDetails, serviceproviderAcceptFunction, combinesEventData, 
+  eventDetailsFunction, getAllComplains,customerDetailsFunction,makeAsReadComplain
 };
