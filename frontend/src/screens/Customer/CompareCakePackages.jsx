@@ -5,6 +5,8 @@ import Image from 'react-bootstrap/Image';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+// import { response } from 'express';
 
 const CompareCakePackages = () => {
   const location = useLocation();
@@ -32,6 +34,23 @@ const CompareCakePackages = () => {
   const handleAddPackage = (event_id) => {
     navigate(`/customer/event/Venue?event_id=${event_id}`);
   };
+
+  const handleAddtoEvent = (package_id)=>{
+    axios.post(`/api/customer/addCaketoEvent?pack_id=${package_id}&event_id=${event_id}`)
+    .then((response)=>{
+        const result= response.data
+        if (result===true) {
+            toast.success("Package Added Successfully")
+        }else{
+            toast.error('Please Add Package again')
+        }
+        navigate(`/customer/eventdetails?id=${event_id}`)
+    })
+    .catch((error)=>{
+
+    })
+
+  }
 
   if (data.length === 0) {
     return <div>Loading...</div>;
@@ -218,20 +237,25 @@ const CompareCakePackages = () => {
             <tr className="compare-table-row">
               <th className="compare-table-header"></th>
               <td className="compare-table-data">
-                <Link to={`/customer/eventdetails?id=${event_id}`}>
-                  <Button className="compare-addEvent-btn">Add to Event</Button>
-                </Link>
+                
+                  <Button className="compare-addEvent-btn" onClick={()=>handleAddtoEvent(data[0].package_id)}>Add to Event</Button>
+                
               </td>
               <td className="compare-table-data">
                 <Link to={`/customer/eventdetails?id=${event_id}`}>
-                  <Button className="compare-addEvent-btn">Add to Event</Button>
+                  <Button className="compare-addEvent-btn" onClick={()=>handleAddtoEvent(data[1].package_id)}>Add to Event</Button>
                 </Link>
               </td>
-              <td className="compare-table-data">
-                <Link to={`/customer/eventdetails?id=${event_id}`}>
-                  <Button className="compare-addEvent-btn">Add to Event</Button>
-                </Link>
+              {data[2] !== undefined ? (
+                <td className="compare-table-data">
+                
+                  <Button className="compare-addEvent-btn" onClick={()=>handleAddtoEvent(data[2].package_id)}>Add to Event</Button>
+               
               </td>
+              ) : (
+                <td className="compare-table-data"></td>
+              )}
+              
             </tr>
           </table>
         </div>

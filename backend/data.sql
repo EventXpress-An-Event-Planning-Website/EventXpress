@@ -287,13 +287,13 @@ CREATE TABLE public.customer_notification
 
 CREATE TABLE public.predefinedpackage
 (
+    
+    predefined_id serial,
     userid integer NOT NULL,
-    predefined_id character varying(255) NOT NULL,
     venue_id character varying(255),
     catering_id character varying(255),
     cake_id character varying(255),
     deco_id character varying(255),
-    stagerental_id character varying(255),
     soundandlight_id character varying(255),
     photography_id character varying(255),
     pckg_img text,
@@ -304,13 +304,11 @@ CREATE TABLE public.predefinedpackage
     PRIMARY KEY (predefined_id)
 );
 
-<<<<<<< HEAD
 
 -- service provider table add column for admin verification
 ALTER TABLE serviceProvider
 ADD COLUMN isVerifiedByAdmin BOOLEAN DEFAULT FALSE;
 
-=======
 CREATE TABLE public.busy_dates
 (
     busy_id serial,
@@ -318,4 +316,3 @@ CREATE TABLE public.busy_dates
     busy_date date,
     PRIMARY KEY (busy_id)
 );
->>>>>>> dbd164c8eed26c9b51c74332343a4921fd2c6742

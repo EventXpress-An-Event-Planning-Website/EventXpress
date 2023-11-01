@@ -1,5 +1,5 @@
 import express from 'express'
-import { createpackage } from '../controllers/ServiceProvider/createPackageController.js'
+import { createpackage,createPredefine,getsloePackages } from '../controllers/ServiceProvider/createPackageController.js'
 import { 
     getSPprofile, 
     getAllPack, 
@@ -24,6 +24,9 @@ router.get('/getFullPackDetails', getPacAllkDetails)
 router.get('/getAllSProviders', getSPNames)
 router.get('/getPreferenceSProviders', getPreferenceSPNames)
 router.get('/getBlockSProviders', getBlockSPNames)
+router.post('/CreatePredefine', createPredefine)
+router.get('/getprePackages',getsloePackages)
+
 // router.get('/updateServiceProviderDetails', updateSPDetails)
 
 
