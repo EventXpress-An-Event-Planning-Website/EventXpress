@@ -32,21 +32,21 @@ const viewCateringPackageDetails =asyncHandler(
     }
 )
 
-// const viewVenuePackageDetailsUserId =asyncHandler(
-//     async(
-//         user_id
-//     )=>{
-//         try {
-//             const viewPackageQuery = `SELECT * FROM public.venuepackage WHERE userid=$1`
-//             const packageDetail = await query(viewPackageQuery, [user_id])
-//             // console.log(packageDetail)
-//             return packageDetail
+const viewCateringPackageDetailsUserId =asyncHandler(
+    async(
+        user_id
+    )=>{
+        try {
+            const viewPackageQuery = `SELECT * FROM public.cateringpackage WHERE userid=$1`
+            const packageDetail = await query(viewPackageQuery, [user_id])
+            // console.log(packageDetail)
+            return packageDetail
             
-//         } catch (error) {
-//             throw new Error(error)
-//         }
+        } catch (error) {
+            throw new Error(error)
+        }
 
-// })
+})
 
 
-export {viewCateringPackagesModel,viewCateringPackageDetails}
+export {viewCateringPackagesModel,viewCateringPackageDetails,viewCateringPackageDetailsUserId}

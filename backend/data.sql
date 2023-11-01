@@ -80,10 +80,11 @@ Alter Table event ADD COLUMN event_img text;
 
 CREATE TABLE venuepackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
     sp_images VARCHAR(255),
@@ -91,19 +92,27 @@ CREATE TABLE venuepackage (
     package_op_des VARCHAR(255), 
     package_op_count INTEGER, 
     package_op_area FLOAT, 
-    package_op_type VARCHAR(255)
-);
+    package_op_type VARCHAR(255),
+    createdate timestamp without time zone
+)
 
 CREATE TABLE decorationpackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
+<<<<<<< HEAD
     sp_images VARCHAR(255)
 );
+=======
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
+)
+>>>>>>> 6bcf6aa082e45d759ef0b7e12e57c31da55fd722
 
 CREATE TABLE todolist
 (
@@ -117,58 +126,69 @@ ALTER Table todolist add column selected_package_id varchar(255);
 
 CREATE TABLE cakepackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
-    sp_images VARCHAR(255)
-);
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
+)
 
 CREATE TABLE cateringpackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
-    sp_images VARCHAR(255)
-);
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
+)
 
 CREATE TABLE lightsandsoundspackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
-    sp_images VARCHAR(255)
-);
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
+)
+
+CREATE TABLE stagepackage (
+    userid INTEGER, 
+    package_id VARCHAR(255) PRIMARY KEY,
+    package_busname VARCHAR(255),
+    package_title VARCHAR(255), 
+    package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
+    package_description VARCHAR(255),
+    package_price FLOAT, 
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
+)
+
 
 CREATE TABLE photographypackage (
     userid INTEGER, 
-    package_id VARCHAR(255),
+    package_id VARCHAR(255) PRIMARY KEY,
     package_busname VARCHAR(255),
     package_title VARCHAR(255), 
     package_address VARCHAR(255), 
+    package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
-    sp_images VARCHAR(255)
-);
-
-CREATE TABLE stagerentalpackage (
-    userid INTEGER, 
-    package_id VARCHAR(255),
-    package_busname VARCHAR(255),
-    package_title VARCHAR(255), 
-    package_address VARCHAR(255), 
-    package_description VARCHAR(255),
-    package_price FLOAT, 
-    sp_images VARCHAR(255)
-);
+    sp_images VARCHAR(255),
+    createdate timestamp without time zone
+)
 
 CREATE TABLE ticket (
     id SERIAL PRIMARY KEY,
@@ -186,6 +206,46 @@ CREATE TABLE ticket (
     accountNumber VARCHAR(255),
     bankPassbookImage VARCHAR(255)
 );
+
+ALTER TABLE venuepackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE cakepackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE lightsandsoundspackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE cateringpackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE photographypackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE decorationpackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+ALTER TABLE stagepackage ADD FOREIGN KEY (userid) REFERENCES serviceprovider (id);
+
+ALTER TABLE photographypackage 
+    ADD COLUMN package_tools VARCHAR(255),
+    ADD COLUMN package_format VARCHAR(255);
+
+ALTER TABLE decorationpackage
+    ADD COLUMN package_decoelements VARCHAR(255);
+
+ALTER TABLE cateringpackage
+    ADD COLUMN package_menu VARCHAR(255);
+
+ALTER TABLE cakepackage
+    ADD COLUMN serving_size INTEGER,
+    ADD COLUMN cake_shape VARCHAR(255),
+    ADD COLUMN allergy VARCHAR(255);
+
+ALTER TABLE lightsandsoundspackage
+    ADD COLUMN sound_source VARCHAR(255),
+    ADD COLUMN package_lights VARCHAR(255);
+
+ALTER TABLE stagepackage
+    ADD COLUMN stage_type VARCHAR(255),
+    ADD COLUMN stage_size VARCHAR(255),
+    ADD COLUMN stage_height INTEGER;
+   
+CREATE TABLE blocklist (
+    blockpref_id SERIAL PRIMARY KEY,
+    my_id INTEGER,
+    block_id INTEGER,
+    block_status CHAR(1),
+    FOREIGN KEY (my_id) REFERENCES serviceprovider(id)
+)
 
 CREATE TABLE ticketStatus (
   ticketStatus_id SERIAL PRIMARY KEY,
@@ -232,13 +292,13 @@ CREATE TABLE public.customer_notification
 
 CREATE TABLE public.predefinedpackage
 (
+    
+    predefined_id serial,
     userid integer NOT NULL,
-    predefined_id character varying(255) NOT NULL,
     venue_id character varying(255),
     catering_id character varying(255),
     cake_id character varying(255),
     deco_id character varying(255),
-    stagerental_id character varying(255),
     soundandlight_id character varying(255),
     photography_id character varying(255),
     pckg_img text,
@@ -248,6 +308,11 @@ CREATE TABLE public.predefinedpackage
     prepackage_discount integer,
     PRIMARY KEY (predefined_id)
 );
+
+
+-- service provider table add column for admin verification
+ALTER TABLE serviceProvider
+ADD COLUMN isVerifiedByAdmin BOOLEAN DEFAULT FALSE;
 
 CREATE TABLE public.busy_dates
 (

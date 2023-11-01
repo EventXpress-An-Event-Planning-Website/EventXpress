@@ -8,7 +8,7 @@ body{
 
 .picture{
     width: 100%;
-    height: 600px;
+    height: 4062.5%;
 }
 
 .create_btn{
@@ -35,7 +35,7 @@ body{
 /* package section css */
 
 .home_pack h2{
-    color: white;
+    color: #6D004F;
 }
 
 .home_pack{
@@ -44,13 +44,15 @@ body{
     padding-top: 20px;
     text-align: center;
     max-height: 700px;
-    background: #B4829F;
+    /* background: #B4829F; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px -50px 36px -28px inset;
 }
 
 .home_pack .picture{
     margin-top: 25px;
     width: 80%;
     height: 80%;
+    border-radius: 5px;
 }
 
 .home_pack .more_btn{
@@ -60,23 +62,38 @@ body{
 /* icon section css */
 
 .home_icons{
-    background: white;
     max-height: 50%;
-    padding: 8%;
+    padding: 5%;
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+    max-width: 2000px;
+}
+
+.home_icons h2{
+    color: #6D004F;
+    margin: 0 0 5% ;
 }
 
 .home_icons .icon{
-    background: #B4829F;
-    color: white;
-    padding: 30px;
-    font-size: 50px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    color: #565656;
+    padding: 15%;
+    font-size: 300%;
     border-radius: 50px;
 }
 
 .home_icons h4{
     color: #B4829F;
     margin-top: 50px;
+}
+
+.h_icon{
+    margin-right: -12px;
+    transition: all .2s ease-in-out; 
+}
+
+.h_icon:hover { 
+    transform: scale(1.1); 
 }
 
 /* homefooter section css */

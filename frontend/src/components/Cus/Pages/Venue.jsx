@@ -98,12 +98,30 @@ const Venue = () => {
             
             
         })
+        const fetchedVenueData=(async()=>{
+
+            axios.get(`/api/customer/viewVenuePackages?event_id=${event_id}`)
+                .then(response => {
+                    setVenuePackage(response.data)
+                    setLoading(false);
+                    console.log(venuePackage);
+                    
+                
+                })
+                .catch(error => {
+                    setError(error);
+                    setLoading(false);
+                });
+            
+            
+            
+        })
         if(event_id===null){
             fetchedData()
             setVenuesData(venuePackage)
             
         }else{
-            fetchedData()
+            fetchedVenueData()
             setVenuesData(venuePackage)
             fetchedPackCount()
         }
