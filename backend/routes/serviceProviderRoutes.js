@@ -16,6 +16,7 @@ import {
     setBusyDates
     // updateSPDetails
 } from '../controllers/ServiceProvider/spController.js'
+import { prePackagesByUser } from '../controllers/Customer/packageController.js'
 
 
 const router = express.Router()
@@ -37,6 +38,8 @@ router.get('/getPreferenceSProviders', getPreferenceSPNames)
 router.get('/getBlockSProviders', getBlockSPNames)
 router.post('/CreatePredefine', createPredefine)
 router.get('/getprePackages',getsloePackages)
+router.get('/viewBirthdayPackageByUser',prePackagesByUser)
+
 
 // router.get('/updateServiceProviderDetails', updateSPDetails)
 

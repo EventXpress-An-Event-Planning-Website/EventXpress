@@ -61,4 +61,17 @@ const createPredefinePackage = asyncHandler(async(body)=>{
 
 })
 
-export {getPreDefinedPackage,getPreDefinedPackageDetails,getPreDefinedPackageInfo,createPredefinePackage}
+const getprePackageByUser = asyncHandler(async(event_type,user_id)=>{
+
+    try {
+        const preDefinedPckgQuery = `SELECT * FROM predefinedpackage WHERE prepackage_type=$1 AND userid=$2`;
+        const result = await query(preDefinedPckgQuery,[event_type,user_id]);
+        // console.log(result);
+        return result.rows;
+    } catch (error) {
+        
+    }
+
+})
+
+export {getPreDefinedPackage,getPreDefinedPackageDetails,getPreDefinedPackageInfo,createPredefinePackage,getprePackageByUser}

@@ -13,7 +13,7 @@ import { viewVenuePackage,viewVenuePackageDetails,addVenuePack,addVenuePackToCom
     viewSoundAndLightsPackageDetails, addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,
     addCateringPackageToCompareTable,addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent,
     viewBirthdayPackage,viewBirthdayPackageDetails, viewPreBirthdayPackageDetails,viewCakePack,viewCateringPack,viewVenuePack,viewVenuePackages,addCakePackagesToEvent,
-    addVenuePackagesToEvent,addCateringPackagesToEvent,addPhotoPackagesToEvent,addDecoPackagesToEvent,addSoundAndLightPackagesToEvent} from '../controllers/Customer/packageController.js'
+    addVenuePackagesToEvent,addCateringPackagesToEvent,addPhotoPackagesToEvent,addDecoPackagesToEvent,addSoundAndLightPackagesToEvent,prePackagesByUser} from '../controllers/Customer/packageController.js'
 
 // import { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, addPackageToCompareTable, viewCakePackage, viewCakesPackageDetails, addCakePackToCompare, getCompareCakePackage} from '../controllers/Customer/packageController.js'
 import { sendRequest,checkVenueStatus,checkCakeStatus,checkCateringStatus,checkDecoStatus,checkSoundAndLightStatus } from '../controllers/Customer/customerController.js'
@@ -95,8 +95,10 @@ router.get('/checkPhotoStatus', checkCakeStatus)
 router.get('/checkDecoStatus', checkDecoStatus)
 router.get('/checkCateringStatus', checkCateringStatus)
 router.get('/checkSoundAndLightStatus', checkSoundAndLightStatus)
+router.get('/viewBirthdayPrePackageDetails', )
 
 
 router.delete('/deleteTodo', deleteTodoItem)
+
 
 export default router

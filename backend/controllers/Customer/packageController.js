@@ -11,7 +11,7 @@ import { viewSoundAndLightPackagesModel, viewSoundAndLightPackageDetails } from 
 import { viewStageRentalPackagesModel, viewStageRentalPackageDetails } from '../../models/stageRentalPackageModel.js'
 import { isSelectedPackage,addPackageToEvent } from '../../models/todoListModel.js'
 import { getNotificationByEventAndPackage,deleteNotificationByEventAndPackage } from '../../models/customer_notificationModel.js'
-import { getPreDefinedPackage,getPreDefinedPackageDetails,getPreDefinedPackageInfo } from '../../models/preDefinedPackageModel.js'
+import { getPreDefinedPackage,getPreDefinedPackageDetails,getPreDefinedPackageInfo,getprePackageByUser } from '../../models/preDefinedPackageModel.js'
 import { getBusyUser } from '../../models/busy_dateModel.js'
 // import Venue from '../../../frontend/src/components/Cus/Pages/Venue.jsx'
 import { getEventdetails } from '../../models/eventModel.js'
@@ -593,6 +593,8 @@ const viewPreBirthdayPackageDetails = asyncHandler(async(req,res)=>{
     const package_id = req.query.package_id;
 
     const getPreDefinedPackageDetail = await getPreDefinedPackageInfo(package_id) 
+    
+    res.json(getPreDefinedPackageDetail)
 })
 
 
@@ -931,6 +933,23 @@ const addSoundAndLightPackagesToEvent = asyncHandler(async(req,res)=>{
 
 })
 
+const prePackagesByUser = asyncHandler(async(req,res)=>{
+    
+    const event_type = req.query.event_type
+    const user_id = req.query.user_id
+    
+    const prePackages = await getprePackageByUser(event_type,user_id)
+   
+    res.json(prePackages)
+
+})
+
+// const getPrePackageBy = asyncHandler(async(req,res)=>{
+//     const package_id=req.query.package_id
+//     const 
+
+// })
+
 
 
 export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackToCompare, getPackageCount, getComparePackage, 
@@ -941,4 +960,5 @@ export { viewVenuePackage, viewVenuePackageDetails, addVenuePack, addVenuePackTo
     viewStageRentalPackageDetails, addPhotographyPackToCompare, getComparePhotographyPackage, getCompareCateringPackage, addCateringPackToCompare, 
     addSoundAndLightPackToCompare, getCompareSoundAndLightPackage, addStageRentalPackToCompare, getCompareStageRentalPackage,addCateringPackageToCompareTable,
     addPhotographyPackageToCompareTable,addSoundAndLightPackageToCompareTable,addStageRentalPackageToCompareTable,addPackToEvent,viewBirthdayPackage,viewBirthdayPackageDetails,viewPreBirthdayPackageDetails,
-    viewCakePack,viewCateringPack,viewDecorationPack,viewPhotographyPack,viewVenuePack,viewVenuePackages,addCakePackagesToEvent,addVenuePackagesToEvent,addCateringPackagesToEvent,addPhotoPackagesToEvent,addDecoPackagesToEvent,addSoundAndLightPackagesToEvent  } 
+    viewCakePack,viewCateringPack,viewDecorationPack,viewPhotographyPack,viewVenuePack,viewVenuePackages,addCakePackagesToEvent,addVenuePackagesToEvent,addCateringPackagesToEvent,addPhotoPackagesToEvent,
+    addDecoPackagesToEvent,addSoundAndLightPackagesToEvent,prePackagesByUser  } 

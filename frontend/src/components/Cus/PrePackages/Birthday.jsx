@@ -7,14 +7,7 @@ import Stack from 'react-bootstrap/Stack';
 import Pagination from 'react-bootstrap/Pagination';
 import FilterPackages from "../Pages/FilterPackages";
 
-import birthday1 from '../../../assets/images/birthday1.jpg';
-import birthday2 from '../../../assets/images/birthday2.jpg';
-import birthday3 from '../../../assets/images/birthday3.jpg';
-import birthday4 from '../../../assets/images/birthday4.jpg';
-import birthday5 from '../../../assets/images/birthday5.jpg';
-import birthday6 from '../../../assets/images/birthday6.jpg';
-import birthday7 from '../../../assets/images/birthday7.jpg';
-import birthday8 from '../../../assets/images/birthday8.jpg';
+
 
 import { useLocation } from "react-router-dom";
 import axios from "axios"; // making HTTP requests
@@ -29,7 +22,9 @@ const Birthday = () => {
     const [loading, setLoading] = useState(true)
     const [birthdaysData, setBirthdaysData] = useState([])
     const [error, setError] = useState("")
-
+    const user = JSON.parse(localStorage.getItem('userInfo'))
+    const user_type = user.role
+    const user_id = user.id
     useEffect(() => {
 
         const fetchedData = (async () => {
@@ -51,8 +46,29 @@ const Birthday = () => {
 
         })
 
+        const fetchPrePackage = (async()=>{
+            axios.get(`/api/serviceProvider/viewBirthdayPackageByUser?event_type=${event_type}&&user_id=${user_id}`)
+                .then(response => {
+
+                    setBirthdaysData(response.data)
+                    setLoading(false);
+                    // console.log(cakePackage);
+
+
+                })
+                .catch(error => {
+                    setError(error);
+                    setLoading(false);
+            });
+        })
+
         if (event_id === null) {
-            fetchedData()
+            if (user_type==='serviceProvider') {
+                fetchPrePackage()
+                
+            }else{
+                fetchedData()
+            }  
 
         } else {
             fetchedData()
