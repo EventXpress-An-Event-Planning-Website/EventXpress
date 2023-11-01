@@ -166,6 +166,36 @@ const CompareStageRentalPackages = () => {
                                 <td className="compare-table-data"></td>
                             )}
                         </tr>
+                        <tr className="compare-table-row">
+                            <th className="compare-table-header">Stage Type</th>
+                            <td className="compare-table-data">{data[0].stage_type}</td>
+                            <td className="compare-table-data">{data[1].stage_type}</td>
+                            {data[2] !== undefined ? (
+                                <td className="compare-table-data">{data[2].stage_type}</td>
+                            ) : (
+                                <td className="compare-table-data"></td>
+                            )}
+                        </tr>
+                        <tr className="compare-table-row">
+                            <th className="compare-table-header">Stage Height</th>
+                            <td className="compare-table-data">{data[0].stage_height}</td>
+                            <td className="compare-table-data">{data[1].stage_height}</td>
+                            {data[2] !== undefined ? (
+                                <td className="compare-table-data">{data[2].stage_height}</td>
+                            ) : (
+                                <td className="compare-table-data"></td>
+                            )}
+                        </tr>
+                        <tr className="compare-table-row">
+                            <th className="compare-table-header">Size & Dimension</th>
+                            <td className="compare-table-data">{data[0].stage_size}</td>
+                            <td className="compare-table-data">{data[1].stage_size}</td>
+                            {data[2] !== undefined ? (
+                                <td className="compare-table-data">{data[2].stage_size}</td>
+                            ) : (
+                                <td className="compare-table-data"></td>
+                            )}
+                        </tr>
                         {/* <tr className="compare-table-row">
               <th className="compare-table-header">Maximum Guest Count</th>
               <td className="compare-table-data">{data[0].package_op_count}</td>

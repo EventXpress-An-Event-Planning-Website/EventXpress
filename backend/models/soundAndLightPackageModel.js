@@ -30,21 +30,21 @@ const viewSoundAndLightPackageDetails =asyncHandler(
     }
 )
 
-// const viewVenuePackageDetailsUserId =asyncHandler(
-//     async(
-//         user_id
-//     )=>{
-//         try {
-//             const viewPackageQuery = `SELECT * FROM public.venuepackage WHERE userid=$1`
-//             const packageDetail = await query(viewPackageQuery, [user_id])
-//             // console.log(packageDetail)
-//             return packageDetail
+const viewSoundPackageDetailsUserId =asyncHandler(
+    async(
+        user_id
+    )=>{
+        try {
+            const viewPackageQuery = `SELECT * FROM public.lightsandsoundspackage WHERE userid=$1`
+            const packageDetail = await query(viewPackageQuery, [user_id])
+            // console.log(packageDetail)
+            return packageDetail
             
-//         } catch (error) {
-//             throw new Error(error)
-//         }
+        } catch (error) {
+            throw new Error(error)
+        }
 
-// })
+})
 
 
-export {viewSoundAndLightPackagesModel,viewSoundAndLightPackageDetails}
+export {viewSoundAndLightPackagesModel,viewSoundAndLightPackageDetails,viewSoundPackageDetailsUserId}

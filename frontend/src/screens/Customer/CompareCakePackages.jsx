@@ -167,6 +167,36 @@ const CompareCakePackages = () => {
                 <td className="compare-table-data"></td>
               )}
             </tr>
+            <tr className="compare-table-row">
+              <th className="compare-table-header">Serving Size</th>
+              <td className="compare-table-data">{data[0].serving_size}</td>
+              <td className="compare-table-data">{data[1].serving_size}</td>
+              {data[2] !== undefined ? (
+                <td className="compare-table-data">{data[2].serving_size}</td>
+              ) : (
+                <td className="compare-table-data"></td>
+              )}
+            </tr>
+            <tr className="compare-table-row">
+              <th className="compare-table-header">Cake Shape</th>
+              <td className="compare-table-data">{data[0].cake_shape}</td>
+              <td className="compare-table-data">{data[1].cake_shape}</td>
+              {data[2] !== undefined ? (
+                <td className="compare-table-data">{data[2].cake_shape}</td>
+              ) : (
+                <td className="compare-table-data"></td>
+              )}
+            </tr>
+            <tr className="compare-table-row">
+              <th className="compare-table-header">Allergy Information</th>
+              <td className="compare-table-data">{data[0].allergy}</td>
+              <td className="compare-table-data">{data[1].allergy}</td>
+              {data[2] !== undefined ? (
+                <td className="compare-table-data">{data[2].allergy}</td>
+              ) : (
+                <td className="compare-table-data"></td>
+              )}
+            </tr>
             {/* <tr className="compare-table-row">
               <th className="compare-table-header">Maximum Guest Count</th>
               <td className="compare-table-data">{data[0].package_op_count}</td>

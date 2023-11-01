@@ -44,13 +44,6 @@ label{
     margin-bottom: 30px;
 }
 
-.removeOptionBtn{
-    float: right;
-    width: 30px;
-    height: 30px;
-    color: #6D004F;
-}
-
 .image_container{
     display: flex;
     justify-content: center;

@@ -22,7 +22,7 @@ const CompareVenuePackages = () => {
 
 
     useEffect(() => {
-        axios.get(`/api/customer/CompareVenue?event_id=${event_id}`)
+        axios.get(`/api/customer/CompareVenue?event_id=${event_id}`) ///api/customer-server.js
           .then(response => {
             setData(response.data);
             setLoading(false);

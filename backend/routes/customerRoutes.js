@@ -2,7 +2,7 @@ import express from 'express'
 const router = express.Router()
 
 
-import { createevent,getEvent, getEventDetails,addEventToDo, viewEventToDo } from '../controllers/Customer/createEventController.js'
+import { createevent,getEvent, getEventDetails,addEventToDo, viewEventToDo, deleteTodoItem } from '../controllers/Customer/createEventController.js'
 import {protect}  from '../middleware/authMiddleware.js'
 import { viewVenuePackage,viewVenuePackageDetails,addVenuePack,addVenuePackToCompare,
     getPackageCount,getComparePackage,addPackageToCompareTable,viewCakePackage,viewCakesPackageDetails,
@@ -97,5 +97,6 @@ router.get('/checkCateringStatus', checkCateringStatus)
 router.get('/checkSoundAndLightStatus', checkSoundAndLightStatus)
 
 
+router.delete('/deleteTodo', deleteTodoItem)
 
 export default router

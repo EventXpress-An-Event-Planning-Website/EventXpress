@@ -6,18 +6,23 @@
 
 .profile_heading {
     display: flex;
-    margin: 30px 20px;
+    margin: 30px;
+    margin-left: 250px;
     align-items: center;
 }
 
 .profimg_containe{
-    width: 30%;
+    width: 300px;
+    height: 220px;
+    margin-right: 8%;
 }
 
-.profile_img{
-    margin-left: 30%;
-    width: 55%;
-}
+.profile_img {
+    width: 300px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 
 .blockLink {
     margin-left: 10%;
@@ -36,15 +41,12 @@
 /* profile body */
 
 .profile_body{
+    width: 80%;
     margin-top: 60px;
-    margin-left: 10%;
+    margin-left: 25%;
 }
 
 /* left, right column */
-
-.right_column{
-    margin-left: -10%;
-}
 
 .personal, .business{
     margin-left: 5%;

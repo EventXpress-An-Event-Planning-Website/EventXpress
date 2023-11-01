@@ -87,11 +87,21 @@ const addpack = asyncHandler(async(package_id,event_id,service)=>{
         const executeQuery = await query(addPackageQuery,[package_id,event_id,service])
         return true
     } catch (error) {
-        
+
     }
 })
+        
+const deleteItems = asyncHandler(async(todo_id) => {
+    try {
+        const deleteQuery = `DELETE FROM todolist WHERE todo_id=$1`;
+        const executeDeletion = await query(deleteQuery,[todo_id])
+        return true
+    } catch (error) {
+        throw new Error(error)
+    }
+})
+   
 
 
 
-
-export {isSelectedPackage,addPackageToEvent,getpackage,getVenueByEvent,getCateringByEvent,addpack}
+export {isSelectedPackage,addPackageToEvent,getpackage,getVenueByEvent,getCateringByEvent,addpack,deleteItems}

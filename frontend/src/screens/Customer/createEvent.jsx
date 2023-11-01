@@ -18,14 +18,14 @@ import axios from "axios";
 import { useUploadSingleMutation } from "../../slices/uploadApiSlice";
 
 
-const CreateEvent = () => {
-    const dispatch = useDispatch();
-    const [data,setData]=useState([])
+const CreateEvent = () => { // functional component
+    // const dispatch = useDispatch();
+    const [data,setData]=useState([]) // initializes a state variable data using useState hook (data is initialized as empty array)
     const [eventData, setEventData]=useState([])
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showModal, setShowModal] = useState(false)
-    const [eventName, seteventName] = useState("");
+    const [eventName, seteventName] = useState(""); // empty string
     const [eventDate, seteventDate] = useState("");
     const [eventStartTime, seteventStartTime] = useState("");
     const [eventEndTime, seteventEndTime] = useState("");
@@ -38,13 +38,11 @@ const CreateEvent = () => {
     const [showCreateEvent, setShowCreateEvent] = useState(false);
     const [containerWidth, setContainerWidth] = useState("100%");
 
-    const user = JSON.parse(localStorage.getItem('userInfo'));
+    const user = JSON.parse(localStorage.getItem('userInfo')); // get the user info from localStorage
     const user_id = user.id;
     
-    console.log(user_id);
-
   useEffect(() => {
-    axios.get(`/api/customer/myEvents?id=${user_id}`)
+    axios.get(`/api/customer/myEvents?id=${user_id}`) // HTTP GET request to the specified API endpoint to fetch myEvents
       .then(response => {
         setData(response.data);
         setEventData(data)
@@ -107,7 +105,7 @@ const CreateEvent = () => {
 
     try {
       const eventImages= await uploadImage(eventImage)
-      console.log(eventImages);
+      // console.log(eventImages);
       const res = await create({
         userId,
         eventName,
@@ -172,9 +170,9 @@ const CreateEvent = () => {
   };
 
   const openModal = () => {
-    console.log(showModal);
+    // console.log(showModal);
     setShowModal(true)
-    console.log(showModal);
+    // console.log(showModal);
 }
 
 const closeModal = () => {
@@ -374,8 +372,8 @@ const closeModal = () => {
                   onChange={(e) => seteventtype(e.target.value)}
                 >
                   <option></option>
-                  <option>Public</option>
                   <option>Private</option>
+                  <option>Public</option>
                 </Form.Select>
               </Form.Group>
 
