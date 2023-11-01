@@ -256,4 +256,46 @@ const setAllBusyDates = asyncHandler(
   }
 )
 
-export { getSPprofileDetails,getSPCakePackDetails, getAllNotification, acceptedNotification, declinedNotification, getAllBusyDates,setAllBusyDates }
+//update service provider details
+// const editSPDetails = asyncHandler(
+//   async(
+//     spfacebook,
+//     spinstagram,
+//     sptwitter,
+//   )=>{
+//   const editDetails = `UPDATE serviceprovider SET (profileimage, facebooklink, instagramlink, twitterlink) VALUES($1, $2, $3, $4) RETURNING userid `
+//   const editUser = await query(editDetails, [
+//     spfacebook,
+//     spinstagram,
+//     sptwitter,
+//   ])
+  
+//   if(editUser.rowCount>0){
+//     console.log('package model',editUser);
+//     return editUser.rows
+//   }
+//   else{
+//     throw new Error('Internal Error')
+//   }
+
+// })
+
+
+
+export { 
+  getSPprofileDetails,
+  getSPPackDetails,
+  getPackageDetails,
+  getAllSPNames, 
+  addSPToBlockPrefList,
+  getpreferenceList,
+  getblockList,
+  removeList,
+  getSpBlockPrefList, 
+  getAllNotification, 
+  acceptedNotification, 
+  declinedNotification, 
+  getAllBusyDates,
+  setAllBusyDates
+  // editSPDetails
+}

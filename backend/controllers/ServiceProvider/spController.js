@@ -9,7 +9,6 @@ import {
   getblockList,
   removeList,
   getSpBlockPrefList,
-  getSPCakePackDetails,
   getAllNotification,
   acceptedNotification,
   declinedNotification,
@@ -198,8 +197,9 @@ const declineNotification = asyncHandler(async (req, res) => {
   } else {
     res.status(500);
     throw new Error("Internal error");
-  })
-  
+  }
+})
+
 //get block service providers names
 const getBlockSPNames = asyncHandler(async (req, res) => {
   const userId  = req.query.id;
@@ -294,7 +294,6 @@ export {
   removeBlockPrefSPList,
   getPreferenceSPNames,
   getBlockSPNames,
-  getAllCakePack, 
   getAllNotifications, 
   acceptNotification, 
   declineNotification, 

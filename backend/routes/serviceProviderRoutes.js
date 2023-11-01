@@ -9,7 +9,6 @@ import {
     removeBlockPrefSPList,
     getPreferenceSPNames,
     getBlockSPNames,
-    getAllCakePack,
     getAllNotifications,
     acceptNotification,
     declineNotification,
@@ -22,7 +21,7 @@ import {
 const router = express.Router()
 
 router.post('/createPackage',createpackage)
-router.get('/getAllCakePackages', getAllCakePack)
+// router.get('/getAllCakePackages', getAllCakePack)
 router.get('/getAllNotifications', getAllNotifications)
 router.put('/updateNotificationStatus/accept/:notify_id', acceptNotification)
 router.put('/updateNotificationStatus/decline/:notify_id', declineNotification)
