@@ -1,7 +1,8 @@
 import express from 'express'
 const router = express.Router()
-import { buyTicket } from '../controllers/paymentController.js'
+import { buyTicket, getSubscription } from '../controllers/paymentController.js'
 
 router.post('/buyTicket', buyTicket)
+router.post('/getSubscription', getSubscription)
 
 export default router

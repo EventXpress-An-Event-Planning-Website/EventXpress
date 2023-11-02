@@ -1,7 +1,7 @@
 .p-sidebar{
     background-color: rgb(247, 224, 246);
     color: #fff;
-    height: 130vh;
+    min-height: 160vh;
     width: 200px;
     transition: all 0.5s;
     padding: 35px 35px;

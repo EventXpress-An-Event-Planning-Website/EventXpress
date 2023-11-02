@@ -105,9 +105,14 @@ CREATE TABLE decorationpackage (
     package_contact VARCHAR(255),
     package_description VARCHAR(255),
     package_price FLOAT, 
+<<<<<<< HEAD
+    sp_images VARCHAR(255)
+);
+=======
     sp_images VARCHAR(255),
     createdate timestamp without time zone
 )
+>>>>>>> 6bcf6aa082e45d759ef0b7e12e57c31da55fd722
 
 CREATE TABLE todolist
 (
@@ -250,7 +255,7 @@ CREATE TABLE ticketStatus (
   price DECIMAL(10, 2),
   totalQuantity INT,
   currentQuantity INT
-)
+);
 
 CREATE TABLE ticketBookings (
     id SERIAL PRIMARY KEY,
@@ -287,13 +292,13 @@ CREATE TABLE public.customer_notification
 
 CREATE TABLE public.predefinedpackage
 (
+    
+    predefined_id serial,
     userid integer NOT NULL,
-    predefined_id character varying(255) NOT NULL,
     venue_id character varying(255),
     catering_id character varying(255),
     cake_id character varying(255),
     deco_id character varying(255),
-    stagerental_id character varying(255),
     soundandlight_id character varying(255),
     photography_id character varying(255),
     pckg_img text,

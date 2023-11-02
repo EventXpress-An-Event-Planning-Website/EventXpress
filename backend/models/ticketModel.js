@@ -116,20 +116,13 @@ const getTicket = asyncHandler(async (id) => {
 
 // ticket booking
 const ticketBooking = asyncHandler(
-  async (
-    ticketId,
-    buyerId,
-    pid,
-    ticketType,
-    noOfTickets,
-    amount
-  ) => {
+  async (ticketId, buyerId, pid, ticketType, noOfTickets, amount) => {
     try {
       // add the booking record to the database
       const addBookingQuery = `
         INSERT INTO ticketBookings (buyerId, ticketId, pid, ticketType, noOfTickets, amount)
         VALUES ($1, $2, $3, $4, $5, $6)
-      `;
+      `
       const addBookingResult = await query(addBookingQuery, [
         buyerId,
         ticketId,
@@ -137,27 +130,60 @@ const ticketBooking = asyncHandler(
         ticketType,
         noOfTickets,
         amount,
-      ]);
+      ])
 
       // update the ticket quantity in the ticket database
       const updateTicketQuery = `
         UPDATE ticketStatus
         SET currentQuantity = currentQuantity - $1
         WHERE ticketId = $2 AND type = $3
-      `;
+      `
       const updateTicketResult = await query(updateTicketQuery, [
         noOfTickets,
         ticketId,
         ticketType,
-      ]);
+      ])
 
-      return true;
+      return true
     } catch (error) {
-      console.error('Error during ticket booking:', error);
-      throw new Error('Failed to complete the booking.');
+      console.error('Error during ticket booking:', error)
+      throw new Error('Failed to complete the booking.')
     }
   }
 )
+
+// get all trending tickets
+const getAllTrendingTickets = asyncHandler(async () => {
+  const getTicketQuery = `SELECT id, eventPoster
+  FROM ticket
+  WHERE eventDate > current_date
+  LIMIT 8;`
+  const getTicket = await query(getTicketQuery, [])
+  // console.log("Ticket info",getTicket);
+  if (getTicket) {
+    // console.log(getTicket.rows);
+    return getTicket.rows
+  } else {
+    throw new Error('Internal Error')
+  }
+})
+
+// set subscription
+const setSubscription = asyncHandler(async (serviceProviderId) => {
+  try {
+    const query1 = `
+      UPDATE serviceprovider
+      SET servicestatus = 'subscribed'
+      WHERE id = $1;
+      `
+    const addBookingResult = await query(query1, [serviceProviderId])
+
+    return true
+  } catch (error) {
+    console.error('Error during ticket booking:', error)
+    throw new Error('Failed to complete the booking.')
+  }
+})
 
 export {
   addNewTicket,
@@ -165,4 +191,6 @@ export {
   getTicket,
   addTicketStatus,
   ticketBooking,
+  getAllTrendingTickets,
+  setSubscription,
 }
