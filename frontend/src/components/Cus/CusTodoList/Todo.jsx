@@ -22,7 +22,11 @@ const Todo = ({
   completeTodo,
   removeTodo,
   updateTodo,
-  event_date
+  event_date,
+  todoListState,
+  onTodoValueChange,
+  refreshTodoList, // Receive refreshTodoList
+  setRefreshTodoList, // Receive setRefreshTodoList
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [spName,setSpName] = useState('');
@@ -98,7 +102,11 @@ const Todo = ({
           .then((response) => {
             const packCount = response.data;
             console.log(packCount);
-            // Perform navigation after successful POST
+            // Call the callback function to update the state in TodoList
+            onTodoValueChange("Updated Value from Todo");
+
+            // Update the refreshTodoList state variable to trigger the useEffect in TodoList
+            setRefreshTodoList((prev) => !prev);
             navigate(`/customer/eventdetails?id=${event_id}`);
             setShowModal(false);
           })

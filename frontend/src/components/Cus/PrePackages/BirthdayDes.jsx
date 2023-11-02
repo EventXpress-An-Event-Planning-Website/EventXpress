@@ -262,6 +262,7 @@ const BirthdayDes = () => {
         </Modal.Header>
         <Modal.Body>
           <div>
+            {birthData[0] !=undefined ?
             <Form>
               <Form.Group
                 className="mb-3"
@@ -311,7 +312,7 @@ const BirthdayDes = () => {
                   disabled
                 />
               </Form.Group>
-            </Form>
+            </Form>:null}
           </div>
         </Modal.Body>
         <Modal.Footer>
