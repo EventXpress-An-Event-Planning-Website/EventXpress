@@ -115,11 +115,11 @@ function Revenue() {
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
+                <XAxis dataKey="eventtitle" />
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="Income" fill="#6D004F" />
+                <Bar dataKey="revenue" fill="#6D004F" />
               </BarChart>
             </ResponsiveContainer>
           </div>

@@ -135,6 +135,22 @@ const MainDashboard = () => {
 
   const firstThreeComplain = complains.slice(0, 3);
 
+  const [revData, setRevData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getRevenueData`)
+      .then((response) => {
+        
+        setRevData(response.data);
+      })
+      .catch((error) => {
+        // console.log(error);
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+
   //  ////////////////////////////////////////////////////////////////////////
 
   // data for charts
@@ -196,26 +212,27 @@ const MainDashboard = () => {
               Revenue
             </Card.Header>
             <Card.Body>
-              <ResponsiveContainer width="80%" height="80%">
-                <BarChart
-                  width={400}
-                  height={300}
-                  data={data}
-                  margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="Income" fill="#6D004F" />
-                </BarChart>
-              </ResponsiveContainer>
+            <ResponsiveContainer width="80%" height="80%">
+              <BarChart
+                width={400}
+                height={300}
+                data={revData}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="eventtitle" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="revenue" fill="#6D004F" />
+              </BarChart>
+            </ResponsiveContainer>
+
               <Link to="/Revenue">
                 <Button variant="primary">Revenue</Button>
               </Link>
