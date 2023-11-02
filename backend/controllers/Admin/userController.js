@@ -3,7 +3,7 @@ import {
   getCustomers, getPendingServiceProviders, getServiceProviders, getCountOfCustomers, getCountOfServiceProviders,
   totalUsersCount, getCountOfNewRequests,combineEventData,getServiceProviderDetails,serviceproviderAcceptFunction,
   combinesEventData, eventDetailsFunction, getAllComplains,customerDetailsFunction,makeAsReadComplain,desableServiceProvider,
-  deleteServiceProvider
+  deleteServiceProvider,combineRevenueData,getAllTicketRevenueAndCommision
 } from '../../models/adminModel.js'
 import { request } from 'express'
 
@@ -238,11 +238,38 @@ const deleteServiceProviderByAdmin = asyncHandler(async (req, res) => {
   }
 })
 
+const getRevenueData = asyncHandler(async (req, res) => {
+  const revenueData = await combineRevenueData()
+
+  if (revenueData) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(revenueData)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
+const getAllRevenueData = asyncHandler(async (req, res) => {
+  const revenueData = await getAllTicketRevenueAndCommision()
+
+  if (revenueData) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(revenueData)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
 
 
 
 export {
   getAllCustomersByAdmin, getAllServiceProvidersByAdmin, getPendingServiceProvidersByAdmin, getAllCustomerCount,
   getAllServiceProvidersCount, getAllUserCount, getAllNewRequestCount,getEventData,getServiceProviderDetail,acceptServiceProvider,
-  getEventDataForEventsPage, getEventDetail,getAllComplain,getCustomer,makeAsRead,desableServiceProviderByAdmin,deleteServiceProviderByAdmin
+  getEventDataForEventsPage, getEventDetail,getAllComplain,getCustomer,makeAsRead,desableServiceProviderByAdmin,deleteServiceProviderByAdmin,getRevenueData,
+  getAllRevenueData
 }

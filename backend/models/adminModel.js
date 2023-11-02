@@ -372,19 +372,19 @@ const ticketbookingsFunction = async (ticketId) => {
 const buyerDetailsFunction = async (ticketId) => {
   try {
     const ticketbookingsDetails = await ticketbookingsFunction(ticketId);
-    const buyerDetails =[];
+    const buyerDetails = [];
 
     for (const ticketbookingsDetail of ticketbookingsDetails) {
-      
-      const customerDetails = await customerDetailsFunction (ticketbookingsDetail.buyerid);
-     
+
+      const customerDetails = await customerDetailsFunction(ticketbookingsDetail.buyerid);
+
 
       const buyerName = customerDetails.name;
       const buyerNIC = customerDetails.nic;
       const buyerEmail = customerDetails.email;
-      const noOfTickets = ticketbookingsDetail.nooftickets ;
-      const Price = ticketbookingsDetail.amount ;
-      const Date = ticketbookingsDetail.created_at ;
+      const noOfTickets = ticketbookingsDetail.nooftickets;
+      const Price = ticketbookingsDetail.amount;
+      const Date = ticketbookingsDetail.created_at;
 
       const newBuyer = {
         "buyerName": `${buyerName}`,
@@ -393,14 +393,14 @@ const buyerDetailsFunction = async (ticketId) => {
         "noOfTickets": `${noOfTickets}`,
         "Price": `${Price}`,
         "Date": `${Date}`,
-        
+
 
       };
       buyerDetails.push(newBuyer);
     };
 
-return buyerDetails;
-  } 
+    return buyerDetails;
+  }
   catch (error) {
     console.error(`Internal Error: ${error.message}`)
     throw new Error(`Internal Error`)
@@ -489,33 +489,33 @@ const eventTicketDetailsFunction = async (ticketId) => {
 }
 
 // get all complain  details didn't handle
-const getAllComplainDontHanle = async ()=>{
-  try{
-  const allComplainQuery = `SELECT * FROM customercomplaints WHERE ishandled = false ;`
-  const allComplain = await query(allComplainQuery,[]);
-  return (allComplain ? allComplain.rows : "No new Complains")
-}catch(error){
-  console.error(`Internal Error: ${error.message}`)
-  throw new Error(`Internal Error`)
-}
+const getAllComplainDontHanle = async () => {
+  try {
+    const allComplainQuery = `SELECT * FROM customercomplaints WHERE ishandled = false ;`
+    const allComplain = await query(allComplainQuery, []);
+    return (allComplain ? allComplain.rows : "No new Complains")
+  } catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
 }
 
 // get all complain details handle
-const getAllComplainHanle = async ()=>{
-  try{
-  const allComplainQuery = `SELECT * FROM customercomplaints WHERE ishandled = true ;`
-  const allComplain = await query(allComplainQuery,[]);
-  return (allComplain ? allComplain.rows : "No Complains")
-}catch(error){
-  console.error(`Internal Error: ${error.message}`)
-  throw new Error(`Internal Error`)
-}
+const getAllComplainHanle = async () => {
+  try {
+    const allComplainQuery = `SELECT * FROM customercomplaints WHERE ishandled = true ;`
+    const allComplain = await query(allComplainQuery, []);
+    return (allComplain ? allComplain.rows : "No Complains")
+  } catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
 }
 
 //get All complains
-const getAllComplains = async()=>{
-  try{
-    const complainDidntHandle = await  getAllComplainDontHanle();
+const getAllComplains = async () => {
+  try {
+    const complainDidntHandle = await getAllComplainDontHanle();
     const complainHandle = await getAllComplainHanle();
 
     const combinedComplainDidntHandleDetails = [];
@@ -528,10 +528,10 @@ const getAllComplains = async()=>{
 
       const newComplain = {
         "complain": `${complainDidnotHandle.complaint_text}`,
-        "complainId": `${complainDidnotHandle.complaintid }`,
+        "complainId": `${complainDidnotHandle.complaintid}`,
         "customerName": `${customerName.name}`,
         "customerId": `${complainDidnotHandle.customer_id}`,
-        "handled": false 
+        "handled": false
       };
 
       combinedComplainDidntHandleDetails.push(newComplain);
@@ -544,38 +544,38 @@ const getAllComplains = async()=>{
 
       const oldComplain = {
         "complain": `${complainDidHandle.complaint_text}`,
-        "complainId": `${complainDidHandle.complaintid }`,
+        "complainId": `${complainDidHandle.complaintid}`,
         "customerName": `${customerName.name}`,
         "customerId": `${complainDidHandle.customer_id}`,
-        "handled": true 
+        "handled": true
       };
 
       combinedComplainHandleDetails.push(oldComplain);
     }
 
-    const data={
+    const data = {
       combinedComplainDidntHandleDetails,
       combinedComplainHandleDetails
     }
     return (data);
 
   }
-  catch(error){
+  catch (error) {
     console.error(`Internal Error: ${error.message}`)
-  throw new Error(`Internal Error`)
+    throw new Error(`Internal Error`)
   }
 }
 
 // make as read complain
-const makeAsReadComplain = async (complainId)=>{
-  try{
+const makeAsReadComplain = async (complainId) => {
+  try {
     const makeAsReadQuery = `UPDATE customercomplaints SET ishandled = true WHERE complaintid = $1;`
-    const makeAsRead = await query(makeAsReadQuery,[complainId]);
+    const makeAsRead = await query(makeAsReadQuery, [complainId]);
     return (makeAsRead ? true : false)
   }
-  catch(error){
+  catch (error) {
     console.error(`Internal Error: ${error.message}`)
-  throw new Error(`Internal Error`)
+    throw new Error(`Internal Error`)
   }
 
 }
@@ -608,13 +608,76 @@ const deleteServiceProvider = async (serviceProvider_Id) => {
   }
 }
 
+//combine data for revenue chart
+const combineRevenueData = async () => {
+  try {
+    const totEvents = await totalEvents(); // Assuming totalEvents is an asynchronous function to get all event names and IDs
+
+    const combineRevenueData = [];
+
+    for (const event of totEvents) {
+
+      const getTicketRevenues = await getTicketRevenue(parseInt(event.id));
+
+      const newEvent = {
+        "ticketId": `${event.id}`,
+        "eventtitle": `${event.eventtitle}`,
+        "revenue": `${getTicketRevenues}`,
+      };
+      combineRevenueData.push(newEvent);
+    }
+
+    return combineRevenueData;
+  } catch (error) {
+    console.error(`Internal Error: ${error.message}`);
+    throw new Error(`Internal Error: ${error.message}`);
+  }
+
+}
+
+// get all ticket revenue
+const getAllTicketRevenueAndCommision = async () => {
+  try {
+    const allTicketRevenueQuery = ` SELECT ticketId, SUM(amount) AS totAmount
+    FROM ticketBookings
+    GROUP BY ticketId;`
+    const allTicketRevenue = await query(allTicketRevenueQuery, []);
+    let totrev = 0;
+    
+
+    for (const ticketRevenue of allTicketRevenue.rows) {
+      totrev = totrev + (parseInt(ticketRevenue.totamount));
+    }
+
+    let totCommision = totrev * 0.1;
+
+    const totalAmount = {
+      "totrev": `${totrev}`,
+      "totCommision": `${totCommision}`
+    }
+
+    const combineData=[
+      totalAmount
+    ]
+
+
+    return combineData
+  }
+  catch (error) {
+    console.error(`Internal Error: ${error.message}`)
+    throw new Error(`Internal Error`)
+  }
+}
+
+
+
 
 
 
 export {
   getCustomers, getServiceProviders, getPendingServiceProviders, getCountOfCustomers,
   getCountOfServiceProviders, totalUsersCount, getCountOfNewRequests,
-  combineEventData, getServiceProviderDetails, serviceproviderAcceptFunction, combinesEventData, 
-  eventDetailsFunction, getAllComplains,customerDetailsFunction,makeAsReadComplain,deleteServiceProvider,
-  desableServiceProvider
+  combineEventData, getServiceProviderDetails, serviceproviderAcceptFunction, combinesEventData,
+  eventDetailsFunction, getAllComplains, customerDetailsFunction, makeAsReadComplain, deleteServiceProvider,
+  desableServiceProvider, combineRevenueData, getAllTicketRevenueAndCommision
 };
