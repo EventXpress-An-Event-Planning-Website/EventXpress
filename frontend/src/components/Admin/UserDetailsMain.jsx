@@ -58,6 +58,23 @@ function UsersMain() {
 
     };
 
+    const rejectFunction = (id) => {
+      axios
+        .delete(`/api/admin/deleteServiceProviderByAdmin?spId=${id}`)
+        // console.log(response);
+        .then((response) => {
+          navigate("/Users");
+          console.log("Deleted");
+        })
+        .catch((error) => {
+          setError(error); 
+          setLoading(false);
+        });
+
+        console.log(id);
+
+    };
+
 
   return (
     <div className="mainUsers ">
@@ -132,22 +149,13 @@ function UsersMain() {
                 Reject Service Provider
               </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label>Give the reason</Form.Label>
-                <Form.Control as="textarea" rows={3} />
-              </Form.Group>
-            </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleCancelClose}>
                 Close
               </Button>
               <Button
                 variant="primary"
-                onClick={handleCancelClose}
+                onClick={()=>rejectFunction(spData.id)}
                 style={{ backgroundColor: "red" }}
               >
                 Confirm

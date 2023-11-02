@@ -1,7 +1,7 @@
 import React from "react";
 import dp1 from "../../assets/images/adp1.jpg";
 import dp2 from "../../assets/images/adp2.jpeg";
-import dp3 from "../../assets/images/adp3.jpg";
+import dp from "../../assets/images/adp3.jpg";
 // import chart from "../../assets/images/chart.png";
 import { GoPersonAdd } from "react-icons/go";
 import { FaRegUser } from "react-icons/fa";
@@ -28,7 +28,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const MainDashboard = () => {
-
   const [serviceProviderscount, setServiceProviderscount] = useState([]);
   const [customerCount, setCustomerCount] = useState([]);
   const [totalCount, setTotalCount] = useState([]);
@@ -36,24 +35,26 @@ const MainDashboard = () => {
   const [eventData, setEventData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [complains, setComplains] = useState([]);
+  const [customer, setCustomer] = useState([]);
 
   useEffect(() => {
     axios
       .get(`/api/admin/getAllServiceProvidersCount`)
       .then((response) => {
-        setServiceProviderscount(response.data);  
+        setServiceProviderscount(response.data);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
       });
   }, [loading]); // passing an empty dependency array to make it run only once
-  
+
   useEffect(() => {
     axios
       .get(`/api/admin/getEventData`)
       .then((response) => {
-        setEventData(response.data);  
+        setEventData(response.data);
       })
       .catch((error) => {
         setError(error);
@@ -62,54 +63,97 @@ const MainDashboard = () => {
   }, [loading]); // passing an empty dependency array to make it run only once
 
   const firstThreeEvents = eventData.slice(0, 3);
-  
-  
+
   useEffect(() => {
     axios
       .get(`/api/admin/getAllCustomerCount`)
       .then((response) => {
-        setCustomerCount(response.data);  
+        setCustomerCount(response.data);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
       });
   }, [loading]); // passing an empty dependency array to make it run only once
-  
-  
-  
+
   useEffect(() => {
     axios
       .get(`/api/admin/getAllUserCount`)
       .then((response) => {
-        setTotalCount(response.data);  
+        setTotalCount(response.data);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
       });
   }, [loading]); // passing an empty dependency array to make it run only once
-  
-  
+
   useEffect(() => {
     axios
       .get(`/api/admin/getAllNewRequestCount`)
       .then((response) => {
-        setNewRequests(response.data);  
+        setNewRequests(response.data);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
       });
   }, [loading]); // passing an empty dependency array to make it run only once
-  
-  
 
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getAllComplain`)
+      .then((response) => {
+        setComplains(response.data.combinedComplainDidntHandleDetails);
+        // console.log(complains);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [loading]); // passing an empty dependency array to make it run only once
 
-//  ////////////////////////////////////////////////////////////////////////
+  const getCustomer = async (id) => {
+    try {
+      axios
+      .get(`/api/admin/getCustomer?customerId=${id}`)
+      .then((response) => {
+        setCustomer(response.data);
+        // console.log(complains);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
+  }
 
+  const firstThreeComplain = complains.slice(0, 3);
 
+  const [revData, setRevData] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getRevenueData`)
+      .then((response) => {
+        
+        setRevData(response.data);
+      })
+      .catch((error) => {
+        // console.log(error);
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
+
+  //  ////////////////////////////////////////////////////////////////////////
+
+  // data for charts
   const data = [
     {
       name: "January",
@@ -168,26 +212,27 @@ const MainDashboard = () => {
               Revenue
             </Card.Header>
             <Card.Body>
-              <ResponsiveContainer width="80%" height="80%">
-                <BarChart
-                  width={400}
-                  height={300}
-                  data={data}
-                  margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="Income" fill="#6D004F" />
-                </BarChart>
-              </ResponsiveContainer>
+            <ResponsiveContainer width="80%" height="80%">
+              <BarChart
+                width={400}
+                height={300}
+                data={revData}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="eventtitle" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="revenue" fill="#6D004F" />
+              </BarChart>
+            </ResponsiveContainer>
+
               <Link to="/Revenue">
                 <Button variant="primary">Revenue</Button>
               </Link>
@@ -201,34 +246,18 @@ const MainDashboard = () => {
           <div className="ticketsTopic">
             <h3 style={{ fontWeight: "bold" }}>Complains & Support</h3>
           </div>
-          <Link to="/AdminSupportView">
-            <div className="ticketChat">
-              <img className="dp" src={dp} />
-              <div className="message">
-                {" "}
-                need help to do the payment for adding packaged. can you...
-              </div>
-            </div>
-          </Link>
-          <Link to="/AdminSupportView">
-            <div className="ticketChat">
-              <img className="dp" src={dp} />
-              <div className="message">
-                {" "}
-                need help to do the payment for adding packaged. can you...
-              </div>
-            </div>
-          </Link>
-          <Link to="/AdminSupportView">
-            <div className="ticketChat">
-              <img className="dp" src={dp} />
-              <div className="message">
-                {" "}
-                need help to do the payment for adding packaged. can you...
-              </div>
-            </div>
-          </Link>
 
+          {firstThreeComplain.map((complain) => (
+                <Link to={`/AdminSupportView?complainId=${complain.complainId}&complain=${complain.complain}&customerId=${complain.customerId}&cusName=${complain.customerName}&handled=${complain.handled}`}>
+                  <div className="ticketChat">
+                    <img className="dp" src={dp} />
+                    <div className="message">
+                      {" "}
+                     {complain.complain}
+                    </div>
+                  </div>
+                </Link>
+             ))}
           <Link to="/TicketSupports">
             <Button varient="primary" className="ticketButton">
               View More
@@ -246,11 +275,12 @@ const MainDashboard = () => {
               <th className="tableTopic">Income</th>
             </tr>
             {firstThreeEvents.map((event) => (
-            <tr className="tableRow">
-              <td className="tableContent">{event.eventtitle}</td>
-              <td className="tableContent">{event.soldtickets}</td>
-              <td className="tableContent">{event.revenue}</td>
-            </tr> ))}
+              <tr className="tableRow">
+                <td className="tableContent">{event.eventtitle}</td>
+                <td className="tableContent">{event.soldtickets}</td>
+                <td className="tableContent">{event.revenue}</td>
+              </tr>
+            ))}
           </table>
         </div>
       </Link>
@@ -265,7 +295,7 @@ const MainDashboard = () => {
         </div>
         <div className="bottomcolom">
           <FaRegUser size={25} /> Service Providers <br />{" "}
-          <span className="bottomNumbers">  {serviceProviderscount} </span> 
+          <span className="bottomNumbers"> {serviceProviderscount} </span>
         </div>
         <div className="bottomcolom">
           <HiOutlineUserGroup size={25} /> Customers <br />{" "}

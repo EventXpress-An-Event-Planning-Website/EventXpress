@@ -321,3 +321,10 @@ CREATE TABLE public.busy_dates
     busy_date date,
     PRIMARY KEY (busy_id)
 );
+
+CREATE TABLE customercomplaints (
+    complaintid SERIAL PRIMARY KEY,
+    customer_id INT,
+    complaint_text TEXT,
+    ishandled BOOLEAN DEFAULT FALSE
+);

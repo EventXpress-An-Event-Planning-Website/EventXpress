@@ -1,64 +1,86 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-
-const Message = ({ sender, content, timestamp }) => (
-  <div className="message">
-    <div className="sender">{sender}</div>
-    <div className="content">{content}</div>
-    <div className="timestamp">{timestamp}</div>
-  </div>
-);
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
+import moment from "moment/moment";
+import { useNavigate } from "react-router-dom";
 
 function AdminSupportViewMain() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const location = useLocation(); // access current location in the browser's url
+  const queryParams = new URLSearchParams(location.search);
+  const customerId = Number(queryParams.get("customerId"));
+  const complain = queryParams.get("complain");
+  const complainId = Number(queryParams.get("complainId"));
+  const customerName = String(queryParams.get("cusName"));
+  const handled = queryParams.get("handled");
+  const [customer, setCustomer] = useState([]);
+  const navigate = useNavigate();
 
-  const handleSendMessage = () => {
-    if (newMessage.trim() === "") return;
+  console.log(complainId);
 
-    const newMsg = {
-      sender: "ADMIN",
-      content: newMessage,
-      timestamp: new Date().toLocaleTimeString(),
-    };
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    axios
+      .get(`/api/admin/getCustomer?cusId=${customerId}`)
+      .then((response) => {
+        setCustomer(response.data);
+        console.log(complains);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, [loading]); // passing an empty dependency array to make it run only once
 
-    setMessages([...messages, newMsg]);
-    setNewMessage("");
+  const makeAsReadFunc = (complainId) => {
+    axios
+      .put(`/api/admin/makeAsRead?compalainId=${complainId}`)
+      .then((response) => {
+        navigate("/TicketSupports");
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
   };
 
   return (
     <div className="main">
-      <h3 className="title">From Kasun Perera</h3>
+      <h3 className="title">From {customer.name}</h3>
 
-      <div className="messageDetails" style={{ marginLeft: "55%",height:'25%' }}>
-        <div className="sender">Kasun Perera</div>I have been encountering
-        persistent difficulties while navigating your website over the past
-        week. Specifically, when I try to access the "My Account" section and
-        log in to my user profile, I am consistently met with an error message
-        stating, "Error 500: Internal Server Error." This has prevented me from
-        updating my account information and accessing my order history.
+      <div
+        className="messageDetails"
+        style={{ marginLeft: "55%", height: "25%" }}
+      >
+        <div className="sender">{customerName}</div>
+        {complain}
+        <br />
+        <br />
+        <b>
+          {" "}
+          Contact Number: {customer.contactno}
+          <br />
+          Contact Email: {customer.email}{" "}
+        </b>
       </div>
 
       <div className="chat-ui">
-        <div className="message-list">
-          {messages.map((message, index) => (
-            <Message
-              key={index}
-              sender={message.sender}
-              content={message.content}
-              timestamp={message.timestamp}
-            />
-          ))}
-        </div>
-        <div className="message-input">
-          <input
-            type="text"
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Type your message..."
-          />
-          <Button varient='primary' onClick={handleSendMessage} style={{backgroundColor:'#6D004F'}}>Send</Button>
-        </div>
+        {handled === 'false' ? (
+          <div className="message-input">
+            <Button
+              varient="primary"
+              onClick={() => makeAsReadFunc(complainId)}
+              style={{ backgroundColor: "#6D004F" }}
+            >
+              Make as Read
+            </Button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

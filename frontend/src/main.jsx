@@ -83,7 +83,8 @@ import CompareStageRentalPackages from './screens/Customer/CompareStageRentalPac
 import AddtoPre from './screens/ServiceProvider/PredefinedPack/AddtoPre.jsx'
 import PackageRequest from './components/Admin/PackageRequest.jsx'
 import CompareDecoPackages from './screens/Customer/CompareDecoPackages.jsx'
-// import AdminProfileForCustomer from './components/Admin/AdminProfileForCustomer.jsx'
+import AdminProfileForCustomer from './components/Admin/AdminProfileForCustomer.jsx'
+import AdminProfileForServiceProvider from './components/Admin/AdminProfileForServiceProvider.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -183,7 +184,8 @@ const router = createBrowserRouter(
       <Route path="/Revenue" element={<Revenue />} />
       <Route path="/AdminEvents" element={<AdminEvents />} />
       <Route path="/AdminEventDetails" element={<AdminEventDetails />} />
-      {/* <Route path="/AdminProfileForCustomer" element={<AdminProfileForCustomer />} /> */}
+      <Route path="/AdminProfileForCustomer" element={<AdminProfileForCustomer />} />
+      <Route path="/AdminProfileForServiceProvider" element={<AdminProfileForServiceProvider />} />
 
       {/* admin routes ends */}
       <Route path="/ServiceProvider/profile" element={<ProfileScreen />} />

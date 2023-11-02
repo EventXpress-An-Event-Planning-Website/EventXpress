@@ -21,11 +21,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-export default function AdminProfileForCustomer() {
+
+export default function AdminProfileForServiceProvider() {
   const navigate = useNavigate();
   const location = useLocation(); // access current location in the browser's url
   const queryParams = new URLSearchParams(location.search);
-  const [customer, setCustomer] = useState([]);
+  const [serviceProvider, setServiceProvider] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -34,17 +35,34 @@ export default function AdminProfileForCustomer() {
 
   useEffect(() => {
     axios
-      .get(`/api/admin/getCustomer?cusId=${customerId}`)
+      .get(`/api/admin/getServiceProviderDetail?id=${serviceProviderId}`)
       .then((response) => {
-        setCustomer(response.data);
+        setServiceProvider(response.data.serviceProviders);
       })
       .catch((error) => {
         setError(error);
         setLoading(false);
       });
   }, [loading]); // passing an empty dependency array to make it run only once
-  const profileimage = customer.profileimage;
-    const updatedSrc = `../../src/assets/images/uploads/${profileimage}`
+
+  const desableFunction = (id) => {
+    axios
+      .put(`/api/admin/desableServiceProviderByAdmin?spId=${id}`)
+      // console.log(response);
+      .then((response) => {
+        navigate("/Users");
+        console.log("Accepted");
+      })
+      .catch((error) => {
+        setError(error); 
+        setLoading(false);
+      });
+
+  };
+
+
+  const profileimage = serviceProvider.profileimage;
+  const updatedSrc = `../../src/assets/images/uploads/${profileimage}`
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <MDBContainer className="py-5">
@@ -56,12 +74,19 @@ export default function AdminProfileForCustomer() {
                   src={updatedSrc}
                   alt="avatar"
                   className="rounded-circle"
-                  style={{ width: "150px" }}
+                  style={{ width: "150px" , height: "150px" }}
                   fluid
                 />
-                <p className="text-muted mb-1">{customer.name}</p>
-                <p className="text-muted mb-4">{customer.location}</p>
-                
+                <p className="text-muted mb-1">{serviceProvider.name}</p>
+                <p className="text-muted mb-4">{serviceProvider.location}</p>
+                <div className="d-flex justify-content-center mb-2">
+                  { serviceProvider.isverifiedbyadmin ? (
+                 <MDBBtn onClick={() => desableFunction(serviceProviderId)}>
+                    Deactivate
+                  </MDBBtn> ):( <MDBBtn outline className="ms-1">Activate</MDBBtn>
+                  ) }
+
+                </div>
               </MDBCardBody>
             </MDBCard>
           </MDBCol>
@@ -74,7 +99,7 @@ export default function AdminProfileForCustomer() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                      {customer.name}
+                      {serviceProvider.name}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -85,7 +110,7 @@ export default function AdminProfileForCustomer() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                    {customer.email}
+                    {serviceProvider.email}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -96,18 +121,8 @@ export default function AdminProfileForCustomer() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                    {customer.contactno}
-                    </MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>NIC</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">
-                    {customer.nic}
+                    {serviceProvider.contactno}
+                    
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
@@ -118,10 +133,58 @@ export default function AdminProfileForCustomer() {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">
-                        {customer.location}
+                      {serviceProvider.location}
                     </MDBCardText>
                   </MDBCol>
                 </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>NIC</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">
+                      {serviceProvider.nic}
+                    </MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Facebook</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">
+                      {serviceProvider.facebooklink}
+                    </MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Instagram</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">
+                      {serviceProvider.instagramlink}
+                    </MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Twitter</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">
+                      {serviceProvider.twitterlink}
+                    </MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

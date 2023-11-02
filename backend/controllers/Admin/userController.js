@@ -2,7 +2,8 @@ import asyncHandler from 'express-async-handler'
 import {
   getCustomers, getPendingServiceProviders, getServiceProviders, getCountOfCustomers, getCountOfServiceProviders,
   totalUsersCount, getCountOfNewRequests,combineEventData,getServiceProviderDetails,serviceproviderAcceptFunction,
-  combinesEventData
+  combinesEventData, eventDetailsFunction, getAllComplains,customerDetailsFunction,makeAsReadComplain,desableServiceProvider,
+  deleteServiceProvider,combineRevenueData,getAllTicketRevenueAndCommision
 } from '../../models/adminModel.js'
 import { request } from 'express'
 
@@ -72,7 +73,20 @@ const acceptServiceProvider = asyncHandler(async (req, res) => {
       message: 'Invalid verification token or token expired',
     })
   }
+})
 
+const getEventDetail = asyncHandler(async (req, res) => {
+  const ticketId = req.query.ticketId;
+  const eventFullDetails = await eventDetailsFunction(ticketId)
+  if (eventFullDetails) {
+    res.status(200).json({
+      eventFullDetails
+    })
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
 })
 
 const getAllCustomerCount = asyncHandler(async (req, res) => {
@@ -153,11 +167,109 @@ const getEventDataForEventsPage = asyncHandler(async (req, res) => {
   }
 })
 
+const getAllComplain = asyncHandler(async (req, res) => {
+  const eventData = await getAllComplains()
+
+  if (eventData) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(eventData)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
+const getCustomer = asyncHandler(async (req, res) => {
+  
+  const cusId = req.query.cusId;
+  const customer = await customerDetailsFunction(cusId)
+
+  if (customer) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(customer)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
+const makeAsRead = asyncHandler(async (req, res) => {
+  
+  const compalainId = req.query.compalainId;
+  const complain = await makeAsReadComplain(compalainId)
+
+  if (complain) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(complain)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
+const desableServiceProviderByAdmin = asyncHandler(async (req, res) => {
+    const spId = req.query.spId;
+    const serviceProvider = await desableServiceProvider(spId)
+  
+    if (serviceProvider) {
+      // console.log(serviceProvidersCount);
+      res.status(200).json(serviceProvider)
+    } else {
+      res.status(400).json({
+        message: 'Invalid verification token or token expired',
+      })
+    }
+})
+
+const deleteServiceProviderByAdmin = asyncHandler(async (req, res) => {
+  const spId = req.query.spId;
+  const serviceProvider = await deleteServiceProvider(spId)
+
+  if (serviceProvider) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(serviceProvider)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
+const getRevenueData = asyncHandler(async (req, res) => {
+  const revenueData = await combineRevenueData()
+
+  if (revenueData) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(revenueData)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
+const getAllRevenueData = asyncHandler(async (req, res) => {
+  const revenueData = await getAllTicketRevenueAndCommision()
+
+  if (revenueData) {
+    // console.log(serviceProvidersCount);
+    res.status(200).json(revenueData)
+  } else {
+    res.status(400).json({
+      message: 'Invalid verification token or token expired',
+    })
+  }
+})
+
 
 
 
 export {
   getAllCustomersByAdmin, getAllServiceProvidersByAdmin, getPendingServiceProvidersByAdmin, getAllCustomerCount,
   getAllServiceProvidersCount, getAllUserCount, getAllNewRequestCount,getEventData,getServiceProviderDetail,acceptServiceProvider,
-  getEventDataForEventsPage
+  getEventDataForEventsPage, getEventDetail,getAllComplain,getCustomer,makeAsRead,desableServiceProviderByAdmin,deleteServiceProviderByAdmin,getRevenueData,
+  getAllRevenueData
 }
