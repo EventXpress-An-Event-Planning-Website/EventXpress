@@ -8,6 +8,8 @@ import axios from 'axios';
 const TodoList=({event,success})=> {
   // console.log(event.event_id);
   // const {data:viewToDo,error,isLoading}=useViewToDoQuery()
+  const [todoListState, setTodoListState] = useState("Initial Value");
+  const [refreshTodoList, setRefreshTodoList] = useState(false);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -35,7 +37,7 @@ const TodoList=({event,success})=> {
         setError(error);
         setLoading(false);
       });
-  }, [event.event_id]);
+  }, [event.event_id,refreshTodoList]);
   
   
   //   if (services.length === 0) {
@@ -43,7 +45,10 @@ const TodoList=({event,success})=> {
   // }
 
     // console.log(services);
-
+    const handleTodoValueChange = (updatedValue) => {
+      // Update the state variable with the updated value received from Todo
+      setTodoListState(updatedValue);
+    };
 
  
   
@@ -117,6 +122,11 @@ const TodoList=({event,success})=> {
         removeTodo={removeTodo}
         updateTodo={updateTodo}
         event_date={event.event_date}
+        todoListState={todoListState}
+        onTodoValueChange={handleTodoValueChange}
+        // Pass the state variable and the setRefreshTodoList function
+        refreshTodoList={refreshTodoList}
+        setRefreshTodoList={setRefreshTodoList}
       />
     </>
   );
